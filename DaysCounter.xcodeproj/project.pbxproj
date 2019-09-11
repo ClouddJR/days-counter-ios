@@ -11,6 +11,8 @@
 		A6A84E3823294F0E006C6660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3623294F0E006C6660 /* Main.storyboard */; };
 		A6A84E3A23294F0E006C6660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
 		A6A84E3D23294F0E006C6660 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3B23294F0E006C6660 /* LaunchScreen.storyboard */; };
+		A6A84E6423296A5E006C6660 /* PastEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */; };
+		A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		A6A84E3923294F0E006C6660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6A84E3C23294F0E006C6660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6A84E3E23294F0E006C6660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventsViewController.swift; sourceTree = "<group>"; };
+		A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureEventsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
+				A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */,
+				A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */,
 				A6A84E4423294FBC006C6660 /* Supporting Files */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
 			);
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */,
+				A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */,
+				A6A84E6423296A5E006C6660 /* PastEventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
