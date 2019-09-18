@@ -14,6 +14,9 @@
 		A6A84E3D23294F0E006C6660 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3B23294F0E006C6660 /* LaunchScreen.storyboard */; };
 		A6A84E6423296A5E006C6660 /* PastEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */; };
 		A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */; };
+		A6AABAB62330C58700264B8B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB52330C58700264B8B /* Extensions.swift */; };
+		A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB72331131800264B8B /* RepetitionTableViewController.swift */; };
+		A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB9233116C800264B8B /* EventRepetition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		A6A84E3E23294F0E006C6660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventsViewController.swift; sourceTree = "<group>"; };
 		A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureEventsViewController.swift; sourceTree = "<group>"; };
+		A6AABAB52330C58700264B8B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A6AABAB72331131800264B8B /* RepetitionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionTableViewController.swift; sourceTree = "<group>"; };
+		A6AABAB9233116C800264B8B /* EventRepetition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepetition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +48,6 @@
 		A6A84E2623294F0E006C6660 = {
 			isa = PBXGroup;
 			children = (
-				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
 				A6A84E3123294F0E006C6660 /* DaysCounter */,
 				A6A84E3023294F0E006C6660 /* Products */,
 			);
@@ -59,6 +64,10 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
+				A6AABAB72331131800264B8B /* RepetitionTableViewController.swift */,
+				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
+				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
 				A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */,
 				A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */,
@@ -149,9 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AABAB62330C58700264B8B /* Extensions.swift in Sources */,
 				A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */,
+				A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */,
 				A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */,
 				A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */,
+				A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */,
 				A6A84E6423296A5E006C6660 /* PastEventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
