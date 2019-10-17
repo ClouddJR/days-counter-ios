@@ -7,24 +7,43 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PastEventsViewController: UIViewController {
+    
+    var pastEvents: Results<Event>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "date < %@", NSDate())
+        pastEvents = realm.objects(Event.self).filter(predicate)
+    }
+}
 
-        // Do any additional setup after loading the view.
+// MARK:  UITableViewDelegate
+
+extension PastEventsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+// MARK:  UITableViewDataSource
+
+extension PastEventsViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pastEvents?.count ?? 0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }

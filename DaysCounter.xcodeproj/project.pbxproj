@@ -3,11 +3,54 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */; };
+		A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */; };
+		A6557D6E235885FD00D224EC /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6557D6D235885FD00D224EC /* EventViewCell.swift */; };
+		A6763F132345CA3700A81500 /* InternetGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */; };
+		A68DE100233D180500188579 /* FontColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DE0FF233D180500188579 /* FontColorPickerView.swift */; };
+		A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C67982344792100E2F79A /* InternalGalleryViewController.swift */; };
+		A69C67C22344A26A00E2F79A /* nature6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C679C2344A26600E2F79A /* nature6.jpg */; };
+		A69C67C32344A26A00E2F79A /* nature17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C679D2344A26600E2F79A /* nature17.jpg */; };
+		A69C67C42344A26A00E2F79A /* nature11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C679E2344A26600E2F79A /* nature11.jpg */; };
+		A69C67C52344A26A00E2F79A /* book8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C679F2344A26700E2F79A /* book8.jpg */; };
+		A69C67C62344A26A00E2F79A /* book7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A02344A26700E2F79A /* book7.jpg */; };
+		A69C67C72344A26A00E2F79A /* birth1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A12344A26700E2F79A /* birth1.jpg */; };
+		A69C67C82344A26A00E2F79A /* nature16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A22344A26700E2F79A /* nature16.jpg */; };
+		A69C67C92344A26A00E2F79A /* book2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A32344A26700E2F79A /* book2.jpg */; };
+		A69C67CA2344A26A00E2F79A /* nature5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A42344A26700E2F79A /* nature5.jpg */; };
+		A69C67CB2344A26A00E2F79A /* nature2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A52344A26700E2F79A /* nature2.jpg */; };
+		A69C67CC2344A26A00E2F79A /* nature12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A62344A26700E2F79A /* nature12.jpg */; };
+		A69C67CD2344A26A00E2F79A /* book4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A72344A26700E2F79A /* book4.jpg */; };
+		A69C67CE2344A26A00E2F79A /* birthday3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A82344A26700E2F79A /* birthday3.jpg */; };
+		A69C67CF2344A26A00E2F79A /* nature4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67A92344A26700E2F79A /* nature4.jpg */; };
+		A69C67D02344A26A00E2F79A /* birthday2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67AA2344A26800E2F79A /* birthday2.jpg */; };
+		A69C67D12344A26A00E2F79A /* nature7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67AB2344A26800E2F79A /* nature7.jpg */; };
+		A69C67D22344A26A00E2F79A /* christmas3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67AC2344A26800E2F79A /* christmas3.jpg */; };
+		A69C67D32344A26A00E2F79A /* nature8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67AD2344A26800E2F79A /* nature8.jpg */; };
+		A69C67D42344A26A00E2F79A /* christmas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67AE2344A26800E2F79A /* christmas1.jpg */; };
+		A69C67D52344A26A00E2F79A /* nature13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67AF2344A26800E2F79A /* nature13.jpg */; };
+		A69C67D62344A26A00E2F79A /* wedding2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B02344A26800E2F79A /* wedding2.jpg */; };
+		A69C67D72344A26A00E2F79A /* book5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B12344A26800E2F79A /* book5.jpg */; };
+		A69C67D82344A26A00E2F79A /* nature1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B22344A26800E2F79A /* nature1.jpg */; };
+		A69C67D92344A26A00E2F79A /* wedding4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B32344A26900E2F79A /* wedding4.jpg */; };
+		A69C67DA2344A26A00E2F79A /* christmas2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B42344A26900E2F79A /* christmas2.jpg */; };
+		A69C67DB2344A26A00E2F79A /* nature14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B52344A26900E2F79A /* nature14.jpg */; };
+		A69C67DC2344A26A00E2F79A /* wedding1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B62344A26900E2F79A /* wedding1.jpg */; };
+		A69C67DD2344A26A00E2F79A /* birthday1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B72344A26900E2F79A /* birthday1.jpg */; };
+		A69C67DE2344A26A00E2F79A /* birth2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B82344A26900E2F79A /* birth2.jpg */; };
+		A69C67DF2344A26A00E2F79A /* book3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67B92344A26900E2F79A /* book3.jpg */; };
+		A69C67E02344A26A00E2F79A /* book6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67BA2344A26900E2F79A /* book6.jpg */; };
+		A69C67E12344A26A00E2F79A /* nature9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67BB2344A26900E2F79A /* nature9.jpg */; };
+		A69C67E22344A26A00E2F79A /* nature18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67BC2344A26A00E2F79A /* nature18.jpg */; };
+		A69C67E32344A26A00E2F79A /* nature10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67BD2344A26A00E2F79A /* nature10.jpg */; };
+		A69C67E42344A26A00E2F79A /* wedding3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67BE2344A26A00E2F79A /* wedding3.jpg */; };
+		A69C67E52344A26A00E2F79A /* book1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67BF2344A26A00E2F79A /* book1.jpg */; };
+		A69C67E62344A26A00E2F79A /* nature15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67C02344A26A00E2F79A /* nature15.jpg */; };
+		A69C67E72344A26A00E2F79A /* nature3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A69C67C12344A26A00E2F79A /* nature3.jpg */; };
 		A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A84E3223294F0E006C6660 /* AppDelegate.swift */; };
 		A6A84E3823294F0E006C6660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3623294F0E006C6660 /* Main.storyboard */; };
 		A6A84E3A23294F0E006C6660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
@@ -17,10 +60,63 @@
 		A6AABAB62330C58700264B8B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB52330C58700264B8B /* Extensions.swift */; };
 		A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB72331131800264B8B /* RepetitionTableViewController.swift */; };
 		A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB9233116C800264B8B /* EventRepetition.swift */; };
+		A6ACB3F4233F6F3400E8FABA /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
+		A6B924222348BD0C005F30F5 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B924212348BD0C005F30F5 /* ImageCell.swift */; };
+		A6B924262348D095005F30F5 /* ImagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B924252348D095005F30F5 /* ImagesResponse.swift */; };
+		A6B924282348D135005F30F5 /* ImagesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B924272348D135005F30F5 /* ImagesRequest.swift */; };
+		A6BD8EE4234D0E3600E76FBE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
+		A6DB777023328CC800CEA495 /* EventBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DB776F23328CC800CEA495 /* EventBackgroundViewController.swift */; };
+		A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */; };
+		B3C90C8C31C7EA6A196B7EA8 /* Pods_DaysCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF6E2D6EE88BDEEA0FEFF1F /* Pods_DaysCounter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.release.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.release.xcconfig"; sourceTree = "<group>"; };
+		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewController.swift; sourceTree = "<group>"; };
+		A6557D6D235885FD00D224EC /* EventViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
+		A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetGalleryViewController.swift; sourceTree = "<group>"; };
+		A68DE0FF233D180500188579 /* FontColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorPickerView.swift; sourceTree = "<group>"; };
+		A69C67982344792100E2F79A /* InternalGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryViewController.swift; sourceTree = "<group>"; };
+		A69C679C2344A26600E2F79A /* nature6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature6.jpg; sourceTree = "<group>"; };
+		A69C679D2344A26600E2F79A /* nature17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature17.jpg; sourceTree = "<group>"; };
+		A69C679E2344A26600E2F79A /* nature11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature11.jpg; sourceTree = "<group>"; };
+		A69C679F2344A26700E2F79A /* book8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book8.jpg; sourceTree = "<group>"; };
+		A69C67A02344A26700E2F79A /* book7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book7.jpg; sourceTree = "<group>"; };
+		A69C67A12344A26700E2F79A /* birth1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = birth1.jpg; sourceTree = "<group>"; };
+		A69C67A22344A26700E2F79A /* nature16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature16.jpg; sourceTree = "<group>"; };
+		A69C67A32344A26700E2F79A /* book2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book2.jpg; sourceTree = "<group>"; };
+		A69C67A42344A26700E2F79A /* nature5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature5.jpg; sourceTree = "<group>"; };
+		A69C67A52344A26700E2F79A /* nature2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature2.jpg; sourceTree = "<group>"; };
+		A69C67A62344A26700E2F79A /* nature12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature12.jpg; sourceTree = "<group>"; };
+		A69C67A72344A26700E2F79A /* book4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book4.jpg; sourceTree = "<group>"; };
+		A69C67A82344A26700E2F79A /* birthday3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = birthday3.jpg; sourceTree = "<group>"; };
+		A69C67A92344A26700E2F79A /* nature4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature4.jpg; sourceTree = "<group>"; };
+		A69C67AA2344A26800E2F79A /* birthday2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = birthday2.jpg; sourceTree = "<group>"; };
+		A69C67AB2344A26800E2F79A /* nature7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature7.jpg; sourceTree = "<group>"; };
+		A69C67AC2344A26800E2F79A /* christmas3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = christmas3.jpg; sourceTree = "<group>"; };
+		A69C67AD2344A26800E2F79A /* nature8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature8.jpg; sourceTree = "<group>"; };
+		A69C67AE2344A26800E2F79A /* christmas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = christmas1.jpg; sourceTree = "<group>"; };
+		A69C67AF2344A26800E2F79A /* nature13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature13.jpg; sourceTree = "<group>"; };
+		A69C67B02344A26800E2F79A /* wedding2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wedding2.jpg; sourceTree = "<group>"; };
+		A69C67B12344A26800E2F79A /* book5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book5.jpg; sourceTree = "<group>"; };
+		A69C67B22344A26800E2F79A /* nature1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature1.jpg; sourceTree = "<group>"; };
+		A69C67B32344A26900E2F79A /* wedding4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wedding4.jpg; sourceTree = "<group>"; };
+		A69C67B42344A26900E2F79A /* christmas2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = christmas2.jpg; sourceTree = "<group>"; };
+		A69C67B52344A26900E2F79A /* nature14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature14.jpg; sourceTree = "<group>"; };
+		A69C67B62344A26900E2F79A /* wedding1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wedding1.jpg; sourceTree = "<group>"; };
+		A69C67B72344A26900E2F79A /* birthday1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = birthday1.jpg; sourceTree = "<group>"; };
+		A69C67B82344A26900E2F79A /* birth2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = birth2.jpg; sourceTree = "<group>"; };
+		A69C67B92344A26900E2F79A /* book3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book3.jpg; sourceTree = "<group>"; };
+		A69C67BA2344A26900E2F79A /* book6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book6.jpg; sourceTree = "<group>"; };
+		A69C67BB2344A26900E2F79A /* nature9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature9.jpg; sourceTree = "<group>"; };
+		A69C67BC2344A26A00E2F79A /* nature18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature18.jpg; sourceTree = "<group>"; };
+		A69C67BD2344A26A00E2F79A /* nature10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature10.jpg; sourceTree = "<group>"; };
+		A69C67BE2344A26A00E2F79A /* wedding3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wedding3.jpg; sourceTree = "<group>"; };
+		A69C67BF2344A26A00E2F79A /* book1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book1.jpg; sourceTree = "<group>"; };
+		A69C67C02344A26A00E2F79A /* nature15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature15.jpg; sourceTree = "<group>"; };
+		A69C67C12344A26A00E2F79A /* nature3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature3.jpg; sourceTree = "<group>"; };
 		A6A84E2F23294F0E006C6660 /* DaysCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A84E3223294F0E006C6660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A84E3723294F0E006C6660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,6 +128,14 @@
 		A6AABAB52330C58700264B8B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A6AABAB72331131800264B8B /* RepetitionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionTableViewController.swift; sourceTree = "<group>"; };
 		A6AABAB9233116C800264B8B /* EventRepetition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepetition.swift; sourceTree = "<group>"; };
+		A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
+		A6B924212348BD0C005F30F5 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		A6B924252348D095005F30F5 /* ImagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponse.swift; sourceTree = "<group>"; };
+		A6B924272348D135005F30F5 /* ImagesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRequest.swift; sourceTree = "<group>"; };
+		A6BD8EE3234D0E3600E76FBE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		A6DB776F23328CC800CEA495 /* EventBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBackgroundViewController.swift; sourceTree = "<group>"; };
+		A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCustomizeView.swift; sourceTree = "<group>"; };
+		AFF6E2D6EE88BDEEA0FEFF1F /* Pods_DaysCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaysCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +143,73 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C90C8C31C7EA6A196B7EA8 /* Pods_DaysCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		243C91698D909D9E96F48C8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFF6E2D6EE88BDEEA0FEFF1F /* Pods_DaysCounter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A69C67E82344A27100E2F79A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A69C67A12344A26700E2F79A /* birth1.jpg */,
+				A69C67B82344A26900E2F79A /* birth2.jpg */,
+				A69C67B72344A26900E2F79A /* birthday1.jpg */,
+				A69C67AA2344A26800E2F79A /* birthday2.jpg */,
+				A69C67A82344A26700E2F79A /* birthday3.jpg */,
+				A69C67BF2344A26A00E2F79A /* book1.jpg */,
+				A69C67A32344A26700E2F79A /* book2.jpg */,
+				A69C67B92344A26900E2F79A /* book3.jpg */,
+				A69C67A72344A26700E2F79A /* book4.jpg */,
+				A69C67B12344A26800E2F79A /* book5.jpg */,
+				A69C67BA2344A26900E2F79A /* book6.jpg */,
+				A69C67A02344A26700E2F79A /* book7.jpg */,
+				A69C679F2344A26700E2F79A /* book8.jpg */,
+				A69C67AE2344A26800E2F79A /* christmas1.jpg */,
+				A69C67B42344A26900E2F79A /* christmas2.jpg */,
+				A69C67AC2344A26800E2F79A /* christmas3.jpg */,
+				A69C67B22344A26800E2F79A /* nature1.jpg */,
+				A69C67A52344A26700E2F79A /* nature2.jpg */,
+				A69C67C12344A26A00E2F79A /* nature3.jpg */,
+				A69C67A92344A26700E2F79A /* nature4.jpg */,
+				A69C67A42344A26700E2F79A /* nature5.jpg */,
+				A69C679C2344A26600E2F79A /* nature6.jpg */,
+				A69C67AB2344A26800E2F79A /* nature7.jpg */,
+				A69C67AD2344A26800E2F79A /* nature8.jpg */,
+				A69C67BB2344A26900E2F79A /* nature9.jpg */,
+				A69C67BD2344A26A00E2F79A /* nature10.jpg */,
+				A69C679E2344A26600E2F79A /* nature11.jpg */,
+				A69C67A62344A26700E2F79A /* nature12.jpg */,
+				A69C67AF2344A26800E2F79A /* nature13.jpg */,
+				A69C67B52344A26900E2F79A /* nature14.jpg */,
+				A69C67C02344A26A00E2F79A /* nature15.jpg */,
+				A69C67A22344A26700E2F79A /* nature16.jpg */,
+				A69C679D2344A26600E2F79A /* nature17.jpg */,
+				A69C67BC2344A26A00E2F79A /* nature18.jpg */,
+				A69C67B62344A26900E2F79A /* wedding1.jpg */,
+				A69C67B02344A26800E2F79A /* wedding2.jpg */,
+				A69C67BE2344A26A00E2F79A /* wedding3.jpg */,
+				A69C67B32344A26900E2F79A /* wedding4.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		A6A84E2623294F0E006C6660 = {
 			isa = PBXGroup;
 			children = (
 				A6A84E3123294F0E006C6660 /* DaysCounter */,
 				A6A84E3023294F0E006C6660 /* Products */,
+				F73F92E0F6977D0C5372705F /* Pods */,
+				243C91698D909D9E96F48C8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,15 +224,28 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A6557D6D235885FD00D224EC /* EventViewCell.swift */,
+				A6B924252348D095005F30F5 /* ImagesResponse.swift */,
+				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
+				A6B924212348BD0C005F30F5 /* ImageCell.swift */,
+				A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */,
+				A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */,
+				A68DE0FF233D180500188579 /* FontColorPickerView.swift */,
+				A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */,
+				A6DB776F23328CC800CEA495 /* EventBackgroundViewController.swift */,
 				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
+				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
 				A6AABAB72331131800264B8B /* RepetitionTableViewController.swift */,
 				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
 				A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */,
 				A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */,
+				A69C67E82344A27100E2F79A /* Images */,
 				A6A84E4423294FBC006C6660 /* Supporting Files */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
+				A69C67982344792100E2F79A /* InternalGalleryViewController.swift */,
+				A6B924272348D135005F30F5 /* ImagesRequest.swift */,
 			);
 			path = DaysCounter;
 			sourceTree = "<group>";
@@ -87,6 +260,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F73F92E0F6977D0C5372705F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */,
+				6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6A84E4123294F0E006C6660 /* Build configuration list for PBXNativeTarget "DaysCounter" */;
 			buildPhases = (
+				34A53429C907016CB6271AAA /* [CP] Check Pods Manifest.lock */,
 				A6A84E2B23294F0E006C6660 /* Sources */,
 				A6A84E2C23294F0E006C6660 /* Frameworks */,
 				A6A84E2D23294F0E006C6660 /* Resources */,
+				6D06BB48DB8A9DE91835C509 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,25 +330,117 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A84E3D23294F0E006C6660 /* LaunchScreen.storyboard in Resources */,
+				A69C67D02344A26A00E2F79A /* birthday2.jpg in Resources */,
+				A69C67CB2344A26A00E2F79A /* nature2.jpg in Resources */,
+				A69C67C22344A26A00E2F79A /* nature6.jpg in Resources */,
+				A69C67DE2344A26A00E2F79A /* birth2.jpg in Resources */,
+				A69C67D42344A26A00E2F79A /* christmas1.jpg in Resources */,
+				A69C67C52344A26A00E2F79A /* book8.jpg in Resources */,
+				A69C67DB2344A26A00E2F79A /* nature14.jpg in Resources */,
+				A69C67E42344A26A00E2F79A /* wedding3.jpg in Resources */,
+				A69C67C92344A26A00E2F79A /* book2.jpg in Resources */,
+				A69C67CD2344A26A00E2F79A /* book4.jpg in Resources */,
+				A69C67D92344A26A00E2F79A /* wedding4.jpg in Resources */,
+				A69C67DA2344A26A00E2F79A /* christmas2.jpg in Resources */,
+				A69C67E72344A26A00E2F79A /* nature3.jpg in Resources */,
+				A69C67E62344A26A00E2F79A /* nature15.jpg in Resources */,
+				A69C67D52344A26A00E2F79A /* nature13.jpg in Resources */,
 				A6A84E3A23294F0E006C6660 /* Assets.xcassets in Resources */,
+				A69C67DC2344A26A00E2F79A /* wedding1.jpg in Resources */,
+				A69C67D72344A26A00E2F79A /* book5.jpg in Resources */,
+				A69C67CA2344A26A00E2F79A /* nature5.jpg in Resources */,
+				A69C67CF2344A26A00E2F79A /* nature4.jpg in Resources */,
+				A69C67E22344A26A00E2F79A /* nature18.jpg in Resources */,
+				A69C67C82344A26A00E2F79A /* nature16.jpg in Resources */,
+				A69C67C42344A26A00E2F79A /* nature11.jpg in Resources */,
+				A69C67DF2344A26A00E2F79A /* book3.jpg in Resources */,
 				A6A84E3823294F0E006C6660 /* Main.storyboard in Resources */,
+				A69C67D32344A26A00E2F79A /* nature8.jpg in Resources */,
+				A69C67D62344A26A00E2F79A /* wedding2.jpg in Resources */,
+				A69C67CE2344A26A00E2F79A /* birthday3.jpg in Resources */,
+				A69C67E12344A26A00E2F79A /* nature9.jpg in Resources */,
+				A69C67E32344A26A00E2F79A /* nature10.jpg in Resources */,
+				A69C67C62344A26A00E2F79A /* book7.jpg in Resources */,
+				A69C67D82344A26A00E2F79A /* nature1.jpg in Resources */,
+				A69C67E52344A26A00E2F79A /* book1.jpg in Resources */,
+				A69C67E02344A26A00E2F79A /* book6.jpg in Resources */,
+				A69C67DD2344A26A00E2F79A /* birthday1.jpg in Resources */,
+				A69C67CC2344A26A00E2F79A /* nature12.jpg in Resources */,
+				A69C67D22344A26A00E2F79A /* christmas3.jpg in Resources */,
+				A69C67C72344A26A00E2F79A /* birth1.jpg in Resources */,
+				A69C67D12344A26A00E2F79A /* nature7.jpg in Resources */,
+				A69C67C32344A26A00E2F79A /* nature17.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		34A53429C907016CB6271AAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DaysCounter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D06BB48DB8A9DE91835C509 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DaysCounter/Pods-DaysCounter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DaysCounter/Pods-DaysCounter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DaysCounter/Pods-DaysCounter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A6A84E2B23294F0E006C6660 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6557D6E235885FD00D224EC /* EventViewCell.swift in Sources */,
 				A6AABAB62330C58700264B8B /* Extensions.swift in Sources */,
+				A6ACB3F4233F6F3400E8FABA /* DateCalculator.swift in Sources */,
 				A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */,
 				A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */,
+				A6B924262348D095005F30F5 /* ImagesResponse.swift in Sources */,
 				A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */,
 				A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */,
+				A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */,
+				A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */,
 				A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */,
+				A6BD8EE4234D0E3600E76FBE /* Event.swift in Sources */,
+				A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */,
+				A6763F132345CA3700A81500 /* InternetGalleryViewController.swift in Sources */,
+				A68DE100233D180500188579 /* FontColorPickerView.swift in Sources */,
+				A6B924282348D135005F30F5 /* ImagesRequest.swift in Sources */,
 				A6A84E6423296A5E006C6660 /* PastEventsViewController.swift in Sources */,
+				A6DB777023328CC800CEA495 /* EventBackgroundViewController.swift in Sources */,
+				A6B924222348BD0C005F30F5 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +584,7 @@
 		};
 		A6A84E4223294F0E006C6660 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -326,6 +603,7 @@
 		};
 		A6A84E4323294F0E006C6660 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

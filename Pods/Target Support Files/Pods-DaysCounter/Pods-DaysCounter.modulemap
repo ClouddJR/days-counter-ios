@@ -1,0 +1,6 @@
+framework module Pods_DaysCounter {
+  umbrella header "Pods-DaysCounter-umbrella.h"
+
+  export *
+  module * { export * }
+}

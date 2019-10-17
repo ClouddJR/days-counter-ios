@@ -12,7 +12,6 @@ class AddEventViewController: UITableViewController {
     
     // MARK:  IBOutlets
     
-    //Basics section
     @IBOutlet weak var eventNameLabel: UITextField!
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
@@ -22,11 +21,9 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventTimePicker: UIDatePicker!
     
-    //Optional section
     @IBOutlet weak var eventRepetitionLabel: UILabel!
     @IBOutlet weak var eventNotesTextView: UITextView!
     
-    //Reminder section
     @IBOutlet weak var reminderSwitchCell: UITableViewCell!
     @IBOutlet weak var reminderSwitch: UISwitch!
     @IBOutlet weak var reminderDateAndTimeCell: UITableViewCell!
@@ -85,18 +82,40 @@ class AddEventViewController: UITableViewController {
         updateDateLabel(for: reminderDateAndTimeLabel, with: reminderDateAndTimePicker, at: IndexPath(row: 1, section: 2), using: dateFormatter)
     }
     
+    @IBAction func goToEventBackgroundVC(_ sender: Any) {
+        if isValidForm() {
+            if let vc = lastSeguedToEventBackgroundVC {
+                prepareEvent()
+                vc.event.name = event.name
+                vc.event.date = event.date
+                vc.event.time = event.time
+                vc.event.repetition = event.repetition
+                vc.event.notes = event.notes
+                vc.event.reminderDate = event.reminderDate
+                vc.event.reminderMessage = event.reminderMessage
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                performSegue(withIdentifier: "eventBackgroundVCSegue", sender: sender)
+            }
+        }
+        else {
+            displayAlertAboutRequiredFields()
+        }
+    }
+    
+    
     // MARK:  variables
     
-    private var eventRepetition = EventRepetition(rawValue: 0) {
+    private var event = Event()
+    
+    private var eventRepetition = EventRepetition(rawValue: 0)! {
         didSet {
-            if let eventRepetition = eventRepetition {
-                switch eventRepetition {
-                case .once: eventRepetitionLabel.text = "Only once"
-                case .daily: eventRepetitionLabel.text = "Daily"
-                case .weekly: eventRepetitionLabel.text = "Weekly"
-                case .monthly: eventRepetitionLabel.text = "Monthly"
-                case .yearly: eventRepetitionLabel.text = "Yearly"
-                }
+            switch eventRepetition {
+            case .once: eventRepetitionLabel.text = "Only once"
+            case .daily: eventRepetitionLabel.text = "Daily"
+            case .weekly: eventRepetitionLabel.text = "Weekly"
+            case .monthly: eventRepetitionLabel.text = "Monthly"
+            case .yearly: eventRepetitionLabel.text = "Yearly"
             }
         }
     }
@@ -121,10 +140,56 @@ class AddEventViewController: UITableViewController {
         addTableViewGestureRecognizers()
     }
     
+    private var lastSeguedToEventBackgroundVC: EventBackgroundViewController?
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? RepetitionTableViewController {
-            vc.previousSelection = eventRepetition?.rawValue
+            vc.previousSelection = eventRepetition.rawValue
             vc.delegate = self
+        }
+        
+        if let vc = segue.destination as? EventBackgroundViewController {
+            prepareEvent()
+            vc.event.name = event.name
+            vc.event.date = event.date
+            vc.event.time = event.time
+            vc.event.repetition = event.repetition
+            vc.event.notes = event.notes
+            vc.event.reminderDate = event.reminderDate
+            vc.event.reminderMessage = event.reminderMessage
+            lastSeguedToEventBackgroundVC = vc
+        }
+    }
+    
+    private func isValidForm() -> Bool {
+        return !isNameOrDateLabelEmpty()
+    }
+    
+    private func isNameOrDateLabelEmpty() -> Bool {
+        return eventNameLabel.text == "" || eventDateLabel.text == ""
+    }
+    
+    private func displayAlertAboutRequiredFields() {
+        let alert = UIAlertController(title: "Error", message: "Name and date fields are required.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
+    private func prepareEvent() {
+        event.name = eventNameLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        event.date = eventDateLabel.text != "" ? eventDatePicker.date : nil
+        if !entireDaySwitch.isOn {
+            event.time = eventTimeLabel.text != "" ? eventTimePicker.date : nil
+        } else {
+            event.time = nil
+        }
+        event.repetition = eventRepetition.rawValue
+        event.notes = eventNotesTextView.text == "Notes" ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        if reminderSwitch.isOn {
+            event.reminderDate = reminderDateAndTimeLabel.text != "" ? reminderDateAndTimePicker.date : nil
+            event.reminderMessage = reminderMessageTextView.text == "Reminder message" ? "" :reminderMessageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            event.reminderDate = nil
         }
     }
     
@@ -215,7 +280,7 @@ class AddEventViewController: UITableViewController {
 extension AddEventViewController: RepetitionTableViewControllerDelegate {
     
     func updateRepetition(with indexPath: IndexPath) {
-        eventRepetition = EventRepetition(rawValue: indexPath.row)
+        eventRepetition = EventRepetition(rawValue: indexPath.row)!
     }
 }
 
