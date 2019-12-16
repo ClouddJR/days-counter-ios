@@ -49,7 +49,33 @@ class EventOperator {
             let color =  try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: fontColor)
             return color
         }
-        return nil
+        return UIColor.white
+    }
+    
+    static func getImage(from event: Event) -> UIImage {
+        var image: UIImage?
+        if event.localImagePath.contains(IMAGE_FILE_PREFIX) {
+            let imageNameBeginIndex = event.localImagePath.index(after: event.localImagePath.firstIndex(of: ":")!)
+            let imageName = event.localImagePath[imageNameBeginIndex...]
+            image = UIImage(named: String(imageName))
+        } else {
+            image = UIImage(contentsOfFile: "\(NSHomeDirectory())/Documents/d9vO5ysAx6BwwtQcjsGS7D6dPE10sX.png")
+        }
+        
+        return image ?? UIImage(named: "nature4.jpg")!
+    }
+    
+    static func getDate(from event: Event) -> Date {
+        var date: Date?
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: event.date!)
+        if let eventTime = event.time {
+            let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: eventTime)
+            date = Calendar.current.date(from: DateComponents(year: dateComponents.year, month: dateComponents.month, day: dateComponents.day, hour: timeComponents.hour, minute: timeComponents.minute))
+        } else {
+            date = Calendar.current.date(from: DateComponents(year: dateComponents.year, month: dateComponents.month, day: dateComponents.day))
+        }
+        
+        return date!
     }
     
     static func setImageAndSaveLocally(image: UIImage, for event: Event) {

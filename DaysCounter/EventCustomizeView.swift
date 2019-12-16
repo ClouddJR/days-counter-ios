@@ -367,7 +367,6 @@ class EventCustomizeView: UIView {
         addSubview(mainStackView)
         addSubview(fontPicker)
         addSubview(backButton)
-        fontPicker.selectRow(UIFont.familyNames.firstIndex(of: fontTypeLabel.text!)!, inComponent: 0, animated: false)
         fontPicker.isHidden = true
         backButton.isHidden = true
         fontColorPickerView.isHidden = true
@@ -472,6 +471,7 @@ class EventCustomizeView: UIView {
     }
     
     @objc private func showFontPickerWithAnimation() {
+        fontPicker.selectRow(UIFont.familyNames.firstIndex(of: fontTypeLabel.text!)!, inComponent: 0, animated: false)
         //move font picker and back icon to the right for the animation
         fontPicker.center.x = bounds.midX + fontPicker.bounds.width
         backButton.frame.origin = CGPoint(x: 15 + fontPicker.bounds.width, y: 15)

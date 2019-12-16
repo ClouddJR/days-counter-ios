@@ -106,7 +106,9 @@ class AddEventViewController: UITableViewController {
     
     // MARK:  variables
     
-    private var event = Event()
+    var isInEditMode = false
+    
+    var event = Event()
     
     private var eventRepetition = EventRepetition(rawValue: 0)! {
         didSet {
@@ -137,6 +139,7 @@ class AddEventViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTextViews()
+        updateUIIfInEditMode()
         addTableViewGestureRecognizers()
     }
     
@@ -150,13 +153,8 @@ class AddEventViewController: UITableViewController {
         
         if let vc = segue.destination as? EventBackgroundViewController {
             prepareEvent()
-            vc.event.name = event.name
-            vc.event.date = event.date
-            vc.event.time = event.time
-            vc.event.repetition = event.repetition
-            vc.event.notes = event.notes
-            vc.event.reminderDate = event.reminderDate
-            vc.event.reminderMessage = event.reminderMessage
+            vc.event = event
+            vc.isInEditMode = isInEditMode
             lastSeguedToEventBackgroundVC = vc
         }
     }
@@ -207,6 +205,54 @@ class AddEventViewController: UITableViewController {
         reminderMessageTextView.textColor = UIColor.lightGray
         reminderMessageTextView.textContainer.lineFragmentPadding = 0
         reminderMessageTextView.textContainerInset = .zero
+    }
+    
+    private func updateUIIfInEditMode() {
+        if isInEditMode {
+            eventNameLabel.text = event.name
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .full
+            eventDateLabel.text = dateFormatter.string(from: event.date!)
+            eventDatePicker.date = event.date!
+            
+            if event.time != nil {
+                let timeFormatter = DateFormatter()
+                timeFormatter.timeStyle = .short
+                eventTimeLabel.text = timeFormatter.string(from: event.time!)
+                entireDaySwitch.isOn = false
+                eventTimePicker.date = event.time!
+                eventTimeCell.isHidden = false
+                eventTimeCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                entireDayCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
+            
+            if event.reminderDate != nil {
+                let reminderDateFormatter = DateFormatter()
+                reminderDateFormatter.dateStyle = .long
+                reminderDateFormatter.timeStyle = .short
+                reminderDateAndTimeLabel.text = reminderDateFormatter.string(from: event.reminderDate!)
+                reminderDateAndTimePicker.date = event.reminderDate!
+                if event.reminderMessage != "" {
+                    reminderMessageTextView.text = event.reminderMessage
+                    reminderMessageTextView.textColor = .black
+                }
+                reminderSwitch.isOn = true
+                reminderDateAndTimeCell.isHidden = false
+                reminderMessageCell.isHidden = false
+                reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
+            
+            eventRepetition = EventRepetition(rawValue: event.repetition)!
+            if event.notes != "" {
+                eventNotesTextView.text = event.notes
+                eventNotesTextView.textColor = .black
+            }
+        }
     }
     
     private func addTableViewGestureRecognizers() {

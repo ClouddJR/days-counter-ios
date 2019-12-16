@@ -54,8 +54,9 @@ class EventBackgroundViewController: UIViewController {
         
         let realm = try! Realm()
         try! realm.write {
-            event.id = String.random(length: 15)
-            realm.add(event)
+            event.id = event.id == nil ? String.random(length: 15) : event.id
+            realm.add(event, update: .modified)
+            presentingViewController?.dismiss(animated: true)
         }
     }
     
@@ -116,6 +117,8 @@ class EventBackgroundViewController: UIViewController {
     
     // MARK:  variables
     
+    var isInEditMode = false
+    
     var event = Event()
     
     private var previousNavBarTintColor: UIColor?
@@ -134,6 +137,7 @@ class EventBackgroundViewController: UIViewController {
         super.viewWillAppear(animated)
         styleNavigationBar()
         updateUIWithPassedEventData()
+        calculateDate()
     }
     
     override func viewDidLoad() {
@@ -148,9 +152,9 @@ class EventBackgroundViewController: UIViewController {
             withEventTitleFont: eventTitleLabel.font.withSize(eventImageView.frame.height * Constants.eventTitleSizeMultiplier),
             withEventDateFont: eventDateLabel.font.withSize(eventImageView.frame.height * Constants.eventDateSizeMultiplier)
         )
+        updateUIIfInEditMode()
         addMainCounterStackViews()
         addButtonClickActions()
-        calculateDate()
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -161,6 +165,7 @@ class EventBackgroundViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         restorePreviousNavigationBarStyle()
+        dateTimer?.invalidate()
     }
     
     // MARK:  helper methods
@@ -183,8 +188,8 @@ class EventBackgroundViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        eventDateLabel.text = dateFormatter.string(from: event.date!)
+        dateFormatter.timeStyle = event.time != nil ? .short : .none
+        eventDateLabel.text = dateFormatter.string(from: EventOperator.getDate(from: event))
     }
     
     private func setInitialImage() {
@@ -194,7 +199,9 @@ class EventBackgroundViewController: UIViewController {
     }
     
     private func setInitialFont() {
-        event.fontType = "Helvetica"
+        if !isInEditMode {
+            event.fontType = "Helvetica"
+        }
     }
     
     private func setEventImageAspectRatio() {
@@ -230,6 +237,46 @@ class EventBackgroundViewController: UIViewController {
         
         eventTitleLabel.font = eventTitleFont
         eventDateLabel.font = eventDateFont
+    }
+    
+    private func updateUIIfInEditMode() {
+        if isInEditMode {
+            let image = EventOperator.getImage(from: event)
+            backgroundImageView.image = image
+            eventImageView.image = image
+            
+            shouldYearsSectionBeVisible = event.areYearsIncluded
+            shouldMonthsSectionBeVisible = event.areMonthsIncluded
+            shouldWeeksSectionBeVisible = event.areWeeksIncluded
+            shouldDaysSectionBeVisible = event.areDaysIncluded
+            shouldTimeSectionBeVisible = event.isTimeIncluded
+            
+            updateLabelsColor(with: EventOperator.getFontColor(from: event)!)
+            
+            let sectionNumberFont = UIFont(name: event.fontType, size: daysNumberLabel.font.pointSize)
+            let sectionTitleFont = UIFont(name: event.fontType, size: daysTitleLabel.font.pointSize)
+            let eventTitleFont = UIFont(name: event.fontType, size: eventTitleLabel.font.pointSize)
+            let eventDateFont = UIFont(name: event.fontType, size: eventDateLabel.font.pointSize)
+            
+            updateLabelsFontSizes(
+                withSectionNumberFont: sectionNumberFont!,
+                withSectionTitleFont: sectionTitleFont!,
+                withEventTitleFont: eventTitleFont!,
+                withEventDateFont: eventDateFont!
+            )
+            
+            eventImageViewDim.layer.opacity = event.imageDim
+            
+            customizeView.fontTypeLabel.text = event.fontType
+            customizeView.formatYearsSwitch.isOn = event.areYearsIncluded
+            customizeView.formatMonthsSwitch.isOn = event.areMonthsIncluded
+            customizeView.formatWeeksSwitch.isOn = event.areWeeksIncluded
+            customizeView.formatDaysSwitch.isOn = event.areDaysIncluded
+            customizeView.formatTimeSwitch.isOn = event.isTimeIncluded
+            
+            customizeView.fontColorCircleView.subviews[0].backgroundColor = EventOperator.getFontColor(from: event)
+            customizeView.pictureDimSlider.value = event.imageDim
+        }
     }
     
     private func addMainCounterStackViews() {
@@ -366,7 +413,7 @@ class EventBackgroundViewController: UIViewController {
     }
     
     @objc private func calculateDateAndUpdateLabels() {
-        let components = DateCalculator.calculateDate(eventDate: Calendar.current.date(from: DateComponents(year: 2027, month: 6, day: 25))!, todayDate: Date(),
+        let components = DateCalculator.calculateDate(eventDate: EventOperator.getDate(from: event), todayDate: Date(),
                                                       areYearsIncluded: shouldYearsSectionBeVisible,
                                                       areMonthsIncluded: shouldMonthsSectionBeVisible,
                                                       areWeekIncluded: shouldWeeksSectionBeVisible,
