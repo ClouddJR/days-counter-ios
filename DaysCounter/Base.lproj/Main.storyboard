@@ -8,12 +8,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="aSz-pe-fBE">
+            <objects>
+                <viewController id="HWL-4u-R6v" customClass="SettingsViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JCg-R6-oAm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="lob-k8-F0H"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xy2-xO-DbN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zbg-kj-05V">
+                            <connections>
+                                <action selector="dismiss:" destination="HWL-4u-R6v" id="9rG-5D-zQT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k8Y-87-gCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3126.0869565217395" y="-866.51785714285711"/>
+        </scene>
         <!--Days Counter-->
         <scene sceneID="bZw-Zh-gyn">
             <objects>
                 <tabBarController id="k6C-57-ZlP" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Days Counter" id="jQH-T0-Obu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_settings" id="453-ly-8dl"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_settings" id="453-ly-8dl">
+                            <connections>
+                                <segue destination="57J-vl-flN" kind="presentation" modalPresentationStyle="fullScreen" id="BkH-64-162"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="32Q-Kc-kjY">
                             <connections>
                                 <segue destination="hdf-mo-aa5" kind="presentation" modalPresentationStyle="fullScreen" id="zqT-vn-A63"/>
@@ -969,11 +995,29 @@
             </objects>
             <point key="canvasLocation" x="2237.68115942029" y="1605.8035714285713"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Tbs-oF-O05">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="57J-vl-flN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EJf-LB-THJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HWL-4u-R6v" kind="relationship" relationship="rootViewController" id="Ems-5U-mu7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlI-Uz-NhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215.9420289855075" y="-866.51785714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RGF-oN-0bE"/>
+        <segue reference="AxO-a6-LVW"/>
     </inferredMetricsTieBreakers>
 </document>
