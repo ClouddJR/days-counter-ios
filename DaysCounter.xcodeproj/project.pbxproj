@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61702D623B201D900912C13 /* EventsTabBarController.swift */; };
 		A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */; };
 		A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */; };
 		A644119523AAA76000FE3079 /* SortingOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644119423AAA76000FE3079 /* SortingOrderViewController.swift */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.release.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.release.xcconfig"; sourceTree = "<group>"; };
 		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		A61702D623B201D900912C13 /* EventsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTabBarController.swift; sourceTree = "<group>"; };
 		A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewController.swift; sourceTree = "<group>"; };
 		A644119423AAA76000FE3079 /* SortingOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOrderViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A61702D623B201D900912C13 /* EventsTabBarController.swift */,
 				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
 				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
 				A6ADF50923AEA16500CACAD6 /* Defaults.swift */,
@@ -456,6 +459,7 @@
 				A6ACB3F4233F6F3400E8FABA /* DateCalculator.swift in Sources */,
 				A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */,
 				A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */,
+				A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */,
 				A6B924262348D095005F30F5 /* ImagesResponse.swift in Sources */,
 				A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */,
 				A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */,

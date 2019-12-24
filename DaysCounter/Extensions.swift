@@ -86,6 +86,11 @@ extension UITableView {
         }
         self.setContentOffset(CGPoint(x: 0, y: y), animated: animated)
     }
+    
+    func reloadData(with animation: UITableView.RowAnimation) {
+        reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
+    }
+    
 }
 
 // MARK:  URL extensions
@@ -112,6 +117,18 @@ extension String {
                 String(self[substringFrom..<substringTo])
             }
         }
+    }
+}
+
+// MARK:  UserDefaults extensions
+
+extension UserDefaults {
+    @objc dynamic var user_defaults_sorting_order: Int {
+        return integer(forKey: Defaults.Key.SortingOrder.rawValue)
+    }
+    
+    @objc dynamic var user_defaults_default_section: Int {
+        return integer(forKey: Defaults.Key.DefaultSection.rawValue)
     }
 }
 
