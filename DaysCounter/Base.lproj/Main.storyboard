@@ -33,7 +33,7 @@
         <!--Days Counter-->
         <scene sceneID="bZw-Zh-gyn">
             <objects>
-                <tabBarController id="k6C-57-ZlP" sceneMemberID="viewController">
+                <tabBarController id="k6C-57-ZlP" customClass="EventsTabBarController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Days Counter" id="jQH-T0-Obu">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="ic_settings" id="453-ly-8dl">
                             <connections>

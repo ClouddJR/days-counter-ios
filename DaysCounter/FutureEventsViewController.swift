@@ -12,7 +12,9 @@ import RealmSwift
 class FutureEventsViewController: UIViewController {
     
     let realm = try! Realm()
-    let futureEvents = try! Realm().objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate())).sorted(byKeyPath: "date")
+    var futureEvents = try! Realm().objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate()))
+    
+    private var userDefaultsObserver: NSKeyValueObservation?
     
     var notificationToken: NotificationToken?
     
@@ -31,12 +33,19 @@ class FutureEventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addTableViewAsSubview()
+        sortEvents()
         listenForDataChanges()
+        registerUserDefaultsObserver()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    deinit {
+        userDefaultsObserver?.invalidate()
+        userDefaultsObserver = nil
     }
     
     private func addTableViewAsSubview() {
@@ -45,6 +54,15 @@ class FutureEventsViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+    }
+    
+    private func sortEvents() {
+        let sortingOrder = Defaults.getSortingOrder()
+        switch sortingOrder {
+        case .DaysAscending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: true)
+        case .DaysDescending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: false)
+        case .TimeAdded: futureEvents = futureEvents.sorted(byKeyPath: "id", ascending: true)
+        }
     }
     
     private func listenForDataChanges() {
@@ -62,6 +80,13 @@ class FutureEventsViewController: UIViewController {
                 fatalError("\(err)")
             }
         }
+    }
+    
+    private func registerUserDefaultsObserver() {
+        userDefaultsObserver = UserDefaults.standard.observe(\.user_defaults_sorting_order, options: [.new], changeHandler: { [weak self] (defaults, change) in
+            self?.sortEvents()
+            self?.tableView.reloadData()
+        })
     }
 }
 
@@ -82,7 +107,7 @@ extension FutureEventsViewController: UITableViewDelegate {
             self.realm.delete(self.futureEvents[indexPath.row])
             try! self.realm.commitWrite()
         }
-
+        
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "addEventNavigationController") as! UINavigationController
@@ -93,9 +118,9 @@ extension FutureEventsViewController: UITableViewDelegate {
                 self.navigationController?.present(vc, animated: true, completion: nil)
             }
         }
-
+        
         edit.backgroundColor = UIColor.green
-
+        
         return [delete, edit]
     }
 }
