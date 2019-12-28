@@ -307,12 +307,21 @@ class EventDetailsViewController: UIViewController {
         let alert = UIAlertController(title: "Are you sure you want to delete this event?", message: "This operation cannot be undone.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+            self.deleteLocalImage(at: URL(string: self.event.localImagePath)!)
             self.realm.beginWrite()
             self.realm.delete(self.event)
             try! self.realm.commitWrite()
             self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true)
+    }
+    
+    private func deleteLocalImage(at path: URL) {
+        do {
+            try FileManager.default.removeItem(at: path)
+        } catch {
+            print("Could not delete file: \(error)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
