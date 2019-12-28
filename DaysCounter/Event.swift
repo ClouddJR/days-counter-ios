@@ -86,7 +86,7 @@ class EventOperator {
             let localImageName = imageInfo.slice(from: "named(", to: ")")!
             event.localImagePath = "\(IMAGE_FILE_PREFIX)\(localImageName)"
         } else {
-            if let filePath = getFirstPathAndAppendFileName(from: paths) {
+            if let filePath = getFirstPathWithAppendedFileName(from: paths) {
                 saveImageLocally(image: image, on: filePath)
                 event.localImagePath = filePath.absoluteString
             }
@@ -97,8 +97,20 @@ class EventOperator {
         return imageInfo.contains("named")
     }
     
-    private static func getFirstPathAndAppendFileName(from paths: [URL]) -> URL? {
-        return paths.first?.appendingPathComponent("\(String.random(length: IMAGE_FILE_LENGTH)).png")
+    private static func getFirstPathWithAppendedFileName(from paths: [URL]) -> URL? {
+        if var firstPath = paths.first {
+            firstPath = firstPath.appendingPathComponent("images")
+            if !FileManager.default.fileExists(atPath: firstPath.path) {
+                do {
+                    try FileManager.default.createDirectory(atPath: firstPath.path, withIntermediateDirectories: true)
+                } catch {
+                    print("Error \(error)")
+                }
+            }
+            return firstPath.appendingPathComponent("\(String.random(length: IMAGE_FILE_LENGTH)).png")
+        } else {
+            return nil
+        }
     }
     
     private static func saveImageLocally(image: UIImage, on path: URL) {

@@ -9,12 +9,11 @@
 import Foundation
 
 enum SettingsSection: Int, CaseIterable {
-    case General, Backup, About
+    case General, About
     
     static func getSectionTitle(for section: SettingsSection) -> String {
         switch section {
         case .General: return NSLocalizedString("General", comment: "")
-        case .Backup: return NSLocalizedString("Backup", comment: "")
         case .About: return NSLocalizedString("About", comment: "")
         }
     }
