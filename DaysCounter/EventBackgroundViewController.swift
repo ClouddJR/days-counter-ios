@@ -54,7 +54,7 @@ class EventBackgroundViewController: UIViewController {
         
         let realm = try! Realm()
         try! realm.write {
-            event.id = event.id == nil ? String.random(length: 15) : event.id
+            event.id = event.id ?? EventOperator.getNextId()
             realm.add(event, update: .modified)
             presentingViewController?.dismiss(animated: true)
         }

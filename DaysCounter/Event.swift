@@ -40,6 +40,10 @@ class EventOperator {
     private static let IMAGE_FILE_LENGTH = 30
     private static let IMAGE_FILE_PREFIX = "pre-installed:"
     
+    static func getNextId() -> String {
+        return NSUUID().uuidString
+    }
+    
     static func updateFontColor(with color: UIColor, for event: Event) {
         let data = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
         event.fontColor = data
