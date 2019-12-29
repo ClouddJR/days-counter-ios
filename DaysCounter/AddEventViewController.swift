@@ -93,6 +93,7 @@ class AddEventViewController: UITableViewController {
                 vc.event.notes = event.notes
                 vc.event.reminderDate = event.reminderDate
                 vc.event.reminderMessage = event.reminderMessage
+                vc.event.createdAt = event.createdAt
                 navigationController?.pushViewController(vc, animated: true)
             } else {
                 performSegue(withIdentifier: "eventBackgroundVCSegue", sender: sender)
