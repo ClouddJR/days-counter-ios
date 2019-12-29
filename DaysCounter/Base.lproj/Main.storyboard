@@ -86,7 +86,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="jKf-ai-11s"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Future" id="kdu-1n-HMj"/>
+                    <tabBarItem key="tabBarItem" title="Future" image="ic_infinity" id="kdu-1n-HMj"/>
                     <navigationItem key="navigationItem" title="Days Counter" id="PgD-Uc-76D">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tAn-Fm-YxK"/>
                     </navigationItem>
@@ -947,7 +947,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="q0h-6h-sRF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Past" id="xug-e2-wO0"/>
+                    <tabBarItem key="tabBarItem" title="Past" image="ic-sand" id="xug-e2-wO0"/>
                     <navigationItem key="navigationItem" title="Days Counter" id="ce6-KH-fhC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VJX-iR-iZr"/>
                     </navigationItem>
@@ -1015,6 +1015,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic-sand" width="25" height="25"/>
+        <image name="ic_infinity" width="25" height="25"/>
         <image name="ic_settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
