@@ -408,10 +408,10 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func changeFontType() {
-        let sectionNumberFont = UIFont(name: event.fontType, size: imageView.frame.height * Constants.sectionNumberSizeMultiplier)
-        let sectionTitleFont = UIFont(name: event.fontType, size: imageView.frame.height * Constants.sectionTitleSizeMultiplier)
-        let titleFont = UIFont(name: event.fontType, size: imageView.frame.height * Constants.eventTitleSizeMultiplier)
-        let dateFont = UIFont(name: event.fontType, size: imageView.frame.height * Constants.eventDateSizeMultiplier)
+        let sectionNumberFont = UIFont(name: event.fontType, size: Constants.sectionNumberFontSize)
+        let sectionTitleFont = UIFont(name: event.fontType, size: Constants.sectionTitleFontSize)
+        let titleFont = UIFont(name: event.fontType, size: Constants.eventTitleFontSize)
+        let dateFont = UIFont(name: event.fontType, size: Constants.eventDateFontSize)
         
         yearNumberLabel.font = sectionNumberFont
         yearTitleLabel.font = sectionTitleFont
@@ -608,10 +608,10 @@ class EventDetailsViewController: UIViewController {
 extension EventDetailsViewController {
     
     struct Constants {
-        static let sectionNumberSizeMultiplier: CGFloat = 0.055
-        static let sectionTitleSizeMultiplier: CGFloat = 0.019
-        static let eventTitleSizeMultiplier: CGFloat = 0.028
-        static let eventDateSizeMultiplier: CGFloat = 0.018
+        static let sectionNumberFontSize: CGFloat = 44
+        static let sectionTitleFontSize: CGFloat = 15
+        static let eventTitleFontSize: CGFloat = 23
+        static let eventDateFontSize: CGFloat = 15
         static let stackViewSpacing: CGFloat = 16.0
         static let stackViewEdgeMargin: CGFloat = 10.0
     }
