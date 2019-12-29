@@ -379,7 +379,7 @@ class EventDetailsViewController: UIViewController {
         titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -10).isActive = true
         
-        dateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: moreInfoButtonView.topAnchor, constant: -30).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
         dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20).isActive = true
         
