@@ -60,11 +60,11 @@
             </objects>
             <point key="canvasLocation" x="2216" y="-3"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main View Controller-->
         <scene sceneID="CjF-Y1-Y50">
             <objects>
-                <navigationController id="jUG-KI-I2u" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Gg-R2-sYZ">
+                <navigationController id="jUG-KI-I2u" customClass="MainViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Gg-R2-sYZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
