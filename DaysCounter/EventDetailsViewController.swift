@@ -283,6 +283,7 @@ class EventDetailsViewController: UIViewController {
     
     var eventId: String = ""
     private var event: Event!
+    var notificationToken: NotificationToken?
     
     private var dateTimer: Timer?
     
@@ -346,14 +347,7 @@ class EventDetailsViewController: UIViewController {
         getEventFromDB()
         addSubviews()
         addConstraints()
-        setImage()
-        addImageDim()
-        setDateAndTitle()
-        changeFontType()
-        changeFontColor()
-        calculateDate()
-        addMainCounterStackViews()
-        updateDetailsView()
+        updateUIBasedOnEventData()
         listenForDataChanges()
     }
     
@@ -386,6 +380,17 @@ class EventDetailsViewController: UIViewController {
         moreInfoButtonView.heightAnchor.constraint(equalToConstant: 7).isActive = true
         moreInfoButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         moreInfoButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -moreInfoButtonView.circleRadius - 25).isActive = true
+    }
+    
+    private func updateUIBasedOnEventData() {
+        setImage()
+        addImageDim()
+        setDateAndTitle()
+        changeFontType()
+        changeFontColor()
+        calculateDate()
+        addMainCounterStackViews()
+        updateDetailsView()
     }
     
     private func setImage() {
@@ -492,20 +497,32 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func listenForDataChanges() {
-        _ = event.observe { change in
+        notificationToken = event.observe { change in
             switch change {
             case .change( _):
-                self.setImage()
-                self.addImageDim()
-                self.setDateAndTitle()
-                self.changeFontType()
-                self.changeFontColor()
-                self.calculateDate()
-                self.addMainCounterStackViews()
-                self.updateDetailsView()
+                self.removeStackViews()
+                self.updateUIBasedOnEventData()
+                self.bringMoreViewToFrontIfPresent()
             case .error(_): break
             case .deleted: break
             }
+        }
+    }
+    
+    private func removeStackViews() {
+        self.dateStackView.removeFromSuperview()
+        self.dateStackView.subviews.forEach { view in
+            view.removeFromSuperview()
+        }
+        self.timeStackView.removeFromSuperview()
+        self.timeStackView.subviews.forEach { view in
+            view.removeFromSuperview()
+        }
+    }
+    
+    private func bringMoreViewToFrontIfPresent() {
+        if !self.moreInfoView.isHidden {
+            self.view.bringSubviewToFront(self.moreInfoView)
         }
     }
     
@@ -531,7 +548,6 @@ class EventDetailsViewController: UIViewController {
     }
     
     @objc private func calculateDateAndUpdateLabels() {
-        print("calculating")
         let components = DateCalculator.calculateDate(eventDate: EventOperator.getDate(from: event), todayDate: Date(),
                                                       areYearsIncluded: event.areYearsIncluded,
                                                       areMonthsIncluded: event.areMonthsIncluded,
