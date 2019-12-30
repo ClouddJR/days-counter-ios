@@ -332,8 +332,6 @@ class EventDetailsViewController: UIViewController {
     private func styleNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
         
         previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
@@ -576,18 +574,9 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func restorePreviousNavigationBarStyle() {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.tintColor = nil
+        navigationController?.navigationBar.tintColor = previousNavBarTintColor
         navigationController?.navigationBar.barStyle = .default
-    }
-    
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        restorePreviousNavigationBarTitleColor()
-    }
-    
-    private func restorePreviousNavigationBarTitleColor() {
+        
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
