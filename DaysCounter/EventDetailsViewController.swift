@@ -344,11 +344,16 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clipViewToBounds()
         getEventFromDB()
         addSubviews()
         addConstraints()
         updateUIBasedOnEventData()
         listenForDataChanges()
+    }
+    
+    private func clipViewToBounds() {
+        view.clipsToBounds = true
     }
     
     private func getEventFromDB() {

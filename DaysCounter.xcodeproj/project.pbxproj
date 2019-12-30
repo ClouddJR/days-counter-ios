@@ -93,7 +93,7 @@
 		A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSectionViewController.swift; sourceTree = "<group>"; };
 		A6557D6D235885FD00D224EC /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupFolderBrowserViewController.swift; sourceTree = "<group>"; };
-		A65D699023B63DE800497E4E /* BackupFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupFile.swift; sourceTree = SOURCE_ROOT; };
+		A65D699023B63DE800497E4E /* BackupFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupFile.swift; path = DaysCounter/BackupFile.swift; sourceTree = SOURCE_ROOT; };
 		A663228C235F67090073C3C3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetGalleryViewController.swift; sourceTree = "<group>"; };
 		A67FACFD23A7F377000265AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -250,8 +250,8 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
-				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
 				A65D699023B63DE800497E4E /* BackupFile.swift */,
+				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
 				A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */,
 				A61702D623B201D900912C13 /* EventsTabBarController.swift */,
 				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
