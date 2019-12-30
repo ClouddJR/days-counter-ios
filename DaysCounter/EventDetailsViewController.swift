@@ -327,6 +327,7 @@ class EventDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         styleNavigationBar()
+        calculateDate()
     }
     
     private func styleNavigationBar() {
@@ -530,6 +531,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     @objc private func calculateDateAndUpdateLabels() {
+        print("calculating")
         let components = DateCalculator.calculateDate(eventDate: EventOperator.getDate(from: event), todayDate: Date(),
                                                       areYearsIncluded: event.areYearsIncluded,
                                                       areMonthsIncluded: event.areMonthsIncluded,
