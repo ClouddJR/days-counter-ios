@@ -71,7 +71,7 @@ class EventDetailsBottomView: UIView {
         let label = UILabel()
         label.text = "No notes"
         label.textColor = .white
-        label.textAlignment = .justified
+        label.textAlignment = .natural
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
