@@ -296,11 +296,16 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
 
 extension InternetGalleryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        hideKeyboard()
         showActivityIndicator()
         internetImages = []
         fetchedPages = []
         currentPage = 1
         fetchImages()
+    }
+    
+    private func hideKeyboard() {
+        searchBar.resignFirstResponder()
     }
 }
 
