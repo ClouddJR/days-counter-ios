@@ -51,7 +51,6 @@ class ImageCropViewController: UIViewController {
     // helper methods
     
     private func styleNavigationBar() {
-        navigationController?.navigationBar.barStyle = .blackTranslucent
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
