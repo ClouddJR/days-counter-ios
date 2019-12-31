@@ -100,29 +100,6 @@ extension FutureEventsViewController: UITableViewDelegate {
         vc.eventId = futureEvents[indexPath.row].id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.realm.beginWrite()
-            self.realm.delete(self.futureEvents[indexPath.row])
-            try! self.realm.commitWrite()
-        }
-        
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "addEventNavigationController") as! UINavigationController
-            vc.modalPresentationStyle = .fullScreen
-            if let addVc = vc.children.first as? AddEventViewController {
-                addVc.event = Event(value: self.futureEvents[indexPath.row])
-                addVc.isInEditMode = true
-                self.navigationController?.present(vc, animated: true, completion: nil)
-            }
-        }
-        
-        edit.backgroundColor = UIColor.green
-        
-        return [delete, edit]
-    }
 }
 
 // MARK:  UITableViewDataSource

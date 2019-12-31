@@ -48,7 +48,7 @@ class InternetGalleryViewController: UIViewController {
     private lazy var progressAlertController: UIAlertController = {
         let alertController = UIAlertController(title: nil, message: "Downloading the image\n\n", preferredStyle: .alert)
         
-        let indicator = UIActivityIndicatorView(style: .white)
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         indicator.center = CGPoint(x: 135.0, y: 65.5)
         indicator.color = UIColor.black
         indicator.startAnimating()
@@ -59,7 +59,7 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         indicator.startAnimating()
         indicator.isHidden = true
         indicator.translatesAutoresizingMaskIntoConstraints = false
