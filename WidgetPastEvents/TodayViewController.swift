@@ -10,7 +10,7 @@ import UIKit
 import NotificationCenter
 import RealmSwift
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegateFlowLayout {
     
     var realm: Realm!
     var pastEvents: Results<Event>!
@@ -19,8 +19,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private lazy var eventsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.frame.width, height: 50)
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.register(EventCell.self, forCellWithReuseIdentifier: "event cell")
         collectionView.delegate = self
@@ -29,7 +27,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initRealm()
@@ -42,14 +40,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         eventsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         eventsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
-        
+    
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         completionHandler(NCUpdateResult.newData)
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         let expanded = activeDisplayMode == .expanded
-        let height = maxSize.height >= CGFloat(pastEvents.count * rowHeight) ? CGFloat(pastEvents.count * rowHeight) : maxSize.height
+        let height = maxSize.height >= CGFloat(pastEvents.count * rowHeight + 4) ? CGFloat(pastEvents.count * rowHeight + 4) : maxSize.height
         preferredContentSize = expanded ? CGSize(width: maxSize.width, height: height) : maxSize
     }
     
@@ -76,7 +74,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 }
 
 extension TodayViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 extension TodayViewController: UICollectionViewDataSource {
@@ -86,6 +94,7 @@ extension TodayViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "event cell", for: indexPath) as? EventCell ?? EventCell()
+        cell.updateCellView(with: pastEvents[indexPath.row])
         return cell
     }
 }
@@ -136,16 +145,17 @@ class EventCell: UICollectionViewCell {
     private lazy var yearNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "10"
-        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
     private lazy var yearTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "years"
-        label.textColor = .white
+        label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
@@ -162,16 +172,17 @@ class EventCell: UICollectionViewCell {
     private lazy var monthNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "2"
-        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
     private lazy var monthTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "months"
-        label.textColor = .white
+        label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
@@ -188,16 +199,17 @@ class EventCell: UICollectionViewCell {
     private lazy var weekNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "7"
-        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
     private lazy var weekTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "weeks"
-        label.textColor = .white
+        label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
@@ -214,23 +226,23 @@ class EventCell: UICollectionViewCell {
     private lazy var dayNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "4"
-        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
     private lazy var dayTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "days"
-        label.textColor = .white
+        label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: Constants.titleLabelSize, weight: .black)
-        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: Constants.titleLabelSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -238,7 +250,7 @@ class EventCell: UICollectionViewCell {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.dateLabelSize, weight: .ultraLight)
-        label.textColor = .white
+        label.textColor = .darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -252,12 +264,11 @@ class EventCell: UICollectionViewCell {
         super.init(frame: frame)
         setupView()
     }
-
+    
     
     private func setupView() {
-        backgroundColor = .blue
-        //addSubviews()
-        //setConstraints()
+        addSubviews()
+        setConstraints()
     }
     
     private func addSubviews() {
@@ -269,26 +280,28 @@ class EventCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
-        eventImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        eventImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive = true
-        eventImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        eventImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
+        eventImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2).isActive = true
+        eventImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2).isActive = true
+        eventImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
+        eventImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
         eventImage.layer.cornerRadius = 10
         
-        eventImageDim.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        eventImageDim.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive = true
-        eventImageDim.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        eventImageDim.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
+        eventImageDim.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2).isActive = true
+        eventImageDim.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2).isActive = true
+        eventImageDim.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2).isActive = true
         eventImageDim.layer.cornerRadius = 10
         
-        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: eventImage.leadingAnchor, constant: 10).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 10).isActive = true
         
         titleLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -6).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: eventImage.leadingAnchor, constant: 10).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 10).isActive = true
+        let constr = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: dateStackView.leadingAnchor, constant: -15)
+        constr.isActive = true
         
-        dateStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14).isActive = true
-        dateStackView.trailingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: -14).isActive = true
+        dateStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        dateStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
+        dateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
     }
     
     func updateCellView(with event: Event) {
@@ -300,17 +313,7 @@ class EventCell: UICollectionViewCell {
         dateLabel.text = formatter.string(from: eventDate)
         eventImage.image = EventOperator.getImage(from: event)
         eventImageDim.layer.opacity = event.imageDim
-        
-        titleLabel.textColor = EventOperator.getFontColor(from: event)
-        dateLabel.textColor = EventOperator.getFontColor(from: event)
-        yearNumberLabel.textColor = EventOperator.getFontColor(from: event)
-        yearTitleLabel.textColor = EventOperator.getFontColor(from: event)
-        monthNumberLabel.textColor = EventOperator.getFontColor(from: event)
-        monthTitleLabel.textColor = EventOperator.getFontColor(from: event)
-        weekNumberLabel.textColor = EventOperator.getFontColor(from: event)
-        weekTitleLabel.textColor = EventOperator.getFontColor(from: event)
-        dayNumberLabel.textColor = EventOperator.getFontColor(from: event)
-        dayTitleLabel.textColor = EventOperator.getFontColor(from: event)
+
         
         titleLabel.font = UIFont(name: event.fontType, size: titleLabel.font.pointSize)
         dateLabel.font = UIFont(name: event.fontType, size: dateLabel.font.pointSize)
@@ -356,11 +359,11 @@ class EventCell: UICollectionViewCell {
 extension EventCell {
     
     struct Constants {
-        static let titleLabelSize: CGFloat = 10
-        static let dateLabelSize: CGFloat = 8
-        static let dateStackViewSpacing: CGFloat = 10
-        static let dateStackViewNumber: CGFloat = 15
-        static let dateStackViewTitle: CGFloat = 10
+        static let titleLabelSize: CGFloat = 15
+        static let dateLabelSize: CGFloat = 12
+        static let dateStackViewSpacing: CGFloat = 12
+        static let dateStackViewNumber: CGFloat = 18
+        static let dateStackViewTitle: CGFloat = 12
     }
 }
 
