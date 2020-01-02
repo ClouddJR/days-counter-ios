@@ -12,8 +12,8 @@ import RealmSwift
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
-    let realm = try! Realm()
-    var pastEvents = try! Realm().objects(Event.self).filter(NSPredicate(format: "date < %@", NSDate()))
+    var realm: Realm!
+    var pastEvents: Results<Event>!
     
     let rowHeight = 50
     
@@ -32,13 +32,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(realm.configuration.fileURL)
+        initRealm()
         sortEvents()
         extensionContext?.widgetLargestAvailableDisplayMode = .expanded
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         view.addSubview(eventsCollectionView)
         eventsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         eventsCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -55,6 +51,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let expanded = activeDisplayMode == .expanded
         let height = maxSize.height >= CGFloat(pastEvents.count * rowHeight) ? CGFloat(pastEvents.count * rowHeight) : maxSize.height
         preferredContentSize = expanded ? CGSize(width: maxSize.width, height: height) : maxSize
+    }
+    
+    private func initRealm() {
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
+        let realmPath = directory.appendingPathComponent("db.realm")
+        
+        var config = Realm.Configuration()
+        config.fileURL = realmPath
+        
+        realm = try! Realm(configuration: config)
+        pastEvents = realm.objects(Event.self).filter(NSPredicate(format: "date < %@", NSDate()))
     }
     
     private func sortEvents() {

@@ -11,8 +11,8 @@ import RealmSwift
 
 class PastEventsViewController: UIViewController {
     
-    let realm = try! Realm()
-    var pastEvents = try! Realm().objects(Event.self).filter(NSPredicate(format: "date < %@", NSDate()))
+    var realm: Realm!
+    var pastEvents: Results<Event>!
     
     private var userDefaultsObserver: NSKeyValueObservation?
     
@@ -32,7 +32,7 @@ class PastEventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(realm.configuration.fileURL)
+        initRealm()
         addTableViewAsSubview()
         sortEvents()
         listenForDataChanges()
@@ -47,6 +47,11 @@ class PastEventsViewController: UIViewController {
     deinit {
         userDefaultsObserver?.invalidate()
         userDefaultsObserver = nil
+    }
+    
+    private func initRealm() {
+        realm = try! Realm()
+        pastEvents = realm.objects(Event.self).filter(NSPredicate(format: "date < %@", NSDate()))
     }
     
     private func addTableViewAsSubview() {
