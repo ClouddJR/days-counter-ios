@@ -32,6 +32,7 @@ class PastEventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(realm.configuration.fileURL)
         addTableViewAsSubview()
         sortEvents()
         listenForDataChanges()
