@@ -88,7 +88,7 @@ class EventOperator {
         let imageInfo = String(describing: image)
         
         if isImageFromPreInstalledGallery(imageInfo) {
-            let localImageName = imageInfo.slice(from: "named(", to: ")")!
+            let localImageName = imageInfo.slice(from: "named(main: ", to: ")")!
             event.localImagePath = "\(IMAGE_FILE_PREFIX)\(localImageName)"
         } else {
             if let filePath = getFirstPathWithAppendedFileName(from: paths) {
