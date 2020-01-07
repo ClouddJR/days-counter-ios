@@ -309,6 +309,7 @@ class EventDetailsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
             self.deleteLocalImage(at: URL(string: self.event.localImagePath)!)
+            self.cancelNotification()
             self.realm.beginWrite()
             self.realm.delete(self.event)
             try! self.realm.commitWrite()
@@ -323,6 +324,11 @@ class EventDetailsViewController: UIViewController {
         } catch {
             print("Could not delete file: \(error)")
         }
+    }
+    
+    private func cancelNotification() {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [event.id!])
     }
     
     override func viewWillAppear(_ animated: Bool) {
