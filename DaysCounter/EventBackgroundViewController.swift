@@ -56,8 +56,10 @@ class EventBackgroundViewController: UIViewController {
         try! realm.write {
             event.id = event.id ?? EventOperator.getNextId()
             realm.add(event, update: .modified)
-            presentingViewController?.dismiss(animated: true)
         }
+        
+        scheduleNotificationIfSet()
+        presentingViewController?.dismiss(animated: true)
     }
     
     @IBOutlet weak var backgroundImageView: UIImageView! {
@@ -471,6 +473,26 @@ class EventBackgroundViewController: UIViewController {
         event.areWeeksIncluded = shouldWeeksSectionBeVisible
         event.areDaysIncluded = shouldDaysSectionBeVisible
         event.isTimeIncluded = shouldTimeSectionBeVisible
+    }
+    
+    private func scheduleNotificationIfSet() {
+        if let reminderDate = event.reminderDate {
+            let center = UNUserNotificationCenter.current()
+            
+            let content = UNMutableNotificationContent()
+            content.title = event.name!
+            content.body = event.reminderMessage
+            content.sound = .default
+            
+            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminderDate)
+            
+            let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: event.id!, content: content, trigger: trigger)
+            center.removePendingNotificationRequests(withIdentifiers: [event.id!])
+            center.add(request)
+        }
     }
     
     private func updateLabelsColor(with color: UIColor) {

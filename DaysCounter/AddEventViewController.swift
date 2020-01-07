@@ -52,7 +52,9 @@ class AddEventViewController: UITableViewController {
     }
     
     @IBAction func reminderSwitchValueChanged(_ sender: UISwitch) {
-        if !sender.isOn {
+        if sender.isOn {
+            askForNotificationsPermission()
+        } else {
             isReminderDateAndTimePickerOpened = false
             updateConstraints(for: reminderDateAndTimePicker, basedOn: isReminderDateAndTimePickerOpened)
         }
@@ -142,6 +144,7 @@ class AddEventViewController: UITableViewController {
         setUpTextViews()
         updateUIIfInEditMode()
         addTableViewGestureRecognizers()
+        displayAlertInformingAboutNoPermission()
     }
     
     private var lastSeguedToEventBackgroundVC: EventBackgroundViewController?
@@ -169,7 +172,7 @@ class AddEventViewController: UITableViewController {
     }
     
     private func displayAlertAboutRequiredFields() {
-        let alert = UIAlertController(title: "Error", message: "Name and date fields are required.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Required fields", message: "Name and date fields are required.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }
@@ -272,6 +275,20 @@ class AddEventViewController: UITableViewController {
         tableView.addGestureRecognizer(swipeDownGestureRecognizer)
     }
     
+    private func displayAlertInformingAboutNoPermission() {
+        guard isInEditMode && event.reminderDate != nil else {return}
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus != .authorized else {return}
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Notification permission", message: "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
     private func updateDateLabel(for label: UILabel, with datePicker: UIDatePicker, at indexPath: IndexPath, using dateFormatter: DateFormatter) {
         let stringDate = dateFormatter.string(from: datePicker.date)
         label.text = stringDate
@@ -313,6 +330,30 @@ class AddEventViewController: UITableViewController {
             bottom.priority = .init(999)
             bottom.isActive = true
         }
+    }
+    
+    private func askForNotificationsPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
+            if granted {
+                return
+            } else {
+                DispatchQueue.main.async {
+                    self?.displayAlertAboutRequiredPermissionForReminders()
+                    self?.reminderSwitch.isOn = false
+                    self?.reminderDateAndTimeCell.isHidden = true
+                    self?.reminderMessageCell.isHidden = true
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                }
+            }
+        }
+    }
+    
+    private func displayAlertAboutRequiredPermissionForReminders() {
+        let alert = UIAlertController(title: "Grant permission", message: "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true)
     }
     
     @objc private func dismissKeyboard() {
