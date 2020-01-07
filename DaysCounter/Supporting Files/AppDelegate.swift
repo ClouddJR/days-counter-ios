@@ -16,12 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
-        let realmPath = directory.appendingPathComponent("db.realm")
-        
-        var config = Realm.Configuration()
-        config.fileURL = realmPath
-        Realm.Configuration.defaultConfiguration = config
+        changeDefaultRealmPath()
+        repeatEventsIfNecessary()
         return true
     }
 
@@ -47,6 +43,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    private func changeDefaultRealmPath() {
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
+        let realmPath = directory.appendingPathComponent("db.realm")
+        
+        var config = Realm.Configuration()
+        config.fileURL = realmPath
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
+    private func repeatEventsIfNecessary() {
+        let realm = try! Realm()
+        let date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())! as NSDate
+        let pastEvents = realm.objects(Event.self).filter(NSPredicate(format: "date < %@", date))
+        for event in pastEvents {
+            if !event.date!.representsTheSameDayAs(otherDate: Date()) {
+                let eventRepetition = EventRepetition(rawValue: event.repetition)!
+                try! realm.write {
+                    switch eventRepetition {
+                    case .once: return
+                    case .daily: event.date = event.date?.add(days: 1)
+                    case .weekly: event.date = event.date?.add(days: 7)
+                    case .monthly: event.date = event.date?.add(months: 1)
+                    case .yearly: event.date = event.date?.add(years: 1)
+                    }
+                }
+            }
+        }
+    }
 
 }
 
