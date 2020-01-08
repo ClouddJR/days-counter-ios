@@ -211,7 +211,7 @@ class EventCell: UITableViewCell {
         titleLabel.text = event.name
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.timeStyle = event.time != nil ? .short : .none
+        formatter.timeStyle = !event.isEntireDay ? .short : .none
         let eventDate = EventOperator.getDate(from: event)
         dateLabel.text = formatter.string(from: eventDate)
         eventImage.image = EventOperator.getImage(from: event)

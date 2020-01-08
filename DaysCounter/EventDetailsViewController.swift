@@ -418,7 +418,7 @@ class EventDetailsViewController: UIViewController {
         titleLabel.text = event.name
         let formatter = DateFormatter()
         formatter.dateStyle = .full
-        formatter.timeStyle = event.time != nil ? .short : .none
+        formatter.timeStyle = !event.isEntireDay ? .short : .none
         dateLabel.text = formatter.string(from: EventOperator.getDate(from: event))
     }
     

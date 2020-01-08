@@ -190,7 +190,7 @@ class EventBackgroundViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = event.time != nil ? .short : .none
+        dateFormatter.timeStyle = !event.isEntireDay ? .short : .none
         eventDateLabel.text = dateFormatter.string(from: EventOperator.getDate(from: event))
     }
     
