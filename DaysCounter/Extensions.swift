@@ -33,6 +33,14 @@ extension Date {
             Calendar.current.component(.second, from: self) == Calendar.current.component(.second, from: date)
     }
     
+    func with(hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
+        return Calendar.current.date(bySettingHour: hours, minute: minutes, second: seconds, of: self)
+    }
+    
+    func timeComponents() -> DateComponents {
+        return Calendar.current.dateComponents([.hour, .minute], from: self)
+    }
+    
 }
 
 

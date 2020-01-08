@@ -13,7 +13,7 @@ class Event: Object {
     @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var date: Date?
-    @objc dynamic var time: Date?
+    @objc dynamic var isEntireDay = true
     @objc dynamic var notes = ""
     @objc dynamic var repetition = 0
     @objc dynamic var reminderDate: Date?
@@ -73,8 +73,8 @@ class EventOperator {
     static func getDate(from event: Event) -> Date {
         var date: Date?
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: event.date!)
-        if let eventTime = event.time {
-            let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: eventTime)
+        if !event.isEntireDay {
+            let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: event.date!)
             date = Calendar.current.date(from: DateComponents(year: dateComponents.year, month: dateComponents.month, day: dateComponents.day, hour: timeComponents.hour, minute: timeComponents.minute))
         } else {
             date = Calendar.current.date(from: DateComponents(year: dateComponents.year, month: dateComponents.month, day: dateComponents.day))

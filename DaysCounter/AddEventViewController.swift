@@ -90,7 +90,7 @@ class AddEventViewController: UITableViewController {
                 prepareEvent()
                 vc.event.name = event.name
                 vc.event.date = event.date
-                vc.event.time = event.time
+                vc.event.isEntireDay = event.isEntireDay
                 vc.event.repetition = event.repetition
                 vc.event.notes = event.notes
                 vc.event.reminderDate = event.reminderDate
@@ -180,10 +180,13 @@ class AddEventViewController: UITableViewController {
     private func prepareEvent() {
         event.name = eventNameLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         event.date = eventDateLabel.text != "" ? eventDatePicker.date : nil
-        if !entireDaySwitch.isOn {
-            event.time = eventTimeLabel.text != "" ? eventTimePicker.date : nil
+        if !entireDaySwitch.isOn && eventTimeLabel.text != ""{
+            let timeComponents = eventTimePicker.date.timeComponents()
+            event.date = event.date!.with(hours: timeComponents.hour!, minutes: timeComponents.minute!)
+            event.isEntireDay = false
         } else {
-            event.time = nil
+            event.date = event.date!.with(hours: 23, minutes: 59)
+            event.isEntireDay = true
         }
         event.repetition = eventRepetition.rawValue
         event.notes = eventNotesTextView.text == "Notes" ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -220,12 +223,12 @@ class AddEventViewController: UITableViewController {
             eventDateLabel.text = dateFormatter.string(from: event.date!)
             eventDatePicker.date = event.date!
             
-            if event.time != nil {
+            if !event.isEntireDay {
                 let timeFormatter = DateFormatter()
                 timeFormatter.timeStyle = .short
-                eventTimeLabel.text = timeFormatter.string(from: event.time!)
+                eventTimeLabel.text = timeFormatter.string(from: event.date!)
                 entireDaySwitch.isOn = false
-                eventTimePicker.date = event.time!
+                eventTimePicker.date = event.date!
                 eventTimeCell.isHidden = false
                 eventTimeCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
                 entireDayCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
