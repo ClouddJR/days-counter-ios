@@ -15,6 +15,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     var realm: Realm!
     var futureEvents: Results<Event>!
     
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = "There are no upcoming events"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var eventImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -57,14 +64,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private lazy var yearNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "10"
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
     }()
     
     private lazy var yearTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "years"
         label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -82,14 +87,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private lazy var monthNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "2"
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
     }()
     
     private lazy var monthTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "months"
         label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -107,14 +110,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private lazy var weekNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "7"
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
     }()
     
     private lazy var weekTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "weeks"
         label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -132,14 +133,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private lazy var dayNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "4"
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
     }()
     
     private lazy var dayTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "days"
         label.textColor = .darkGray
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -168,6 +167,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         setConstraints()
         if let upcomingEvent = futureEvents.first {
             updateView(with: upcomingEvent)
+            noDataLabel.isHidden = true
         }
     }
         
@@ -187,6 +187,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     private func addSubviews() {
+        view.addSubview(noDataLabel)
         view.addSubview(eventImage)
         view.addSubview(eventImageDim)
         view.addSubview(titleLabel)
@@ -195,6 +196,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     private func setConstraints() {
+        noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
         eventImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         eventImage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         eventImage.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
