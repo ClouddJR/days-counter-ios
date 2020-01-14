@@ -300,6 +300,26 @@ class EventDetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func shareEvent(_ sender: UIBarButtonItem) {
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        if let img = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            let activityViewController = UIActivityViewController(activityItems: [img], applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.addToReadingList, .airDrop, .openInIBooks]
+            self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            displayAlertAboutScreenshotError()
+        }
+    }
+    
+    private func displayAlertAboutScreenshotError() {
+        let alert = UIAlertController(title: "The screenshot could not be taken", message: "There was an error while getting the screen image for sharing", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func deleteEvent(_ sender: UIBarButtonItem) {
         displayAlertAndDeleteIfConfirmed()
     }
