@@ -17,6 +17,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     let rowHeight = 50
     
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = "There are no future events"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var eventsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
@@ -33,6 +40,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         initRealm()
         sortEvents()
         extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        view.addSubview(noDataLabel)
+        noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
         view.addSubview(eventsCollectionView)
         eventsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         eventsCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -60,6 +71,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         realm = try! Realm(configuration: config)
         futureEvents = realm.objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate()))
+        
+        if(futureEvents.count > 0) {
+            noDataLabel.isHidden = true
+        }
     }
     
     private func sortEvents() {
