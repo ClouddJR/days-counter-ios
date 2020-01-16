@@ -30,7 +30,7 @@ class InternetGalleryViewController: UIViewController {
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "Search an image"
+        searchBar.placeholder = NSLocalizedString("Search an image", comment: "")
         searchBar.searchBarStyle = UISearchBar.Style.minimal
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var progressAlertController: UIAlertController = {
-        let alertController = UIAlertController(title: nil, message: "Downloading the image\n\n", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: NSLocalizedString("Downloading the image\n\n", comment: ""), preferredStyle: .alert)
         
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         indicator.center = CGPoint(x: 135.0, y: 65.5)
@@ -67,7 +67,7 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var errorAlertController: UIAlertController = {
-        let alertController = UIAlertController(title: "There was a problem", message: "Check your Internet connection.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("There was a problem", comment: ""), message: NSLocalizedString("Check your Internet connection.", comment: ""), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         return alertController
     }()

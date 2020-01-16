@@ -27,7 +27,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func configureUI() {
-        navigationItem.title = "Settings"
+        navigationItem.title = NSLocalizedString("Settings", comment: "")
     }
     
     private func configureTableView() {
@@ -122,20 +122,20 @@ extension SettingsViewController: UITableViewDelegate {
     
     private func showEmailComposer() {
         guard MFMailComposeViewController.canSendMail() else {
-            showErrorAlert(with: "Can't send email from this device.")
+            showErrorAlert(with: NSLocalizedString("Can't send email from this device.", comment: ""))
             return
         }
         
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
         composer.setToRecipients(["arekchmura@gmail.com"])
-        composer.setSubject("Days Counter app")
+        composer.setSubject("Days Counter iOS")
         
         present(composer, animated: true)
     }
     
     private func showErrorAlert(with message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }

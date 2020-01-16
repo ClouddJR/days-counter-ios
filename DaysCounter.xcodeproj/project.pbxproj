@@ -12,6 +12,8 @@
 		80008EDE393F01CFF8A46B1B /* Pods_WidgetFutureEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */; };
 		A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61702D623B201D900912C13 /* EventsTabBarController.swift */; };
 		A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */; };
+		A61F29B223D0E3630047C174 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61F29B423D0E3630047C174 /* InfoPlist.strings */; };
+		A61F29B823D0E3990047C174 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61F29BA23D0E3990047C174 /* InfoPlist.strings */; };
 		A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */; };
 		A644119523AAA76000FE3079 /* SortingOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644119423AAA76000FE3079 /* SortingOrderViewController.swift */; };
 		A644119723AAA76D00FE3079 /* DefaultSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */; };
@@ -19,11 +21,20 @@
 		A65D698F23B6354100497E4E /* BackupFolderBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */; };
 		A65D699123B63DE800497E4E /* BackupFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D699023B63DE800497E4E /* BackupFile.swift */; };
 		A663228D235F67090073C3C3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663228C235F67090073C3C3 /* EventDetailsViewController.swift */; };
+		A672CDDE23CF9D73003C21CD /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
+		A672CDDF23CF9D73003C21CD /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
+		A672CDE023CF9D73003C21CD /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
+		A672CDE123CF9D73003C21CD /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
 		A6763F132345CA3700A81500 /* InternetGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */; };
 		A67FACFE23A7F377000265AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FACFD23A7F377000265AD /* SettingsViewController.swift */; };
 		A67FAD0023A7F48D000265AD /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FACFF23A7F48D000265AD /* SettingsTableViewCell.swift */; };
 		A67FAD0223A80573000265AD /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FAD0123A80573000265AD /* SettingsSection.swift */; };
+		A687570E23D0A8800011C0FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A687571023D0A8800011C0FC /* InfoPlist.strings */; };
 		A68DE100233D180500188579 /* FontColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DE0FF233D180500188579 /* FontColorPickerView.swift */; };
+		A693802823CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
+		A693802923CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
+		A693802A23CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
+		A693802B23CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
 		A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C67982344792100E2F79A /* InternalGalleryViewController.swift */; };
 		A69DE1C623BBAB5500C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
 		A69DE1C723BBAB5500C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
@@ -123,6 +134,11 @@
 		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		A61702D623B201D900912C13 /* EventsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTabBarController.swift; sourceTree = "<group>"; };
 		A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		A61F29B323D0E3630047C174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61F29B523D0E3680047C174 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61F29B923D0E3990047C174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61F29BB23D0E39C0047C174 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A631198D23D0469800A061B4 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropViewController.swift; sourceTree = "<group>"; };
 		A644119423AAA76000FE3079 /* SortingOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOrderViewController.swift; sourceTree = "<group>"; };
 		A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSectionViewController.swift; sourceTree = "<group>"; };
@@ -130,11 +146,23 @@
 		A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupFolderBrowserViewController.swift; sourceTree = "<group>"; };
 		A65D699023B63DE800497E4E /* BackupFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupFile.swift; path = DaysCounter/BackupFile.swift; sourceTree = SOURCE_ROOT; };
 		A663228C235F67090073C3C3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		A672CDE223CF9D73003C21CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		A672CDE423CF9D75003C21CD /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = pl; path = pl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetGalleryViewController.swift; sourceTree = "<group>"; };
 		A67FACFD23A7F377000265AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A67FACFF23A7F48D000265AD /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A67FAD0123A80573000265AD /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		A687570623D0A6D30011C0FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A687570B23D0A7DB0011C0FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A687570F23D0A8800011C0FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A687571123D0A8830011C0FC /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A68DE0FF233D180500188579 /* FontColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorPickerView.swift; sourceTree = "<group>"; };
+		A693802423CE45260063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A693802523CE45270063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		A693802623CE45270063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		A693802723CE45270063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		A693802C23CE45420063484B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A693802E23CE45460063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A69C67982344792100E2F79A /* InternalGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryViewController.swift; sourceTree = "<group>"; };
 		A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaysCounter.entitlements; sourceTree = "<group>"; };
 		A6A84E2F23294F0E006C6660 /* DaysCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,11 +186,9 @@
 		A6D420C923BBA85A0036D097 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A6D420CC23BBA85A0036D097 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		A6D420CF23BBA85A0036D097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		A6D420D123BBA85A0036D097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6D420DD23BBA8750036D097 /* WidgetFutureEvents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetFutureEvents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D420E023BBA8750036D097 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		A6D420E323BBA8750036D097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		A6D420E523BBA8750036D097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6D420F023BBA8830036D097 /* WidgetUpcomingEvent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetUpcomingEvent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D420F323BBA8840036D097 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		A6D420F623BBA8840036D097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -277,6 +303,7 @@
 				A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */,
 				A6D75DBE23866A9C00ECBD16 /* EventDetailsBottomView.swift */,
 				A663228C235F67090073C3C3 /* EventDetailsViewController.swift */,
+				A672CDE323CF9D73003C21CD /* Localizable.stringsdict */,
 				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A68DE0FF233D180500188579 /* FontColorPickerView.swift */,
@@ -297,6 +324,7 @@
 				A67FACFD23A7F377000265AD /* SettingsViewController.swift */,
 				A644119423AAA76000FE3079 /* SortingOrderViewController.swift */,
 				A6A84E4423294FBC006C6660 /* Supporting Files */,
+				A693802D23CE45420063484B /* Localizable.strings */,
 			);
 			path = DaysCounter;
 			sourceTree = "<group>";
@@ -314,10 +342,11 @@
 		A6D420CB23BBA85A0036D097 /* WidgetPastEvents */ = {
 			isa = PBXGroup;
 			children = (
+				A687570623D0A6D30011C0FC /* Info.plist */,
 				A6DADA2523BDDD9D00511492 /* WidgetPastEvents.entitlements */,
 				A6D420CC23BBA85A0036D097 /* TodayViewController.swift */,
 				A6D420CE23BBA85A0036D097 /* MainInterface.storyboard */,
-				A6D420D123BBA85A0036D097 /* Info.plist */,
+				A687571023D0A8800011C0FC /* InfoPlist.strings */,
 			);
 			path = WidgetPastEvents;
 			sourceTree = "<group>";
@@ -325,10 +354,11 @@
 		A6D420DF23BBA8750036D097 /* WidgetFutureEvents */ = {
 			isa = PBXGroup;
 			children = (
+				A687570B23D0A7DB0011C0FC /* Info.plist */,
 				A6DADA2623BDDDAF00511492 /* WidgetFutureEvents.entitlements */,
 				A6D420E023BBA8750036D097 /* TodayViewController.swift */,
 				A6D420E223BBA8750036D097 /* MainInterface.storyboard */,
-				A6D420E523BBA8750036D097 /* Info.plist */,
+				A61F29B423D0E3630047C174 /* InfoPlist.strings */,
 			);
 			path = WidgetFutureEvents;
 			sourceTree = "<group>";
@@ -340,6 +370,7 @@
 				A6D420F323BBA8840036D097 /* TodayViewController.swift */,
 				A6D420F523BBA8840036D097 /* MainInterface.storyboard */,
 				A6D420F823BBA8840036D097 /* Info.plist */,
+				A61F29BA23D0E3990047C174 /* InfoPlist.strings */,
 			);
 			path = WidgetUpcomingEvent;
 			sourceTree = "<group>";
@@ -470,6 +501,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = A6A84E2623294F0E006C6660;
 			productRefGroup = A6A84E3023294F0E006C6660 /* Products */;
@@ -490,7 +522,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A84E3D23294F0E006C6660 /* LaunchScreen.storyboard in Resources */,
+				A693802823CE45420063484B /* Localizable.strings in Resources */,
 				A6A84E3A23294F0E006C6660 /* Assets.xcassets in Resources */,
+				A672CDDE23CF9D73003C21CD /* Localizable.stringsdict in Resources */,
 				A6A84E3823294F0E006C6660 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,7 +534,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6DADA2823BE116D00511492 /* Assets.xcassets in Resources */,
+				A672CDDF23CF9D73003C21CD /* Localizable.stringsdict in Resources */,
+				A693802923CE45420063484B /* Localizable.strings in Resources */,
 				A6D420D023BBA85A0036D097 /* MainInterface.storyboard in Resources */,
+				A687570E23D0A8800011C0FC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +546,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6DADA2923BE116E00511492 /* Assets.xcassets in Resources */,
+				A672CDE023CF9D73003C21CD /* Localizable.stringsdict in Resources */,
+				A693802A23CE45420063484B /* Localizable.strings in Resources */,
 				A6D420E423BBA8750036D097 /* MainInterface.storyboard in Resources */,
+				A61F29B223D0E3630047C174 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +558,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6DADA2A23BE116E00511492 /* Assets.xcassets in Resources */,
+				A672CDE123CF9D73003C21CD /* Localizable.stringsdict in Resources */,
+				A693802B23CE45420063484B /* Localizable.strings in Resources */,
 				A6D420F723BBA8840036D097 /* MainInterface.storyboard in Resources */,
+				A61F29B823D0E3990047C174 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,10 +772,56 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A61F29B423D0E3630047C174 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61F29B323D0E3630047C174 /* en */,
+				A61F29B523D0E3680047C174 /* pl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A61F29BA23D0E3990047C174 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61F29B923D0E3990047C174 /* en */,
+				A61F29BB23D0E39C0047C174 /* pl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A672CDE323CF9D73003C21CD /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A672CDE223CF9D73003C21CD /* en */,
+				A672CDE423CF9D75003C21CD /* pl */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		A687571023D0A8800011C0FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A687570F23D0A8800011C0FC /* en */,
+				A687571123D0A8830011C0FC /* pl */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A693802D23CE45420063484B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A693802C23CE45420063484B /* en */,
+				A693802E23CE45460063484B /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A6A84E3623294F0E006C6660 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A6A84E3723294F0E006C6660 /* Base */,
+				A631198D23D0469800A061B4 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -741,6 +830,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A6A84E3C23294F0E006C6660 /* Base */,
+				A693802423CE45260063484B /* pl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -749,6 +839,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A6D420CF23BBA85A0036D097 /* Base */,
+				A693802523CE45270063484B /* pl */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -757,6 +848,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A6D420E323BBA8750036D097 /* Base */,
+				A693802623CE45270063484B /* pl */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -765,6 +857,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A6D420F623BBA8840036D097 /* Base */,
+				A693802723CE45270063484B /* pl */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -776,6 +869,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -837,6 +931,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

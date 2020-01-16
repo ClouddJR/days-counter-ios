@@ -116,11 +116,11 @@ class AddEventViewController: UITableViewController {
     private var eventRepetition = EventRepetition(rawValue: 0)! {
         didSet {
             switch eventRepetition {
-            case .once: eventRepetitionLabel.text = "Only once"
-            case .daily: eventRepetitionLabel.text = "Daily"
-            case .weekly: eventRepetitionLabel.text = "Weekly"
-            case .monthly: eventRepetitionLabel.text = "Monthly"
-            case .yearly: eventRepetitionLabel.text = "Yearly"
+            case .once: eventRepetitionLabel.text = NSLocalizedString("Only once", comment: "")
+            case .daily: eventRepetitionLabel.text = NSLocalizedString("Daily", comment: "")
+            case .weekly: eventRepetitionLabel.text = NSLocalizedString("Weekly", comment: "")
+            case .monthly: eventRepetitionLabel.text = NSLocalizedString("Monthly", comment: "")
+            case .yearly: eventRepetitionLabel.text = NSLocalizedString("Yearly", comment: "")
             }
         }
     }
@@ -172,7 +172,7 @@ class AddEventViewController: UITableViewController {
     }
     
     private func displayAlertAboutRequiredFields() {
-        let alert = UIAlertController(title: "Required fields", message: "Name and date fields are required.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Required fields", comment: ""), message: NSLocalizedString("Name and date fields are required.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }
@@ -189,10 +189,10 @@ class AddEventViewController: UITableViewController {
             event.isEntireDay = true
         }
         event.repetition = eventRepetition.rawValue
-        event.notes = eventNotesTextView.text == "Notes" ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        event.notes = eventNotesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
             event.reminderDate = reminderDateAndTimeLabel.text != "" ? reminderDateAndTimePicker.date : nil
-            event.reminderMessage = reminderMessageTextView.text == "Reminder message" ? "" :reminderMessageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            event.reminderMessage = reminderMessageTextView.text == NSLocalizedString("Reminder message", comment: "") ? "" :reminderMessageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
             event.reminderDate = nil
         }
@@ -202,13 +202,13 @@ class AddEventViewController: UITableViewController {
     
     private func setUpTextViews() {
         eventNotesTextView.delegate = self
-        eventNotesTextView.text = "Notes"
+        eventNotesTextView.text = NSLocalizedString("Notes", comment: "")
         eventNotesTextView.textColor = UIColor.lightGray
         eventNotesTextView.textContainer.lineFragmentPadding = 0
         eventNotesTextView.textContainerInset = .zero
         
         reminderMessageTextView.delegate = self
-        reminderMessageTextView.text = "Reminder message"
+        reminderMessageTextView.text = NSLocalizedString("Reminder message", comment: "")
         reminderMessageTextView.textColor = UIColor.lightGray
         reminderMessageTextView.textContainer.lineFragmentPadding = 0
         reminderMessageTextView.textContainerInset = .zero
@@ -285,7 +285,7 @@ class AddEventViewController: UITableViewController {
         center.getNotificationSettings { settings in
             guard settings.authorizationStatus != .authorized else {return}
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Notification permission", message: "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("Notification permission", comment: ""), message: NSLocalizedString("The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self.present(alert, animated: true)
             }
@@ -354,7 +354,7 @@ class AddEventViewController: UITableViewController {
     }
     
     private func displayAlertAboutRequiredPermissionForReminders() {
-        let alert = UIAlertController(title: "Grant permission", message: "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Grant permission", comment: ""), message: NSLocalizedString("In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }
@@ -454,7 +454,7 @@ extension AddEventViewController: UITextViewDelegate {
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
         
         if updatedText.isEmpty {
-            textView.text = textView.tag == 0 ? "Notes" : "Reminder message"
+            textView.text = textView.tag == 0 ? NSLocalizedString("Notes", comment: "") : NSLocalizedString("Reminder message", comment: "")
             textView.textColor = UIColor.lightGray
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         } else if textView.textColor == UIColor.lightGray && !text.isEmpty {

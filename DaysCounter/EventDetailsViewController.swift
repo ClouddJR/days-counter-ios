@@ -58,7 +58,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var yearTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "years"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -87,7 +86,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var monthTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "months"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -116,7 +114,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var weekTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "weeks"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -145,7 +142,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var dayTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "days"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -184,7 +180,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var hourTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "hours"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -213,7 +208,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var minuteTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "minutes"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -242,7 +236,6 @@ class EventDetailsViewController: UIViewController {
     private lazy var secondTitleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(21)
-        label.text = "seconds"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -315,7 +308,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func displayAlertAboutScreenshotError() {
-        let alert = UIAlertController(title: "The screenshot could not be taken", message: "There was an error while getting the screen image for sharing", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("The screenshot could not be taken", comment: ""), message: NSLocalizedString("There was an error while getting the screen image for sharing.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }
@@ -325,9 +318,9 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func displayAlertAndDeleteIfConfirmed() {
-        let alert = UIAlertController(title: "Are you sure you want to delete this event?", message: "This operation cannot be undone.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+        let alert = UIAlertController(title: NSLocalizedString("Are you sure you want to delete this event?", comment: ""), message: NSLocalizedString("This operation cannot be undone.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (action) in
             self.deleteLocalImage(at: URL(string: self.event.localImagePath)!)
             self.cancelNotification()
             self.realm.beginWrite()
@@ -586,30 +579,37 @@ class EventDetailsViewController: UIViewController {
                                                       areDaysIncluded: event.areDaysIncluded,
                                                       isTimeIncluded: event.isTimeIncluded)
         if let years = components.years {
+            yearTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Years title", comment: ""), years)
             yearNumberLabel.text = String(years)
         }
         
         if let months = components.months {
+            monthTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Months title", comment: ""), months)
             monthNumberLabel.text = String(months)
         }
         
         if let weeks = components.weeks {
+            weekTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Weeks title", comment: ""), weeks)
             weekNumberLabel.text = String(weeks)
         }
         
         if let days = components.days {
+            dayTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Days title", comment: ""), days)
             dayNumberLabel.text = String(days)
         }
         
         if let hours = components.hours {
+            hourTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Hours title", comment: ""), hours)
             hourNumberLabel.text = String(hours)
         }
         
         if let minutes = components.minutes {
+            minuteTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Minutes title", comment: ""), minutes)
             minuteNumberLabel.text = String(minutes)
         }
         
         if let seconds = components.seconds {
+            secondTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Seconds title", comment: ""), seconds)
             secondNumberLabel.text = String(seconds)
         }
         

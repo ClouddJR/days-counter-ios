@@ -1,0 +1,132 @@
+
+/* Class = "UITextField"; placeholder = "Enter a name"; ObjectID = "4ab-Ne-FQR"; */
+"4ab-Ne-FQR.placeholder" = "Wprowadź nazwę";
+
+/* Class = "UILabel"; text = "21"; ObjectID = "4to-W1-iiB"; */
+"4to-W1-iiB.text" = "21";
+
+/* Class = "UINavigationItem"; title = "Details"; ObjectID = "5Be-hp-pgf"; */
+"5Be-hp-pgf.title" = "Szczegóły";
+
+/* Class = "UILabel"; text = "Reminder"; ObjectID = "6ld-94-VhA"; */
+"6ld-94-VhA.text" = "Powiadomienie";
+
+/* Class = "UILabel"; text = "months"; ObjectID = "7Pi-E1-5aq"; */
+"7Pi-E1-5aq.text" = "miesiące";
+
+/* Class = "UITableViewSection"; headerTitle = "Basics"; ObjectID = "8MH-3U-Ca7"; */
+"8MH-3U-Ca7.headerTitle" = "Ogólne";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "8RK-lW-c7y"; */
+"8RK-lW-c7y.text" = "Nazwa";
+
+/* Class = "UITableViewSection"; headerTitle = "Reminder"; ObjectID = "9Gu-bh-MDR"; */
+"9Gu-bh-MDR.headerTitle" = "Powiadomienie";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "9yG-5j-XRg"; */
+"9yG-5j-XRg.text" = "Czas";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "AlQ-0K-O32"; */
+"AlQ-0K-O32.text" = "12";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "Csp-TA-unY"; */
+"Csp-TA-unY.text" = "Data";
+
+/* Class = "UIViewController"; title = "Customize"; ObjectID = "Dhp-39-ii9"; */
+"Dhp-39-ii9.title" = "Personalizacja";
+
+/* Class = "UILabel"; text = "seconds"; ObjectID = "Fa9-Ue-zap"; */
+"Fa9-Ue-zap.text" = "sekundy";
+
+/* Class = "UILabel"; text = "years"; ObjectID = "G8j-FU-jUg"; */
+"G8j-FU-jUg.text" = "lata";
+
+/* Class = "UIButton"; normalTitle = "Change background"; ObjectID = "GBJ-UV-imN"; */
+"GBJ-UV-imN.normalTitle" = "Wybierz tło";
+
+/* Class = "UINavigationItem"; title = "Customize"; ObjectID = "I6u-u4-AGs"; */
+"I6u-u4-AGs.title" = "Personalizacja";
+
+/* Class = "UILabel"; text = "Weekly"; ObjectID = "LV5-X8-kpg"; */
+"LV5-X8-kpg.text" = "Tygodniowo";
+
+/* Class = "UILabel"; text = "hours"; ObjectID = "MNH-YY-6rS"; */
+"MNH-YY-6rS.text" = "godziny";
+
+/* Class = "UILabel"; text = "Monthly"; ObjectID = "P6p-qU-cFZ"; */
+"P6p-qU-cFZ.text" = "Miesięcznie";
+
+/* Class = "UINavigationItem"; title = "Days Counter"; ObjectID = "PgD-Uc-76D"; */
+"PgD-Uc-76D.title" = "Days Counter";
+
+/* Class = "UILabel"; text = "11"; ObjectID = "QTR-lJ-SCh"; */
+"QTR-lJ-SCh.text" = "11";
+
+/* Class = "UIButton"; normalTitle = "Customize"; ObjectID = "Qef-GQ-6hA"; */
+"Qef-GQ-6hA.normalTitle" = "Personalizuj";
+
+/* Class = "UILabel"; text = "weeks"; ObjectID = "Qzo-Ca-tWH"; */
+"Qzo-Ca-tWH.text" = "tygodnie";
+
+/* Class = "UILabel"; text = "21"; ObjectID = "RXU-Yc-QnC"; */
+"RXU-Yc-QnC.text" = "21";
+
+/* Class = "UILabel"; text = "4"; ObjectID = "Rsq-js-Nmc"; */
+"Rsq-js-Nmc.text" = "4";
+
+/* Class = "UILabel"; text = "Monday, August 19, 2019"; ObjectID = "TQS-gd-f43"; */
+"TQS-gd-f43.text" = "Monday, August 19, 2019";
+
+/* Class = "UILabel"; text = "days"; ObjectID = "Udr-3u-Dp2"; */
+"Udr-3u-Dp2.text" = "dni";
+
+/* Class = "UITableViewSection"; headerTitle = "Optional"; ObjectID = "Uhf-i4-6ao"; */
+"Uhf-i4-6ao.headerTitle" = "Opcjonalne";
+
+/* Class = "UILabel"; text = "34"; ObjectID = "XYo-0C-kL6"; */
+"XYo-0C-kL6.text" = "34";
+
+/* Class = "UILabel"; text = "Only once"; ObjectID = "YTm-My-K4b"; */
+"YTm-My-K4b.text" = "Tylko raz";
+
+/* Class = "UILabel"; text = "minutes"; ObjectID = "ax3-fd-dyq"; */
+"ax3-fd-dyq.text" = "minuty";
+
+/* Class = "UILabel"; text = "Entire day"; ObjectID = "b76-ci-qXR"; */
+"b76-ci-qXR.text" = "Cały dzień";
+
+/* Class = "UILabel"; text = "Date and time"; ObjectID = "cdq-Ex-ZOq"; */
+"cdq-Ex-ZOq.text" = "Data i czas";
+
+/* Class = "UINavigationItem"; title = "Days Counter"; ObjectID = "ce6-KH-fhC"; */
+"ce6-KH-fhC.title" = "Days Counter";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "dUM-db-Vdf"; */
+"dUM-db-Vdf.text" = "3";
+
+/* Class = "UILabel"; text = "Holidays in Puerto Rico"; ObjectID = "gXS-QE-ELt"; */
+"gXS-QE-ELt.text" = "Holidays in Puerto Rico";
+
+/* Class = "UINavigationItem"; title = "Days Counter"; ObjectID = "jQH-T0-Obu"; */
+"jQH-T0-Obu.title" = "Days Counter";
+
+/* Class = "UITabBarItem"; title = "Future"; ObjectID = "kdu-1n-HMj"; */
+"kdu-1n-HMj.title" = "Przyszłość";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "m8o-gX-WsH"; */
+"m8o-gX-WsH.title" = "Dalej";
+
+/* Class = "UILabel"; text = "Yearly"; ObjectID = "pBa-cy-SRg"; */
+"pBa-cy-SRg.text" = "Rocznie";
+
+/* Class = "UILabel"; text = "Event repetition"; ObjectID = "pZ9-M4-fqn"; */
+"pZ9-M4-fqn.text" = "Powtarzanie wydarzenia";
+
+/* Class = "UILabel"; text = "Daily"; ObjectID = "qep-bf-0SR"; */
+"qep-bf-0SR.text" = "Codziennie";
+
+/* Class = "UILabel"; text = "Only once"; ObjectID = "xe5-CS-F5q"; */
+"xe5-CS-F5q.text" = "Tylko raz";
+
+/* Class = "UITabBarItem"; title = "Past"; ObjectID = "xug-e2-wO0"; */
+"xug-e2-wO0.title" = "Przeszłość";
