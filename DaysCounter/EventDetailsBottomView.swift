@@ -59,7 +59,7 @@ class EventDetailsBottomView: UIView {
     
     private lazy var notesSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Notes"
+        label.text = NSLocalizedString("Notes", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.font = label.font.withSize(23)
@@ -69,7 +69,7 @@ class EventDetailsBottomView: UIView {
     
     private lazy var notesLabel: UILabel = {
         let label = UILabel()
-        label.text = "No notes"
+        label.text = NSLocalizedString("No notes", comment: "")
         label.textColor = .white
         label.textAlignment = .natural
         label.numberOfLines = 0
@@ -100,7 +100,7 @@ class EventDetailsBottomView: UIView {
     
     private lazy var repetitionSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Repetition"
+        label.text = NSLocalizedString("Repetition", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.font = label.font.withSize(23)
@@ -110,7 +110,7 @@ class EventDetailsBottomView: UIView {
     
     private lazy var repetitionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Only once"
+        label.text = NSLocalizedString("Only once", comment: "")
         label.textColor = .white
         label.textAlignment = .justified
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
@@ -130,7 +130,7 @@ class EventDetailsBottomView: UIView {
     
     private lazy var reminderSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Reminder"
+        label.text = NSLocalizedString("Reminder", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.font = label.font.withSize(23)
@@ -140,7 +140,6 @@ class EventDetailsBottomView: UIView {
     
     private lazy var reminderLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tomorrow, 1:30 PM"
         label.textColor = .white
         label.textAlignment = .justified
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
@@ -160,7 +159,7 @@ class EventDetailsBottomView: UIView {
     
     private lazy var reminderMessageSectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Reminder message"
+        label.text = NSLocalizedString("Reminder message", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.font = label.font.withSize(23)
@@ -170,7 +169,6 @@ class EventDetailsBottomView: UIView {
     
     private lazy var reminderMessageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Message"
         label.textColor = .white
         label.textAlignment = .justified
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
@@ -218,15 +216,15 @@ class EventDetailsBottomView: UIView {
     }
     
     func fillViewsWithDataFrom(event: Event) {
-        notesLabel.text = event.notes == "" ? "None" : event.notes
+        notesLabel.text = event.notes == "" ? NSLocalizedString("None", comment: "") : event.notes
         
         let repetition = EventRepetition(rawValue: event.repetition)!
         switch repetition {
-        case .once: repetitionLabel.text = "Only once"
-        case .daily: repetitionLabel.text = "Daily"
-        case .weekly: repetitionLabel.text = "Weekly"
-        case .monthly: repetitionLabel.text = "Monthly"
-        case .yearly: repetitionLabel.text = "Yearly"
+        case .once: repetitionLabel.text = NSLocalizedString("Only once", comment: "")
+        case .daily: repetitionLabel.text = NSLocalizedString("Daily", comment: "")
+        case .weekly: repetitionLabel.text = NSLocalizedString("Weekly", comment: "")
+        case .monthly: repetitionLabel.text = NSLocalizedString("Monthly", comment: "")
+        case .yearly: repetitionLabel.text = NSLocalizedString("Yearly", comment: "")
         }
         
         let formatter = DateFormatter()
@@ -237,7 +235,7 @@ class EventDetailsBottomView: UIView {
             mainStackView.addArrangedSubview(reminderMessageStackView)
             reminderMessageLabel.text = event.reminderMessage
         } else {
-            reminderLabel.text = "None"
+            reminderLabel.text = NSLocalizedString("None", comment: "")
         }
     }
 

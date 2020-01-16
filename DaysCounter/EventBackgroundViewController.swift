@@ -347,33 +347,33 @@ class EventBackgroundViewController: UIViewController {
             popoverController.permittedArrowDirections = [.down]
         }
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default, handler: { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true)
             }
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Pre-installed images", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Pre-installed images", comment: ""), style: .default, handler: { (action) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "internalGalleryViewController") as! InternalGalleryViewController
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "From the Internet", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("From the Internet", comment: ""), style: .default, handler: { (action) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "internetGalleryViewController") as! InternetGalleryViewController
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Photo library", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Photo library", comment: ""), style: .default, handler: { (action) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true)
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in}))
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in}))
         
         self.present(actionSheet, animated: true)
     }
@@ -422,30 +422,37 @@ class EventBackgroundViewController: UIViewController {
                                                       areDaysIncluded: shouldDaysSectionBeVisible,
                                                       isTimeIncluded: shouldTimeSectionBeVisible)
         if let years = components.years {
+            yearsTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Years title", comment: ""), years)
             yearsNumberLabel.text = String(years)
         }
         
         if let months = components.months {
+            monthsTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Months title", comment: ""), months)
             monthsNumberLabel.text = String(months)
         }
         
         if let weeks = components.weeks {
+            weeksTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Weeks title", comment: ""), weeks)
             weeksNumberLabel.text = String(weeks)
         }
         
         if let days = components.days {
+            daysTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Days title", comment: ""), days)
             daysNumberLabel.text = String(days)
         }
         
         if let hours = components.hours {
+            hoursTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Hours title", comment: ""), hours)
             hoursNumberLabel.text = String(hours)
         }
         
         if let minutes = components.minutes {
+            minutesTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Minutes title", comment: ""), minutes)
             minutesNumberLabel.text = String(minutes)
         }
         
         if let seconds = components.seconds {
+            secondsTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Seconds title", comment: ""), seconds)
             secondsNumberLabel.text = String(seconds)
         }
         

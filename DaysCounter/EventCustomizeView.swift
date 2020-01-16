@@ -74,7 +74,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatYearsTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Years"
+        label.text = NSLocalizedString("Years", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -102,7 +102,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatMonthsTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Months"
+        label.text = NSLocalizedString("Months", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -130,7 +130,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatWeeksTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Weeks"
+        label.text = NSLocalizedString("Weeks", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -158,7 +158,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatDaysTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Days"
+        label.text = NSLocalizedString("Days", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -187,7 +187,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatTimeTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Time"
+        label.text = NSLocalizedString("Time", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -215,7 +215,7 @@ class EventCustomizeView: UIView {
     
     lazy var fontColorTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Font color"
+        label.text = NSLocalizedString("Font color", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -254,7 +254,7 @@ class EventCustomizeView: UIView {
     
     lazy var fontTypeTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Font type"
+        label.text = NSLocalizedString("Font type", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -283,7 +283,7 @@ class EventCustomizeView: UIView {
     
     lazy var pictureDimTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Picture dim"
+        label.text = NSLocalizedString("Picture dim", comment: "")
         label.textColor = .white
         label.textAlignment = .left
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -305,7 +305,7 @@ class EventCustomizeView: UIView {
     
     lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Dismiss", for: .normal)
+        button.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
         button.tintColor = .orange
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.translatesAutoresizingMaskIntoConstraints = false

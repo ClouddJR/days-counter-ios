@@ -17,7 +17,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private lazy var noDataLabel: UILabel = {
         let label = UILabel()
-        label.text = "There are no upcoming events"
+        label.text = NSLocalizedString("There are no upcoming events", comment: "")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -256,18 +256,22 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let calculatedComponents = DateCalculator.calculateDate(eventDate: eventDate, areYearsIncluded: event.areYearsIncluded, areMonthsIncluded: event.areMonthsIncluded, areWeekIncluded: event.areWeeksIncluded, areDaysIncluded: event.areDaysIncluded, isTimeIncluded: false)
         
         if let years = calculatedComponents.years {
+            yearTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Years title", comment: ""), years)
             yearNumberLabel.text = String(years)
         }
         
         if let months = calculatedComponents.months {
+            monthTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Months title", comment: ""), months)
             monthNumberLabel.text = String(months)
         }
         
         if let weeks = calculatedComponents.weeks {
+            weekTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Weeks title", comment: ""), weeks)
             weekNumberLabel.text = String(weeks)
         }
         
         if let days = calculatedComponents.days {
+            dayTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Days title", comment: ""), days)
             dayNumberLabel.text = String(days)
         }
         

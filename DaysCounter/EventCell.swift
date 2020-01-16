@@ -52,7 +52,6 @@ class EventCell: UITableViewCell {
     
     private lazy var yearNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "10"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
@@ -60,7 +59,6 @@ class EventCell: UITableViewCell {
     
     private lazy var yearTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "years"
         label.textColor = .white
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -78,7 +76,6 @@ class EventCell: UITableViewCell {
     
     private lazy var monthNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "2"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
@@ -86,7 +83,6 @@ class EventCell: UITableViewCell {
     
     private lazy var monthTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "months"
         label.textColor = .white
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -104,7 +100,6 @@ class EventCell: UITableViewCell {
     
     private lazy var weekNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "7"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
@@ -112,7 +107,6 @@ class EventCell: UITableViewCell {
     
     private lazy var weekTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "weeks"
         label.textColor = .white
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -130,7 +124,6 @@ class EventCell: UITableViewCell {
     
     private lazy var dayNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "4"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: Constants.dateStackViewNumber)
         return label
@@ -138,7 +131,6 @@ class EventCell: UITableViewCell {
     
     private lazy var dayTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "days"
         label.textColor = .white
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         return label
@@ -242,18 +234,22 @@ class EventCell: UITableViewCell {
         let calculatedComponents = DateCalculator.calculateDate(eventDate: eventDate, areYearsIncluded: event.areYearsIncluded, areMonthsIncluded: event.areMonthsIncluded, areWeekIncluded: event.areWeeksIncluded, areDaysIncluded: event.areDaysIncluded, isTimeIncluded: false)
         
         if let years = calculatedComponents.years {
+            yearTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Years title", comment: ""), years)
             yearNumberLabel.text = String(years)
         }
         
         if let months = calculatedComponents.months {
+            monthTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Months title", comment: ""), months)
             monthNumberLabel.text = String(months)
         }
         
         if let weeks = calculatedComponents.weeks {
+            weekTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Weeks title", comment: ""), weeks)
             weekNumberLabel.text = String(weeks)
         }
         
         if let days = calculatedComponents.days {
+            dayTitleLabel.text = String.localizedStringWithFormat(NSLocalizedString("Days title", comment: ""), days)
             dayNumberLabel.text = String(days)
         }
         
