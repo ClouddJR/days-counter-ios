@@ -138,5 +138,9 @@ extension UserDefaults {
     @objc dynamic var user_defaults_default_section: Int {
         return integer(forKey: Defaults.Key.DefaultSection.rawValue)
     }
+    
+    static func forAppGroup() -> UserDefaults {
+        return UserDefaults(suiteName: "group.com.clouddroid.dayscounter")!
+    }
 }
 

@@ -12,6 +12,7 @@ struct Defaults {
     enum Key: String {
         case SortingOrder = "user_defaults_sorting_order";
         case DefaultSection = "user_defaults_default_section";
+        case Premium = "user_defaults_is_premium_user";
     }
     
     enum SortingOrder: Int, CaseIterable {
@@ -43,5 +44,13 @@ struct Defaults {
     
     static func getDefaultSection() -> DefaultSection {
         return DefaultSection(rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.DefaultSection.rawValue)) ?? DefaultSection.Future
+    }
+    
+    static func setPremiumUser(_ isPremium: Bool) {
+        UserDefaults.forAppGroup().set(isPremium, forKey: Defaults.Key.Premium.rawValue)
+    }
+    
+    static func isPremiumUser() -> Bool {
+        return UserDefaults.forAppGroup().bool(forKey: Defaults.Key.Premium.rawValue)
     }
 }

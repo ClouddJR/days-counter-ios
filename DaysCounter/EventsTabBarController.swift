@@ -36,6 +36,7 @@ class EventsTabBarController: UITabBarController {
     }
     
     deinit {
-        
+        userDefaultsObserver?.invalidate()
+        userDefaultsObserver = nil
     }
 }
