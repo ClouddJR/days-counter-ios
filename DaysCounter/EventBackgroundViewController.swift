@@ -347,13 +347,6 @@ class EventBackgroundViewController: UIViewController {
             popoverController.permittedArrowDirections = [.down]
         }
         
-        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default, handler: { (action) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true)
-            }
-        }))
-        
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Pre-installed images", comment: ""), style: .default, handler: { (action) in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "internalGalleryViewController") as! InternalGalleryViewController
@@ -371,6 +364,13 @@ class EventBackgroundViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Photo library", comment: ""), style: .default, handler: { (action) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true)
+            }
         }))
         
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in}))
