@@ -30,7 +30,7 @@ class EventDetailsViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .center
-        stackView.spacing = 20.0
+        stackView.spacing = 25.0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -152,7 +152,7 @@ class EventDetailsViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .center
-        stackView.spacing = 20.0
+        stackView.spacing = 25.0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -650,7 +650,7 @@ extension EventDetailsViewController {
         static let sectionTitleFontSize: CGFloat = 15
         static let eventTitleFontSize: CGFloat = 23
         static let eventDateFontSize: CGFloat = 15
-        static let stackViewSpacing: CGFloat = 16.0
+        static let stackViewSpacing: CGFloat = 20.0
         static let stackViewEdgeMargin: CGFloat = 10.0
     }
     
