@@ -64,7 +64,7 @@ class EventOperator {
             let imageName = event.localImagePath[imageNameBeginIndex...]
             image = UIImage(named: String(imageName))
         } else {
-            image = UIImage(contentsOfFile: "\(NSHomeDirectory())/Documents/d9vO5ysAx6BwwtQcjsGS7D6dPE10sX.png")
+            image = UIImage(contentsOfFile: event.localImagePath)
         }
         
         return image ?? UIImage(named: "nature4.jpg")!
