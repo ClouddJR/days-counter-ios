@@ -233,9 +233,12 @@ class EventDetailsBottomView: UIView {
         if let reminderDate = event.reminderDate {
             reminderLabel.text = formatter.string(from: reminderDate)
             mainStackView.addArrangedSubview(reminderMessageStackView)
+            reminderMessageStackView.isHidden = false
             reminderMessageLabel.text = event.reminderMessage
         } else {
             reminderLabel.text = NSLocalizedString("None", comment: "")
+            mainStackView.removeArrangedSubview(reminderMessageStackView)
+            reminderMessageStackView.isHidden = true
         }
     }
 
