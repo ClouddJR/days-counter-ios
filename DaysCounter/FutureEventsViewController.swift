@@ -67,7 +67,7 @@ class FutureEventsViewController: UIViewController {
         switch sortingOrder {
         case .DaysAscending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: true)
         case .DaysDescending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: false)
-        case .TimeAdded: futureEvents = futureEvents.sorted(byKeyPath: "id", ascending: true)
+        case .TimeAdded: futureEvents = futureEvents.sorted(byKeyPath: "createdAt", ascending: true)
         }
     }
     

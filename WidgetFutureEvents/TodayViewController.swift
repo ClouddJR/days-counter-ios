@@ -82,7 +82,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         switch sortingOrder {
         case .DaysAscending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: false)
         case .DaysDescending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: true)
-        case .TimeAdded: futureEvents = futureEvents.sorted(byKeyPath: "id", ascending: true)
+        case .TimeAdded: futureEvents = futureEvents.sorted(byKeyPath: "createdAt", ascending: true)
         }
     }
     
