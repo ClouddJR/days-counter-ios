@@ -13,15 +13,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>seconds</string>
 			<key>one</key>
 			<string>second</string>
 			<key>two</key>
-			<string></string>
+			<string>seconds</string>
 			<key>few</key>
-			<string></string>
+			<string>seconds</string>
 			<key>many</key>
-			<string></string>
+			<string>seconds</string>
 			<key>other</key>
 			<string>seconds</string>
 		</dict>
@@ -37,15 +37,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>minutes</string>
 			<key>one</key>
 			<string>minute</string>
 			<key>two</key>
-			<string></string>
+			<string>minutes</string>
 			<key>few</key>
-			<string></string>
+			<string>minutes</string>
 			<key>many</key>
-			<string></string>
+			<string>minutes</string>
 			<key>other</key>
 			<string>minutes</string>
 		</dict>
@@ -61,15 +61,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>hours</string>
 			<key>one</key>
 			<string>hour</string>
 			<key>two</key>
-			<string></string>
+			<string>hours</string>
 			<key>few</key>
-			<string></string>
+			<string>hours</string>
 			<key>many</key>
-			<string></string>
+			<string>hours</string>
 			<key>other</key>
 			<string>hours</string>
 		</dict>
@@ -85,15 +85,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>days</string>
 			<key>one</key>
 			<string>day</string>
 			<key>two</key>
-			<string></string>
+			<string>days</string>
 			<key>few</key>
-			<string></string>
+			<string>days</string>
 			<key>many</key>
-			<string></string>
+			<string>days</string>
 			<key>other</key>
 			<string>days</string>
 		</dict>
@@ -109,15 +109,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>weeks</string>
 			<key>one</key>
 			<string>week</string>
 			<key>two</key>
-			<string></string>
+			<string>weeks</string>
 			<key>few</key>
-			<string></string>
+			<string>weeks</string>
 			<key>many</key>
-			<string></string>
+			<string>weeks</string>
 			<key>other</key>
 			<string>weeks</string>
 		</dict>
@@ -133,15 +133,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>months</string>
 			<key>one</key>
 			<string>month</string>
 			<key>two</key>
-			<string></string>
+			<string>months</string>
 			<key>few</key>
-			<string></string>
+			<string>months</string>
 			<key>many</key>
-			<string></string>
+			<string>months</string>
 			<key>other</key>
 			<string>months</string>
 		</dict>
@@ -157,15 +157,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string></string>
+			<string>years</string>
 			<key>one</key>
 			<string>year</string>
 			<key>two</key>
-			<string></string>
+			<string>years</string>
 			<key>few</key>
-			<string></string>
+			<string>years</string>
 			<key>many</key>
-			<string></string>
+			<string>years</string>
 			<key>other</key>
 			<string>years</string>
 		</dict>
