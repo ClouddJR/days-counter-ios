@@ -281,6 +281,7 @@ class EventDetailsViewController: UIViewController {
     private var dateTimer: Timer?
     
     private var previousNavBarTintColor: UIColor?
+    private var previousTextAttributes: [NSAttributedString.Key : Any]?
     
     @IBAction func editEvent(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -357,6 +358,7 @@ class EventDetailsViewController: UIViewController {
         previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
         
+        previousTextAttributes = navigationController?.navigationBar.titleTextAttributes
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
@@ -626,8 +628,7 @@ class EventDetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = previousNavBarTintColor
         navigationController?.navigationBar.barStyle = .default
         
-        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.titleTextAttributes = previousTextAttributes
     }
     
     private func showMoreInfoView() {

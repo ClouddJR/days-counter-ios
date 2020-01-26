@@ -124,6 +124,7 @@ class EventBackgroundViewController: UIViewController {
     var event = Event()
     
     private var previousNavBarTintColor: UIColor?
+    private var previousTextAttributes: [NSAttributedString.Key : Any]?
     
     private var shouldYearsSectionBeVisible = false
     private var shouldMonthsSectionBeVisible = false
@@ -181,6 +182,7 @@ class EventBackgroundViewController: UIViewController {
         previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
         
+        previousTextAttributes = navigationController?.navigationBar.titleTextAttributes
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
@@ -463,8 +465,7 @@ class EventBackgroundViewController: UIViewController {
     }
     
     private func restorePreviousNavigationBarTitleColor() {
-        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.titleTextAttributes = previousTextAttributes
     }
     
     private func restorePreviousNavigationBarStyle() {
