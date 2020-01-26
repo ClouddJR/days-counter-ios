@@ -206,12 +206,14 @@ class AddEventViewController: UITableViewController {
         eventNotesTextView.textColor = UIColor.lightGray
         eventNotesTextView.textContainer.lineFragmentPadding = 0
         eventNotesTextView.textContainerInset = .zero
+        eventNotesTextView.backgroundColor = .clear
         
         reminderMessageTextView.delegate = self
         reminderMessageTextView.text = NSLocalizedString("Reminder message", comment: "")
         reminderMessageTextView.textColor = UIColor.lightGray
         reminderMessageTextView.textContainer.lineFragmentPadding = 0
         reminderMessageTextView.textContainerInset = .zero
+        reminderMessageTextView.backgroundColor = .clear
     }
     
     private func updateUIIfInEditMode() {
@@ -244,7 +246,7 @@ class AddEventViewController: UITableViewController {
                 reminderDateAndTimePicker.date = event.reminderDate!
                 if event.reminderMessage != "" {
                     reminderMessageTextView.text = event.reminderMessage
-                    reminderMessageTextView.textColor = .black
+                    reminderMessageTextView.textColor = .label
                 }
                 reminderSwitch.isOn = true
                 reminderDateAndTimeCell.isHidden = false
@@ -257,7 +259,7 @@ class AddEventViewController: UITableViewController {
             eventRepetition = EventRepetition(rawValue: event.repetition)!
             if event.notes != "" {
                 eventNotesTextView.text = event.notes
-                eventNotesTextView.textColor = .black
+                eventNotesTextView.textColor = .label
             }
         }
     }
@@ -458,7 +460,7 @@ extension AddEventViewController: UITextViewDelegate {
             textView.textColor = UIColor.lightGray
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         } else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor.label
             textView.text = text
         } else {
             return true
