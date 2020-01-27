@@ -166,7 +166,7 @@ class EventCell: UICollectionViewCell {
     
     private lazy var yearTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
@@ -191,7 +191,7 @@ class EventCell: UICollectionViewCell {
     
     private lazy var monthTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
@@ -216,7 +216,7 @@ class EventCell: UICollectionViewCell {
     
     private lazy var weekTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
@@ -241,7 +241,7 @@ class EventCell: UICollectionViewCell {
     
     private lazy var dayTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.font = label.font.withSize(Constants.dateStackViewTitle)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
@@ -257,7 +257,7 @@ class EventCell: UICollectionViewCell {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.dateLabelSize, weight: .ultraLight)
-        label.textColor = .darkGray
+        label.textColor = .secondaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
