@@ -23,7 +23,7 @@ class InternetGalleryViewController: UIViewController {
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "image cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = view.backgroundColor
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -50,7 +50,6 @@ class InternetGalleryViewController: UIViewController {
         
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         indicator.center = CGPoint(x: 135.0, y: 65.5)
-        indicator.color = UIColor.black
         indicator.startAnimating()
         
         alertController.view.addSubview(indicator)

@@ -795,7 +795,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="gPf-Lf-o5f" secondAttribute="bottom" id="Ehv-d8-6ex"/>
                             <constraint firstItem="gPf-Lf-o5f" firstAttribute="top" secondItem="PP2-J1-mLK" secondAttribute="top" id="H3w-Ja-q0o"/>
@@ -827,7 +827,7 @@
                     <view key="view" contentMode="scaleToFill" id="1Hg-jw-D3S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GPx-B8-L5l"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y7e-Cg-L6v"/>
@@ -843,7 +843,7 @@
                     <view key="view" contentMode="scaleToFill" id="SSk-QV-min">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="cVc-G9-Xva"/>
                     </view>
                     <navigationItem key="navigationItem" id="kui-QL-9Qn"/>

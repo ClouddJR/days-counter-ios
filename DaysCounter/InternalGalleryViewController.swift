@@ -23,7 +23,7 @@ class InternalGalleryViewController: UIViewController {
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "image cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = view.backgroundColor
         return collectionView
     }()
     

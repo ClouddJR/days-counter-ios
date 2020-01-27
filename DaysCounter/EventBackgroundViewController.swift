@@ -182,7 +182,9 @@ class EventBackgroundViewController: UIViewController {
         previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
         
-        previousTextAttributes = navigationController?.navigationBar.titleTextAttributes
+        if previousTextAttributes != nil {
+            previousTextAttributes = navigationController?.navigationBar.titleTextAttributes
+        }
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
