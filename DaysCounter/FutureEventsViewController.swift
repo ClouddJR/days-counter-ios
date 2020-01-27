@@ -22,7 +22,7 @@ class FutureEventsViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(EventCell.self, forCellReuseIdentifier: "EventCell")
         tableView.separatorStyle = .none
-        tableView.rowHeight = 220
+        tableView.rowHeight = 200
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
