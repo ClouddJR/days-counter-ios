@@ -165,7 +165,7 @@
 		A693802E23CE45460063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A69C67982344792100E2F79A /* InternalGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryViewController.swift; sourceTree = "<group>"; };
 		A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaysCounter.entitlements; sourceTree = "<group>"; };
-		A6A84E2F23294F0E006C6660 /* DaysCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6A84E2F23294F0E006C6660 /* Days Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Days Counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A84E3223294F0E006C6660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A84E3723294F0E006C6660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6A84E3923294F0E006C6660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		A6A84E3023294F0E006C6660 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6A84E2F23294F0E006C6660 /* DaysCounter.app */,
+				A6A84E2F23294F0E006C6660 /* Days Counter.app */,
 				A6D420C823BBA85A0036D097 /* WidgetPastEvents.appex */,
 				A6D420DD23BBA8750036D097 /* WidgetFutureEvents.appex */,
 				A6D420F023BBA8830036D097 /* WidgetUpcomingEvent.appex */,
@@ -413,7 +413,7 @@
 			);
 			name = DaysCounter;
 			productName = DaysCounter;
-			productReference = A6A84E2F23294F0E006C6660 /* DaysCounter.app */;
+			productReference = A6A84E2F23294F0E006C6660 /* Days Counter.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A6D420C723BBA85A0036D097 /* WidgetPastEvents */ = {
@@ -998,7 +998,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.clouddroid.DaysCounter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Days Counter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1019,7 +1019,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.clouddroid.DaysCounter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Days Counter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
