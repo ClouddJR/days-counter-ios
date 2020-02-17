@@ -10,7 +10,7 @@
         <!--Settings View Controller-->
         <scene sceneID="aSz-pe-fBE">
             <objects>
-                <viewController id="HWL-4u-R6v" customClass="SettingsViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HWL-4u-R6v" customClass="SettingsViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JCg-R6-oAm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,18 +32,21 @@
         <!--Days Counter-->
         <scene sceneID="bZw-Zh-gyn">
             <objects>
-                <tabBarController id="k6C-57-ZlP" customClass="EventsTabBarController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="k6C-57-ZlP" customClass="EventsTabBarController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Days Counter" id="jQH-T0-Obu">
                         <barButtonItem key="leftBarButtonItem" image="ic_settings" id="453-ly-8dl">
                             <connections>
                                 <segue destination="57J-vl-flN" kind="presentation" modalPresentationStyle="fullScreen" id="BkH-64-162"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="32Q-Kc-kjY">
-                            <connections>
-                                <segue destination="hdf-mo-aa5" kind="presentation" modalPresentationStyle="fullScreen" id="zqT-vn-A63"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="32Q-Kc-kjY">
+                                <connections>
+                                    <segue destination="hdf-mo-aa5" kind="presentation" modalPresentationStyle="fullScreen" id="zqT-vn-A63"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="icloud.and.arrow.up" catalog="system" id="sxM-kV-YXe"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C7l-6S-Sy7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -62,7 +65,7 @@
         <!--Main View Controller-->
         <scene sceneID="CjF-Y1-Y50">
             <objects>
-                <navigationController id="jUG-KI-I2u" customClass="MainViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="jUG-KI-I2u" customClass="MainViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Gg-R2-sYZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -78,7 +81,7 @@
         <!--Days Counter-->
         <scene sceneID="pXP-C6-a78">
             <objects>
-                <viewController id="D4q-Vb-2wb" customClass="FutureEventsViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D4q-Vb-2wb" customClass="FutureEventsViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tlc-UY-cVo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,7 +103,7 @@
         <!--Event Details View Controller-->
         <scene sceneID="hqL-6z-1mP">
             <objects>
-                <viewController storyboardIdentifier="eventDetailsViewController" id="nbS-Qr-i7l" customClass="EventDetailsViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="eventDetailsViewController" id="nbS-Qr-i7l" customClass="EventDetailsViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aFH-Mz-wyh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +137,7 @@
         <!--Details-->
         <scene sceneID="4xc-Lb-S7s">
             <objects>
-                <tableViewController storyboardIdentifier="addEventViewController" id="XPm-Ee-V8F" customClass="AddEventViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addEventViewController" id="XPm-Ee-V8F" customClass="AddEventViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="OPz-fP-XMM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -539,7 +542,7 @@
         <!--Customize-->
         <scene sceneID="heM-Qh-PRF">
             <objects>
-                <viewController storyboardIdentifier="eventBackgroundViewController" title="Customize" id="Dhp-39-ii9" customClass="EventBackgroundViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="eventBackgroundViewController" title="Customize" id="Dhp-39-ii9" customClass="EventBackgroundViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z49-Fb-YDm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -775,7 +778,7 @@
         <!--Image Crop View Controller-->
         <scene sceneID="VCe-T8-emy">
             <objects>
-                <viewController storyboardIdentifier="imageCropViewController" extendedLayoutIncludesOpaqueBars="YES" id="wBS-HC-5jd" customClass="ImageCropViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="imageCropViewController" extendedLayoutIncludesOpaqueBars="YES" id="wBS-HC-5jd" customClass="ImageCropViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PP2-J1-mLK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -823,7 +826,7 @@
         <!--Internet Gallery View Controller-->
         <scene sceneID="7Y0-07-xHH">
             <objects>
-                <viewController storyboardIdentifier="internetGalleryViewController" id="FeI-3y-7Pr" customClass="InternetGalleryViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="internetGalleryViewController" id="FeI-3y-7Pr" customClass="InternetGalleryViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Hg-jw-D3S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -839,7 +842,7 @@
         <!--Internal Gallery View Controller-->
         <scene sceneID="kSi-Rb-X6K">
             <objects>
-                <viewController storyboardIdentifier="internalGalleryViewController" id="rjC-Wo-eXz" customClass="InternalGalleryViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="internalGalleryViewController" id="rjC-Wo-eXz" customClass="InternalGalleryViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SSk-QV-min">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -855,7 +858,7 @@
         <!--Repetition Table View Controller-->
         <scene sceneID="Aia-W9-QuW">
             <objects>
-                <tableViewController id="0FY-TZ-TUn" customClass="RepetitionTableViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0FY-TZ-TUn" customClass="RepetitionTableViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="R4w-rx-Pzp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -995,7 +998,7 @@
         <!--Days Counter-->
         <scene sceneID="GhS-Cf-kXu">
             <objects>
-                <viewController id="EIm-FR-rw4" customClass="PastEventsViewController" customModule="DaysCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EIm-FR-rw4" customClass="PastEventsViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="od7-ck-XXV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1073,6 +1076,7 @@
         <image name="ic-sand" width="25" height="25"/>
         <image name="ic_infinity" width="25" height="25"/>
         <image name="ic_settings" width="25" height="25"/>
+        <image name="icloud.and.arrow.up" catalog="system" width="64" height="54"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AxO-a6-LVW"/>
