@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8Y-87-gCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126.0869565217395" y="-866.51785714285711"/>
+            <point key="canvasLocation" x="4802.898550724638" y="-703.125"/>
         </scene>
         <!--Days Counter-->
         <scene sceneID="bZw-Zh-gyn">
@@ -45,7 +45,11 @@
                                     <segue destination="hdf-mo-aa5" kind="presentation" modalPresentationStyle="fullScreen" id="zqT-vn-A63"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="icloud.and.arrow.up" catalog="system" id="sxM-kV-YXe"/>
+                            <barButtonItem title="Item" image="icloud.and.arrow.up" catalog="system" id="sxM-kV-YXe">
+                                <connections>
+                                    <action selector="login:" destination="k6C-57-ZlP" id="ksA-PB-DIT"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C7l-6S-Sy7">
@@ -1069,7 +1073,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlI-Uz-NhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2215.9420289855075" y="-866.51785714285711"/>
+            <point key="canvasLocation" x="3828.985507246377" y="-703.125"/>
         </scene>
     </scenes>
     <resources>

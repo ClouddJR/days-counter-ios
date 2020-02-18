@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A6A84E2E23294F0E006C6660"
-               BuildableName = "DaysCounter.app"
+               BuildableName = "Days Counter.app"
                BlueprintName = "DaysCounter"
                ReferencedContainer = "container:DaysCounter.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A6A84E2E23294F0E006C6660"
-            BuildableName = "DaysCounter.app"
+            BuildableName = "Days Counter.app"
             BlueprintName = "DaysCounter"
             ReferencedContainer = "container:DaysCounter.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A6A84E2E23294F0E006C6660"
-            BuildableName = "DaysCounter.app"
+            BuildableName = "Days Counter.app"
             BlueprintName = "DaysCounter"
             ReferencedContainer = "container:DaysCounter.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A6A84E2E23294F0E006C6660"
-            BuildableName = "DaysCounter.app"
+            BuildableName = "Days Counter.app"
             BlueprintName = "DaysCounter"
             ReferencedContainer = "container:DaysCounter.xcodeproj">
          </BuildableReference>

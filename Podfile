@@ -6,6 +6,14 @@ end
 
 target 'DaysCounter' do
   shared_pods
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/OAuth'
+  pod 'FirebaseUI/Email'
 end
 
 target 'WidgetPastEvents' do

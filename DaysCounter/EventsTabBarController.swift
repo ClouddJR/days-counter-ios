@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseUI
 
-class EventsTabBarController: UITabBarController {
+class EventsTabBarController: UITabBarController, FUIAuthDelegate {
     
     private var userDefaultsObserver: NSKeyValueObservation?
 
@@ -38,5 +39,79 @@ class EventsTabBarController: UITabBarController {
     deinit {
         userDefaultsObserver?.invalidate()
         userDefaultsObserver = nil
+    }
+    
+    @IBAction func login(_ sender: UIBarButtonItem) {
+        if let user = Auth.auth().currentUser {
+            displayAlreadyLoggedInAlert(currentEmail: user.email)
+            return
+        }
+        
+        guard let authUI = FUIAuth.defaultAuthUI() else {
+            return
+        }
+        
+        authUI.delegate = self
+        let emailAuth = FUIEmailAuth(authAuthUI: authUI,
+                                     signInMethod: EmailPasswordAuthSignInMethod,
+                                     forceSameDevice: false,
+                                     allowNewEmailAccounts: true,
+                                     requireDisplayName: false,
+                                     actionCodeSetting: ActionCodeSettings())
+        let providers: [FUIAuthProvider] = [
+            emailAuth,
+            FUIGoogleAuth(),
+            FUIOAuth.appleAuthProvider()
+        ]
+        authUI.providers = providers
+        
+        let authVC = authUI.authViewController()
+        authVC.modalPresentationStyle = .fullScreen
+        present(authVC, animated: true, completion: nil)
+    }
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        if let error = error, let errCode = FUIAuthErrorCode(rawValue: UInt(error._code)) {
+            if errCode != .userCancelledSignIn {
+                displayAlert(withLoginError: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func displayAlreadyLoggedInAlert(currentEmail: String?) {
+        let message = NSLocalizedString("You are already logged in and your events are being synchronized", comment: "")
+        let account = NSLocalizedString("Account: ", comment: "")
+        let alertMessage = currentEmail == nil ? message : message + ".\n\n" + account + currentEmail!
+        
+        let alert = UIAlertController(title: NSLocalizedString("Information", comment: ""), message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Sign out", comment: ""), style: .destructive, handler: { (_) in
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print("\(error)")
+            }
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    private func displayAlert(withLoginError: String) {
+        let alert = UIAlertController(title: NSLocalizedString("Login failed", comment: ""), message: withLoginError, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return LoginViewController(authUI: authUI)
+    }
+    
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
+        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+            return true
+        }
+        
+        return false
     }
 }

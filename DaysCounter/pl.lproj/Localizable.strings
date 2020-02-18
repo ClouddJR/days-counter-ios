@@ -87,3 +87,14 @@
 "There are no past events" = "Brak wydarzeń z przeszłości";
 "There are no future events" = "Brak wydarzeń z przyszłości";
 "There are no upcoming events" = "Brak nadchodzących wydarzeń";
+
+//EventsTabBarController
+"You are already logged in and your events are being synchronized" = "Jesteś już zalogowany i Twoje wydarzenia są synchronizowane";
+"Account: " = "Konto: ";
+"Information" = "Informacja";
+"Sign out" = "Wyloguj się";
+"Login failed" = "Logowanie nieudane";
+
+//LoginViewController
+"Welcome" = "Witaj";
+"Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Zalogowanie pozwala na synchronizację Twoich wydarzeń z chmurą, dzięki czemu będą one dostępne na wszystkich Twoich urządzeniach.";

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         changeDefaultRealmPath()
         repeatEventsIfNecessary()
+        //window?.tintColor = UIColor(red: 116/255, green: 242/255, blue: 158/255, alpha: 1.0)
+        FirebaseApp.configure()
         return true
     }
 
