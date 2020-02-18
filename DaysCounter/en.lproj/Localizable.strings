@@ -1,4 +1,4 @@
-/*
+/* 
   Localizable.strings
   DaysCounter
 
@@ -87,3 +87,14 @@
 "There are no past events" = "There are no past events";
 "There are no future events" = "There are no future events";
 "There are no upcoming events" = "There are no upcoming events";
+
+//EventsTabBarController
+"You are already logged in and your events are being synchronized" = "You are already logged in and your events are being synchronized";
+"Account: " = "Account: ";
+"Information" = "Information";
+"Sign out" = "Sign out";
+"Login failed" = "Login failed";
+
+//LoginViewController
+"Welcome" = "Welcome";
+"Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices.";
