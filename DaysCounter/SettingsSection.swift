@@ -46,24 +46,6 @@ enum GeneralSection: Int, CaseIterable {
     }
 }
 
-enum BackupSection: Int, CaseIterable {
-    case ImportEvents, ExportEvents
-    
-    static func getOptionTitle(for option: BackupSection) -> String {
-        switch option {
-        case .ImportEvents: return NSLocalizedString("Import events", comment: "")
-        case .ExportEvents: return NSLocalizedString("Export events", comment: "")
-        }
-    }
-    
-    static func getOptionSubtitle(for option: BackupSection) -> String {
-        switch option {
-        case .ImportEvents: return ""
-        case .ExportEvents: return ""
-        }
-    }
-}
-
 enum AboutSection: Int, CaseIterable {
     case PrivacyPolicy, ContactMe
     

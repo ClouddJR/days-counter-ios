@@ -23,8 +23,6 @@
 		A644119523AAA76000FE3079 /* SortingOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644119423AAA76000FE3079 /* SortingOrderViewController.swift */; };
 		A644119723AAA76D00FE3079 /* DefaultSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */; };
 		A6557D6E235885FD00D224EC /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6557D6D235885FD00D224EC /* EventCell.swift */; };
-		A65D698F23B6354100497E4E /* BackupFolderBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */; };
-		A65D699123B63DE800497E4E /* BackupFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D699023B63DE800497E4E /* BackupFile.swift */; };
 		A663228D235F67090073C3C3 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663228C235F67090073C3C3 /* EventDetailsViewController.swift */; };
 		A672CDDE23CF9D73003C21CD /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
 		A672CDDF23CF9D73003C21CD /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
@@ -157,8 +155,6 @@
 		A644119423AAA76000FE3079 /* SortingOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOrderViewController.swift; sourceTree = "<group>"; };
 		A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSectionViewController.swift; sourceTree = "<group>"; };
 		A6557D6D235885FD00D224EC /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupFolderBrowserViewController.swift; sourceTree = "<group>"; };
-		A65D699023B63DE800497E4E /* BackupFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupFile.swift; path = DaysCounter/BackupFile.swift; sourceTree = SOURCE_ROOT; };
 		A663228C235F67090073C3C3 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		A672CDE223CF9D73003C21CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A672CDE423CF9D75003C21CD /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = pl; path = pl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -306,9 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */,
-				A65D699023B63DE800497E4E /* BackupFile.swift */,
 				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
-				A65D698E23B6354100497E4E /* BackupFolderBrowserViewController.swift */,
 				A61702D623B201D900912C13 /* EventsTabBarController.swift */,
 				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
 				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
@@ -726,7 +720,6 @@
 			files = (
 				A6557D6E235885FD00D224EC /* EventCell.swift in Sources */,
 				A6D75DBF23866A9C00ECBD16 /* EventDetailsBottomView.swift in Sources */,
-				A65D699123B63DE800497E4E /* BackupFile.swift in Sources */,
 				A67FAD0023A7F48D000265AD /* SettingsTableViewCell.swift in Sources */,
 				A6AABAB62330C58700264B8B /* Extensions.swift in Sources */,
 				A6ACB3F4233F6F3400E8FABA /* DateCalculator.swift in Sources */,
@@ -738,7 +731,6 @@
 				A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */,
 				A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */,
 				A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */,
-				A65D698F23B6354100497E4E /* BackupFolderBrowserViewController.swift in Sources */,
 				A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */,
 				A6BD8EE4234D0E3600E76FBE /* Event.swift in Sources */,
 				A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */,

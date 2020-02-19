@@ -80,7 +80,7 @@
 
 //SettingsViewController
 "Settings" = "Ustawienia";
-"Can't send email from this device." = "Nie można wysłać wiadomości z tego urządzenia.";
+"Can't send an email from this device." = "Nie można wysłać wiadomości z tego urządzenia.";
 "Error" = "Błąd";
 
 //Widgets
