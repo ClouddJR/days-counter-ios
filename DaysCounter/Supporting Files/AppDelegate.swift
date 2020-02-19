@@ -56,23 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func repeatEventsIfNecessary() {
-        let realm = try! Realm()
-        let date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())! as NSDate
-        let pastEvents = realm.objects(Event.self).filter(NSPredicate(format: "date < %@", date))
-        for event in pastEvents {
-            if !event.date!.representsTheSameDayAs(otherDate: Date()) {
-                let eventRepetition = EventRepetition(rawValue: event.repetition)!
-                try! realm.write {
-                    switch eventRepetition {
-                    case .once: return
-                    case .daily: event.date = event.date?.add(days: 1)
-                    case .weekly: event.date = event.date?.add(days: 7)
-                    case .monthly: event.date = event.date?.add(months: 1)
-                    case .yearly: event.date = event.date?.add(years: 1)
-                    }
-                }
-            }
-        }
+        let databaseRepository = DatabaseRepository()
+        databaseRepository.repeatEventsIfNecessary()
     }
 
 }
