@@ -49,15 +49,8 @@ class EventBackgroundViewController: UIViewController {
     
     @IBAction func addEvent(_ sender: Any) {
         prepareEvent()
-        let eventImage = eventImageView.image!
-        EventOperator.setImageAndSaveLocally(image: eventImage, for: event)
-        
-        let realm = try! Realm()
-        try! realm.write {
-            event.id = event.id ?? EventOperator.getNextId()
-            realm.add(event, update: .modified)
-        }
-        
+        EventOperator.setImageAndSaveLocally(image: eventImageView.image!, for: event)
+        databaseRepository.addEvent(event)
         scheduleNotificationIfSet()
         presentingViewController?.dismiss(animated: true)
     }
@@ -118,6 +111,7 @@ class EventBackgroundViewController: UIViewController {
     }()
     
     // MARK:  variables
+    private let databaseRepository = DatabaseRepository()
     
     var isInEditMode = false
     

@@ -11,6 +11,9 @@
 		281C68819E43AE18FCD559D6 /* Pods_WidgetUpcomingEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF553D311315023CA4931BBF /* Pods_WidgetUpcomingEvent.framework */; };
 		80008EDE393F01CFF8A46B1B /* Pods_WidgetFutureEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */; };
 		A60A514F23FB1CDA007BB811 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A514E23FB1CDA007BB811 /* StoreKit.framework */; };
+		A60FCB0323FD2E2800EA2D35 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */; };
+		A60FCB0523FD2EEC00EA2D35 /* LocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */; };
+		A60FCB0723FD2EF900EA2D35 /* RemoteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */; };
 		A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61702D623B201D900912C13 /* EventsTabBarController.swift */; };
 		A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */; };
 		A61F29B223D0E3630047C174 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61F29B423D0E3630047C174 /* InfoPlist.strings */; };
@@ -139,6 +142,9 @@
 		6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.release.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.release.xcconfig"; sourceTree = "<group>"; };
 		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		A60A514E23FB1CDA007BB811 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
+		A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabase.swift; sourceTree = "<group>"; };
+		A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDatabase.swift; sourceTree = "<group>"; };
 		A61702D623B201D900912C13 /* EventsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTabBarController.swift; sourceTree = "<group>"; };
 		A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		A61F29B323D0E3630047C174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 				A61702D623B201D900912C13 /* EventsTabBarController.swift */,
 				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
 				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
+				A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */,
+				A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */,
+				A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */,
 				A6ADF50923AEA16500CACAD6 /* Defaults.swift */,
 				A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */,
 				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
@@ -735,8 +744,11 @@
 				A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */,
 				A644119523AAA76000FE3079 /* SortingOrderViewController.swift in Sources */,
 				A6763F132345CA3700A81500 /* InternetGalleryViewController.swift in Sources */,
+				A60FCB0323FD2E2800EA2D35 /* DatabaseRepository.swift in Sources */,
 				A644119723AAA76D00FE3079 /* DefaultSectionViewController.swift in Sources */,
 				A67FACFE23A7F377000265AD /* SettingsViewController.swift in Sources */,
+				A60FCB0523FD2EEC00EA2D35 /* LocalDatabase.swift in Sources */,
+				A60FCB0723FD2EF900EA2D35 /* RemoteDatabase.swift in Sources */,
 				A68DE100233D180500188579 /* FontColorPickerView.swift in Sources */,
 				A6F0167723B9F7A60017D80F /* MainViewController.swift in Sources */,
 				A6B924282348D135005F30F5 /* ImagesRequest.swift in Sources */,

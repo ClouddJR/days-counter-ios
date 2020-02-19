@@ -11,7 +11,7 @@ import RealmSwift
 
 class FutureEventsViewController: UIViewController {
     
-    var realm: Realm!
+    let databaseRepository = DatabaseRepository()
     var futureEvents: Results<Event>!
     
     private var userDefaultsObserver: NSKeyValueObservation?
@@ -32,7 +32,7 @@ class FutureEventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRealm()
+        getFutureEvents()
         addTableViewAsSubview()
         sortEvents()
         listenForDataChanges()
@@ -49,9 +49,8 @@ class FutureEventsViewController: UIViewController {
         userDefaultsObserver = nil
     }
     
-    private func initRealm() {
-        realm = try! Realm()
-        futureEvents = realm.objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate()))
+    private func getFutureEvents() {
+        futureEvents = databaseRepository.getFutureEvents()
     }
     
     private func addTableViewAsSubview() {

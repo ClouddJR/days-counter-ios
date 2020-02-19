@@ -272,7 +272,7 @@ class EventDetailsViewController: UIViewController {
         return view
     }()
     
-    let realm = try! Realm()
+    private let databaseRepository = DatabaseRepository()
     
     var eventId: String = ""
     private var event: Event!
@@ -324,9 +324,7 @@ class EventDetailsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (action) in
             self.deleteLocalImage(at: URL(string: self.event.localImagePath)!)
             self.cancelNotification()
-            self.realm.beginWrite()
-            self.realm.delete(self.event)
-            try! self.realm.commitWrite()
+            self.databaseRepository.deleteEvent(event: self.event)
             self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true)
@@ -378,7 +376,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func getEventFromDB() {
-        event = try! Realm().objects(Event.self).filter(NSPredicate(format: "id = %@", eventId)).first
+        event = databaseRepository.getEvent(with: eventId)
     }
     
     private func addSubviews() {
