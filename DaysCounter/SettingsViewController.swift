@@ -12,8 +12,6 @@ import RealmSwift
 
 class SettingsViewController: UIViewController {
     
-    let realm = try! Realm()
-    
     private var tableView: UITableView!
     
     @IBAction func dismiss(_ sender: Any) {
@@ -58,14 +56,6 @@ extension SettingsViewController: UITableViewDelegate {
                 navigationController?.pushViewController(vc, animated: true)
             default: return
             }
-//        case .Backup:
-//            let backupSection = BackupSection(rawValue: indexPath.row)!
-//            switch backupSection {
-//            case .ExportEvents:
-//                exportEvents()
-//            case .ImportEvents:
-//                importEvents()
-//            }
             return
         case .About:
             let aboutSection = AboutSection(rawValue: indexPath.row)!
@@ -80,39 +70,6 @@ extension SettingsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    private func exportEvents() {
-        let paths = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask)
-        if let filePath = getFirstPathWithAppendedFileName(from: paths) {
-            do {
-                try realm.writeCopy(toFile: filePath)
-                print("Saved to: \(filePath.absoluteString)")
-            } catch {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    private func getFirstPathWithAppendedFileName(from paths: [URL]) -> URL? {
-        if var firstPath = paths.first {
-            firstPath = firstPath.appendingPathComponent("backups")
-            if !FileManager.default.fileExists(atPath: firstPath.path) {
-                do {
-                    try FileManager.default.createDirectory(atPath: firstPath.path, withIntermediateDirectories: true)
-                } catch {
-                    print("Error \(error)")
-                }
-            }
-            return firstPath.appendingPathComponent("test.realm")
-        } else {
-            return nil
-        }
-    }
-    
-    private func importEvents() {
-        let vc = BackupFolderBrowserViewController(initialPath: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     private func openPrivacyPolicyPage() {
         let policyURL = "https://sites.google.com/view/dcprivacypolicy"
         if let url = URL(string: policyURL) {
@@ -122,7 +79,7 @@ extension SettingsViewController: UITableViewDelegate {
     
     private func showEmailComposer() {
         guard MFMailComposeViewController.canSendMail() else {
-            showErrorAlert(with: NSLocalizedString("Can't send email from this device.", comment: ""))
+            showErrorAlert(with: NSLocalizedString("Can't send an email from this device.", comment: ""))
             return
         }
         
@@ -168,7 +125,6 @@ extension SettingsViewController: UITableViewDataSource {
         
         switch section {
         case .General: return GeneralSection.allCases.count
-//        case .Backup: return BackupSection.allCases.count
         case .About: return AboutSection.allCases.count
         }
     }
@@ -182,9 +138,6 @@ extension SettingsViewController: UITableViewDataSource {
         case .General:
             cell.updateCellTitle(with: GeneralSection.getOptionTitle(for: GeneralSection(rawValue: indexPath.row)!))
             cell.updateCellSubtitle(with: GeneralSection.getOptionSubtitle(for: GeneralSection(rawValue: indexPath.row)!))
-//        case .Backup:
-//            cell.updateCellTitle(with: BackupSection.getOptionTitle(for: BackupSection(rawValue: indexPath.row)!))
-//            cell.updateCellSubtitle(with: BackupSection.getOptionSubtitle(for: BackupSection(rawValue: indexPath.row)!))
         case .About:
             cell.updateCellTitle(with: AboutSection.getOptionTitle(for: AboutSection(rawValue: indexPath.row)!))
             cell.updateCellSubtitle(with: AboutSection.getOptionSubtitle(for: AboutSection(rawValue: indexPath.row)!))
