@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Event: Object {
+class Event: Object, Codable {
     @objc dynamic var id: String?
     @objc dynamic var name: String?
     @objc dynamic var date: Date?
@@ -32,6 +32,45 @@ class Event: Object {
     
     override class func primaryKey() -> String? {
         return "id"
+    }
+    
+    func isTheSame(as other: Event) -> Bool {
+        return self.id == other.id &&
+            self.name == other.name &&
+            self.date == other.date &&
+            self.isEntireDay == other.isEntireDay &&
+            self.notes == other.notes &&
+            self.repetition == other.repetition &&
+            self.localImagePath == other.localImagePath &&
+            self.cloudImagePath == other.cloudImagePath &&
+            self.areYearsIncluded == other.areYearsIncluded &&
+            self.areMonthsIncluded == other.areMonthsIncluded &&
+            self.areWeeksIncluded == other.areWeeksIncluded &&
+            self.areDaysIncluded == other.areDaysIncluded &&
+            self.isTimeIncluded == other.isTimeIncluded &&
+            self.fontColor == other.fontColor &&
+            self.fontType == other.fontType &&
+            self.imageDim == other.imageDim &&
+            self.createdAt == other.createdAt
+    }
+    
+    func copyValues(from other: Event) {
+        self.name = other.name
+        self.date = other.date
+        self.isEntireDay = other.isEntireDay
+        self.notes = other.notes
+        self.repetition = other.repetition
+        self.localImagePath = other.localImagePath
+        self.cloudImagePath = other.cloudImagePath
+        self.areYearsIncluded = other.areYearsIncluded
+        self.areMonthsIncluded = other.areMonthsIncluded
+        self.areWeeksIncluded = other.areWeeksIncluded
+        self.areDaysIncluded = other.areDaysIncluded
+        self.isTimeIncluded = other.isTimeIncluded
+        self.fontColor = other.fontColor
+        self.fontType = other.fontType
+        self.imageDim = other.imageDim
+        self.createdAt = other.createdAt
     }
 }
 
