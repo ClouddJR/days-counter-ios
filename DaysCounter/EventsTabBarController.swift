@@ -11,6 +11,8 @@ import FirebaseUI
 
 class EventsTabBarController: UITabBarController, FUIAuthDelegate {
     
+    private let userRepository = UserRepository()
+    private let databaseRepository = DatabaseRepository()
     private var userDefaultsObserver: NSKeyValueObservation?
 
     override func viewDidLoad() {
@@ -42,8 +44,8 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
     }
     
     @IBAction func login(_ sender: UIBarButtonItem) {
-        if let user = Auth.auth().currentUser {
-            displayAlreadyLoggedInAlert(currentEmail: user.email)
+        if userRepository.isUserLoggedIn() {
+            displayAlreadyLoggedInAlert(currentEmail: userRepository.getUserEmail())
             return
         }
         
@@ -76,6 +78,10 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
                 displayAlert(withLoginError: error.localizedDescription)
             }
         }
+        
+        if authDataResult != nil {
+            databaseRepository.addLocalEventsToCloud()
+        }
     }
     
     private func displayAlreadyLoggedInAlert(currentEmail: String?) {
@@ -86,11 +92,7 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
         let alert = UIAlertController(title: NSLocalizedString("Information", comment: ""), message: alertMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sign out", comment: ""), style: .destructive, handler: { (_) in
-            do {
-                try Auth.auth().signOut()
-            } catch {
-                print("\(error)")
-            }
+            self.userRepository.signOut()
         }))
         self.present(alert, animated: true)
     }

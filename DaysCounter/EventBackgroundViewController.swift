@@ -50,7 +50,7 @@ class EventBackgroundViewController: UIViewController {
     @IBAction func addEvent(_ sender: Any) {
         prepareEvent()
         EventOperator.setImageAndSaveLocally(image: eventImageView.image!, for: event)
-        databaseRepository.addEvent(event)
+        databaseRepository.addOrUpdateEvent(event)
         scheduleNotificationIfSet()
         presentingViewController?.dismiss(animated: true)
     }

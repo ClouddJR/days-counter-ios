@@ -11,49 +11,92 @@ import RealmSwift
 
 class DatabaseRepository {
     
-    func addEvent(_ event: Event) {
-        let realm = try! Realm()
-        try! realm.write {
-            event.id = event.id ?? EventOperator.getNextId()
-            realm.add(event, update: .modified)
+    let localDatabase: LocalDatabase
+    let remoteDatabase: RemoteDatabase
+    let userRepository: UserRepository
+    
+    init(userRepository: UserRepository = UserRepository(),
+         localDatabase: LocalDatabase = LocalDatabase(),
+         remoteDatabase: RemoteDatabase = RemoteDatabase()) {
+        self.localDatabase = localDatabase
+        self.remoteDatabase = remoteDatabase
+        self.userRepository = userRepository
+    }
+    
+    func addOrUpdateEvent(_ event: Event) {
+        localDatabase.addOrUpdateEvent(event)
+        if userRepository.isUserLoggedIn() {
+            remoteDatabase.addOrUpdateEvent(event)
         }
     }
     
     func getEvent(with id: String) -> Event {
-        return try! Realm().objects(Event.self).filter(NSPredicate(format: "id = %@", id)).first!
+        return localDatabase.getEvent(with: id)
     }
     
     func deleteEvent(event: Event) {
-        let realm = try! Realm()
-        realm.beginWrite()
-        realm.delete(event)
-        try! realm.commitWrite()
+        let eventId = event.id!
+        localDatabase.deleteEvent(event)
+        if userRepository.isUserLoggedIn() {
+            remoteDatabase.deleteEvent(with: eventId)
+        }
     }
     
     func getFutureEvents() -> Results<Event> {
-        let realm = try! Realm()
-        return realm.objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate()))
+        return localDatabase.getFutureEvents()
     }
     
     func getPastEvents() -> Results<Event> {
-        let realm = try! Realm()
-        return realm.objects(Event.self).filter(NSPredicate(format: "date < %@", NSDate()))
+        return localDatabase.getPastEvents()
     }
     
     func repeatEventsIfNecessary() {
         let realm = try! Realm()
         let date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())! as NSDate
-        let pastEvents = realm.objects(Event.self).filter(NSPredicate(format: "date < %@", date))
+        let pastEvents = localDatabase.getPastEvents(date)
         for event in pastEvents {
             if !event.date!.representsTheSameDayAs(otherDate: Date()) {
                 let eventRepetition = EventRepetition(rawValue: event.repetition)!
                 try! realm.write {
                     switch eventRepetition {
                     case .once: return
-                    case .daily: event.date = event.date?.add(days: 1)
-                    case .weekly: event.date = event.date?.add(days: 7)
-                    case .monthly: event.date = event.date?.add(months: 1)
-                    case .yearly: event.date = event.date?.add(years: 1)
+                    case .daily: do {
+                        event.date = event.date?.add(days: 1)
+                        if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
+                        }
+                    case .weekly: do {
+                        event.date = event.date?.add(days: 7)
+                        if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
+                        }
+                    case .monthly: do {
+                        event.date = event.date?.add(months: 1)
+                        if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
+                        }
+                    case .yearly: do {
+                        event.date = event.date?.add(years: 1)
+                        if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func addLocalEventsToCloud() {
+        let events = localDatabase.getAllEvents()
+        remoteDatabase.addEvents(Array(events)) {
+            self.fetchEventsFromTheCloud()
+        }
+    }
+    
+    func fetchEventsFromTheCloud() {
+        if userRepository.isUserLoggedIn() {
+            remoteDatabase.getEvents() { cloudEvents in
+                DispatchQueue(label: "background").async {
+                    autoreleasepool {
+                        cloudEvents.forEach { cloudEvent in
+                            self.localDatabase.updateLocalEvent(basedOn: cloudEvent)
+                        }
                     }
                 }
             }

@@ -14,6 +14,7 @@
 		A60FCB0323FD2E2800EA2D35 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */; };
 		A60FCB0523FD2EEC00EA2D35 /* LocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */; };
 		A60FCB0723FD2EF900EA2D35 /* RemoteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */; };
+		A60FCB0923FD519800EA2D35 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FCB0823FD519800EA2D35 /* UserRepository.swift */; };
 		A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61702D623B201D900912C13 /* EventsTabBarController.swift */; };
 		A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */; };
 		A61F29B223D0E3630047C174 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61F29B423D0E3630047C174 /* InfoPlist.strings */; };
@@ -143,6 +144,7 @@
 		A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
 		A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabase.swift; sourceTree = "<group>"; };
 		A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDatabase.swift; sourceTree = "<group>"; };
+		A60FCB0823FD519800EA2D35 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		A61702D623B201D900912C13 /* EventsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTabBarController.swift; sourceTree = "<group>"; };
 		A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		A61F29B323D0E3630047C174 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
 				A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */,
 				A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */,
+				A60FCB0823FD519800EA2D35 /* UserRepository.swift */,
 				A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */,
 				A6ADF50923AEA16500CACAD6 /* Defaults.swift */,
 				A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */,
@@ -721,6 +724,7 @@
 				A6557D6E235885FD00D224EC /* EventCell.swift in Sources */,
 				A6D75DBF23866A9C00ECBD16 /* EventDetailsBottomView.swift in Sources */,
 				A67FAD0023A7F48D000265AD /* SettingsTableViewCell.swift in Sources */,
+				A60FCB0923FD519800EA2D35 /* UserRepository.swift in Sources */,
 				A6AABAB62330C58700264B8B /* Extensions.swift in Sources */,
 				A6ACB3F4233F6F3400E8FABA /* DateCalculator.swift in Sources */,
 				A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */,
