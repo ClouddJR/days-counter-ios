@@ -83,6 +83,10 @@ class EventOperator {
         return NSUUID().uuidString
     }
     
+    static func doesEventContainsPreInstalledImage(_ event: Event) -> Bool {
+        return event.localImagePath.contains(IMAGE_FILE_PREFIX)
+    }
+    
     static func updateFontColor(with color: UIColor, for event: Event) {
         let data = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
         event.fontColor = data
@@ -122,26 +126,25 @@ class EventOperator {
         return date!
     }
     
-    static func setImageAndSaveLocally(image: UIImage, for event: Event) {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    static func setImageAndSaveLocally(image: UIImage, for event: Event, _ isInEditMode: Bool) {
         let imageInfo = String(describing: image)
         
         if isImageFromPreInstalledGallery(imageInfo) {
             let localImageName = imageInfo.slice(from: "named(main: ", to: ")")!
             event.localImagePath = "\(IMAGE_FILE_PREFIX)\(localImageName)"
         } else {
-            if let filePath = getFirstPathWithAppendedFileName(from: paths) {
+            if isInEditMode && image.pngData() == UIImage(contentsOfFile: event.localImagePath)?.pngData() {
+                return
+            }
+            if let filePath = getFilePathWithAppendedFileName() {
                 saveImageLocally(image: image, on: filePath)
-                event.localImagePath = filePath.absoluteString
+                event.localImagePath = filePath.path
             }
         }
     }
     
-    private static func isImageFromPreInstalledGallery(_ imageInfo: String) -> Bool {
-        return imageInfo.contains("named")
-    }
-    
-    private static func getFirstPathWithAppendedFileName(from paths: [URL]) -> URL? {
+    static func getFilePathWithAppendedFileName() -> URL? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         if var firstPath = paths.first {
             firstPath = firstPath.appendingPathComponent("images")
             if !FileManager.default.fileExists(atPath: firstPath.path) {
@@ -155,6 +158,10 @@ class EventOperator {
         } else {
             return nil
         }
+    }
+    
+    private static func isImageFromPreInstalledGallery(_ imageInfo: String) -> Bool {
+        return imageInfo.contains("named(main:")
     }
     
     private static func saveImageLocally(image: UIImage, on path: URL) {

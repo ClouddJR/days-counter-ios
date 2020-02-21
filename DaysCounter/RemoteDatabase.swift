@@ -30,6 +30,48 @@ class RemoteDatabase {
         }
     }
     
+    func addImage(for event: Event) {
+        if !EventOperator.doesEventContainsPreInstalledImage(event) &&
+            FileManager.default.fileExists(atPath: event.localImagePath) {
+            if event.cloudImagePath.isEmpty {
+                setUpCloudImagePath(for: event)
+            }
+            
+            let storageRef = Storage.storage().reference(withPath: event.cloudImagePath)
+            storageRef.putFile(from: URL(fileURLWithPath: event.localImagePath), metadata: nil) { metadata, error in
+                guard let metadata = metadata else {
+                    return
+                }
+                let size = metadata.size
+                print(size)
+            }
+        }
+    }
+    
+    func getImage(for event: Event, finishedListener: @escaping( (URL) -> ())) {
+        let storageRef = Storage.storage().reference(withPath: event.cloudImagePath)
+        if let filePath = EventOperator.getFilePathWithAppendedFileName() {
+            storageRef.write(toFile: filePath) { url, error in
+              if let error = error {
+                print("Error downloading an image: \(error)")
+              } else {
+                finishedListener(filePath)
+              }
+            }
+        }
+    }
+    
+    private func setUpCloudImagePath(for event: Event) {
+        let imageName = URL(fileURLWithPath: event.localImagePath).lastPathComponent
+        let path = "\(userRepository.getUserId())/\(event.id!)/\(imageName)"
+        event.cloudImagePath = path
+    }
+    
+    func deleteImage(for event: Event) {
+        let storageRef = Storage.storage().reference(withPath: event.cloudImagePath)
+        storageRef.delete()
+    }
+    
     func addEvents(_ events: [Event], finishedListener: @escaping( () -> ())) {
         //A batched write can contain up to 500 operations
         let db =  Firestore.firestore()
