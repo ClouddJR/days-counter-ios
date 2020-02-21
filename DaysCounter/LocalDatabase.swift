@@ -11,10 +11,13 @@ import RealmSwift
 
 class LocalDatabase {
     
+    func setId(for event: Event) {
+        event.id = event.id ?? EventOperator.getNextId()
+    }
+    
     func addOrUpdateEvent(_ event: Event) {
         let realm = try! Realm()
         try! realm.write {
-            event.id = event.id ?? EventOperator.getNextId()
             realm.add(event, update: .modified)
         }
     }
@@ -29,7 +32,16 @@ class LocalDatabase {
                 }
             }
         } else {
-            realm.add(cloudEvent, update: .modified)
+            try! realm.write {
+                realm.add(cloudEvent, update: .modified)
+            }
+        }
+    }
+    
+    func updateLocalImagePath(forEvent event: Event, withPath path: String) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.objects(Event.self).filter(NSPredicate(format: "id = %@", event.id!)).first!.localImagePath = path
         }
     }
     
