@@ -56,6 +56,8 @@
 		A69DE1CF23BBAB9300C7801F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
 		A69DE1D023BBAB9300C7801F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
 		A69DE1D123BBAB9300C7801F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
+		A69E54072402D29400716618 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69E54062402D29400716618 /* IAPHelper.swift */; };
+		A69E54092402D2D500716618 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69E54082402D2D500716618 /* Products.swift */; };
 		A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A84E3223294F0E006C6660 /* AppDelegate.swift */; };
 		A6A84E3823294F0E006C6660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3623294F0E006C6660 /* Main.storyboard */; };
 		A6A84E3A23294F0E006C6660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
@@ -178,6 +180,8 @@
 		A693802E23CE45460063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A69C67982344792100E2F79A /* InternalGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryViewController.swift; sourceTree = "<group>"; };
 		A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaysCounter.entitlements; sourceTree = "<group>"; };
+		A69E54062402D29400716618 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		A69E54082402D2D500716618 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		A6A84E2F23294F0E006C6660 /* Days Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Days Counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A84E3223294F0E006C6660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A84E3723294F0E006C6660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -276,6 +280,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A69E54052402D26000716618 /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				A69E54062402D29400716618 /* IAPHelper.swift */,
+				A69E54082402D2D500716618 /* Products.swift */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
 		A6A84E2623294F0E006C6660 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +316,7 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				A69E54052402D26000716618 /* Purchases */,
 				A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */,
 				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
 				A61702D623B201D900912C13 /* EventsTabBarController.swift */,
@@ -725,6 +739,7 @@
 				A6D75DBF23866A9C00ECBD16 /* EventDetailsBottomView.swift in Sources */,
 				A67FAD0023A7F48D000265AD /* SettingsTableViewCell.swift in Sources */,
 				A60FCB0923FD519800EA2D35 /* UserRepository.swift in Sources */,
+				A69E54072402D29400716618 /* IAPHelper.swift in Sources */,
 				A6AABAB62330C58700264B8B /* Extensions.swift in Sources */,
 				A6ACB3F4233F6F3400E8FABA /* DateCalculator.swift in Sources */,
 				A6A84E3323294F0E006C6660 /* AppDelegate.swift in Sources */,
@@ -736,6 +751,7 @@
 				A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */,
 				A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */,
 				A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */,
+				A69E54092402D2D500716618 /* Products.swift in Sources */,
 				A6BD8EE4234D0E3600E76FBE /* Event.swift in Sources */,
 				A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */,
 				A644119523AAA76000FE3079 /* SortingOrderViewController.swift in Sources */,
