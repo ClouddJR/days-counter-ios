@@ -71,6 +71,13 @@ class InternetGalleryViewController: UIViewController {
         return alertController
     }()
     
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .secondaryLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var imagesRequest = ImagesRequest()
     
     private var internetImages = [InternetImage]() {
@@ -97,6 +104,7 @@ class InternetGalleryViewController: UIViewController {
         view.addSubview(unsplashLabel)
         view.addSubview(imagesCollectionView)
         view.addSubview(activityIndicator)
+        view.addSubview(errorLabel)
     }
     
     private func addConstraints() {
@@ -104,6 +112,7 @@ class InternetGalleryViewController: UIViewController {
         addUnsplashLabelConstraints()
         addImagesCollectionViewConstraints()
         addActivityIndicatorViewConstraints()
+        addErrorLabelConstraints()
     }
     
     private func addSearchBarConstraints() {
@@ -129,12 +138,18 @@ class InternetGalleryViewController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
+    private func addErrorLabelConstraints() {
+        errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     private func fetchImages() {
         imagesRequest.getImages(with: searchBar.text ?? "", for: currentPage) { [weak self] result in
             switch result {
             case .failure( _):
                 self?.presentErrorAlertController()
             case .success(let images):
+                self?.displayPotentialInfoAboutNoImages(self!.currentPage, images)
                 self?.appendDownloadedImages(images)
             }
             self?.hideActivityIndicator()
@@ -156,6 +171,18 @@ class InternetGalleryViewController: UIViewController {
     private func presentErrorAlertController() {
         DispatchQueue.main.async { [weak self] in
             self?.present(self!.errorAlertController, animated: true)
+        }
+    }
+    
+    private func displayErrorLabel(withText: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.errorLabel.text = withText
+        }
+    }
+    
+    private func displayPotentialInfoAboutNoImages(_ currentPage: Int, _ images: [InternetImage]) {
+        if currentPage == 1 && images.isEmpty {
+            displayErrorLabel(withText: NSLocalizedString("No images found", comment: ""))
         }
     }
     
@@ -296,6 +323,7 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
 extension InternetGalleryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         hideKeyboard()
+        errorLabel.text = ""
         showActivityIndicator()
         internetImages = []
         fetchedPages = []
