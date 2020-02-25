@@ -128,9 +128,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     if identifier == Products.Premium {
         Defaults.setPremiumUser(true)
+        NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: identifier)
     }
-    
-    NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: identifier)
   }
 }
 
