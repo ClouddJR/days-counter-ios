@@ -172,7 +172,7 @@ class AddEventViewController: UITableViewController {
     }
     
     private func displayAlertAboutRequiredFields() {
-        let alert = UIAlertController(title: NSLocalizedString("Required fields", comment: ""), message: NSLocalizedString("Name and date fields are required.", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Name And Date Fields Are Required", comment: ""), message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }
@@ -287,7 +287,7 @@ class AddEventViewController: UITableViewController {
         center.getNotificationSettings { settings in
             guard settings.authorizationStatus != .authorized else {return}
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: NSLocalizedString("Notification permission", comment: ""), message: NSLocalizedString("The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.", comment: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("Notification Permission", comment: ""), message: NSLocalizedString("The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self.present(alert, animated: true)
             }
@@ -356,7 +356,7 @@ class AddEventViewController: UITableViewController {
     }
     
     private func displayAlertAboutRequiredPermissionForReminders() {
-        let alert = UIAlertController(title: NSLocalizedString("Grant permission", comment: ""), message: NSLocalizedString("In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Grant Permission", comment: ""), message: NSLocalizedString("In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }

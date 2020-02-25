@@ -85,11 +85,11 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
     }
     
     private func displayAlreadyLoggedInAlert(currentEmail: String?) {
-        let message = NSLocalizedString("You are already logged in and your events are being synchronized", comment: "")
+        let message = NSLocalizedString("Your events are being synchronized", comment: "")
         let account = NSLocalizedString("Account: ", comment: "")
         let alertMessage = currentEmail == nil ? message : message + ".\n\n" + account + currentEmail!
         
-        let alert = UIAlertController(title: NSLocalizedString("Information", comment: ""), message: alertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("You Are Already Logged In", comment: ""), message: alertMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sign out", comment: ""), style: .destructive, handler: { (_) in
             self.userRepository.signOut()
@@ -98,7 +98,7 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
     }
     
     private func displayAlert(withLoginError: String) {
-        let alert = UIAlertController(title: NSLocalizedString("Login failed", comment: ""), message: withLoginError, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Login Failed", comment: ""), message: withLoginError, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }

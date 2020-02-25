@@ -66,7 +66,7 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var errorAlertController: UIAlertController = {
-        let alertController = UIAlertController(title: NSLocalizedString("There was a problem", comment: ""), message: NSLocalizedString("Check your Internet connection.", comment: ""), preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("Images Could Not Be Loaded", comment: ""), message: NSLocalizedString("Check your Internet connection.", comment: ""), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         return alertController
     }()
