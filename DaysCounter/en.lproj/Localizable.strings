@@ -12,13 +12,12 @@
 "Weekly" = "Weekly";
 "Monthly" = "Monthly";
 "Yearly" = "Yearly";
-"Required fields" = "Required fields";
-"Name and date fields are required." = "Name and date fields are required.";
+"Name And Date Fields Are Required" = "Name And Date Fields Are Required";
 "Notes" = "Notes";
 "Reminder message" = "Reminder message";
-"Notification permission" = "Notification permission";
+"Notification Permission" = "Notification Permission";
 "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it." = "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.";
-"Grant permission" = "Grant permission";
+"Grant Permission" = "Grant Permission";
 "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it." = "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.";
 
 //Defaults
@@ -54,7 +53,7 @@
 "None" = "None";
 
 //EventDetailsViewController;
-"The screenshot could not be taken" = "The screenshot could not be taken";
+"The Screenshot Could Not Be Taken" = "The Screenshot Could Not Be Taken";
 "There was an error while getting the screen image for sharing." = "There was an error while getting the screen image for sharing.";
 "Are you sure you want to delete this event?" = "Are you sure you want to delete this event?";
 "This operation cannot be undone." = "This operation cannot be undone.";
@@ -63,8 +62,9 @@
 //InternetGalleryViewController
 "Search an image" = "Search an image";
 "Downloading the image\n\n" = "Downloading the image\n\n";
-"There was a problem" = "There was a problem";
+"Images Could Not Be Loaded" = "Images Could Not Be Loaded";
 "Check your Internet connection." = "Check your Internet connection.";
+"No images found" = "No images found";
 
 //SettingsSection
 "General" = "General";
@@ -80,7 +80,7 @@
 
 //SettingsViewController
 "Settings" = "Settings";
-"Can't send an email from this device." = "Can't send an email from this device.";
+"Can't Send An Email From This Device" = "Can't Send An Email From This Device";
 "Error" = "Error";
 
 //Widgets
@@ -89,11 +89,12 @@
 "There are no upcoming events" = "There are no upcoming events";
 
 //EventsTabBarController
-"You are already logged in and your events are being synchronized" = "You are already logged in and your events are being synchronized";
+"You Are Already Logged In" = "You Are Already Logged In";
+"Your events are being synchronized" = "Your events are being synchronized";
 "Account: " = "Account: ";
 "Information" = "Information";
 "Sign out" = "Sign out";
-"Login failed" = "Login failed";
+"Login Failed" = "Login Failed";
 
 //LoginViewController
 "Welcome" = "Welcome";

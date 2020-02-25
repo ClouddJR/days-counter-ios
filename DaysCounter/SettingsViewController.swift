@@ -83,7 +83,7 @@ extension SettingsViewController: UITableViewDelegate {
     
     private func showEmailComposer() {
         guard MFMailComposeViewController.canSendMail() else {
-            showErrorAlert(with: NSLocalizedString("Can't send an email from this device.", comment: ""))
+            showErrorAlert(with: NSLocalizedString("Can't Send An Email From This Device", comment: ""))
             return
         }
         
@@ -96,7 +96,7 @@ extension SettingsViewController: UITableViewDelegate {
     }
     
     private func showErrorAlert(with message: String) {
-        let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }

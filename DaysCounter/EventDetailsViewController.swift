@@ -309,7 +309,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func displayAlertAboutScreenshotError() {
-        let alert = UIAlertController(title: NSLocalizedString("The screenshot could not be taken", comment: ""), message: NSLocalizedString("There was an error while getting the screen image for sharing.", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("The Screenshot Could Not Be Taken", comment: ""), message: NSLocalizedString("There was an error while getting the screen image for sharing.", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
     }
