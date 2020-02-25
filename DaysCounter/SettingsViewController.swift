@@ -42,6 +42,8 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let section = SettingsSection(rawValue: indexPath.section) else { return}
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         switch section {
         case .General:
             let generalSection = GeneralSection(rawValue: indexPath.row)!
@@ -53,6 +55,10 @@ extension SettingsViewController: UITableViewDelegate {
             case .DefaultSection:
                 let vc = DefaultSectionViewController()
                 vc.delegate = self
+                navigationController?.pushViewController(vc, animated: true)
+            case .Premium:
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "premiumViewController") as! PremiumViewController
                 navigationController?.pushViewController(vc, animated: true)
             default: return
             }
@@ -66,8 +72,6 @@ extension SettingsViewController: UITableViewDelegate {
                 showEmailComposer()
             }
         }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func openPrivacyPolicyPage() {

@@ -38,6 +38,8 @@
 		A68392B923FAAAC400C2113A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68392B623FAAAC400C2113A /* GoogleService-Info.plist */; };
 		A68392BA23FAAAC400C2113A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68392B623FAAAC400C2113A /* GoogleService-Info.plist */; };
 		A687570E23D0A8800011C0FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A687571023D0A8800011C0FC /* InfoPlist.strings */; };
+		A68B307A2405181800D43AA7 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B30792405181800D43AA7 /* LoadingButton.swift */; };
+		A68B307C2405273200D43AA7 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B307B2405273200D43AA7 /* CurvedView.swift */; };
 		A68DE100233D180500188579 /* FontColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DE0FF233D180500188579 /* FontColorPickerView.swift */; };
 		A693802823CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
 		A693802923CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
@@ -93,6 +95,8 @@
 		A6E71EDD237B152200FDFAF2 /* MoreInfoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */; };
 		A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */; };
 		A6F0167723B9F7A60017D80F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0167623B9F7A60017D80F /* MainViewController.swift */; };
+		A6FA6B7D2403BC7D00FCAA46 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */; };
+		A6FA6B7F240403FA00FCAA46 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA6B7E240403FA00FCAA46 /* CheckMarkView.swift */; };
 		B3C90C8C31C7EA6A196B7EA8 /* Pods_DaysCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF6E2D6EE88BDEEA0FEFF1F /* Pods_DaysCounter.framework */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +175,8 @@
 		A687570B23D0A7DB0011C0FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A687570F23D0A8800011C0FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A687571123D0A8830011C0FC /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A68B30792405181800D43AA7 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		A68B307B2405273200D43AA7 /* CurvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedView.swift; sourceTree = "<group>"; };
 		A68DE0FF233D180500188579 /* FontColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorPickerView.swift; sourceTree = "<group>"; };
 		A693802423CE45260063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A693802523CE45270063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -218,6 +224,8 @@
 		A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoButtonView.swift; sourceTree = "<group>"; };
 		A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCustomizeView.swift; sourceTree = "<group>"; };
 		A6F0167623B9F7A60017D80F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		A6FA6B7E240403FA00FCAA46 /* CheckMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkView.swift; sourceTree = "<group>"; };
 		AF5D655CFB30DE447DD52F3F /* Pods-WidgetUpcomingEvent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetUpcomingEvent.debug.xcconfig"; path = "Target Support Files/Pods-WidgetUpcomingEvent/Pods-WidgetUpcomingEvent.debug.xcconfig"; sourceTree = "<group>"; };
 		AFF6E2D6EE88BDEEA0FEFF1F /* Pods_DaysCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaysCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C09389A299F93925E4D08C97 /* Pods-WidgetPastEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetPastEvents.release.xcconfig"; path = "Target Support Files/Pods-WidgetPastEvents/Pods-WidgetPastEvents.release.xcconfig"; sourceTree = "<group>"; };
@@ -320,8 +328,11 @@
 				A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */,
 				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
 				A61702D623B201D900912C13 /* EventsTabBarController.swift */,
+				A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */,
+				A68B30792405181800D43AA7 /* LoadingButton.swift */,
 				A618D8D1232BA7AE006EB008 /* AddEventViewController.swift */,
 				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
+				A6FA6B7E240403FA00FCAA46 /* CheckMarkView.swift */,
 				A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */,
 				A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */,
 				A60FCB0823FD519800EA2D35 /* UserRepository.swift */,
@@ -330,6 +341,7 @@
 				A644119623AAA76D00FE3079 /* DefaultSectionViewController.swift */,
 				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
 				A6DB776F23328CC800CEA495 /* EventBackgroundViewController.swift */,
+				A68B307B2405273200D43AA7 /* CurvedView.swift */,
 				A6557D6D235885FD00D224EC /* EventCell.swift */,
 				A62D057623FBEEA7004C9400 /* LoginViewController.swift */,
 				A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */,
@@ -764,13 +776,17 @@
 				A68DE100233D180500188579 /* FontColorPickerView.swift in Sources */,
 				A6F0167723B9F7A60017D80F /* MainViewController.swift in Sources */,
 				A6B924282348D135005F30F5 /* ImagesRequest.swift in Sources */,
+				A68B307C2405273200D43AA7 /* CurvedView.swift in Sources */,
 				A6E71EDD237B152200FDFAF2 /* MoreInfoButtonView.swift in Sources */,
 				A663228D235F67090073C3C3 /* EventDetailsViewController.swift in Sources */,
 				A62D057723FBEEA7004C9400 /* LoginViewController.swift in Sources */,
+				A68B307A2405181800D43AA7 /* LoadingButton.swift in Sources */,
 				A6A84E6423296A5E006C6660 /* PastEventsViewController.swift in Sources */,
 				A6DB777023328CC800CEA495 /* EventBackgroundViewController.swift in Sources */,
+				A6FA6B7D2403BC7D00FCAA46 /* PremiumViewController.swift in Sources */,
 				A6ADF50A23AEA16500CACAD6 /* Defaults.swift in Sources */,
 				A67FAD0223A80573000265AD /* SettingsSection.swift in Sources */,
+				A6FA6B7F240403FA00FCAA46 /* CheckMarkView.swift in Sources */,
 				A6B924222348BD0C005F30F5 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
