@@ -27,7 +27,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     private lazy var eventsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.register(EventCell.self, forCellWithReuseIdentifier: "event cell")
+        collectionView.register(WidgetEventCell.self, forCellWithReuseIdentifier: "event cell")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = true
@@ -108,14 +108,14 @@ extension TodayViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "event cell", for: indexPath) as? EventCell ?? EventCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "event cell", for: indexPath) as? WidgetEventCell ?? WidgetEventCell()
         cell.updateCellView(with: pastEvents[indexPath.row])
         return cell
     }
 }
 
 
-class EventCell: UICollectionViewCell {
+class WidgetEventCell: UICollectionViewCell {
     
     private lazy var eventImage: UIImageView = {
         let image = UIImageView()
@@ -307,7 +307,7 @@ class EventCell: UICollectionViewCell {
         constr.isActive = true
         
         dateStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        dateStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
+        dateStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
         dateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
     }
     
@@ -367,7 +367,7 @@ class EventCell: UICollectionViewCell {
     }
 }
 
-extension EventCell {
+extension WidgetEventCell {
     
     struct Constants {
         static let titleLabelSize: CGFloat = 15
