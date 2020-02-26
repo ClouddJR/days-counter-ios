@@ -14,21 +14,27 @@ class FutureEventsViewController: UIViewController {
     let databaseRepository = DatabaseRepository()
     var futureEvents: Results<Event>!
     
-    private var userDefaultsObserver: NSKeyValueObservation?
-    
+    private var sortingOrderUserDefaultsObserver: NSKeyValueObservation?
+    private var eventViewTypeUserDefaultsObserver: NSKeyValueObservation?
+
     var notificationToken: NotificationToken?
     
     private lazy var tableView: UITableView = {
+        return createTableView()
+    }()
+    
+    private func createTableView() -> UITableView {
         let tableView = UITableView()
-        tableView.register(EventCell.self, forCellReuseIdentifier: "EventCell")
+        let cellClass = Defaults.getEventViewType() == .Large ? LargeEventCell.self : CompactEventCell.self
+        tableView.register(cellClass, forCellReuseIdentifier: "EventCell")
         tableView.separatorStyle = .none
-        tableView.rowHeight = 200
+        tableView.rowHeight = Defaults.getEventViewType() == .Large ? 200 : 86
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
-    }()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +51,11 @@ class FutureEventsViewController: UIViewController {
     }
     
     deinit {
-        userDefaultsObserver?.invalidate()
-        userDefaultsObserver = nil
+        sortingOrderUserDefaultsObserver?.invalidate()
+        sortingOrderUserDefaultsObserver = nil
+        
+        eventViewTypeUserDefaultsObserver?.invalidate()
+        eventViewTypeUserDefaultsObserver = nil
     }
     
     private func getFutureEvents() {
@@ -88,9 +97,16 @@ class FutureEventsViewController: UIViewController {
     }
     
     private func registerUserDefaultsObserver() {
-        userDefaultsObserver = UserDefaults.standard.observe(\.user_defaults_sorting_order, options: [.new], changeHandler: { [weak self] (defaults, change) in
+        sortingOrderUserDefaultsObserver = UserDefaults.standard.observe(\.user_defaults_sorting_order, options: [.new], changeHandler: { [weak self] (defaults, change) in
             self?.sortEvents()
             self?.tableView.reloadData()
+        })
+        
+        eventViewTypeUserDefaultsObserver = UserDefaults.standard.observe(\.user_defaults_event_view_type, options: [.new], changeHandler: { [weak self] (defaults, change) in
+            guard (self != nil) else {return}
+            self!.tableView.removeFromSuperview()
+            self!.tableView = self!.createTableView()
+            self!.addTableViewAsSubview()
         })
     }
 }

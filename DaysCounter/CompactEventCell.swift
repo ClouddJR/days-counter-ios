@@ -1,121 +1,22 @@
 //
-//  TodayViewController.swift
-//  WidgetFutureEvents
+//  CompactEventCell.swift
+//  DaysCounter
 //
-//  Created by Arkadiusz Chmura on 31/12/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
+//  Created by Arkadiusz Chmura on 26/02/2020.
+//  Copyright © 2020 CloudDroid. All rights reserved.
 //
 
 import UIKit
-import NotificationCenter
-import RealmSwift
 
-class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegateFlowLayout {
+class CompactEventCell: EventCell {
     
-    var realm: Realm!
-    var futureEvents: Results<Event>!
-    
-    let rowHeight = 50
-    
-    private lazy var noDataLabel: UILabel = {
-        let label = UILabel()
-        label.text = NSLocalizedString("There are no future events", comment: "")
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var cellBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
-    
-    private lazy var eventsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.register(WidgetEventCell.self, forCellWithReuseIdentifier: "event cell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.showsHorizontalScrollIndicator = true
-        collectionView.backgroundColor = .clear
-        return collectionView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initRealm()
-        sortEvents()
-        extensionContext?.widgetLargestAvailableDisplayMode = .expanded
-        view.addSubview(noDataLabel)
-        noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
-        view.addSubview(eventsCollectionView)
-        eventsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        eventsCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        eventsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        eventsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        eventsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    }
-    
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        completionHandler(NCUpdateResult.newData)
-    }
-    
-    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-        let expanded = activeDisplayMode == .expanded
-        let height = maxSize.height >= CGFloat(futureEvents.count * rowHeight + 4) ? CGFloat(futureEvents.count * rowHeight + 4) : maxSize.height
-        preferredContentSize = expanded ? CGSize(width: maxSize.width, height: height) : maxSize
-    }
-    
-    private func initRealm() {
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
-        let realmPath = directory.appendingPathComponent("db.realm")
-        
-        var config = Realm.Configuration()
-        config.fileURL = realmPath
-        
-        realm = try! Realm(configuration: config)
-        futureEvents = realm.objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate()))
-        
-        if(futureEvents.count > 0) {
-            noDataLabel.isHidden = true
-        }
-    }
-    
-    private func sortEvents() {
-        let sortingOrder = Defaults.getSortingOrder()
-        switch sortingOrder {
-        case .DaysAscending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: false)
-        case .DaysDescending: futureEvents = futureEvents.sorted(byKeyPath: "date", ascending: true)
-        case .TimeAdded: futureEvents = futureEvents.sorted(byKeyPath: "createdAt", ascending: true)
-        }
-    }
-    
-}
-
-extension TodayViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
-extension TodayViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return futureEvents.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "event cell", for: indexPath) as? WidgetEventCell ?? WidgetEventCell()
-        cell.updateCellView(with: futureEvents[indexPath.row])
-        return cell
-    }
-}
-
-
-class WidgetEventCell: UICollectionViewCell {
     
     private lazy var eventImage: UIImageView = {
         let image = UIImageView()
@@ -262,13 +163,13 @@ class WidgetEventCell: UICollectionViewCell {
         return label
     }()
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         setupView()
     }
     
@@ -279,6 +180,7 @@ class WidgetEventCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
+        contentView.addSubview(cellBackground)
         contentView.addSubview(eventImage)
         contentView.addSubview(eventImageDim)
         contentView.addSubview(titleLabel)
@@ -287,31 +189,39 @@ class WidgetEventCell: UICollectionViewCell {
     }
     
     private func setConstraints() {
-        eventImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2).isActive = true
-        eventImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2).isActive = true
-        eventImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
-        eventImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        backgroundColor = .clear
+        
+        cellBackground.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3).isActive = true
+        cellBackground.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -3).isActive = true
+        cellBackground.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        cellBackground.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        
+        eventImage.topAnchor.constraint(equalTo: cellBackground.topAnchor, constant: 2).isActive = true
+        eventImage.bottomAnchor.constraint(equalTo: cellBackground.bottomAnchor, constant: -2).isActive = true
+        eventImage.leadingAnchor.constraint(equalTo: cellBackground.leadingAnchor, constant: 3).isActive = true
+        eventImage.widthAnchor.constraint(equalToConstant: 76).isActive = true
         eventImage.layer.cornerRadius = 10
         
-        eventImageDim.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2).isActive = true
-        eventImageDim.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2).isActive = true
-        eventImageDim.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2).isActive = true
+        eventImageDim.topAnchor.constraint(equalTo: cellBackground.topAnchor, constant: 2).isActive = true
+        eventImageDim.bottomAnchor.constraint(equalTo: cellBackground.bottomAnchor, constant: -2).isActive = true
+        eventImageDim.leadingAnchor.constraint(equalTo: cellBackground.leadingAnchor, constant: 3).isActive = true
         eventImageDim.layer.cornerRadius = 10
         
-        dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: cellBackground.bottomAnchor, constant: -18).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 10).isActive = true
         
-        titleLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -6).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: eventImage.topAnchor, constant: 18).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 10).isActive = true
         let constr = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: dateStackView.leadingAnchor, constant: -15)
         constr.isActive = true
         
-        dateStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        dateStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
-        dateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
+        dateStackView.topAnchor.constraint(equalTo: cellBackground.topAnchor, constant: 5).isActive = true
+        dateStackView.bottomAnchor.constraint(equalTo: cellBackground.bottomAnchor, constant: -5).isActive = true
+        dateStackView.trailingAnchor.constraint(equalTo: cellBackground.trailingAnchor, constant: -8).isActive = true
     }
     
-    func updateCellView(with event: Event) {
+    override func updateCellView(with event: Event) {
         titleLabel.text = event.name
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -365,16 +275,24 @@ class WidgetEventCell: UICollectionViewCell {
         if event.areWeeksIncluded {dateStackView.addArrangedSubview(weekStackView)}
         if event.areDaysIncluded {dateStackView.addArrangedSubview(dayStackView)}
     }
+    
+    private func removeSubviewsConstraints() {
+        cellBackground.removeFromSuperview()
+        eventImage.removeFromSuperview()
+        eventImageDim.removeFromSuperview()
+        titleLabel.removeFromSuperview()
+        dateLabel.removeFromSuperview()
+        dateStackView.removeFromSuperview()
+    }
 }
 
-extension WidgetEventCell {
+extension CompactEventCell {
     
     struct Constants {
-        static let titleLabelSize: CGFloat = 15
-        static let dateLabelSize: CGFloat = 12
+        static let titleLabelSize: CGFloat = 16
+        static let dateLabelSize: CGFloat = 13
         static let dateStackViewSpacing: CGFloat = 12
         static let dateStackViewNumber: CGFloat = 18
         static let dateStackViewTitle: CGFloat = 12
     }
 }
-

@@ -56,6 +56,10 @@ extension SettingsViewController: UITableViewDelegate {
                 let vc = DefaultSectionViewController()
                 vc.delegate = self
                 navigationController?.pushViewController(vc, animated: true)
+            case .EventViewType:
+                let vc = EventViewTypeViewController()
+                vc.delegate = self
+                navigationController?.pushViewController(vc, animated: true)
             case .Premium:
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "premiumViewController") as! PremiumViewController
@@ -162,5 +166,12 @@ extension SettingsViewController: DefaultSectionViewControllerDelegate {
     func updateDefaultSection(with option: Defaults.DefaultSection) {
         let cell = tableView.cellForRow(at: IndexPath(row: GeneralSection.DefaultSection.rawValue, section: 0)) as! SettingsTableViewCell
         cell.updateCellSubtitle(with: Defaults.DefaultSection.getOptionTitle(for: option))
+    }
+}
+
+extension SettingsViewController: EventViewTypeViewControllerDelegate {
+    func updateEventViewType(with option: Defaults.EventViewType) {
+        let cell = tableView.cellForRow(at: IndexPath(row: GeneralSection.EventViewType.rawValue, section: 0)) as! SettingsTableViewCell
+        cell.updateCellSubtitle(with: Defaults.EventViewType.getOptionTitle(for: option))
     }
 }
