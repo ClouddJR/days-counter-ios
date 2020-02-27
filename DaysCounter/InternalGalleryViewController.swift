@@ -14,8 +14,8 @@ class InternalGalleryViewController: UIViewController {
     
     private lazy var imagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let screenRatio = view.frame.height / view.frame.width
-        let cellWidth = view.frame.width * 0.31
+        let screenRatio =  view.frame.width <= view.frame.height ? view.frame.height / view.frame.width : view.frame.width / view.frame.height
+        let cellWidth = view.frame.width <= view.frame.height ? view.frame.width * 0.31 : view.frame.height * 0.31
         let cellHeight = cellWidth * screenRatio
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumInteritemSpacing = 3.0
@@ -36,10 +36,10 @@ class InternalGalleryViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(imagesCollectionView)
         imagesCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        imagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        imagesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
         imagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        imagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
-        imagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        imagesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        imagesCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
     }
 }
 
