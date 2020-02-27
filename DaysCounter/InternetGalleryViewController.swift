@@ -14,12 +14,12 @@ class InternetGalleryViewController: UIViewController {
     
     private lazy var imagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let screenRatio = view.frame.height / view.frame.width
-        let cellWidth = view.frame.width * 0.31
+        let screenRatio =  view.frame.width <= view.frame.height ? view.frame.height / view.frame.width : view.frame.width / view.frame.height
+        let cellWidth = view.frame.width <= view.frame.height ? view.frame.width * 0.31 : view.frame.height * 0.31
         let cellHeight = cellWidth * screenRatio
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumInteritemSpacing = 3.0
-        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "image cell")
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -129,8 +129,8 @@ class InternetGalleryViewController: UIViewController {
     private func addImagesCollectionViewConstraints() {
         imagesCollectionView.topAnchor.constraint(equalTo: unsplashLabel.bottomAnchor, constant: 8).isActive = true
         imagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        imagesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
-        imagesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        imagesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        imagesCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
     }
     
     private func addActivityIndicatorViewConstraints() {
