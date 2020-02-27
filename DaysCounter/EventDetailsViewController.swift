@@ -19,9 +19,10 @@ class EventDetailsViewController: UIViewController {
     }()
     
     private lazy var imageViewDim: UIView = {
-        let view = UIView(frame: CGRect(origin: imageView.bounds.origin, size: imageView.bounds.size))
+        let view = UIView()
         view.layer.backgroundColor = UIColor.black.cgColor
         view.layer.opacity = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -283,6 +284,10 @@ class EventDetailsViewController: UIViewController {
     private var previousNavBarTintColor: UIColor?
     private var previousTextAttributes: [NSAttributedString.Key : Any]?
     
+    private var compactConstraints: [NSLayoutConstraint] = []
+    private var regularConstraints: [NSLayoutConstraint] = []
+    private var sharedConstraints: [NSLayoutConstraint] = []
+    
     @IBAction func editEvent(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "addEventNavigationController") as! UINavigationController
@@ -334,6 +339,19 @@ class EventDetailsViewController: UIViewController {
         center.removePendingNotificationRequests(withIdentifiers: [event.id!])
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.verticalSizeClass == .compact {
+            NSLayoutConstraint.deactivate(regularConstraints)
+            NSLayoutConstraint.activate(compactConstraints)
+        } else {
+            NSLayoutConstraint.deactivate(compactConstraints)
+            NSLayoutConstraint.activate(regularConstraints)
+        }
+        view.layoutIfNeeded()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         styleNavigationBar()
@@ -378,23 +396,36 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func addConstraints() {
-        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        regularConstraints.append(contentsOf: [
+            dateLabel.bottomAnchor.constraint(equalTo: moreInfoButtonView.topAnchor, constant: -30)
+        ])
         
-        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -10).isActive = true
+        compactConstraints.append(contentsOf: [
+            dateLabel.bottomAnchor.constraint(equalTo: moreInfoButtonView.topAnchor, constant: -3)
+        ])
         
-        dateLabel.bottomAnchor.constraint(equalTo: moreInfoButtonView.topAnchor, constant: -30).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20).isActive = true
+        sharedConstraints.append(contentsOf: [
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
+            titleLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -10),
+            
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
+            
+            moreInfoButtonView.widthAnchor.constraint(equalToConstant: 29),
+            moreInfoButtonView.heightAnchor.constraint(equalToConstant: 7),
+            moreInfoButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            moreInfoButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -moreInfoButtonView.circleRadius - 20)
+        ])
         
-        moreInfoButtonView.widthAnchor.constraint(equalToConstant: 29).isActive = true
-        moreInfoButtonView.heightAnchor.constraint(equalToConstant: 7).isActive = true
-        moreInfoButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        moreInfoButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -moreInfoButtonView.circleRadius - 25).isActive = true
+        NSLayoutConstraint.activate(traitCollection.verticalSizeClass == .compact
+            ? compactConstraints : regularConstraints )
+        NSLayoutConstraint.activate(sharedConstraints)
     }
     
     private func updateUIBasedOnEventData() {
@@ -416,6 +447,10 @@ class EventDetailsViewController: UIViewController {
     private func addImageDim() {
         imageView.addSubview(imageViewDim)
         imageViewDim.layer.opacity = event.imageDim
+        imageViewDim.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
+        imageViewDim.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        imageViewDim.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
+        imageViewDim.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
     }
     
     private func setDateAndTitle() {
