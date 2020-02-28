@@ -432,13 +432,17 @@ class EventBackgroundViewController: UIViewController {
         self.present(actionSheet, animated: true)
     }
     
+    var heightConstraint: NSLayoutConstraint!
     @objc private func showCustomizeView() {
         addDimView()
         view.addSubview(customizeView)
+        customizeView.topAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         customizeView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 20).isActive = true
         customizeView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20).isActive = true
         customizeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
         customizeView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        heightConstraint = customizeView.heightAnchor.constraint(equalToConstant: customizeView.mainStackView.frame.height + 30)
+        heightConstraint.isActive = true
         customizeView.layoutIfNeeded()
         customizeView.show()
     }
@@ -620,10 +624,13 @@ extension EventBackgroundViewController: EventCustomizeViewDelegate {
     }
     
     func onSliderTouchedDown() {
+        heightConstraint.constant = customizeView.mainStackView.frame.height + 31
         dimView.isHidden = true
     }
     
     func onSliderTouchedUp() {
+        heightConstraint.constant = customizeView.mainStackView.frame.height + 30
+        customizeView.scrollView.scrollsToBottom(animated: false)
         dimView.isHidden = false
     }
     

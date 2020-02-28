@@ -40,6 +40,19 @@ class EventCustomizeView: UIView {
         })
     }
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.delaysContentTouches = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //Main vertical StackView
     
     lazy var mainStackView: UIStackView = {
@@ -364,9 +377,11 @@ class EventCustomizeView: UIView {
     }
     
     private func addSubviews() {
-        addSubview(mainStackView)
-        addSubview(fontPicker)
-        addSubview(backButton)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(mainStackView)
+        contentView.addSubview(fontPicker)
+        contentView.addSubview(backButton)
         fontPicker.isHidden = true
         backButton.isHidden = true
         fontColorPickerView.isHidden = true
@@ -419,25 +434,23 @@ class EventCustomizeView: UIView {
     }
     
     private func hideOtherSectionsWhileEditing() {
-        UIView.animate(withDuration: 0.15) {
-            self.formatYearsSectionView.isHidden = true
-            self.formatYearsSectionView.alpha = 0.0
-            self.formatMonthsSectionView.isHidden = true
-            self.formatMonthsSectionView.alpha = 0.0
-            self.formatWeeksSectionView.isHidden = true
-            self.formatWeeksSectionView.alpha = 0.0
-            self.formatDaysSectionView.isHidden = true
-            self.formatDaysSectionView.alpha = 0.0
-            self.formatTimeSectionView.isHidden = true
-            self.formatTimeSectionView.alpha = 0.0
-            self.fontColorSectionView.isHidden = true
-            self.fontColorSectionView.alpha = 0.0
-            self.fontColorPickerView.isHidden = true
-            self.fontColorPickerView.alpha = 0.0
-            self.fontTypeSectionView.isHidden = true
-            self.fontTypeSectionView.alpha = 0.0
-            self.mainStackView.layoutIfNeeded()
-        }
+        formatYearsSectionView.isHidden = true
+        formatYearsSectionView.alpha = 0.0
+        formatMonthsSectionView.isHidden = true
+        formatMonthsSectionView.alpha = 0.0
+        formatWeeksSectionView.isHidden = true
+        formatWeeksSectionView.alpha = 0.0
+        formatDaysSectionView.isHidden = true
+        formatDaysSectionView.alpha = 0.0
+        formatTimeSectionView.isHidden = true
+        formatTimeSectionView.alpha = 0.0
+        fontColorSectionView.isHidden = true
+        fontColorSectionView.alpha = 0.0
+        fontColorPickerView.isHidden = true
+        fontColorPickerView.alpha = 0.0
+        fontTypeSectionView.isHidden = true
+        fontTypeSectionView.alpha = 0.0
+        layoutIfNeeded()
     }
     
     @objc private func informObserversAboutSliderTouchedUp() {
@@ -446,24 +459,22 @@ class EventCustomizeView: UIView {
     }
     
     private func showOtherSectionsAfterEditing() {
-        UIView.animate(withDuration: 0.15) {
-            self.formatYearsSectionView.isHidden = false
-            self.formatYearsSectionView.alpha = 1.0
-            self.formatMonthsSectionView.isHidden = false
-            self.formatMonthsSectionView.alpha = 1.0
-            self.formatWeeksSectionView.isHidden = false
-            self.formatWeeksSectionView.alpha = 1.0
-            self.formatDaysSectionView.isHidden = false
-            self.formatDaysSectionView.alpha = 1.0
-            self.formatTimeSectionView.isHidden = false
-            self.formatTimeSectionView.alpha = 1.0
-            self.fontColorSectionView.isHidden = false
-            self.fontColorSectionView.alpha = 1.0
-            self.fontColorPickerView.alpha = 1.0
-            self.fontTypeSectionView.isHidden = false
-            self.fontTypeSectionView.alpha = 1.0
-            self.mainStackView.layoutIfNeeded()
-        }
+        formatYearsSectionView.isHidden = false
+        formatYearsSectionView.alpha = 1.0
+        formatMonthsSectionView.isHidden = false
+        formatMonthsSectionView.alpha = 1.0
+        formatWeeksSectionView.isHidden = false
+        formatWeeksSectionView.alpha = 1.0
+        formatDaysSectionView.isHidden = false
+        formatDaysSectionView.alpha = 1.0
+        formatTimeSectionView.isHidden = false
+        formatTimeSectionView.alpha = 1.0
+        fontColorSectionView.isHidden = false
+        fontColorSectionView.alpha = 1.0
+        fontColorPickerView.alpha = 1.0
+        fontTypeSectionView.isHidden = false
+        fontTypeSectionView.alpha = 1.0
+        layoutIfNeeded()
     }
     
     @objc private func informObserversAboutSliderValueChanged() {
@@ -512,22 +523,34 @@ class EventCustomizeView: UIView {
     }
     
     private func addConstraints() {
-        mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
-        mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        backButton.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         
-        fontPicker.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        fontPicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        fontPicker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+        mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
         
-        fontColorPickerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        fontColorPickerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        
+        fontPicker.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        fontPicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        fontPicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+        
+        fontColorPickerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+        fontColorPickerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
         
         layoutIfNeeded()
+        print(mainStackView.frame)
     }
 }
 
