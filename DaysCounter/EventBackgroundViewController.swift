@@ -74,19 +74,21 @@ class EventBackgroundViewController: UIViewController {
     }
     
     private lazy var eventImageViewDim: UIView = {
-        let view = UIView(frame: CGRect(origin: eventImageView.bounds.origin, size: eventImageView.bounds.size))
+        let view = UIView()
         view.layer.backgroundColor = UIColor.black.cgColor
         view.layer.opacity = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     @IBOutlet weak var imageRatioConstraint: NSLayoutConstraint!
     
     private lazy var dimView: UIView = {
-        let view = UIView(frame: CGRect(origin: self.view.frame.origin, size: self.view.frame.size))
+        let view = UIView()
         view.layer.backgroundColor = UIColor.black.cgColor
         view.layer.opacity = 0.4
         view.isUserInteractionEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -134,7 +136,25 @@ class EventBackgroundViewController: UIViewController {
     
     private var dateTimer: Timer?
     
+    private var compactConstraints: [NSLayoutConstraint] = []
+    private var regularConstraints: [NSLayoutConstraint] = []
+    private var sharedConstraints: [NSLayoutConstraint] = []
+    
     // MARK:  lifecycle methods
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.verticalSizeClass == .compact {
+            NSLayoutConstraint.deactivate(regularConstraints)
+            NSLayoutConstraint.activate(compactConstraints)
+        } else {
+            NSLayoutConstraint.deactivate(compactConstraints)
+            NSLayoutConstraint.activate(regularConstraints)
+        }
+        
+        updateLabelsFontSizes()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -149,13 +169,10 @@ class EventBackgroundViewController: UIViewController {
         setInitialFont()
         setEventImageAspectRatio()
         setInitialEventPictureDim()
-        updateLabelsFontSizes(
-            withSectionNumberFont: daysNumberLabel.font.withSize(eventImageView.frame.height * Constants.sectionNumberSizeMultiplier),
-            withSectionTitleFont: daysTitleLabel.font.withSize(eventImageView.frame.height * Constants.sectionTitleSizeMultiplier),
-            withEventTitleFont: eventTitleLabel.font.withSize(eventImageView.frame.height * Constants.eventTitleSizeMultiplier),
-            withEventDateFont: eventDateLabel.font.withSize(eventImageView.frame.height * Constants.eventDateSizeMultiplier)
-        )
+        updateLabelsFontSizes()
         updateUIIfInEditMode()
+        addSubviews()
+        addConstraints()
         addMainCounterStackViews()
         addButtonClickActions()
     }
@@ -211,7 +228,7 @@ class EventBackgroundViewController: UIViewController {
     }
     
     private func setEventImageAspectRatio() {
-        let ratio = view.frame.height / view.frame.width
+        let ratio = view.frame.width <= view.frame.height ? view.frame.height / view.frame.width : view.frame.width / view.frame.height
         imageRatioConstraint.isActive = false
         
         NSLayoutConstraint(item: eventImageView!, attribute: .height, relatedBy: .equal, toItem: eventImageView, attribute: .width, multiplier: ratio, constant: 0).isActive = true
@@ -221,6 +238,24 @@ class EventBackgroundViewController: UIViewController {
     
     private func setInitialEventPictureDim() {
         eventImageView.addSubview(eventImageViewDim)
+    }
+    
+    private func updateLabelsFontSizes() {
+        if traitCollection.verticalSizeClass == .compact {
+            updateLabelsFontSizes(
+                withSectionNumberFont: daysNumberLabel.font.withSize(Constants.sectionNumberCompactFontSize),
+                withSectionTitleFont: daysTitleLabel.font.withSize(Constants.sectionTitleCompactFontSize),
+                withEventTitleFont: eventTitleLabel.font.withSize(Constants.eventTitleCompactFontSize),
+                withEventDateFont: eventDateLabel.font.withSize(Constants.eventDateCompactFontSize)
+            )
+        } else {
+            updateLabelsFontSizes(
+                withSectionNumberFont: daysNumberLabel.font.withSize(Constants.sectionNumberRegularFontSize),
+                withSectionTitleFont: daysTitleLabel.font.withSize(Constants.sectionTitleRegularFontSize),
+                withEventTitleFont: eventTitleLabel.font.withSize(Constants.eventTitleRegularFontSize),
+                withEventDateFont: eventDateLabel.font.withSize(Constants.eventDateRegularFontSize)
+            )
+        }
     }
     
     private func updateLabelsFontSizes(withSectionNumberFont sectionNumberFont: UIFont, withSectionTitleFont sectionTitleFont: UIFont, withEventTitleFont eventTitleFont: UIFont, withEventDateFont eventDateFont: UIFont) {
@@ -285,12 +320,14 @@ class EventBackgroundViewController: UIViewController {
         }
     }
     
-    private func addMainCounterStackViews() {
+    private func addSubviews() {
         view.addSubview(dateStackView)
         view.addSubview(timeStackView)
+    }
+    
+    private func addMainCounterStackViews() {
         removeCounterStackViewsFromSuperview()
         conditionallyAddCounterStackViews()
-        updateMainStackViewsConstraints()
     }
     
     private func removeCounterStackViewsFromSuperview() {
@@ -316,22 +353,35 @@ class EventBackgroundViewController: UIViewController {
         }
     }
     
-    private func updateMainStackViewsConstraints() {
-        dateStackView.layoutIfNeeded()
-        dateStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        dateStackView.centerYAnchor.constraint(equalTo: eventImageView.centerYAnchor, constant: getDateStackViewYMargin(dateStackView)).isActive = true
+    private func addConstraints() {
+        sharedConstraints.append(contentsOf: [
+            dateStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dateStackView.leadingAnchor.constraint(greaterThanOrEqualTo: eventImageView.leadingAnchor, constant: Constants.stackViewEdgeMargin),
+            dateStackView.trailingAnchor.constraint(lessThanOrEqualTo: eventImageView.trailingAnchor, constant: Constants.stackViewEdgeMargin),
+            
+            timeStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timeStackView.leadingAnchor.constraint(greaterThanOrEqualTo: eventImageView.leadingAnchor, constant: Constants.stackViewEdgeMargin),
+            timeStackView.trailingAnchor.constraint(lessThanOrEqualTo: eventImageView.trailingAnchor, constant: Constants.stackViewEdgeMargin),
+            
+            eventImageViewDim.topAnchor.constraint(equalTo: eventImageView.topAnchor),
+            eventImageViewDim.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor),
+            eventImageViewDim.leadingAnchor.constraint(equalTo: eventImageView.leadingAnchor),
+            eventImageViewDim.trailingAnchor.constraint(equalTo: eventImageView.trailingAnchor)
+        ])
         
-        NSLayoutConstraint(item: dateStackView, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: eventImageView, attribute: .leading, multiplier: 1, constant: Constants.stackViewEdgeMargin).isActive = true
+        regularConstraints.append(contentsOf: [
+            dateStackView.centerYAnchor.constraint(equalTo: eventImageView.centerYAnchor, constant: Constants.dateStackViewRegularYMargin),
+            timeStackView.centerYAnchor.constraint(equalTo: eventImageView.centerYAnchor, constant: Constants.timeStackViewRegularYMargin)
+        ])
         
-        NSLayoutConstraint(item: dateStackView, attribute: .trailing, relatedBy: .lessThanOrEqual, toItem: eventImageView, attribute: .trailing, multiplier: 1, constant: Constants.stackViewEdgeMargin).isActive = true
+        compactConstraints.append(contentsOf: [
+            dateStackView.centerYAnchor.constraint(equalTo: eventImageView.centerYAnchor, constant: Constants.dateStackViewCompactYMargin),
+            timeStackView.centerYAnchor.constraint(equalTo: eventImageView.centerYAnchor, constant: Constants.timeStackViewCompactYMargin)
+        ])
         
-        timeStackView.layoutIfNeeded()
-        timeStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        timeStackView.centerYAnchor.constraint(equalTo: eventImageView.centerYAnchor, constant: getTimeStackViewYMargin(timeStackView)).isActive = true
-        
-        NSLayoutConstraint(item: timeStackView, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: eventImageView, attribute: .leading, multiplier: 1, constant: Constants.stackViewEdgeMargin).isActive = true
-        
-        NSLayoutConstraint(item: timeStackView, attribute: .trailing, relatedBy: .lessThanOrEqual, toItem: eventImageView, attribute: .trailing, multiplier: 1, constant: Constants.stackViewEdgeMargin).isActive = true
+        NSLayoutConstraint.activate(traitCollection.verticalSizeClass == .compact
+            ? compactConstraints : regularConstraints )
+        NSLayoutConstraint.activate(sharedConstraints)
     }
     
     private func addButtonClickActions() {
@@ -395,6 +445,10 @@ class EventBackgroundViewController: UIViewController {
     
     private func addDimView() {
         view.addSubview(dimView)
+        dimView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        dimView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        dimView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        dimView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     private func calculateDate() {
@@ -610,8 +664,6 @@ extension EventBackgroundViewController: EventCustomizeViewDelegate {
         shouldDaysSectionBeVisible = areDaysIncluded
         shouldTimeSectionBeVisible = isTimeIncluded
         
-        dateStackView.removeFromSuperview()
-        timeStackView.removeFromSuperview()
         addMainCounterStackViews()
         view.bringSubviewToFront(dimView)
         view.bringSubviewToFront(customizeView)
@@ -673,19 +725,23 @@ extension EventBackgroundViewController: InternetGalleryViewControllerDelegate {
 extension EventBackgroundViewController {
     
     struct Constants {
-        static let sectionNumberSizeMultiplier: CGFloat = 0.055
-        static let sectionTitleSizeMultiplier: CGFloat = 0.019
-        static let eventTitleSizeMultiplier: CGFloat = 0.028
-        static let eventDateSizeMultiplier: CGFloat = 0.018
+        //regular
+        static let sectionNumberRegularFontSize: CGFloat = 41
+        static let sectionTitleRegularFontSize: CGFloat = 13
+        static let eventTitleRegularFontSize: CGFloat = 21
+        static let eventDateRegularFontSize: CGFloat = 14
+        static let dateStackViewRegularYMargin: CGFloat = -47
+        static let timeStackViewRegularYMargin: CGFloat = 32
+        
+        //compact
+        static let sectionNumberCompactFontSize: CGFloat = 15
+        static let sectionTitleCompactFontSize: CGFloat = 4
+        static let eventTitleCompactFontSize: CGFloat = 8
+        static let eventDateCompactFontSize: CGFloat = 6
+        static let dateStackViewCompactYMargin: CGFloat = -18
+        static let timeStackViewCompactYMargin: CGFloat = 12
+        
         static let stackViewSpacing: CGFloat = 16.0
         static let stackViewEdgeMargin: CGFloat = 10.0
-    }
-    
-    func getDateStackViewYMargin(_ dateStackView: UIStackView) -> CGFloat {
-        return -(dateStackView.bounds.height / 2 + (shouldTimeSectionBeVisible ? 15 : 5))
-    }
-    
-    func getTimeStackViewYMargin(_ timeStackView: UIStackView) -> CGFloat {
-        return (timeStackView.bounds.height / 2 + 10)
     }
 }
