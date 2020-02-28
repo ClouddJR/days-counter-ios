@@ -183,3 +183,12 @@ extension Array {
     }
 }
 
+// MARK:  UIScrollView extensions
+
+extension UIScrollView {
+    func scrollsToBottom(animated: Bool) {
+        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
+        setContentOffset(bottomOffset, animated: animated)
+    }
+}
+
