@@ -364,10 +364,6 @@ class EventDetailsViewController: UIViewController {
         
         previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
-        
-        previousTextAttributes = navigationController?.navigationBar.titleTextAttributes
-        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     override func viewDidLoad() {
@@ -652,7 +648,10 @@ class EventDetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = previousNavBarTintColor
         navigationController?.navigationBar.barStyle = .default
         
-        navigationController?.navigationBar.titleTextAttributes = previousTextAttributes
+        let textAttributes = [NSAttributedString.Key.foregroundColor :
+            traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
     
     private func showMoreInfoView() {
