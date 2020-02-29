@@ -16,7 +16,11 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
     @IBOutlet weak var entireDayCell: UITableViewCell!
-    @IBOutlet weak var entireDaySwitch: UISwitch!
+    @IBOutlet weak var entireDaySwitch: UISwitch! {
+        didSet {
+            entireDaySwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
+        }
+    }
     @IBOutlet weak var eventTimeCell: UITableViewCell!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventTimePicker: UIDatePicker!
@@ -25,7 +29,11 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var eventNotesTextView: UITextView!
     
     @IBOutlet weak var reminderSwitchCell: UITableViewCell!
-    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var reminderSwitch: UISwitch! {
+        didSet {
+            reminderSwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
+        }
+    }
     @IBOutlet weak var reminderDateAndTimeCell: UITableViewCell!
     @IBOutlet weak var reminderDateAndTimeLabel: UILabel!
     @IBOutlet weak var reminderDateAndTimePicker: UIDatePicker!

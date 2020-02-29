@@ -97,7 +97,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatYearsSwitch: UISwitch = {
         let yearsSwitch = UISwitch()
-        yearsSwitch.onTintColor = .orange
+        yearsSwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         yearsSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
         yearsSwitch.translatesAutoresizingMaskIntoConstraints = false
         return yearsSwitch
@@ -125,7 +125,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatMonthsSwitch: UISwitch = {
         let monthsSwitch = UISwitch()
-        monthsSwitch.onTintColor = .orange
+        monthsSwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         monthsSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
         monthsSwitch.translatesAutoresizingMaskIntoConstraints = false
         return monthsSwitch
@@ -153,7 +153,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatWeeksSwitch: UISwitch = {
         let weeksSwitch = UISwitch()
-        weeksSwitch.onTintColor = .orange
+        weeksSwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         weeksSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
         weeksSwitch.translatesAutoresizingMaskIntoConstraints = false
         return weeksSwitch
@@ -181,7 +181,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatDaysSwitch: UISwitch = {
         let daysSwitch = UISwitch()
-        daysSwitch.onTintColor = .orange
+        daysSwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         daysSwitch.isOn = true
         daysSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
         daysSwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -210,7 +210,7 @@ class EventCustomizeView: UIView {
     
     lazy var formatTimeSwitch: UISwitch = {
         let timeSwitch = UISwitch()
-        timeSwitch.onTintColor = .orange
+        timeSwitch.onTintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         timeSwitch.setContentCompressionResistancePriority(.required, for: .horizontal)
         timeSwitch.translatesAutoresizingMaskIntoConstraints = false
         return timeSwitch
@@ -308,7 +308,7 @@ class EventCustomizeView: UIView {
         let slider = UISlider()
         slider.minimumValue = 0.0
         slider.maximumValue = 1.0
-        slider.tintColor = .orange
+        slider.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         slider.setContentCompressionResistancePriority(.required, for: .horizontal)
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
@@ -319,7 +319,7 @@ class EventCustomizeView: UIView {
     lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
-        button.tintColor = .orange
+        button.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

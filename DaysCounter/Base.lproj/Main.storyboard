@@ -86,8 +86,8 @@
         <scene sceneID="CjF-Y1-Y50">
             <objects>
                 <navigationController id="jUG-KI-I2u" customClass="MainViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Gg-R2-sYZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="8Gg-R2-sYZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

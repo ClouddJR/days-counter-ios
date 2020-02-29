@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         changeDefaultRealmPath()
         FirebaseApp.configure()
         repeatEventsIfNecessary()
-        //window?.tintColor = UIColor(red: 116/255, green: 242/255, blue: 158/255, alpha: 1.0)
+        window?.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         return true
     }
 
