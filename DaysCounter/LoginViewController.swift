@@ -42,7 +42,7 @@ class LoginViewController: FUIAuthPickerViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "Logowanie"
+        navigationItem.title = "Login"
     }
     
     override func viewDidLayoutSubviews() {
