@@ -20,7 +20,6 @@ class MainViewController: UINavigationController {
     }
     
     private func styleNavigationBar() {
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
     }
 }
