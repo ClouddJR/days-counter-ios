@@ -67,8 +67,9 @@ extension SettingsViewController: UITableViewDelegate {
                 navigationController?.pushViewController(vc, animated: true)
             case .Premium:
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "premiumViewController") as! PremiumViewController
-                navigationController?.pushViewController(vc, animated: true)
+                let vc = storyboard.instantiateViewController(withIdentifier: "premiumNavigationController") as! UINavigationController
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
             default: return
             }
             return

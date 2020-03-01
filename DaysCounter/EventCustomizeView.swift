@@ -314,6 +314,46 @@ class EventCustomizeView: UIView {
         return slider
     }()
     
+    //Premium prompt
+    
+    lazy var premiumDimView: UIView = {
+        let view = UIView()
+        view.layer.backgroundColor = UIColor.black.cgColor
+        view.layer.opacity = 0.9
+        view.isUserInteractionEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let crownImage = #imageLiteral(resourceName: "ic_crown")
+    
+    lazy var crownImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = crownImage
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var premiumLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("This feature is only available for premium users", comment: "")
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
+        return label
+    }()
+    
+    lazy var moreInfoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(NSLocalizedString("More info", comment: ""), for: .normal)
+        button.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     //Cancel button
     
     lazy var cancelButton: UIButton = {
@@ -374,6 +414,7 @@ class EventCustomizeView: UIView {
         addSubviews()
         addTargetsAndGestureRecognizers()
         addConstraints()
+        setUpPremiumPrompt()
     }
     
     private func addSubviews() {
@@ -550,7 +591,38 @@ class EventCustomizeView: UIView {
         fontColorPickerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
         
         layoutIfNeeded()
-        print(mainStackView.frame)
+    }
+    
+    private func setUpPremiumPrompt() {
+        if !Defaults.isPremiumUser() {
+            scrollView.isUserInteractionEnabled = false
+            addSubview(premiumDimView)
+            addSubview(crownImageView)
+            addSubview(premiumLabel)
+            addSubview(moreInfoButton)
+            premiumDimView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            premiumDimView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            premiumDimView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            premiumDimView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            
+            crownImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            crownImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -60).isActive = true
+            crownImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            crownImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            
+            premiumLabel.topAnchor.constraint(equalTo: crownImageView.bottomAnchor, constant: 10).isActive = true
+            premiumLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
+            premiumLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30).isActive = true
+            
+            moreInfoButton.topAnchor.constraint(equalTo: premiumLabel.bottomAnchor, constant: 10).isActive = true
+            moreInfoButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            moreInfoButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            moreInfoButton.addTarget(self, action: #selector(showPremiumViewController), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func showPremiumViewController() {
+        delegate?.onPremiumButtonClicked()
     }
 }
 
@@ -612,4 +684,5 @@ protocol EventCustomizeViewDelegate {
     func onFontColorChanged(_ color: UIColor)
     func onSwitchValueChanged(_ areYearsIncluded: Bool, _ areMonthsIncluded: Bool, _ areWeeksIncluded: Bool,
                               _ areDaysIncluded: Bool, _ isTimeIncluded: Bool)
+    func onPremiumButtonClicked()
 }

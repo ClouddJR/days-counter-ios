@@ -39,7 +39,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="D5H-FC-Fbu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tbr-0C-XDt"/>
+                    <navigationItem key="navigationItem" id="tbr-0C-XDt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gQp-ME-F5Q">
+                            <connections>
+                                <action selector="dismiss:" destination="Cuy-iW-7dY" id="8q0-CA-2Iw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8a-qe-PW8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1094,7 +1100,7 @@
         <!--Navigation Controller-->
         <scene sceneID="a8U-gp-PCg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aCn-dt-Vsd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="premiumNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="aCn-dt-Vsd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rcN-CY-7x6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

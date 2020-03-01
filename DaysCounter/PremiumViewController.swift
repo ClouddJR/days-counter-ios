@@ -271,6 +271,10 @@ class PremiumViewController: UIViewController {
         return button
     }()
     
+    @IBAction func dismiss(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         styleNavBar()

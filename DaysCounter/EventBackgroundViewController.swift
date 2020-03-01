@@ -409,10 +409,20 @@ class EventBackgroundViewController: UIViewController {
         }))
         
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("From the Internet", comment: ""), style: .default, handler: { (action) in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "internetGalleryViewController") as! InternetGalleryViewController
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
+            if Defaults.isPremiumUser() {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "internetGalleryViewController") as! InternetGalleryViewController
+                vc.delegate = self
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let alert = UIAlertController(title: NSLocalizedString("This feature is only available for premium users.", comment: ""), message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("More info", comment: ""), style: .default,
+                                              handler: { (_) in
+                                                self.showPremiumScreen()
+                }))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
+                self.present(alert, animated: true)
+            }
         }))
         
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Photo library", comment: ""), style: .default, handler: { (action) in
@@ -533,6 +543,7 @@ class EventBackgroundViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = nil
         navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = nil
     }
     
     private func prepareEvent() {
@@ -580,6 +591,13 @@ class EventBackgroundViewController: UIViewController {
         secondsTitleLabel.textColor = color
         eventTitleLabel.textColor = color
         eventDateLabel.textColor = color
+    }
+    
+    private func showPremiumScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "premiumNavigationController") as! UINavigationController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
 
@@ -676,6 +694,10 @@ extension EventBackgroundViewController: EventCustomizeViewDelegate {
         view.bringSubviewToFront(customizeView)
         
         calculateDate()
+    }
+    
+    func onPremiumButtonClicked() {
+        showPremiumScreen()
     }
 }
 
