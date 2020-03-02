@@ -85,7 +85,7 @@ extension SettingsViewController: UITableViewDelegate {
     }
     
     private func openPrivacyPolicyPage() {
-        let policyURL = "https://sites.google.com/view/dcprivacypolicy"
+        let policyURL = "https://sites.google.com/view/privacy-policy-dayscounterios"
         if let url = URL(string: policyURL) {
             UIApplication.shared.open(url)
         }
