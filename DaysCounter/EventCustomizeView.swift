@@ -308,6 +308,7 @@ class EventCustomizeView: UIView {
         let slider = UISlider()
         slider.minimumValue = 0.0
         slider.maximumValue = 1.0
+        slider.value = 0.2
         slider.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         slider.setContentCompressionResistancePriority(.required, for: .horizontal)
         slider.translatesAutoresizingMaskIntoConstraints = false

@@ -27,7 +27,7 @@ class Event: Object, Codable {
     @objc dynamic var isTimeIncluded = false
     @objc dynamic var fontColor: Data?
     @objc dynamic var fontType = ""
-    @objc dynamic var imageDim: Float = 0.0
+    @objc dynamic var imageDim: Float = 0.2
     @objc dynamic var createdAt: Date = Date()
     
     override class func primaryKey() -> String? {
