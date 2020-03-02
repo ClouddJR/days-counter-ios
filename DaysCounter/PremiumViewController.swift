@@ -56,7 +56,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var upgradeTitle: UILabel = {
         let label = UILabel()
-        label.text = "Upgrade to Premium"
+        label.text = NSLocalizedString("Upgrade to Premium", comment: "")
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textAlignment = .center
         label.textColor = .white
@@ -90,7 +90,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var paymentLabel: UILabel = {
         let label = buildFeatureLabel()
-        label.text = "Pay only once (no subscription)"
+        label.text = NSLocalizedString("Pay only once (without subscription)", comment: "")
         return label
     }()
     
@@ -115,7 +115,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var featureLabel: UILabel = {
         let label = buildFeatureLabel()
-        label.text = "Get access to every feature released in the future"
+        label.text = NSLocalizedString("Get access to every feature released in the future", comment: "")
         return label
     }()
     
@@ -140,7 +140,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var noAdsLabel: UILabel = {
         let label = buildFeatureLabel()
-        label.text = "Remove ads"
+        label.text = NSLocalizedString("Remove ads", comment: "")
         return label
     }()
     
@@ -164,7 +164,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var syncLabel: UILabel = {
         let label = buildFeatureLabel()
-        label.text = "Enable full sync between multiple devices (including images)"
+        label.text = NSLocalizedString("Enable full sync between multiple devices (including images)", comment: "")
         return label
     }()
     
@@ -188,7 +188,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var customizeLabel: UILabel = {
         let label = buildFeatureLabel()
-        label.text = "Fully customize each event"
+        label.text = NSLocalizedString("Fully customize each event", comment: "")
         return label
     }()
     
@@ -213,7 +213,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var imagesLabel: UILabel = {
         let label = buildFeatureLabel()
-        label.text = "Download beautiful images for your events"
+        label.text = NSLocalizedString("Download beautiful images for your events right from the app", comment: "")
         return label
     }()
     
@@ -254,7 +254,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var buyButton: LoadingButton = {
         let button = LoadingButton(type: .system)
-        button.setTitle("Buy now", for: .normal)
+        button.setTitle(NSLocalizedString("Buy now", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = secondaryColor
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
@@ -265,7 +265,7 @@ class PremiumViewController: UIViewController {
     
     private lazy var restoreButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Restore Purchase", for: .normal)
+        button.setTitle(NSLocalizedString("Restore Purchase", comment: ""), for: .normal)
         button.setTitleColor(secondaryColor, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -370,19 +370,19 @@ class PremiumViewController: UIViewController {
     }
     
     @objc private func handlePurchaseNotification(_ notification: Notification) {
-        disableBuyButton(withTitle: "Purchased")
+        disableBuyButton(withTitle: NSLocalizedString("Purchased", comment: ""))
     }
     
     private func setUpPremiumInformation() {
         guard !Defaults.isPremiumUser() else {
-            disableBuyButton(withTitle: "Purchased")
+            disableBuyButton(withTitle: NSLocalizedString("Purchased", comment: ""))
             return
         }
         
         if Products.store.canMakePayments() {
             requestProducts()
         } else {
-            disableBuyButton(withTitle: "Not available")
+            disableBuyButton(withTitle: NSLocalizedString("Not available", comment: ""))
         }
     }
     
@@ -393,7 +393,7 @@ class PremiumViewController: UIViewController {
                 self?.premiumProduct = product
                 self?.priceFormatter.locale = product.priceLocale
                 let formattedPrice = self?.priceFormatter.string(from: product.price)
-                let buttonTitle = "Buy now for " + formattedPrice!
+                let buttonTitle = NSLocalizedString("Buy now for ", comment: "") + formattedPrice!
                 
                 DispatchQueue.main.async {
                     self?.buyButton.toggleLoading(false)
@@ -402,7 +402,7 @@ class PremiumViewController: UIViewController {
             } else {
                 DispatchQueue.main.async {
                     self?.buyButton.toggleLoading(false)
-                    self?.disableBuyButton(withTitle: "Not available")
+                    self?.disableBuyButton(withTitle: NSLocalizedString("Not available", comment: ""))
                 }
             }
         }

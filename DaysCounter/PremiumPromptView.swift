@@ -23,7 +23,7 @@ class PremiumPromptView: UIView {
     
     lazy var premiumLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("This feature is only available for premium users", comment: "")
+        label.text = NSLocalizedString(NSLocalizedString("This feature is only available for premium users", comment: ""), comment: "")
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -34,7 +34,7 @@ class PremiumPromptView: UIView {
     
     lazy var moreInfoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(NSLocalizedString("More info", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString(NSLocalizedString("More info", comment: ""), comment: ""), for: .normal)
         button.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.translatesAutoresizingMaskIntoConstraints = false
