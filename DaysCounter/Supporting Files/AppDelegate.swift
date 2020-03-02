@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         changeDefaultRealmPath()
         FirebaseApp.configure()
         repeatEventsIfNecessary()
+        initializeStoreObject()
         window?.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         return true
     }
@@ -58,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func repeatEventsIfNecessary() {
         let databaseRepository = DatabaseRepository()
         databaseRepository.repeatEventsIfNecessary()
+    }
+    
+    private func initializeStoreObject() {
+        print(Products.store.canMakePayments())
     }
 
 }
