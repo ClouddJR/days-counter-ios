@@ -76,7 +76,7 @@ class EventBackgroundViewController: UIViewController {
     private lazy var eventImageViewDim: UIView = {
         let view = UIView()
         view.layer.backgroundColor = UIColor.black.cgColor
-        view.layer.opacity = 0.0
+        view.layer.opacity = 0.2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
