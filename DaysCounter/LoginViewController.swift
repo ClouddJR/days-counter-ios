@@ -48,7 +48,7 @@ class LoginViewController: FUIAuthPickerViewController {
         label.textColor = .secondaryLabel
         label.font = label.font.withSize(12)
         label.numberOfLines = 0
-        let text = NSLocalizedString("If you choose to log in, nothing besides your events data will be stored on our servers. You can ask for a complete data deletion by contacting us via our email. \nYou can find our email and privacy policy on the settings page.", comment: "")
+        let text = NSLocalizedString("If you choose to log in, nothing besides your events data will be stored on our servers. You can ask for a complete data deletion by contacting us via our email.\nYou can find our email and privacy policy on the settings page.", comment: "")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .justified
         paragraphStyle.firstLineHeadIndent = 0

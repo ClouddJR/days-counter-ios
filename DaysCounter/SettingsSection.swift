@@ -25,7 +25,7 @@ protocol Section {
 }
 
 enum GeneralSection: Int, CaseIterable {
-    case SortingOrder, DefaultSection, EventViewType, Premium, RateThisApp
+    case SortingOrder, DefaultSection, EventViewType, Premium
     
     static func getOptionTitle(for option: GeneralSection) -> String {
         switch option {
@@ -33,7 +33,7 @@ enum GeneralSection: Int, CaseIterable {
         case .DefaultSection: return NSLocalizedString("Default section", comment: "")
         case .EventViewType: return NSLocalizedString("Event view type", comment: "")
         case .Premium: return NSLocalizedString("Premium", comment: "")
-        case .RateThisApp: return NSLocalizedString("Rate this app", comment: "")
+//        case .RateThisApp: return NSLocalizedString("Rate this app", comment: "")
         }
     }
     
@@ -43,7 +43,7 @@ enum GeneralSection: Int, CaseIterable {
         case .DefaultSection: return Defaults.DefaultSection.getOptionTitle(for: Defaults.getDefaultSection())
         case .EventViewType: return Defaults.EventViewType.getOptionTitle(for: Defaults.getEventViewType())
         case .Premium: return ""
-        case .RateThisApp: return ""
+//        case .RateThisApp: return ""
         }
     }
 }

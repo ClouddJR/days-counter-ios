@@ -26,6 +26,8 @@
 "Sort by days descending" = "Sortuj po dacie malejąco";
 "Future" = "Przyszłość";
 "Past" = "Przeszłość";
+"Large" = "Duży";
+"Compact" = "Kompaktowy";
 
 //EventBackgroundViewController
 "Camera" = "Kamera";
@@ -71,6 +73,7 @@
 "About" = "O aplikacji";
 "Sorting order" = "Kolejność sortowania";
 "Default section" = "Domyślna sekcja";
+"Event view type" = "Typ widoku wydarzenia";
 "Premium" = "Premium";
 "Rate this app" = "Oceń aplikację";
 "Import events" = "Importuj wydarzenia";
@@ -97,5 +100,24 @@
 "Login Failed" = "Logowanie Nieudane";
 
 //LoginViewController
+"Login" = "Logowanie";
 "Welcome" = "Witaj";
 "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Zalogowanie pozwala na synchronizację Twoich wydarzeń z chmurą, dzięki czemu będą one dostępne na wszystkich Twoich urządzeniach.";
+"If you choose to log in, nothing besides your events data will be stored on our servers. You can ask for a complete data deletion by contacting us via our email.\nYou can find our email and privacy policy on the settings page." = "Po zalogowaniu, nic poza Twoimi wydarzeniami nie będzie przechowywane na naszych serwerach. Możesz w dowolnym momencie poprosić o usunięcie wszystkich swoich danych kontaktując się z nami.\nMożesz znaleźć naszego maila oraz politykę prywatności w ustawieniach.";
+
+//PremiumViewController
+"Upgrade to Premium" = "Konto Premium";
+"Pay only once (without subscription)" = "Zapłać tylko raz (bez subskrypcji)";
+"Get access to every feature released in the future" = "Uzyskaj dostęp do wszystkich funkcji, które będą dodane w przyszłości";
+"Remove ads" = "Usuń reklamy";
+"Enable full sync between multiple devices (including images)" = "Synchronizuj swoje wydarzenia pomiędzy urządzeniami (włącznie z ich tłami)";
+"Fully customize each event" = "W pełni personalizuj wszystkie wydarzenia";
+"Download beautiful images for your events right from the app" = "Pobieraj zdjęcia z Internetu do swoich wydarzeń prosto z aplikacji";
+"Buy now" = "Kup teraz";
+"Restore Purchase" = "Przywróć zakup";
+"Purchased" = "Zakupione";
+"Not available" = "Niedostępne";
+"Buy now for " = "Kup teraz za ";
+"This feature is only available for premium users" = "Ta funkcja jest dostępna tylko dla użytkowników premium";
+"This feature is only available for premium users." = "Ta funkcja jest dostępna tylko dla użytkowników premium.";
+"More info" = "Więcej informacji";
