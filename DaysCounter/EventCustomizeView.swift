@@ -320,7 +320,7 @@ class EventCustomizeView: UIView {
     lazy var premiumDimView: UIView = {
         let view = UIView()
         view.layer.backgroundColor = UIColor.black.cgColor
-        view.layer.opacity = 0.9
+        view.layer.opacity = 0.85
         view.isUserInteractionEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
