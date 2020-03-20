@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  DaysCounter
+
+  Created by Arkadiusz Chmura on 14/01/2020.
+  Copyright © 2020 CloudDroid. All rights reserved.
+*/
+
+//AddEventViewController
+"Only once" = "Only once";
+"Daily" = "Daily";
+"Weekly" = "Weekly";
+"Monthly" = "Monthly";
+"Yearly" = "Yearly";
+"Name And Date Fields Are Required" = "Name And Date Fields Are Required";
+"Notes" = "Notes";
+"Reminder message" = "Reminder message";
+"Notification Permission" = "Notification Permission";
+"The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it." = "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.";
+"Grant Permission" = "Grant Permission";
+"In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it." = "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.";
+
+//Defaults
+"Sort by time added" = "Sort by time added";
+"Sort by days ascending" = "Sort by days ascending";
+"Sort by days descending" = "Sort by days descending";
+"Future" = "Future";
+"Past" = "Past";
+
+//EventBackgroundViewController
+"Camera" = "Camera";
+"From the Internet" = "From the Internet";
+"Pre-installed images" = "Pre-installed images";
+"Photo library" = "Photo library";
+"Cancel" = "Cancel";
+
+//EventCustomizeView;
+"Years" = "Years";
+"Months" = "Months";
+"Weeks" = "Weeks";
+"Days" = "Days";
+"Time" = "Time";
+"Font color" = "Font color";
+"Font type" = "Font type";
+"Picture dim" = "Picture dim";
+
+//EventDetailsBottomView;
+"Notes" = "Notes";
+"No notes" = "No notes";
+"Repetition" = "Repetition";
+"Reminder" = "Reminder";
+"Reminder message" = "Reminder message";
+"None" = "None";
+
+//EventDetailsViewController;
+"The Screenshot Could Not Be Taken" = "The Screenshot Could Not Be Taken";
+"There was an error while getting the screen image for sharing." = "There was an error while getting the screen image for sharing.";
+"Are you sure you want to delete this event?" = "Are you sure you want to delete this event?";
+"This operation cannot be undone." = "This operation cannot be undone.";
+"Delete" = "Delete";
+
+//InternetGalleryViewController
+"Search an image" = "Search an image";
+"Downloading the image\n\n" = "Downloading the image\n\n";
+"Images Could Not Be Loaded" = "Images Could Not Be Loaded";
+"Check your Internet connection." = "Check your Internet connection.";
+"No images found" = "No images found";
+
+//SettingsSection
+"General" = "General";
+"About" = "About";
+"Sorting order" = "Sorting order";
+"Default section" = "Default section";
+"Premium" = "Premium";
+"Rate this app" = "Rate this app";
+"Import events" = "Import events";
+"Export events" = "Export events";
+"Privacy policy" = "Privacy policy";
+"Contact me" = "Contact me";
+
+//SettingsViewController
+"Settings" = "Settings";
+"Can't Send An Email From This Device" = "Can't Send An Email From This Device";
+"Error" = "Error";
+
+//Widgets
+"There are no past events" = "There are no past events";
+"There are no future events" = "There are no future events";
+"There are no upcoming events" = "There are no upcoming events";
+
+//EventsTabBarController
+"You Are Already Logged In" = "You Are Already Logged In";
+"Your events are being synchronized" = "Your events are being synchronized";
+"Account: " = "Account: ";
+"Information" = "Information";
+"Sign out" = "Sign out";
+"Login Failed" = "Login Failed";
+
+//LoginViewController
+"Welcome" = "Welcome";
+"Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices.";

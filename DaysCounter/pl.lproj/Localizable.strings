@@ -1,0 +1,123 @@
+/* 
+  Localizable.strings
+  DaysCounter
+
+  Created by Arkadiusz Chmura on 14/01/2020.
+  Copyright © 2020 CloudDroid. All rights reserved.
+*/
+
+//AddEventViewController
+"Only once" = "Tylko raz";
+"Daily" = "Codziennie";
+"Weekly" = "Tygodniowo";
+"Monthly" = "Miesięcznie";
+"Yearly" = "Rocznie";
+"Name And Date Fields Are Required" = "Pola Z Nazwą I Datą Są Wymagane";
+"Notes" = "Notatki";
+"Reminder message" = "Treść powiadomienia";
+"Notification Permission" = "Uprawnienia Dla Powiadomień";
+"The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it." = "Aplikacja nie uzyskała uprawnień do używania powiadomień, stąd będzie ono zignorowane. Udaj się do ustawień systemowych, aby te uprawnienia przyznać.";
+"Grant Permission" = "Przyznaj uprawnienia";
+"In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it." = "W celu wyświetlania powiadomień, aplicja potrzebuje przyznanych uprawień. Udaj się do ustawień systemowych aby to zmienić.";
+
+//Defaults
+"Sort by time added" = "Sortuj po dacie dodania";
+"Sort by days ascending" = "Sortuj po dacie rosnąco";
+"Sort by days descending" = "Sortuj po dacie malejąco";
+"Future" = "Przyszłość";
+"Past" = "Przeszłość";
+"Large" = "Duży";
+"Compact" = "Kompaktowy";
+
+//EventBackgroundViewController
+"Camera" = "Kamera";
+"From the Internet" = "Zdjęcia z Internetu";
+"Pre-installed images" = "Wgrane tła";
+"Photo library" = "Galeria zdjęć";
+"Cancel" = "Anuluj";
+
+//EventCustomizeView;
+"Years" = "Lata";
+"Months" = "Miesiące";
+"Weeks" = "Tygodnie";
+"Days" = "Dni";
+"Time" = "Czas";
+"Font color" = "Kolor czcionki";
+"Font type" = "Typ czcionki";
+"Picture dim" = "Przyciemnienie";
+
+//EventDetailsBottomView;
+"Notes" = "Notatki";
+"No notes" = "Brak notatek";
+"Repetition" = "Powtarzanie";
+"Reminder" = "Powiadomienie";
+"Reminder message" = "Treść powiadomienia";
+"None" = "Brak";
+
+//EventDetailsViewController;
+"The Screenshot Could Not Be Taken" = "Zrzut Ekranu Nie Mógł Zostać Zrobiony";
+"There was an error while getting the screen image for sharing." = "Wystąpił problem podczas robienia zrzutu ekranu w celu udostępnienia.";
+"Are you sure you want to delete this event?" = "Jesteś pewien, że chcesz usunąć to wydarzenie?";
+"This operation cannot be undone." = "Ta operacja nie może zostać cofnięta.";
+"Delete" = "Usuń";
+
+//InternetGalleryViewController
+"Search an image" = "Wyszukaj obraz";
+"Downloading the image\n\n" = "Pobieranie obrazka\n\n";
+"Images Could Not Be Loaded" = "Zdjęcia Nie Mogły Zostać Załadowane";
+"Check your Internet connection." = "Sprawdź swoje połączenie z Internetem.";
+"No images found" = "Nie znaleziono zdjęć";
+
+//SettingsSection
+"General" = "Ogólne";
+"About" = "O aplikacji";
+"Sorting order" = "Kolejność sortowania";
+"Default section" = "Domyślna sekcja";
+"Event view type" = "Typ widoku wydarzenia";
+"Premium" = "Premium";
+"Rate this app" = "Oceń aplikację";
+"Import events" = "Importuj wydarzenia";
+"Export events" = "Eksportuj wydarzenia";
+"Privacy policy" = "Polityka prywatności";
+"Contact me" = "Kontakt";
+
+//SettingsViewController
+"Settings" = "Ustawienia";
+"Can't Send An Email From This Device" = "Nie Można Wysłać Wiadomości Z Tego Urządzenia";
+"Error" = "Błąd";
+
+//Widgets
+"There are no past events" = "Brak wydarzeń z przeszłości";
+"There are no future events" = "Brak wydarzeń z przyszłości";
+"There are no upcoming events" = "Brak nadchodzących wydarzeń";
+
+//EventsTabBarController
+"You Are Already Logged In" = "Jesteś Już Zalogowany";
+"Your events are being synchronized" = "Twoje wydarzenia są synchronizowane";
+"Account: " = "Konto: ";
+"Information" = "Informacja";
+"Sign out" = "Wyloguj się";
+"Login Failed" = "Logowanie Nieudane";
+
+//LoginViewController
+"Login" = "Logowanie";
+"Welcome" = "Witaj";
+"Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Zalogowanie pozwala na synchronizację Twoich wydarzeń z chmurą, dzięki czemu będą one dostępne na wszystkich Twoich urządzeniach.";
+"If you choose to log in, nothing besides your events data will be stored on our servers. You can ask for a complete data deletion by contacting us via our email.\nYou can find our email and privacy policy on the settings page." = "Po zalogowaniu, nic poza Twoimi wydarzeniami nie będzie przechowywane na naszych serwerach. Możesz w dowolnym momencie poprosić o usunięcie wszystkich swoich danych kontaktując się z nami.\nMożesz znaleźć naszego maila oraz politykę prywatności w ustawieniach.";
+
+//PremiumViewController
+"Upgrade to Premium" = "Konto Premium";
+"Pay only once (without subscription)" = "Zapłać tylko raz (bez subskrypcji)";
+"Get access to every feature released in the future" = "Uzyskaj dostęp do wszystkich funkcji, które będą dodane w przyszłości";
+"Remove ads" = "Usuń reklamy";
+"Enable full sync between multiple devices (including images)" = "Synchronizuj swoje wydarzenia pomiędzy urządzeniami (włącznie z ich tłami)";
+"Fully customize each event" = "W pełni personalizuj wszystkie wydarzenia";
+"Download beautiful images for your events right from the app" = "Pobieraj zdjęcia z Internetu do swoich wydarzeń prosto z aplikacji";
+"Buy now" = "Kup teraz";
+"Restore Purchase" = "Przywróć zakup";
+"Purchased" = "Zakupione";
+"Not available" = "Niedostępne";
+"Buy now for " = "Kup teraz za ";
+"This feature is only available for premium users" = "Ta funkcja jest dostępna tylko dla użytkowników premium";
+"This feature is only available for premium users." = "Ta funkcja jest dostępna tylko dla użytkowników premium.";
+"More info" = "Więcej informacji";

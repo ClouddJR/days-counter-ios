@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        changeDefaultRealmPath()
+        FirebaseApp.configure()
+        repeatEventsIfNecessary()
+        initializeStoreObject()
+        window?.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         return true
     }
 
@@ -41,6 +47,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    private func changeDefaultRealmPath() {
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
+        let realmPath = directory.appendingPathComponent("db.realm")
+        
+        var config = Realm.Configuration()
+        config.fileURL = realmPath
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
+    private func repeatEventsIfNecessary() {
+        let databaseRepository = DatabaseRepository()
+        databaseRepository.repeatEventsIfNecessary()
+    }
+    
+    private func initializeStoreObject() {
+        print(Products.store.canMakePayments())
+    }
 
 }
 
