@@ -1,11 +1,3 @@
-//
-//  EventDetailsBottomView.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 21/11/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import UIKit
 
 class EventDetailsBottomView: UIView {

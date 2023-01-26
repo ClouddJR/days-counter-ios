@@ -1,11 +1,3 @@
-//
-//  EventViewTypeViewController.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 25/02/2020.
-//  Copyright © 2020 CloudDroid. All rights reserved.
-//
-
 import UIKit
 
 class EventViewTypeViewController: UIViewController {

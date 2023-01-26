@@ -1,11 +1,3 @@
-//
-//  MoreInfoButtonView.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 12/11/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import UIKit
 
 class MoreInfoButtonView: UIView {

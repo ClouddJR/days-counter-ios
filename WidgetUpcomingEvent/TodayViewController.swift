@@ -1,11 +1,3 @@
-//
-//  TodayViewController.swift
-//  WidgetUpcomingEvent
-//
-//  Created by Arkadiusz Chmura on 31/12/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import UIKit
 import NotificationCenter
 import RealmSwift

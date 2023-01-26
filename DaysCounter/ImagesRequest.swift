@@ -1,11 +1,3 @@
-//
-//  ImagesRequest.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 05/10/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import Foundation
 
 struct ImagesRequest {

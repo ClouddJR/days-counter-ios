@@ -1,11 +1,3 @@
-//
-//  FontColorPickerView.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 26/09/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import UIKit
 
 class FontColorPickerView: UIView {

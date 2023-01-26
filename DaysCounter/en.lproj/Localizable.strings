@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-  DaysCounter
-
-  Created by Arkadiusz Chmura on 14/01/2020.
-  Copyright © 2020 CloudDroid. All rights reserved.
-*/
-
 //AddEventViewController
 "Only once" = "Only once";
 "Daily" = "Daily";

@@ -1,11 +1,3 @@
-//
-//  AuthPickerViewController.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 18/02/2020.
-//  Copyright © 2020 CloudDroid. All rights reserved.
-//
-
 import UIKit
 import FirebaseAuthUI
 

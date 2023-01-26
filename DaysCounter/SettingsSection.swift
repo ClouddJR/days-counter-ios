@@ -1,11 +1,3 @@
-//
-//  SettingsSection.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 16/12/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import Foundation
 
 enum SettingsSection: Int, CaseIterable {

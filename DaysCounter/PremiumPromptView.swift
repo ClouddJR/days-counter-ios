@@ -1,11 +1,3 @@
-//
-//  PremiumPromptView.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 01/03/2020.
-//  Copyright © 2020 CloudDroid. All rights reserved.
-//
-
 import UIKit
 
 class PremiumPromptView: UIView {

@@ -1,11 +1,3 @@
-//
-//  DateCalculator.swift
-//  DaysCounter
-//
-//  Created by Arkadiusz Chmura on 28/09/2019.
-//  Copyright © 2019 CloudDroid. All rights reserved.
-//
-
 import Foundation
 
 class DateCalculator {
