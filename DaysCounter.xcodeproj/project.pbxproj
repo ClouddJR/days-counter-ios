@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C09C5185D8CD859802CEF80 /* Pods_WidgetPastEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F868769D3441E614A9DBF80 /* Pods_WidgetPastEvents.framework */; };
 		281C68819E43AE18FCD559D6 /* Pods_WidgetUpcomingEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF553D311315023CA4931BBF /* Pods_WidgetUpcomingEvent.framework */; };
+		62EE50F72982F59A00C6DE56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */; };
 		80008EDE393F01CFF8A46B1B /* Pods_WidgetFutureEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */; };
 		A606F09824068A22006E07C8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606F09724068A22006E07C8 /* EventCell.swift */; };
 		A60A514F23FB1CDA007BB811 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A514E23FB1CDA007BB811 /* StoreKit.framework */; };
@@ -35,10 +36,6 @@
 		A67FACFE23A7F377000265AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FACFD23A7F377000265AD /* SettingsViewController.swift */; };
 		A67FAD0023A7F48D000265AD /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FACFF23A7F48D000265AD /* SettingsTableViewCell.swift */; };
 		A67FAD0223A80573000265AD /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67FAD0123A80573000265AD /* SettingsSection.swift */; };
-		A68392B723FAAAC400C2113A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68392B623FAAAC400C2113A /* GoogleService-Info.plist */; };
-		A68392B823FAAAC400C2113A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68392B623FAAAC400C2113A /* GoogleService-Info.plist */; };
-		A68392B923FAAAC400C2113A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68392B623FAAAC400C2113A /* GoogleService-Info.plist */; };
-		A68392BA23FAAAC400C2113A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68392B623FAAAC400C2113A /* GoogleService-Info.plist */; };
 		A687570E23D0A8800011C0FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A687571023D0A8800011C0FC /* InfoPlist.strings */; };
 		A68B307A2405181800D43AA7 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B30792405181800D43AA7 /* LoadingButton.swift */; };
 		A68B307C2405273200D43AA7 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B307B2405273200D43AA7 /* CurvedView.swift */; };
@@ -148,6 +145,7 @@
 		29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetFutureEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2214F1B7E218B8C2A8D325 /* Pods-WidgetPastEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetPastEvents.debug.xcconfig"; path = "Target Support Files/Pods-WidgetPastEvents/Pods-WidgetPastEvents.debug.xcconfig"; sourceTree = "<group>"; };
 		4F868769D3441E614A9DBF80 /* Pods_WidgetPastEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetPastEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.release.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.release.xcconfig"; sourceTree = "<group>"; };
 		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		A606F09724068A22006E07C8 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		A67FACFD23A7F377000265AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A67FACFF23A7F48D000265AD /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A67FAD0123A80573000265AD /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
-		A68392B623FAAAC400C2113A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A687570623D0A6D30011C0FC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A687570B23D0A7DB0011C0FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A687570F23D0A8800011C0FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -379,7 +376,7 @@
 				A6D8D2F22406899800251CD4 /* CompactEventCell.swift */,
 				A606F09724068A22006E07C8 /* EventCell.swift */,
 				A644119423AAA76000FE3079 /* SortingOrderViewController.swift */,
-				A68392B623FAAAC400C2113A /* GoogleService-Info.plist */,
+				62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */,
 				A6A84E4423294FBC006C6660 /* Supporting Files */,
 				A693802D23CE45420063484B /* Localizable.strings */,
 			);
@@ -460,7 +457,6 @@
 				A6A84E2D23294F0E006C6660 /* Resources */,
 				6D06BB48DB8A9DE91835C509 /* [CP] Embed Pods Frameworks */,
 				A6D420D523BBA85A0036D097 /* Embed App Extensions */,
-				30A28DF784D7C5E94906D839 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -584,7 +580,7 @@
 				A6A84E3A23294F0E006C6660 /* Assets.xcassets in Resources */,
 				A672CDDE23CF9D73003C21CD /* Localizable.stringsdict in Resources */,
 				A6A84E3823294F0E006C6660 /* Main.storyboard in Resources */,
-				A68392B723FAAAC400C2113A /* GoogleService-Info.plist in Resources */,
+				62EE50F72982F59A00C6DE56 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +593,6 @@
 				A693802923CE45420063484B /* Localizable.strings in Resources */,
 				A6D420D023BBA85A0036D097 /* MainInterface.storyboard in Resources */,
 				A687570E23D0A8800011C0FC /* InfoPlist.strings in Resources */,
-				A68392B823FAAAC400C2113A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +605,6 @@
 				A693802A23CE45420063484B /* Localizable.strings in Resources */,
 				A6D420E423BBA8750036D097 /* MainInterface.storyboard in Resources */,
 				A61F29B223D0E3630047C174 /* InfoPlist.strings in Resources */,
-				A68392B923FAAAC400C2113A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +617,6 @@
 				A693802B23CE45420063484B /* Localizable.strings in Resources */,
 				A6D420F723BBA8840036D097 /* MainInterface.storyboard in Resources */,
 				A61F29B823D0E3990047C174 /* InfoPlist.strings in Resources */,
-				A68392BA23FAAAC400C2113A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,23 +643,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		30A28DF784D7C5E94906D839 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DaysCounter/Pods-DaysCounter-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DaysCounter/Pods-DaysCounter-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DaysCounter/Pods-DaysCounter-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		34A53429C907016CB6271AAA /* [CP] Check Pods Manifest.lock */ = {

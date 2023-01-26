@@ -69,7 +69,9 @@ class RemoteDatabase {
     
     func deleteImage(for event: Event) {
         let storageRef = Storage.storage().reference(withPath: event.cloudImagePath)
-        storageRef.delete()
+        storageRef.delete { _ in
+            // nop
+        }
     }
     
     func addEvents(_ events: [Event], finishedListener: @escaping( () -> ())) {
@@ -138,9 +140,7 @@ class RemoteDatabase {
                     }
                     switch result {
                     case .success(let event):
-                        if let event = event {
-                            events.append(event)
-                        }
+                        events.append(event)
                     case .failure(let error):
                         print("Error decoding event: \(error)")
                     }

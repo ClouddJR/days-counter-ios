@@ -7,7 +7,10 @@
 //
 
 import UIKit
-import FirebaseUI
+import FirebaseAuthUI
+import FirebaseEmailAuthUI
+import FirebaseOAuthUI
+import FirebaseGoogleAuthUI
 
 class EventsTabBarController: UITabBarController, FUIAuthDelegate {
     
