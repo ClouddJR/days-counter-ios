@@ -5,9 +5,9 @@ import MessageUI
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @AppStorage(Defaults.Key.SortingOrder.rawValue) private var sortingOrder: Defaults.SortingOrder = .TimeAdded
-    @AppStorage(Defaults.Key.DefaultSection.rawValue) private var defaultSection: Defaults.DefaultSection = .Future
-    @AppStorage(Defaults.Key.EventViewType.rawValue) private var eventViewType: Defaults.EventViewType = .Large
+    @AppStorage(Defaults.Key.sortingOrder.rawValue) private var sortingOrder: Defaults.SortingOrder = .timeAdded
+    @AppStorage(Defaults.Key.defaultSection.rawValue) private var defaultSection: Defaults.DefaultSection = .future
+    @AppStorage(Defaults.Key.eventViewType.rawValue) private var eventViewType: Defaults.EventViewType = .large
     
     @State private var isShowingPremium = false
     @State private var isShowingMail = false

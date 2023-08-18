@@ -20,11 +20,11 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
             
             let sectionOrder = Defaults.getDefaultSection()
             switch sectionOrder {
-            case .Future:
+            case .future:
                 self?.viewControllers?.sort(by: { (viewController1, viewController2) -> Bool in
                     return String(describing: viewController1) < String(describing: viewController2)
                 })
-            case .Past:
+            case .past:
                 self?.viewControllers?.sort(by: { (viewController1, viewController2) -> Bool in
                     return String(describing: viewController1) > String(describing: viewController2)
                 })

@@ -2,72 +2,75 @@ import Foundation
 
 struct Defaults {
     enum Key: String {
-        case SortingOrder = "user_defaults_sorting_order";
-        case DefaultSection = "user_defaults_default_section";
-        case EventViewType = "user_defaults_event_view_type";
-        case Premium = "user_defaults_is_premium_user";
+        case sortingOrder = "user_defaults_sorting_order";
+        case defaultSection = "user_defaults_default_section";
+        case eventViewType = "user_defaults_event_view_type";
+        case premium = "user_defaults_is_premium_user";
     }
     
     enum SortingOrder: Int, CaseIterable, Identifiable {
-        case TimeAdded, DaysAscending, DaysDescending
+        case timeAdded, daysAscending, daysDescending
+        
         var id: Self { self }
         
         var title: String {
             switch self {
-            case .TimeAdded: return NSLocalizedString("By time added", comment: "")
-            case .DaysAscending: return NSLocalizedString("By days ascending", comment: "")
-            case .DaysDescending: return NSLocalizedString("By days descending", comment: "")
+            case .timeAdded: return NSLocalizedString("By time added", comment: "")
+            case .daysAscending: return NSLocalizedString("By days ascending", comment: "")
+            case .daysDescending: return NSLocalizedString("By days descending", comment: "")
             }
         }
     }
     
     enum DefaultSection: Int, CaseIterable, Identifiable {
-        case Future, Past
+        case future, past
+        
         var id: Self { self }
         
         var title: String {
             switch self {
-            case .Future: return NSLocalizedString("Future", comment: "")
-            case .Past: return NSLocalizedString("Past", comment: "")
+            case .future: return NSLocalizedString("Future", comment: "")
+            case .past: return NSLocalizedString("Past", comment: "")
             }
         }
     }
     
     enum EventViewType: Int, CaseIterable, Identifiable {
-        case Large, Compact
+        case large, compact
+        
         var id: Self { self }
         
         var title: String {
             switch self {
-            case .Large: return NSLocalizedString("Large", comment: "")
-            case .Compact: return NSLocalizedString("Compact", comment: "")
+            case .large: return NSLocalizedString("Large", comment: "")
+            case .compact: return NSLocalizedString("Compact", comment: "")
             }
         }
     }
     
     static func getSortingOrder() -> SortingOrder {
         SortingOrder(
-            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.SortingOrder.rawValue)
-        ) ?? SortingOrder.TimeAdded
+            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.sortingOrder.rawValue)
+        ) ?? SortingOrder.timeAdded
     }
     
     static func getDefaultSection() -> DefaultSection {
         DefaultSection(
-            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.DefaultSection.rawValue)
-        ) ?? DefaultSection.Future
+            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.defaultSection.rawValue)
+        ) ?? DefaultSection.future
     }
     
     static func getEventViewType() -> EventViewType {
         EventViewType(
-            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.EventViewType.rawValue)
-        ) ?? EventViewType.Large
+            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.eventViewType.rawValue)
+        ) ?? EventViewType.large
     }
     
     static func setPremiumUser(_ isPremium: Bool) {
-        UserDefaults.forAppGroup().set(isPremium, forKey: Defaults.Key.Premium.rawValue)
+        UserDefaults.forAppGroup().set(isPremium, forKey: Defaults.Key.premium.rawValue)
     }
     
     static func isPremiumUser() -> Bool {
-        UserDefaults.forAppGroup().bool(forKey: Defaults.Key.Premium.rawValue)
+        UserDefaults.forAppGroup().bool(forKey: Defaults.Key.premium.rawValue)
     }
 }

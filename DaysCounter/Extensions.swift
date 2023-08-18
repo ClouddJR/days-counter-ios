@@ -149,15 +149,15 @@ extension String {
 
 extension UserDefaults {
     @objc dynamic var user_defaults_sorting_order: Int {
-        return integer(forKey: Defaults.Key.SortingOrder.rawValue)
+        return integer(forKey: Defaults.Key.sortingOrder.rawValue)
     }
     
     @objc dynamic var user_defaults_default_section: Int {
-        return integer(forKey: Defaults.Key.DefaultSection.rawValue)
+        return integer(forKey: Defaults.Key.defaultSection.rawValue)
     }
     
     @objc dynamic var user_defaults_event_view_type: Int {
-        return integer(forKey: Defaults.Key.EventViewType.rawValue)
+        return integer(forKey: Defaults.Key.eventViewType.rawValue)
     }
     
     static func forAppGroup() -> UserDefaults {

@@ -17,10 +17,10 @@ class PastEventsViewController: UIViewController {
     
     private func createTableView() -> UITableView {
         let tableView = UITableView()
-        let cellClass = Defaults.getEventViewType() == .Large ? LargeEventCell.self : CompactEventCell.self
+        let cellClass = Defaults.getEventViewType() == .large ? LargeEventCell.self : CompactEventCell.self
         tableView.register(cellClass, forCellReuseIdentifier: "EventCell")
         tableView.separatorStyle = .none
-        tableView.rowHeight = Defaults.getEventViewType() == .Large ? 200 : 86
+        tableView.rowHeight = Defaults.getEventViewType() == .large ? 200 : 86
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
@@ -65,9 +65,9 @@ class PastEventsViewController: UIViewController {
     private func sortEvents() {
         let sortingOrder = Defaults.getSortingOrder()
         switch sortingOrder {
-        case .DaysAscending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: false)
-        case .DaysDescending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: true)
-        case .TimeAdded: pastEvents = pastEvents.sorted(byKeyPath: "createdAt", ascending: true)
+        case .daysAscending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: false)
+        case .daysDescending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: true)
+        case .timeAdded: pastEvents = pastEvents.sorted(byKeyPath: "createdAt", ascending: true)
         }
     }
     

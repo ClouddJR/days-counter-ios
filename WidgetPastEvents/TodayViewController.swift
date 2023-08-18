@@ -72,9 +72,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     private func sortEvents() {
         let sortingOrder = Defaults.getSortingOrder()
         switch sortingOrder {
-        case .DaysAscending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: false)
-        case .DaysDescending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: true)
-        case .TimeAdded: pastEvents = pastEvents.sorted(byKeyPath: "createdAt", ascending: true)
+        case .daysAscending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: false)
+        case .daysDescending: pastEvents = pastEvents.sorted(byKeyPath: "date", ascending: true)
+        case .timeAdded: pastEvents = pastEvents.sorted(byKeyPath: "createdAt", ascending: true)
         }
     }
     
