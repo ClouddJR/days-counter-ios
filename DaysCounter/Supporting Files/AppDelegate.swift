@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         repeatEventsIfNecessary()
         initializeStoreObject()
-        window?.tintColor = UIColor(red: 242/255, green: 132/255, blue: 91/255, alpha: 1.0)
         return true
     }
 
@@ -56,6 +55,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initializeStoreObject() {
         print(Products.store.canMakePayments())
     }
-
 }
 

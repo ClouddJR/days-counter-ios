@@ -8,34 +8,37 @@ struct Defaults {
         case Premium = "user_defaults_is_premium_user";
     }
     
-    enum SortingOrder: Int, CaseIterable {
+    enum SortingOrder: Int, CaseIterable, Identifiable {
         case TimeAdded, DaysAscending, DaysDescending
+        var id: Self { self }
         
-        static func getOptionTitle(for option: SortingOrder) -> String {
-            switch option {
-            case .TimeAdded: return NSLocalizedString("Sort by time added", comment: "")
-            case .DaysAscending: return NSLocalizedString("Sort by days ascending", comment: "")
-            case .DaysDescending: return NSLocalizedString("Sort by days descending", comment: "")
+        var title: String {
+            switch self {
+            case .TimeAdded: return NSLocalizedString("By time added", comment: "")
+            case .DaysAscending: return NSLocalizedString("By days ascending", comment: "")
+            case .DaysDescending: return NSLocalizedString("By days descending", comment: "")
             }
         }
     }
     
-    enum DefaultSection: Int, CaseIterable {
+    enum DefaultSection: Int, CaseIterable, Identifiable {
         case Future, Past
+        var id: Self { self }
         
-        static func getOptionTitle(for option: DefaultSection) -> String {
-            switch option {
+        var title: String {
+            switch self {
             case .Future: return NSLocalizedString("Future", comment: "")
             case .Past: return NSLocalizedString("Past", comment: "")
             }
         }
     }
     
-    enum EventViewType: Int, CaseIterable {
+    enum EventViewType: Int, CaseIterable, Identifiable {
         case Large, Compact
+        var id: Self { self }
         
-        static func getOptionTitle(for option: EventViewType) -> String {
-            switch option {
+        var title: String {
+            switch self {
             case .Large: return NSLocalizedString("Large", comment: "")
             case .Compact: return NSLocalizedString("Compact", comment: "")
             }
@@ -43,15 +46,21 @@ struct Defaults {
     }
     
     static func getSortingOrder() -> SortingOrder {
-        return SortingOrder(rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.SortingOrder.rawValue)) ?? SortingOrder.TimeAdded
+        SortingOrder(
+            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.SortingOrder.rawValue)
+        ) ?? SortingOrder.TimeAdded
     }
     
     static func getDefaultSection() -> DefaultSection {
-        return DefaultSection(rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.DefaultSection.rawValue)) ?? DefaultSection.Future
+        DefaultSection(
+            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.DefaultSection.rawValue)
+        ) ?? DefaultSection.Future
     }
     
     static func getEventViewType() -> EventViewType {
-        return EventViewType(rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.EventViewType.rawValue)) ?? EventViewType.Large
+        EventViewType(
+            rawValue: UserDefaults.standard.integer(forKey: Defaults.Key.EventViewType.rawValue)
+        ) ?? EventViewType.Large
     }
     
     static func setPremiumUser(_ isPremium: Bool) {
@@ -59,6 +68,6 @@ struct Defaults {
     }
     
     static func isPremiumUser() -> Bool {
-        return UserDefaults.forAppGroup().bool(forKey: Defaults.Key.Premium.rawValue)
+        UserDefaults.forAppGroup().bool(forKey: Defaults.Key.Premium.rawValue)
     }
 }

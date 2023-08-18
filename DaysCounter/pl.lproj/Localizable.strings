@@ -1,4 +1,4 @@
-//AddEventViewController
+// AddEventViewController
 "Only once" = "Tylko raz";
 "Daily" = "Codziennie";
 "Weekly" = "Tygodniowo";
@@ -12,23 +12,23 @@
 "Grant Permission" = "Przyznaj uprawnienia";
 "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it." = "W celu wyświetlania powiadomień, aplicja potrzebuje przyznanych uprawień. Udaj się do ustawień systemowych aby to zmienić.";
 
-//Defaults
-"Sort by time added" = "Sortuj po dacie dodania";
-"Sort by days ascending" = "Sortuj po dacie rosnąco";
-"Sort by days descending" = "Sortuj po dacie malejąco";
+// Defaults
+"By time added" = "Po dacie dodania";
+"By days ascending" = "Po dacie rosnąco";
+"By days descending" = "Po dacie malejąco";
 "Future" = "Przyszłość";
 "Past" = "Przeszłość";
 "Large" = "Duży";
 "Compact" = "Kompaktowy";
 
-//EventBackgroundViewController
+// EventBackgroundViewController
 "Camera" = "Kamera";
 "From the Internet" = "Zdjęcia z Internetu";
 "Pre-installed images" = "Wgrane tła";
 "Photo library" = "Galeria zdjęć";
 "Cancel" = "Anuluj";
 
-//EventCustomizeView;
+// EventCustomizeView;
 "Years" = "Lata";
 "Months" = "Miesiące";
 "Weeks" = "Tygodnie";
@@ -38,7 +38,7 @@
 "Font type" = "Typ czcionki";
 "Picture dim" = "Przyciemnienie";
 
-//EventDetailsBottomView;
+// EventDetailsBottomView;
 "Notes" = "Notatki";
 "No notes" = "Brak notatek";
 "Repetition" = "Powtarzanie";
@@ -46,24 +46,24 @@
 "Reminder message" = "Treść powiadomienia";
 "None" = "Brak";
 
-//EventDetailsViewController;
+// EventDetailsViewController;
 "The Screenshot Could Not Be Taken" = "Zrzut Ekranu Nie Mógł Zostać Zrobiony";
 "There was an error while getting the screen image for sharing." = "Wystąpił problem podczas robienia zrzutu ekranu w celu udostępnienia.";
 "Are you sure you want to delete this event?" = "Jesteś pewien, że chcesz usunąć to wydarzenie?";
 "This operation cannot be undone." = "Ta operacja nie może zostać cofnięta.";
 "Delete" = "Usuń";
 
-//InternetGalleryViewController
+// InternetGalleryViewController
 "Search an image" = "Wyszukaj obraz";
 "Downloading the image\n\n" = "Pobieranie obrazka\n\n";
 "Images Could Not Be Loaded" = "Zdjęcia Nie Mogły Zostać Załadowane";
 "Check your Internet connection." = "Sprawdź swoje połączenie z Internetem.";
 "No images found" = "Nie znaleziono zdjęć";
 
-//SettingsSection
+// SettingsSection
 "General" = "Ogólne";
 "About" = "O aplikacji";
-"Sorting order" = "Kolejność sortowania";
+"Sort" = "Sortuj";
 "Default section" = "Domyślna sekcja";
 "Event view type" = "Typ widoku wydarzenia";
 "Premium" = "Premium";
@@ -73,17 +73,16 @@
 "Privacy policy" = "Polityka prywatności";
 "Contact me" = "Kontakt";
 
-//SettingsViewController
+// SettingsViewController
 "Settings" = "Ustawienia";
-"Can't Send An Email From This Device" = "Nie Można Wysłać Wiadomości Z Tego Urządzenia";
 "Error" = "Błąd";
 
-//Widgets
+// Widgets
 "There are no past events" = "Brak wydarzeń z przeszłości";
 "There are no future events" = "Brak wydarzeń z przyszłości";
 "There are no upcoming events" = "Brak nadchodzących wydarzeń";
 
-//EventsTabBarController
+// EventsTabBarController
 "You Are Already Logged In" = "Jesteś Już Zalogowany";
 "Your events are being synchronized" = "Twoje wydarzenia są synchronizowane";
 "Account: " = "Konto: ";
@@ -91,13 +90,13 @@
 "Sign out" = "Wyloguj się";
 "Login Failed" = "Logowanie Nieudane";
 
-//LoginViewController
+// LoginViewController
 "Login" = "Logowanie";
 "Welcome" = "Witaj";
 "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Zalogowanie pozwala na synchronizację Twoich wydarzeń z chmurą, dzięki czemu będą one dostępne na wszystkich Twoich urządzeniach.";
 "If you choose to log in, nothing besides your events data will be stored on our servers. You can ask for a complete data deletion by contacting us via our email.\nYou can find our email and privacy policy on the settings page." = "Po zalogowaniu, nic poza Twoimi wydarzeniami nie będzie przechowywane na naszych serwerach. Możesz w dowolnym momencie poprosić o usunięcie wszystkich swoich danych kontaktując się z nami.\nMożesz znaleźć naszego maila oraz politykę prywatności w ustawieniach.";
 
-//PremiumViewController
+// PremiumViewController
 "Upgrade to Premium" = "Konto Premium";
 "Pay only once (without subscription)" = "Zapłać tylko raz (bez subskrypcji)";
 "Get access to every feature released in the future" = "Uzyskaj dostęp do wszystkich funkcji, które będą dodane w przyszłości";
