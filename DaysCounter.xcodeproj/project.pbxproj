@@ -14,6 +14,8 @@
 		626565CC2A8F9B8F00DB0502 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
 		626565CE2A8F9B9200DB0502 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
 		626565D02A8FA1E300DB0502 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565CF2A8FA1E300DB0502 /* SettingsView.swift */; };
+		626565D32A8FA5AB00DB0502 /* InternalGalleryHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565D22A8FA5AB00DB0502 /* InternalGalleryHostingController.swift */; };
+		626565D52A8FA5DF00DB0502 /* InternalGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */; };
 		62EE50F72982F59A00C6DE56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */; };
 		80008EDE393F01CFF8A46B1B /* Pods_WidgetFutureEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */; };
 		A606F09824068A22006E07C8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606F09724068A22006E07C8 /* EventCell.swift */; };
@@ -43,7 +45,6 @@
 		A693802923CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
 		A693802A23CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
 		A693802B23CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
-		A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C67982344792100E2F79A /* InternalGalleryViewController.swift */; };
 		A69DE1C623BBAB5500C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
 		A69DE1C723BBAB5500C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
 		A69DE1C823BBAB5600C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
@@ -143,6 +144,8 @@
 		4F868769D3441E614A9DBF80 /* Pods_WidgetPastEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetPastEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62437E862988421A0087124A /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		626565CF2A8FA1E300DB0502 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		626565D22A8FA5AB00DB0502 /* InternalGalleryHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryHostingController.swift; sourceTree = "<group>"; };
+		626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryView.swift; sourceTree = "<group>"; };
 		62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.release.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.release.xcconfig"; sourceTree = "<group>"; };
 		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,7 +182,6 @@
 		A693802723CE45270063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		A693802C23CE45420063484B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A693802E23CE45460063484B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A69C67982344792100E2F79A /* InternalGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryViewController.swift; sourceTree = "<group>"; };
 		A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaysCounter.entitlements; sourceTree = "<group>"; };
 		A69E54062402D29400716618 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		A69E54082402D2D500716618 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
@@ -295,6 +297,23 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		626565D12A8FA4ED00DB0502 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				626565D62A92939800DB0502 /* Internal */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		626565D62A92939800DB0502 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				626565D22A8FA5AB00DB0502 /* InternalGalleryHostingController.swift */,
+				626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		A69E54052402D26000716618 /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +350,7 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				626565D12A8FA4ED00DB0502 /* Gallery */,
 				623D3CB72A8F85DC007CCA10 /* Settings */,
 				A69E54052402D26000716618 /* Purchases */,
 				A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */,
@@ -364,7 +384,6 @@
 				A6B924272348D135005F30F5 /* ImagesRequest.swift */,
 				A6B924252348D095005F30F5 /* ImagesResponse.swift */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
-				A69C67982344792100E2F79A /* InternalGalleryViewController.swift */,
 				A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
 				A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */,
@@ -743,11 +762,11 @@
 				A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */,
 				A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */,
 				A6B924262348D095005F30F5 /* ImagesResponse.swift in Sources */,
+				626565D52A8FA5DF00DB0502 /* InternalGalleryView.swift in Sources */,
 				A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */,
 				A6A84E6623296A69006C6660 /* FutureEventsViewController.swift in Sources */,
 				A6D8D2F32406899800251CD4 /* CompactEventCell.swift in Sources */,
 				A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */,
-				A69C67992344792100E2F79A /* InternalGalleryViewController.swift in Sources */,
 				62437E872988421A0087124A /* SettingsHostingController.swift in Sources */,
 				A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */,
 				A69E54092402D2D500716618 /* Products.swift in Sources */,
@@ -763,6 +782,7 @@
 				A6B924282348D135005F30F5 /* ImagesRequest.swift in Sources */,
 				A68B307C2405273200D43AA7 /* CurvedView.swift in Sources */,
 				A6E71EDD237B152200FDFAF2 /* MoreInfoButtonView.swift in Sources */,
+				626565D32A8FA5AB00DB0502 /* InternalGalleryHostingController.swift in Sources */,
 				A663228D235F67090073C3C3 /* EventDetailsViewController.swift in Sources */,
 				A62D057723FBEEA7004C9400 /* LoginViewController.swift in Sources */,
 				A68B307A2405181800D43AA7 /* LoadingButton.swift in Sources */,

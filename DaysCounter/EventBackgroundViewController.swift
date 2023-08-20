@@ -394,10 +394,7 @@ class EventBackgroundViewController: UIViewController {
         }
         
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Pre-installed images", comment: ""), style: .default, handler: { (action) in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "internalGalleryViewController") as! InternalGalleryViewController
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(InternalGalleryHostingController(delegate: self), animated: true)
         }))
         
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("From the Internet", comment: ""), style: .default, handler: { (action) in
@@ -721,11 +718,10 @@ extension EventBackgroundViewController: ImageCropViewControllerDelegate {
     }
 }
 
-// MARK:  InternalGalleryViewController delegate
+// MARK:  InternalGallery delegate
 
-extension EventBackgroundViewController: InternalGalleryViewControllerDelegate {
-    
-    func onImageChosenFromGallery(_ image: UIImage) {
+extension EventBackgroundViewController: InternalGalleryDelegate {
+    func onImageChosen(_ image: UIImage) {
         backgroundImageView.image = image
         eventImageView.image = image
     }
