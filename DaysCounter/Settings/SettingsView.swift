@@ -13,7 +13,7 @@ struct SettingsView: View {
     @State private var isShowingMail = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: Text("General")) {
                     Picker("Sort", selection: $sortingOrder) {
@@ -48,7 +48,8 @@ struct SettingsView: View {
                     .disabled(!MFMailComposeViewController.canSendMail())
                 }
             }
-            .navigationBarTitle("Settings", displayMode: .inline)
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("OK") {
@@ -63,7 +64,6 @@ struct SettingsView: View {
                 MailView()
             }
         }
-        .navigationViewStyle(.stack)
     }
 }
 
