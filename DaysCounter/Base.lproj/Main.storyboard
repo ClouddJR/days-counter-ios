@@ -773,7 +773,6 @@
                         <outlet property="yearsSectionStackView" destination="AML-T5-pQs" id="yhU-0v-fbu"/>
                         <outlet property="yearsTitleLabel" destination="G8j-FU-jUg" id="Zpk-x4-Y8A"/>
                         <segue destination="wBS-HC-5jd" kind="show" identifier="imageCropSegue" id="4GQ-sh-kg2"/>
-                        <segue destination="FeI-3y-7Pr" kind="show" identifier="internetGallerySegue" id="nAf-nr-cR7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLf-93-aui" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -825,22 +824,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pny-EA-X4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6043" y="682"/>
-        </scene>
-        <!--Internet Gallery View Controller-->
-        <scene sceneID="7Y0-07-xHH">
-            <objects>
-                <viewController storyboardIdentifier="internetGalleryViewController" id="FeI-3y-7Pr" customClass="InternetGalleryViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Hg-jw-D3S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="U4q-zb-TwJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Y7e-Cg-L6v"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k4B-fX-wvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6890" y="682"/>
         </scene>

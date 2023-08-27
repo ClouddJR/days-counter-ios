@@ -29,7 +29,7 @@ struct InternalGalleryView: View {
                             .clipped()
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                delegate.onImageChosen(image)
+                                delegate.onInternalImageChosen(image)
                                 presentationMode.wrappedValue.dismiss()
                             }
                     }
@@ -55,5 +55,5 @@ struct InternalGalleryView_Previews: PreviewProvider {
 }
 
 final class EmptyDelegate: InternalGalleryDelegate {
-    func onImageChosen(_ image: UIImage) {}
+    func onInternalImageChosen(_ image: UIImage) {}
 }

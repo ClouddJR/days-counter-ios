@@ -399,10 +399,9 @@ class EventBackgroundViewController: UIViewController {
         
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("From the Internet", comment: ""), style: .default, handler: { (action) in
             if Defaults.isPremiumUser() {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "internetGalleryViewController") as! InternetGalleryViewController
-                vc.delegate = self
-                self.navigationController?.pushViewController(vc, animated: true)
+                let viewController = InternetGalleryViewController()
+                viewController.delegate = self
+                self.present(UINavigationController(rootViewController: viewController), animated: true)
             } else {
                 let alert = UIAlertController(title: NSLocalizedString("This feature is only available for premium users.", comment: ""), message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("More info", comment: ""), style: .default,
@@ -721,17 +720,16 @@ extension EventBackgroundViewController: ImageCropViewControllerDelegate {
 // MARK:  InternalGallery delegate
 
 extension EventBackgroundViewController: InternalGalleryDelegate {
-    func onImageChosen(_ image: UIImage) {
+    func onInternalImageChosen(_ image: UIImage) {
         backgroundImageView.image = image
         eventImageView.image = image
     }
 }
 
-// MARK:  InternetGalleryViewController delegate
+// MARK:  InternetGallery delegate
 
-extension EventBackgroundViewController: InternetGalleryViewControllerDelegate {
-    
-    func onImageChosenFromTheInternet(_ image: UIImage) {
+extension EventBackgroundViewController: InternetGalleryDelegate {
+    func onInternetImageChosen(_ image: UIImage) {
         backgroundImageView.image = image
         eventImageView.image = image
     }

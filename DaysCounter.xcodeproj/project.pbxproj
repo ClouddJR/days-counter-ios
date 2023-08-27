@@ -300,6 +300,7 @@
 		626565D12A8FA4ED00DB0502 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				626565D72A92969C00DB0502 /* Internet */,
 				626565D62A92939800DB0502 /* Internal */,
 			);
 			path = Gallery;
@@ -312,6 +313,17 @@
 				626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		626565D72A92969C00DB0502 /* Internet */ = {
+			isa = PBXGroup;
+			children = (
+				A6B924212348BD0C005F30F5 /* ImageCell.swift */,
+				A6B924252348D095005F30F5 /* ImagesResponse.swift */,
+				A6B924272348D135005F30F5 /* ImagesRequest.swift */,
+				A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */,
+			);
+			path = Internet;
 			sourceTree = "<group>";
 		};
 		A69E54052402D26000716618 /* Purchases */ = {
@@ -379,12 +391,8 @@
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A68DE0FF233D180500188579 /* FontColorPickerView.swift */,
 				A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */,
-				A6B924212348BD0C005F30F5 /* ImageCell.swift */,
 				A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */,
-				A6B924272348D135005F30F5 /* ImagesRequest.swift */,
-				A6B924252348D095005F30F5 /* ImagesResponse.swift */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
-				A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
 				A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */,
 				A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */,

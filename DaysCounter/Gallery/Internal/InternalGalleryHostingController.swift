@@ -16,5 +16,5 @@ final class InternalGalleryHostingController: UIHostingController<InternalGaller
 }
 
 protocol InternalGalleryDelegate {
-    func onImageChosen(_ image: UIImage)
+    func onInternalImageChosen(_ image: UIImage)
 }

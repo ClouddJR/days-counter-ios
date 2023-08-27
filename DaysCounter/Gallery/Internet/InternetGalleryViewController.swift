@@ -1,29 +1,30 @@
 import UIKit
 
 class InternetGalleryViewController: UIViewController {
-    
-    var delegate: InternetGalleryViewControllerDelegate?
+    var delegate: InternetGalleryDelegate?
     
     private lazy var imagesCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let screenRatio =  view.frame.width <= view.frame.height ? view.frame.height / view.frame.width : view.frame.width / view.frame.height
-        let cellWidth = view.frame.width <= view.frame.height ? view.frame.width * 0.31 : view.frame.height * 0.31
+        let screenRatio = max(view.frame.width, view.frame.height) / min(view.frame.width, view.frame.height)
+        let cellWidth = min(view.frame.width, view.frame.height) * 0.31
         let cellHeight = cellWidth * screenRatio
+        
+        let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         layout.minimumInteritemSpacing = 3.0
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "image cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = view.backgroundColor
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         return collectionView
     }()
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = NSLocalizedString("Search an image", comment: "")
-        searchBar.searchBarStyle = UISearchBar.Style.minimal
+        searchBar.placeholder = NSLocalizedString("E.g. nature", comment: "")
+        searchBar.searchBarStyle = .minimal
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
@@ -38,9 +39,13 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var progressAlertController: UIAlertController = {
-        let alertController = UIAlertController(title: nil, message: NSLocalizedString("Downloading the image\n\n", comment: ""), preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: nil,
+            message: NSLocalizedString("Downloading the image\n\n", comment: ""),
+            preferredStyle: .alert
+        )
         
-        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        let indicator = UIActivityIndicatorView()
         indicator.center = CGPoint(x: 135.0, y: 65.5)
         indicator.startAnimating()
         
@@ -50,7 +55,7 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        let indicator = UIActivityIndicatorView()
         indicator.startAnimating()
         indicator.isHidden = true
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +63,11 @@ class InternetGalleryViewController: UIViewController {
     }()
     
     private lazy var errorAlertController: UIAlertController = {
-        let alertController = UIAlertController(title: NSLocalizedString("Images Could Not Be Loaded", comment: ""), message: NSLocalizedString("Check your Internet connection.", comment: ""), preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Images Could Not Be Loaded", comment: ""),
+            message: NSLocalizedString("Check your Internet connection.", comment: ""),
+            preferredStyle: .alert
+        )
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
         return alertController
     }()
@@ -70,7 +79,7 @@ class InternetGalleryViewController: UIViewController {
         return label
     }()
     
-    private var imagesRequest = ImagesRequest()
+    private let imagesRequest = ImagesRequest()
     
     private var internetImages = [InternetImage]() {
         didSet {
@@ -80,15 +89,24 @@ class InternetGalleryViewController: UIViewController {
         }
     }
     
-    private var imageCache = NSCache<NSURL, UIImage>()
+    private let imageCache = NSCache<NSURL, UIImage>()
     
     private var currentPage = 1
     private var fetchedPages = [1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        applyStyling()
         addSubviews()
         addConstraints()
+    }
+    
+    private func applyStyling() {
+        navigationItem.title = NSLocalizedString("Search an image", comment: "")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel)
+        
+        view.backgroundColor = .systemBackground
     }
     
     private func addSubviews() {
@@ -142,9 +160,23 @@ class InternetGalleryViewController: UIViewController {
                 self?.presentErrorAlertController()
             case .success(let images):
                 self?.displayPotentialInfoAboutNoImages(self!.currentPage, images)
-                self?.appendDownloadedImages(images)
+                self?.internetImages += images
             }
             self?.hideActivityIndicator()
+        }
+    }
+    
+    private func presentErrorAlertController() {
+        DispatchQueue.main.async { [weak self] in
+            self?.present(self!.errorAlertController, animated: true)
+        }
+    }
+    
+    private func displayPotentialInfoAboutNoImages(_ currentPage: Int, _ images: [InternetImage]) {
+        if currentPage == 1 && images.isEmpty {
+            DispatchQueue.main.async { [weak self] in
+                self?.errorLabel.text = NSLocalizedString("No images found", comment: "")
+            }
         }
     }
     
@@ -159,55 +191,26 @@ class InternetGalleryViewController: UIViewController {
             self?.activityIndicator.isHidden = false
         }
     }
-    
-    private func presentErrorAlertController() {
-        DispatchQueue.main.async { [weak self] in
-            self?.present(self!.errorAlertController, animated: true)
-        }
-    }
-    
-    private func displayErrorLabel(withText: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.errorLabel.text = withText
-        }
-    }
-    
-    private func displayPotentialInfoAboutNoImages(_ currentPage: Int, _ images: [InternetImage]) {
-        if currentPage == 1 && images.isEmpty {
-            displayErrorLabel(withText: NSLocalizedString("No images found", comment: ""))
-        }
-    }
-    
-    private func appendDownloadedImages(_ images: [InternetImage]) {
-        internetImages += images
-    }
 }
 
-// MARK:  UICollectionView delegate
-
 extension InternetGalleryViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentProgressAlertController()
-        downloadImageAndPassItBack(from: indexPath)
-    }
-    
-    private func presentProgressAlertController() {
         present(progressAlertController, animated: true)
+        downloadImageAndPassItBack(from: indexPath)
     }
     
     private func downloadImageAndPassItBack(from indexPath: IndexPath) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let url = self?.getRegularImageURL(for: indexPath) else {
+            guard
+                let url = self?.getRegularImageURL(for: indexPath),
+                let urlContents = url.getData()
+            else {
                 self?.presentErrorAlertController()
                 return
             }
-            guard let urlContents = url.getData() else {
-                self?.presentErrorAlertController()
-                return
-            }
+            
             DispatchQueue.main.async { [weak self] in
-                self?.hideProgressAlertControllerAndPassTheImageBack(with: urlContents)
+                self?.hideProgressAndPassTheImageBack(with: urlContents)
             }
         }
     }
@@ -216,41 +219,35 @@ extension InternetGalleryViewController: UICollectionViewDelegate {
         return URL(string: (internetImages[indexPath.row].urls.regular))
     }
     
-    private func hideProgressAlertControllerAndPassTheImageBack(with imageData: Data) {
+    private func hideProgressAndPassTheImageBack(with imageData: Data) {
         progressAlertController.dismiss(animated: true, completion: {
-            self.delegate?.onImageChosenFromTheInternet(UIImage(data: imageData)!)
-            self.navigationController?.popViewController(animated: true)
+            self.delegate?.onInternetImageChosen(UIImage(data: imageData)!)
+            self.navigationController?.dismiss(animated: true)
         })
     }
 }
 
-// MARK:  UICollectionView data source
-
 extension InternetGalleryViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return internetImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         fetchNextImagesIfAtTheEnd(indexPath)
-        let cell = getReusableImageCellAndClearCurrentImage(from: collectionView, for: indexPath)
-        setImageOnCell(cell: cell, on: indexPath)
+        
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "image cell", for: indexPath) as? ImageCell ?? ImageCell()
+        cell.clearImage()
+        updateImage(for: cell, on: indexPath)
+        
         return cell
     }
     
     private func fetchNextImagesIfAtTheEnd(_ indexPath: IndexPath) {
-        if isIndexPathTheLastInPage(indexPath) {
-            if !wasPageAlreadyFetched(at: indexPath) {
-                currentPage += 1
-                fetchedPages += [currentPage]
-                fetchImages()
-            }
+        if !wasPageAlreadyFetched(at: indexPath) && isIndexPathTheLastInPage(indexPath) {
+            currentPage += 1
+            fetchedPages += [currentPage]
+            fetchImages()
         }
-    }
-    
-    private func isIndexPathTheLastInPage(_ indexPath: IndexPath) -> Bool {
-        return indexPath.row % (imagesRequest.imagesPerPage - 1) == 0  && indexPath.row != 0
     }
     
     private func wasPageAlreadyFetched(at indexPath: IndexPath) -> Bool {
@@ -258,16 +255,15 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
         return fetchedPages.contains(pageForIndex + 1)
     }
     
-    private func getReusableImageCellAndClearCurrentImage(from collectionView: UICollectionView, for indexPath: IndexPath) -> ImageCell {
-        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "image cell", for: indexPath) as? ImageCell ?? ImageCell()
-        cell.clearImage()
-        return cell
+    private func isIndexPathTheLastInPage(_ indexPath: IndexPath) -> Bool {
+        return indexPath.row % (imagesRequest.imagesPerPage - 1) == 0  && indexPath.row != 0
     }
     
-    private func setImageOnCell(cell: ImageCell, on indexPath: IndexPath) {
+    private func updateImage(for cell: ImageCell, on indexPath: IndexPath) {
         guard let url = getSmallImageURL(for: indexPath) else {
             return
         }
+        
         if let cachedImage = getCachedImageIfPresent(for: url) {
             cell.setImage(image: cachedImage)
         } else {
@@ -285,9 +281,8 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
     
     private func fetchImageFromTheInternetAndUpdateCell(with url: URL, from indexPath: IndexPath, cell: ImageCell) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let urlContents = url.getData() else {
-                return
-            }
+            guard let urlContents = url.getData() else { return }
+            
             DispatchQueue.main.async { [weak self] in
                 self?.updateCellImageAndCacheIt(cell: cell, with: urlContents, for: indexPath)
             }
@@ -295,14 +290,12 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
     }
     
     private func updateCellImageAndCacheIt(cell: ImageCell, with imageData: Data, for indexPath: IndexPath) {
-        if internetImages.indices.contains(indexPath.row) {
-            let smallUrlString = internetImages[indexPath.row].urls.small
-            let image = UIImage(data: imageData)!
-            cacheDownloadedImage(image: image, forKey: URL(string: smallUrlString)!)
-            cell.setImage(image: image)
-        } else {
-            return
-        }
+        guard internetImages.indices.contains(indexPath.row) else { return }
+        
+        let image = UIImage(data: imageData)!
+        let smallUrlString = internetImages[indexPath.row].urls.small
+        cacheDownloadedImage(image: image, forKey: URL(string: smallUrlString)!)
+        cell.setImage(image: image)
     }
     
     private func cacheDownloadedImage(image: UIImage, forKey url: URL) {
@@ -310,11 +303,9 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK:  UISearchBar delegate
-
 extension InternetGalleryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        hideKeyboard()
+        searchBar.resignFirstResponder()
         errorLabel.text = ""
         showActivityIndicator()
         internetImages = []
@@ -322,12 +313,8 @@ extension InternetGalleryViewController: UISearchBarDelegate {
         currentPage = 1
         fetchImages()
     }
-    
-    private func hideKeyboard() {
-        searchBar.resignFirstResponder()
-    }
 }
 
-protocol InternetGalleryViewControllerDelegate {
-    func onImageChosenFromTheInternet(_ image: UIImage)
+protocol InternetGalleryDelegate {
+    func onInternetImageChosen(_ image: UIImage)
 }
