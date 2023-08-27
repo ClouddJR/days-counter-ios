@@ -229,7 +229,7 @@ extension InternetGalleryViewController: UICollectionViewDelegate {
 
 extension InternetGalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return internetImages.count
+        internetImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -237,7 +237,8 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
         
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "image cell", for: indexPath) as? ImageCell ?? ImageCell()
         cell.clearImage()
-        updateImage(for: cell, on: indexPath)
+        
+        updateImage(on: cell, at: indexPath, for: collectionView)
         
         return cell
     }
@@ -256,46 +257,53 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
     }
     
     private func isIndexPathTheLastInPage(_ indexPath: IndexPath) -> Bool {
-        return indexPath.row % (imagesRequest.imagesPerPage - 1) == 0  && indexPath.row != 0
+        indexPath.row % (imagesRequest.imagesPerPage - 1) == 0  && indexPath.row != 0
     }
     
-    private func updateImage(for cell: ImageCell, on indexPath: IndexPath) {
-        guard let url = getSmallImageURL(for: indexPath) else {
-            return
-        }
+    private func updateImage(on cell: ImageCell, at indexPath: IndexPath, for collectionView: UICollectionView) {
+        guard let url = getSmallImageURL(for: indexPath) else { return }
         
         if let cachedImage = getCachedImageIfPresent(for: url) {
             cell.setImage(image: cachedImage)
         } else {
-            fetchImageFromTheInternetAndUpdateCell(with: url, from: indexPath, cell: cell)
+            fetchImageFromTheInternetAndUpdateCell(with: url, at: indexPath, for: collectionView)
         }
     }
     
     private func getSmallImageURL(for indexPath: IndexPath) -> URL? {
-        return URL(string: (internetImages[indexPath.row].urls.small))
+        URL(string: (internetImages[indexPath.row].urls.small))
     }
     
     private func getCachedImageIfPresent(for url: URL) -> UIImage? {
-        return imageCache.object(forKey: url as NSURL)
+        imageCache.object(forKey: url as NSURL)
     }
     
-    private func fetchImageFromTheInternetAndUpdateCell(with url: URL, from indexPath: IndexPath, cell: ImageCell) {
+    private func fetchImageFromTheInternetAndUpdateCell(
+        with url: URL,
+        at indexPath: IndexPath,
+        for collectionView: UICollectionView
+    ) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let urlContents = url.getData() else { return }
             
             DispatchQueue.main.async { [weak self] in
-                self?.updateCellImageAndCacheIt(cell: cell, with: urlContents, for: indexPath)
+                self?.updateCellImageAndCacheIt(with: urlContents, at: indexPath, for: collectionView)
             }
         }
     }
     
-    private func updateCellImageAndCacheIt(cell: ImageCell, with imageData: Data, for indexPath: IndexPath) {
+    private func updateCellImageAndCacheIt(
+        with imageData: Data,
+        at indexPath: IndexPath,
+        for collectionView: UICollectionView
+    ) {
         guard internetImages.indices.contains(indexPath.row) else { return }
         
         let image = UIImage(data: imageData)!
         let smallUrlString = internetImages[indexPath.row].urls.small
         cacheDownloadedImage(image: image, forKey: URL(string: smallUrlString)!)
-        cell.setImage(image: image)
+        
+        collectionView.imageCellForItem(at: indexPath)?.setImage(image: image)
     }
     
     private func cacheDownloadedImage(image: UIImage, forKey url: URL) {
@@ -312,6 +320,12 @@ extension InternetGalleryViewController: UISearchBarDelegate {
         fetchedPages = []
         currentPage = 1
         fetchImages()
+    }
+}
+
+extension UICollectionView {
+    func imageCellForItem(at indexPath: IndexPath) -> ImageCell? {
+        cellForItem(at: indexPath) as? ImageCell
     }
 }
 

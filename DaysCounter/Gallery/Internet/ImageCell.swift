@@ -8,13 +8,12 @@ class ImageCell: UICollectionViewCell {
         return imageView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
+    required init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
     }
     
@@ -30,10 +29,6 @@ class ImageCell: UICollectionViewCell {
     
     func setImage(image: UIImage) {
         imageView.image = image
-    }
-    
-    func getImage() -> UIImage {
-        return imageView.image!
     }
     
     func clearImage() {
