@@ -104,7 +104,9 @@ class InternetGalleryViewController: UIViewController {
     
     private func applyStyling() {
         navigationItem.title = NSLocalizedString("Search an image", comment: "")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel, primaryAction: UIAction() { _ in
+            self.dismiss()
+        })
         
         view.backgroundColor = .systemBackground
     }
@@ -191,6 +193,10 @@ class InternetGalleryViewController: UIViewController {
             self?.activityIndicator.isHidden = false
         }
     }
+    
+    private func dismiss() {
+        navigationController?.dismiss(animated: true)
+    }
 }
 
 extension InternetGalleryViewController: UICollectionViewDelegate {
@@ -222,7 +228,7 @@ extension InternetGalleryViewController: UICollectionViewDelegate {
     private func hideProgressAndPassTheImageBack(with imageData: Data) {
         progressAlertController.dismiss(animated: true, completion: {
             self.delegate?.onInternetImageChosen(UIImage(data: imageData)!)
-            self.navigationController?.dismiss(animated: true)
+            self.dismiss()
         })
     }
 }
