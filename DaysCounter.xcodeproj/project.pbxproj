@@ -17,6 +17,7 @@
 		626565D32A8FA5AB00DB0502 /* InternalGalleryHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565D22A8FA5AB00DB0502 /* InternalGalleryHostingController.swift */; };
 		626565D52A8FA5DF00DB0502 /* InternalGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */; };
 		62EE50F72982F59A00C6DE56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */; };
+		62FF5E8B2A9D190200406A60 /* NoImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FF5E8A2A9D190200406A60 /* NoImagesView.swift */; };
 		80008EDE393F01CFF8A46B1B /* Pods_WidgetFutureEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */; };
 		A606F09824068A22006E07C8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606F09724068A22006E07C8 /* EventCell.swift */; };
 		A60A514F23FB1CDA007BB811 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A514E23FB1CDA007BB811 /* StoreKit.framework */; };
@@ -147,6 +148,7 @@
 		626565D22A8FA5AB00DB0502 /* InternalGalleryHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryHostingController.swift; sourceTree = "<group>"; };
 		626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalGalleryView.swift; sourceTree = "<group>"; };
 		62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		62FF5E8A2A9D190200406A60 /* NoImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoImagesView.swift; sourceTree = "<group>"; };
 		6965F26FFA1C54AFAA7B4F02 /* Pods-DaysCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.release.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.release.xcconfig"; sourceTree = "<group>"; };
 		792F2FCE2644FF2F0ACD28BB /* Pods-DaysCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaysCounter.debug.xcconfig"; path = "Target Support Files/Pods-DaysCounter/Pods-DaysCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		A606F09724068A22006E07C8 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				A6B924252348D095005F30F5 /* ImagesResponse.swift */,
 				A6B924272348D135005F30F5 /* ImagesRequest.swift */,
 				A6763F122345CA3700A81500 /* InternetGalleryViewController.swift */,
+				62FF5E8A2A9D190200406A60 /* NoImagesView.swift */,
 			);
 			path = Internet;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				A6CAB24E240BEDBF004AA226 /* PremiumPromptView.swift in Sources */,
 				A6AABAB82331131800264B8B /* RepetitionTableViewController.swift in Sources */,
 				A61702D723B201D900912C13 /* EventsTabBarController.swift in Sources */,
+				62FF5E8B2A9D190200406A60 /* NoImagesView.swift in Sources */,
 				A6B924262348D095005F30F5 /* ImagesResponse.swift in Sources */,
 				626565D52A8FA5DF00DB0502 /* InternalGalleryView.swift in Sources */,
 				A618D8D2232BA7AE006EB008 /* AddEventViewController.swift in Sources */,

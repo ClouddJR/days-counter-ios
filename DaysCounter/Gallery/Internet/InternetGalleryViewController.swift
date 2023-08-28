@@ -72,11 +72,11 @@ class InternetGalleryViewController: UIViewController {
         return alertController
     }()
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .secondaryLabel
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var noImagesView: NoImagesView = {
+        let view = NoImagesView()
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private let imagesRequest = ImagesRequest()
@@ -116,7 +116,7 @@ class InternetGalleryViewController: UIViewController {
         view.addSubview(unsplashLabel)
         view.addSubview(imagesCollectionView)
         view.addSubview(activityIndicator)
-        view.addSubview(errorLabel)
+        view.addSubview(noImagesView)
     }
     
     private func addConstraints() {
@@ -129,13 +129,13 @@ class InternetGalleryViewController: UIViewController {
     
     private func addSearchBarConstraints() {
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
     }
     
     private func addUnsplashLabelConstraints() {
         unsplashLabel.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-        unsplashLabel.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor, constant: -16).isActive = true
+        unsplashLabel.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor, constant: -8).isActive = true
     }
     
     private func addImagesCollectionViewConstraints() {
@@ -151,8 +151,10 @@ class InternetGalleryViewController: UIViewController {
     }
     
     private func addErrorLabelConstraints() {
-        errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        noImagesView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        noImagesView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        noImagesView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        noImagesView.trailingAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
     }
     
     private func fetchImages() {
@@ -177,7 +179,7 @@ class InternetGalleryViewController: UIViewController {
     private func displayPotentialInfoAboutNoImages(_ currentPage: Int, _ images: [InternetImage]) {
         if currentPage == 1 && images.isEmpty {
             DispatchQueue.main.async { [weak self] in
-                self?.errorLabel.text = NSLocalizedString("No images found", comment: "")
+                self?.noImagesView.isHidden = false
             }
         }
     }
@@ -320,7 +322,7 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
 extension InternetGalleryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        errorLabel.text = ""
+        noImagesView.isHidden = true
         showActivityIndicator()
         internetImages = []
         fetchedPages = []
