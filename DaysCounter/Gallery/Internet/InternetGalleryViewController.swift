@@ -1,6 +1,6 @@
 import UIKit
 
-class InternetGalleryViewController: UIViewController {
+final class InternetGalleryViewController: UIViewController {
     var delegate: InternetGalleryDelegate?
     
     private lazy var imagesCollectionView: UICollectionView = {
@@ -23,7 +23,7 @@ class InternetGalleryViewController: UIViewController {
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = NSLocalizedString("E.g. nature", comment: "")
+        searchBar.placeholder = NSLocalizedString("E.g. landscapes", comment: "")
         searchBar.searchBarStyle = .minimal
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -72,8 +72,20 @@ class InternetGalleryViewController: UIViewController {
         return alertController
     }()
     
-    private lazy var noImagesView: NoImagesView = {
-        let view = NoImagesView()
+    private lazy var searchPromptView: ContextView = {
+        let view = ContextView()
+        view.iconName = "photo.on.rectangle.angled"
+        view.title = "Start Your Search"
+        view.subtitle = "Results will appear here."
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var noImagesView: ContextView = {
+        let view = ContextView()
+        view.iconName = "magnifyingglass"
+        view.title = "No Images"
+        view.subtitle = "Check the spelling or try a new search."
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -116,6 +128,7 @@ class InternetGalleryViewController: UIViewController {
         view.addSubview(unsplashLabel)
         view.addSubview(imagesCollectionView)
         view.addSubview(activityIndicator)
+        view.addSubview(searchPromptView)
         view.addSubview(noImagesView)
     }
     
@@ -124,7 +137,8 @@ class InternetGalleryViewController: UIViewController {
         addUnsplashLabelConstraints()
         addImagesCollectionViewConstraints()
         addActivityIndicatorViewConstraints()
-        addErrorLabelConstraints()
+        addSearchPromptViewConstraints()
+        addNoImagesViewConstraints()
     }
     
     private func addSearchBarConstraints() {
@@ -150,7 +164,14 @@ class InternetGalleryViewController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-    private func addErrorLabelConstraints() {
+    private func addSearchPromptViewConstraints() {
+        searchPromptView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        searchPromptView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        searchPromptView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        searchPromptView.trailingAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+    }
+    
+    private func addNoImagesViewConstraints() {
         noImagesView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         noImagesView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         noImagesView.leadingAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
@@ -322,6 +343,7 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
 extension InternetGalleryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        searchPromptView.isHidden = true
         noImagesView.isHidden = true
         showActivityIndicator()
         internetImages = []

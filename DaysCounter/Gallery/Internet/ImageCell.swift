@@ -1,6 +1,6 @@
 import UIKit
 
-class ImageCell: UICollectionViewCell {
+final class ImageCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: frame)
         imageView.contentMode = .scaleAspectFill
