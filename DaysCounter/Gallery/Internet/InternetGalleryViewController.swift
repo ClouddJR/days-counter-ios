@@ -106,6 +106,9 @@ final class InternetGalleryViewController: UIViewController {
     private var currentPage = 1
     private var fetchedPages = [1]
     
+    private var currentFetchPageTask: URLSessionTask?
+    private var currentQuery: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -179,9 +182,15 @@ final class InternetGalleryViewController: UIViewController {
     }
     
     private func fetchImages() {
-        imagesRequest.getImages(with: searchBar.text ?? "", for: currentPage) { [weak self] result in
+        guard let searchBarText = searchBar.text, !searchBarText.isEmpty else { return }
+        
+        currentQuery = searchBarText
+        currentFetchPageTask?.cancel()
+        
+        currentFetchPageTask = imagesRequest.getImages(with: searchBarText, for: currentPage) { [weak self] result in
             switch result {
-            case .failure( _):
+            case .failure(let error):
+                guard error != .taskCancelled else { return }
                 self?.presentErrorAlertController()
             case .success(let images):
                 self?.displayPotentialInfoAboutNoImages(self!.currentPage, images)
@@ -312,10 +321,15 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
         at indexPath: IndexPath,
         for collectionView: UICollectionView
     ) {
+        let capturedQuery = currentQuery
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let urlContents = url.getData() else { return }
             
             DispatchQueue.main.async { [weak self] in
+                // If the downloading took a lot of time and the user typed a different query in the meantime,
+                // the image should be discarded because it's no longer relevant.
+                guard capturedQuery == self?.currentQuery else { return }
+                
                 self?.updateCellImageAndCacheIt(with: urlContents, at: indexPath, for: collectionView)
             }
         }
