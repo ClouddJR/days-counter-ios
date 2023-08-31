@@ -109,6 +109,10 @@ final class InternetGalleryViewController: UIViewController {
     private var currentFetchPageTask: URLSessionTask?
     private var currentQuery: String?
     
+    // This is a simple cache to store information about currently running tasks
+    // so that they won't be duplicated for the same image multiple times.
+    private var downloadTasks = Set<DownloadTask>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -321,11 +325,20 @@ extension InternetGalleryViewController: UICollectionViewDataSource {
         at indexPath: IndexPath,
         for collectionView: UICollectionView
     ) {
-        let capturedQuery = currentQuery
+        guard let capturedQuery = currentQuery else { return }
+        
+        let task = DownloadTask(query: capturedQuery, indexPath: indexPath)
+        
+        guard !downloadTasks.contains(task) else { return }
+        
+        downloadTasks.insert(task)
+        
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let urlContents = url.getData() else { return }
             
             DispatchQueue.main.async { [weak self] in
+                self?.downloadTasks.remove(task)
+                
                 // If the downloading took a lot of time and the user typed a different query in the meantime,
                 // the image should be discarded because it's no longer relevant.
                 guard capturedQuery == self?.currentQuery else { return }
@@ -371,6 +384,11 @@ extension UICollectionView {
     func imageCellForItem(at indexPath: IndexPath) -> ImageCell? {
         cellForItem(at: indexPath) as? ImageCell
     }
+}
+
+private struct DownloadTask: Hashable {
+    let query: String
+    let indexPath: IndexPath
 }
 
 protocol InternetGalleryDelegate {
