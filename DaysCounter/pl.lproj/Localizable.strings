@@ -56,10 +56,14 @@
 
 // InternetGalleryViewController
 "Search an image" = "Wyszukaj obraz";
-"Downloading the image\n\n" = "Pobieranie obrazka\n\n";
-"Images Could Not Be Loaded" = "Zdjęcia Nie Mogły Zostać Załadowane";
+"E.g. nature" = "Np. natura";
+"Downloading the Image\n\n" = "Pobieranie obrazka\n\n";
+"Couldn't Load Images" = "Zdjęcia nie mogły zostać pobrane";
 "Check your Internet connection." = "Sprawdź swoje połączenie z Internetem.";
-"No images found" = "Nie znaleziono zdjęć";
+"Start Your Search" = "Rozpocznij wyszukiwanie";
+"Results will appear here." = "Wyniki pojawią się tutaj.";
+"No Images" = "Brak obrazków";
+"Check the spelling or try a new search." = "Spróbuj wyszukać czegoś innego.";
 
 // SettingsSection
 "General" = "Ogólne";
