@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -302,6 +302,7 @@
 		626565D12A8FA4ED00DB0502 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */,
 				626565D72A92969C00DB0502 /* Internet */,
 				626565D62A92939800DB0502 /* Internal */,
 			);
@@ -394,7 +395,6 @@
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A68DE0FF233D180500188579 /* FontColorPickerView.swift */,
 				A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */,
-				A637FEFA23421CB2008868C8 /* ImageCropViewController.swift */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
 				A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */,

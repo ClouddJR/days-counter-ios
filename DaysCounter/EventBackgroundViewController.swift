@@ -689,16 +689,12 @@ extension EventBackgroundViewController: EventCustomizeViewDelegate {
     }
 }
 
-// MARK:  UIImagePickerController delegate
-
 extension EventBackgroundViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "imageCropViewController") as! ImageCropViewController
-        vc.image = info[.originalImage] as? UIImage
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        let viewController = ImageCropViewController()
+        viewController.image = info[.originalImage] as? UIImage
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
         picker.dismiss(animated: true)
     }
     
@@ -707,17 +703,12 @@ extension EventBackgroundViewController: UIImagePickerControllerDelegate, UINavi
     }
 }
 
-// MARK:  ImageCropViewController delegate
-
 extension EventBackgroundViewController: ImageCropViewControllerDelegate {
-    
     func onImageCropped(_ image: UIImage) {
         backgroundImageView.image = image
         eventImageView.image = image
     }
 }
-
-// MARK:  InternalGallery delegate
 
 extension EventBackgroundViewController: InternalGalleryDelegate {
     func onInternalImageChosen(_ image: UIImage) {
@@ -726,16 +717,12 @@ extension EventBackgroundViewController: InternalGalleryDelegate {
     }
 }
 
-// MARK:  InternetGallery delegate
-
 extension EventBackgroundViewController: InternetGalleryDelegate {
     func onInternetImageChosen(_ image: UIImage) {
         backgroundImageView.image = image
         eventImageView.image = image
     }
 }
-
-// MARK:  view constants
 
 extension EventBackgroundViewController {
     

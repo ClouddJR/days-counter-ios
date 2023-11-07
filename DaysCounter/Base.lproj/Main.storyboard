@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jUG-KI-I2u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jUG-KI-I2u">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="qj3-6J-10J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="E1A-sl-kPd"/>
+                        <viewLayoutGuide key="safeArea" id="YVy-hX-kre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="tbr-0C-XDt">
@@ -91,7 +91,7 @@
                     <view key="view" contentMode="scaleToFill" id="Tlc-UY-cVo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="0AN-Hf-8vW"/>
+                        <viewLayoutGuide key="safeArea" id="dDQ-AJ-2qO"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Future" image="ic_infinity" id="kdu-1n-HMj"/>
@@ -113,7 +113,7 @@
                     <view key="view" contentMode="scaleToFill" id="aFH-Mz-wyh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="hfG-4O-P5W"/>
+                        <viewLayoutGuide key="safeArea" id="yA8-hy-twk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ifv-Rl-9he">
@@ -713,19 +713,19 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="fVg-C3-w6R"/>
+                        <viewLayoutGuide key="safeArea" id="qrq-a5-D7G"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BmM-s9-112" firstAttribute="centerX" secondItem="fVg-C3-w6R" secondAttribute="centerX" id="0A2-XX-qAR"/>
-                            <constraint firstItem="Vaw-J9-NCH" firstAttribute="centerX" secondItem="fVg-C3-w6R" secondAttribute="centerX" id="46n-5T-OHs"/>
+                            <constraint firstItem="BmM-s9-112" firstAttribute="centerX" secondItem="qrq-a5-D7G" secondAttribute="centerX" id="0A2-XX-qAR"/>
+                            <constraint firstItem="Vaw-J9-NCH" firstAttribute="centerX" secondItem="qrq-a5-D7G" secondAttribute="centerX" id="46n-5T-OHs"/>
                             <constraint firstItem="TQS-gd-f43" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Vaw-J9-NCH" secondAttribute="trailing" constant="-20" id="6k3-N0-w9H"/>
-                            <constraint firstItem="g6P-at-5Ry" firstAttribute="centerX" secondItem="fVg-C3-w6R" secondAttribute="centerX" id="9Vv-1n-1PO"/>
-                            <constraint firstItem="Vaw-J9-NCH" firstAttribute="top" secondItem="fVg-C3-w6R" secondAttribute="top" constant="10" id="CRk-9Z-Qaa"/>
+                            <constraint firstItem="g6P-at-5Ry" firstAttribute="centerX" secondItem="qrq-a5-D7G" secondAttribute="centerX" id="9Vv-1n-1PO"/>
+                            <constraint firstItem="Vaw-J9-NCH" firstAttribute="top" secondItem="qrq-a5-D7G" secondAttribute="top" constant="10" id="CRk-9Z-Qaa"/>
                             <constraint firstItem="gXS-QE-ELt" firstAttribute="leading" secondItem="Vaw-J9-NCH" secondAttribute="leading" constant="15" id="FLm-qU-hY5"/>
                             <constraint firstItem="gXS-QE-ELt" firstAttribute="bottom" secondItem="TQS-gd-f43" secondAttribute="top" constant="-5" id="Rzv-MY-Pae"/>
-                            <constraint firstItem="Yfy-WH-gVm" firstAttribute="leading" secondItem="fVg-C3-w6R" secondAttribute="leading" id="U1d-6I-L3r"/>
-                            <constraint firstItem="fVg-C3-w6R" firstAttribute="trailing" secondItem="Yfy-WH-gVm" secondAttribute="trailing" id="agr-us-1gW"/>
-                            <constraint firstItem="fVg-C3-w6R" firstAttribute="bottom" secondItem="BmM-s9-112" secondAttribute="bottom" constant="10" id="bnL-aP-PbB"/>
+                            <constraint firstItem="Yfy-WH-gVm" firstAttribute="leading" secondItem="qrq-a5-D7G" secondAttribute="leading" id="U1d-6I-L3r"/>
+                            <constraint firstItem="qrq-a5-D7G" firstAttribute="trailing" secondItem="Yfy-WH-gVm" secondAttribute="trailing" id="agr-us-1gW"/>
+                            <constraint firstItem="qrq-a5-D7G" firstAttribute="bottom" secondItem="BmM-s9-112" secondAttribute="bottom" constant="10" id="bnL-aP-PbB"/>
                             <constraint firstItem="g6P-at-5Ry" firstAttribute="centerY" secondItem="z49-Fb-YDm" secondAttribute="centerY" id="fCd-lp-lsf"/>
                             <constraint firstItem="Yfy-WH-gVm" firstAttribute="bottom" secondItem="z49-Fb-YDm" secondAttribute="bottom" id="fgS-Yc-eJb"/>
                             <constraint firstItem="Vaw-J9-NCH" firstAttribute="bottom" secondItem="TQS-gd-f43" secondAttribute="bottom" constant="15" id="hyP-qf-MSj"/>
@@ -772,60 +772,11 @@
                         <outlet property="yearsNumberLabel" destination="4to-W1-iiB" id="w28-75-C71"/>
                         <outlet property="yearsSectionStackView" destination="AML-T5-pQs" id="yhU-0v-fbu"/>
                         <outlet property="yearsTitleLabel" destination="G8j-FU-jUg" id="Zpk-x4-Y8A"/>
-                        <segue destination="wBS-HC-5jd" kind="show" identifier="imageCropSegue" id="4GQ-sh-kg2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLf-93-aui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6891" y="-3"/>
-        </scene>
-        <!--Image Crop View Controller-->
-        <scene sceneID="VCe-T8-emy">
-            <objects>
-                <viewController storyboardIdentifier="imageCropViewController" extendedLayoutIncludesOpaqueBars="YES" id="wBS-HC-5jd" customClass="ImageCropViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PP2-J1-mLK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="gPf-Lf-o5f">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="896" translatesAutoresizingMaskIntoConstraints="NO" id="BOh-8l-nLq">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="BOh-8l-nLq" secondAttribute="trailing" id="J9b-ir-feV"/>
-                                    <constraint firstItem="BOh-8l-nLq" firstAttribute="leading" secondItem="gPf-Lf-o5f" secondAttribute="leading" id="X05-ia-QAh"/>
-                                    <constraint firstItem="BOh-8l-nLq" firstAttribute="top" secondItem="gPf-Lf-o5f" secondAttribute="top" id="gGq-tV-VaL"/>
-                                    <constraint firstAttribute="bottom" secondItem="BOh-8l-nLq" secondAttribute="bottom" id="xzb-vG-jUu"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cHn-qA-bAh"/>
-                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="gPf-Lf-o5f" secondAttribute="bottom" id="Ehv-d8-6ex"/>
-                            <constraint firstItem="gPf-Lf-o5f" firstAttribute="top" secondItem="PP2-J1-mLK" secondAttribute="top" id="H3w-Ja-q0o"/>
-                            <constraint firstItem="cHn-qA-bAh" firstAttribute="trailing" secondItem="gPf-Lf-o5f" secondAttribute="trailing" id="fT6-ct-BbE"/>
-                            <constraint firstItem="gPf-Lf-o5f" firstAttribute="leading" secondItem="cHn-qA-bAh" secondAttribute="leading" id="v1k-cX-oRl"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="glx-cR-ALB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bbh-wL-xRO">
-                            <connections>
-                                <action selector="saveImageAndClose:" destination="wBS-HC-5jd" id="LNf-Lb-9xT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="imageView" destination="BOh-8l-nLq" id="64h-sx-cXg"/>
-                        <outlet property="scrollView" destination="gPf-Lf-o5f" id="IoH-2f-ntc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pny-EA-X4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6890" y="682"/>
         </scene>
         <!--Repetition Table View Controller-->
         <scene sceneID="Aia-W9-QuW">
@@ -974,7 +925,7 @@
                     <view key="view" contentMode="scaleToFill" id="od7-ck-XXV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ilW-B6-Wtc"/>
+                        <viewLayoutGuide key="safeArea" id="ngL-Gz-xQC"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Past" image="ic-sand" id="xug-e2-wO0"/>
@@ -1061,7 +1012,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="ic-sand" width="25" height="25"/>
         <image name="ic_infinity" width="25" height="25"/>
-        <image name="icloud.and.arrow.up" catalog="system" width="128" height="108"/>
+        <image name="icloud.and.arrow.up" catalog="system" width="128" height="115"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
