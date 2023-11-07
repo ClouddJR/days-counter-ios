@@ -72,22 +72,26 @@ final class InternetGalleryViewController: UIViewController {
         return alertController
     }()
     
-    private lazy var searchPromptView: ContextView = {
-        let view = ContextView()
-        view.iconName = "photo.on.rectangle.angled"
-        view.title = "Start Your Search"
-        view.subtitle = "Results will appear here."
+    private lazy var searchPromptView: UIContentUnavailableView = {
+        var config = UIContentUnavailableConfiguration.empty()
+        config.image = .init(systemName: "photo.on.rectangle.angled")
+        config.text = "Start Your Search"
+        config.secondaryText = "Results will appear here."
+        
+        let view = UIContentUnavailableView(configuration: config)
         view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
-    private lazy var noImagesView: ContextView = {
-        let view = ContextView()
-        view.iconName = "magnifyingglass"
-        view.title = "No Images"
-        view.subtitle = "Check the spelling or try a new search."
+    private lazy var noImagesView: UIContentUnavailableView = {
+        var config = UIContentUnavailableConfiguration.search()
+        config.text = "No Images"
+        
+        let view = UIContentUnavailableView(configuration: config)
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
