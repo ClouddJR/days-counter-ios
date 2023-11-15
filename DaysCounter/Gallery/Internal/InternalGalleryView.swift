@@ -48,12 +48,10 @@ struct InternalGalleryView: View {
     }
 }
 
-struct InternalGalleryView_Previews: PreviewProvider {
-    static var previews: some View {
-        InternalGalleryView(delegate: EmptyDelegate())
-    }
+#Preview {
+    InternalGalleryView(delegate: EmptyDelegate())
 }
 
-final class EmptyDelegate: InternalGalleryDelegate {
+private final class EmptyDelegate: InternalGalleryDelegate {
     func onInternalImageChosen(_ image: UIImage) {}
 }

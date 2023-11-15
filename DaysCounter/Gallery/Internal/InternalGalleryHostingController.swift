@@ -1,6 +1,10 @@
 import Foundation
 import SwiftUI
 
+protocol InternalGalleryDelegate {
+    func onInternalImageChosen(_ image: UIImage)
+}
+
 final class InternalGalleryHostingController: UIHostingController<InternalGalleryView> {
     init(delegate: InternalGalleryDelegate) {
         super.init(rootView: InternalGalleryView(delegate: delegate))
@@ -13,8 +17,4 @@ final class InternalGalleryHostingController: UIHostingController<InternalGaller
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-}
-
-protocol InternalGalleryDelegate {
-    func onInternalImageChosen(_ image: UIImage)
 }

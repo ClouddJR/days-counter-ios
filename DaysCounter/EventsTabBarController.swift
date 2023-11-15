@@ -4,7 +4,7 @@ import FirebaseEmailAuthUI
 import FirebaseOAuthUI
 import FirebaseGoogleAuthUI
 
-class EventsTabBarController: UITabBarController, FUIAuthDelegate {
+final class EventsTabBarController: UITabBarController, LoginViewDelegate {
     
     private let userRepository = UserRepository()
     private let databaseRepository = DatabaseRepository()
@@ -44,27 +44,14 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
             return
         }
         
-        guard let authUI = FUIAuth.defaultAuthUI() else {
-            return
+        let viewController = LoginHostingController(rootView: LoginView(delegate: self))
+        let navigationController = UINavigationController(rootViewController: viewController)
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
         }
         
-        authUI.delegate = self
-        let emailAuth = FUIEmailAuth(authAuthUI: authUI,
-                                     signInMethod: EmailPasswordAuthSignInMethod,
-                                     forceSameDevice: false,
-                                     allowNewEmailAccounts: true,
-                                     requireDisplayName: false,
-                                     actionCodeSetting: ActionCodeSettings())
-        let providers: [FUIAuthProvider] = [
-            emailAuth,
-            FUIGoogleAuth(),
-            FUIOAuth.appleAuthProvider()
-        ]
-        authUI.providers = providers
-        
-        let authVC = authUI.authViewController()
-        authVC.modalPresentationStyle = .fullScreen
-        present(authVC, animated: true, completion: nil)
+        present(navigationController, animated: true, completion: nil)
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
@@ -75,6 +62,7 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
         }
         
         if authDataResult != nil {
+            navigationController?.presentedViewController?.dismiss(animated: true)
             databaseRepository.addLocalEventsToCloud()
         }
     }
@@ -96,19 +84,5 @@ class EventsTabBarController: UITabBarController, FUIAuthDelegate {
         let alert = UIAlertController(title: NSLocalizedString("Login Failed", comment: ""), message: withLoginError, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true)
-    }
-    
-    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
-        return LoginViewController(authUI: authUI)
-    }
-    
-    func application(_ app: UIApplication, open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
-        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
-            return true
-        }
-        
-        return false
     }
 }

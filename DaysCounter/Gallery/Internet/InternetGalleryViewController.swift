@@ -1,5 +1,9 @@
 import UIKit
 
+protocol InternetGalleryDelegate {
+    func onInternetImageChosen(_ image: UIImage)
+}
+
 final class InternetGalleryViewController: UIViewController {
     var delegate: InternetGalleryDelegate?
     
@@ -389,8 +393,4 @@ extension UICollectionView {
 private struct DownloadTask: Hashable {
     let query: String
     let indexPath: IndexPath
-}
-
-protocol InternetGalleryDelegate {
-    func onInternetImageChosen(_ image: UIImage)
 }

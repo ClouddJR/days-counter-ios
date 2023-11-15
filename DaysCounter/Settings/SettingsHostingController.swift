@@ -5,8 +5,4 @@ final class SettingsHostingController: UIHostingController<SettingsView> {
     required init?(coder: NSCoder) {
         super.init(coder: coder, rootView: SettingsView());
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }

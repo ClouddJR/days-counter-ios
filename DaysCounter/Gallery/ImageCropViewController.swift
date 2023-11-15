@@ -1,5 +1,9 @@
 import UIKit
 
+protocol ImageCropViewControllerDelegate {
+    func onImageCropped(_ image: UIImage)
+}
+
 final class ImageCropViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -96,8 +100,4 @@ extension ImageCropViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
     }
-}
-
-protocol ImageCropViewControllerDelegate {
-    func onImageCropped(_ image: UIImage)
 }

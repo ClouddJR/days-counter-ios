@@ -67,7 +67,7 @@ struct SettingsView: View {
     }
 }
 
-struct PremiumView: UIViewControllerRepresentable {
+private struct PremiumView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UINavigationController {
         UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "premiumNavigationController") as! UINavigationController
@@ -78,11 +78,11 @@ struct PremiumView: UIViewControllerRepresentable {
     }
 }
 
-struct MailView: UIViewControllerRepresentable {
+private struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
-        private var parent: MailView
+        private let parent: MailView
         
         init(_ parent: MailView) {
             self.parent = parent
@@ -110,6 +110,6 @@ struct MailView: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        Coordinator(self)
     }
 }
