@@ -2,11 +2,44 @@ import Foundation
 import SwiftUI
 
 struct FormView: View {
-    @State private var detailsData = DetailsData()
+    @Environment(\.presentationMode) private var presentationMode
+    
+    @State private var isShowingCustomization = false
+    @State private var details = DetailsData()
+    @State private var customization = CustomizationData()
     
     var body: some View {
-        DetailsView(details: $detailsData) {
-            // Go to customization view
+        NavigationStack {
+            DetailsView(details: $details)
+                .navigationDestination(isPresented: $isShowingCustomization) {
+                    CustomizationView(
+                        details: details,
+                        customization: $customization
+                    )
+                    .navigationTitle("Customization")
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button("Save") {
+                                // Save the event here
+                            }
+                        }
+                    }
+                }
+                .navigationTitle("Details")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Cancel") {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Next") {
+                            isShowingCustomization = true
+                        }
+                        .disabled(details.name.isEmpty)
+                    }
+                }
         }
     }
 }
