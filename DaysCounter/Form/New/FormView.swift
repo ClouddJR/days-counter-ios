@@ -43,3 +43,7 @@ struct FormView: View {
         }
     }
 }
+
+#Preview {
+    FormView()
+}
