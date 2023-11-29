@@ -3,7 +3,7 @@ import SwiftUI
 import MessageUI
 
 struct SettingsView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     
     @AppStorage(Defaults.Key.sortingOrder.rawValue) private var sortingOrder: Defaults.SortingOrder = .timeAdded
     @AppStorage(Defaults.Key.defaultSection.rawValue) private var defaultSection: Defaults.DefaultSection = .future
@@ -51,7 +51,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("OK") {
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -79,7 +79,7 @@ private struct PremiumView: UIViewControllerRepresentable {
 }
 
 private struct MailView: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.presentationMode) private var presentation
     
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         private let parent: MailView

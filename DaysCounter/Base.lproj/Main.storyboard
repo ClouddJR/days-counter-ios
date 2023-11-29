@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jUG-KI-I2u">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -50,6 +49,11 @@
                             <barButtonItem title="Item" image="icloud.and.arrow.up" catalog="system" id="sxM-kV-YXe">
                                 <connections>
                                     <action selector="login:" destination="k6C-57-ZlP" id="ksA-PB-DIT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="New" id="wEm-WM-HR7">
+                                <connections>
+                                    <segue destination="vN3-9P-eeF" kind="presentation" modalPresentationStyle="fullScreen" id="ROZ-k8-Jdr"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -975,6 +979,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYh-MH-3kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2237.68115942029" y="1605.8035714285713"/>
+        </scene>
+        <!--Form Hosting Controller-->
+        <scene sceneID="nZt-lk-UI4">
+            <objects>
+                <hostingController id="vN3-9P-eeF" customClass="FormHostingController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fDt-RA-eRg"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d3I-sW-Vkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1009" y="-703"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a8U-gp-PCg">
