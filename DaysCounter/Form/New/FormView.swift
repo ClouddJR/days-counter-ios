@@ -24,6 +24,7 @@ struct FormView: View {
                             }
                         }
                     }
+                    .tint(nil)
                 }
                 .navigationTitle("Details")
                 .navigationBarTitleDisplayMode(.inline)
@@ -40,7 +41,9 @@ struct FormView: View {
                         .disabled(details.name.isEmpty)
                     }
                 }
+                .tint(nil)
         }
+        .tint(isShowingCustomization ? .white : nil)
     }
 }
 
