@@ -12,24 +12,10 @@ struct CustomizationView: View {
         let ratio = min(screenWidth, screenHeight) / max(screenWidth, screenHeight)
         
         ZStack {
-            Image(uiImage: #imageLiteral(resourceName: "nature1.jpg"))
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
-            VisualEffectView(effect: UIBlurEffect(style: .dark))
-                .edgesIgnoringSafeArea(.all)
+            BlurredEventImage(imageName: customization.x)
             
             VStack(spacing: 15) {
-                Image(uiImage: #imageLiteral(resourceName: "nature1.jpg"))
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: .infinity,
-                        minHeight: 0,
-                        maxHeight: .infinity
-                    )
+                EventImage(imageName: customization.x)
                     .aspectRatio(ratio, contentMode: .fit)
                     .clipped()
                 
@@ -53,24 +39,55 @@ struct CustomizationView: View {
             .padding([.top, .bottom], 15)
         }
     }
+}
+
+private struct BlurredEventImage: View {
+    let imageName: String
     
+    var body: some View {
+        ZStack {
+            EventImage(imageName: imageName)
+                .ignoresSafeArea()
+            
+            VisualEffectView(effect: UIBlurEffect(style: .dark))
+                .ignoresSafeArea()
+        }
+    }
+}
+
+private struct EventImage: View {
+    let imageName: String
     
-    private struct VisualEffectView: UIViewRepresentable {
-        let effect: UIVisualEffect?
-        
-        func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView {
-            UIVisualEffectView(effect: self.effect)
-        }
-        
-        func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-            // no-op
-        }
+    var body: some View {
+        Image(uiImage: #imageLiteral(resourceName: imageName))
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: .infinity
+            )
+    }
+}
+
+private struct VisualEffectView: UIViewRepresentable {
+    let effect: UIVisualEffect?
+    
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView {
+        UIVisualEffectView(effect: self.effect)
+    }
+    
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        // no-op
     }
 }
 
 #Preview {
     CustomizationView(
-        details: DetailsData(),
+        details: DetailsData(
+            name: "Test"
+        ),
         customization: .constant(CustomizationData())
     )
 }

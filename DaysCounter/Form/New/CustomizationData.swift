@@ -1,5 +1,5 @@
 import Foundation
 
 struct CustomizationData {
-    var x = ""
+    var x = "nature1.jpg"
 }
