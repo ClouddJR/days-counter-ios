@@ -18,6 +18,26 @@ struct CustomizationView: View {
                 EventImage(imageName: customization.x)
                     .aspectRatio(ratio, contentMode: .fit)
                     .clipped()
+                    .overlay {
+                        VStack {
+                            Spacer()
+                            HStack {
+                                VStack(
+                                    alignment: .leading,
+                                    spacing: 5
+                                ) {
+                                    Text(details.name)
+                                        .font(.title2)
+                                        .foregroundStyle(.white)
+                                    Text(details.formattedDate)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.white)
+                                }
+                                Spacer()
+                            }
+                        }
+                        .padding(15)
+                    }
                 
                 VStack(spacing: 20) {
                     Button {
@@ -86,7 +106,7 @@ private struct VisualEffectView: UIViewRepresentable {
 #Preview {
     CustomizationView(
         details: DetailsData(
-            name: "Test"
+            name: "Birthday"
         ),
         customization: .constant(CustomizationData())
     )

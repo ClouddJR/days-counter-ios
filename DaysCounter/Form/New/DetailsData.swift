@@ -9,4 +9,12 @@ struct DetailsData {
     var hasReminder = false
     var reminderDate = Date()
     var reminderMessage = ""
+    
+    
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = isEntireDay ? .none : .short
+        return dateFormatter.string(from: date)
+    }
 }
