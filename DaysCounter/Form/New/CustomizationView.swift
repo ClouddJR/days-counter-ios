@@ -7,6 +7,7 @@ struct CustomizationView: View {
     @Binding var customization: CustomizationData
     
     @State private var isShowingImageSourceOptions = false
+    @State private var isShowingInternalGallery = false
     
     var body: some View {
         let screenWidth = UIScreen.main.bounds.size.width
@@ -14,10 +15,10 @@ struct CustomizationView: View {
         let ratio = min(screenWidth, screenHeight) / max(screenWidth, screenHeight)
         
         ZStack {
-            BlurredEventImage(imageName: customization.x)
+            BlurredEventImage(image: customization.image)
             
             VStack(spacing: 15) {
-                EventImage(imageName: customization.x)
+                EventImage(image: customization.image)
                     .aspectRatio(ratio, contentMode: .fit)
                     .clipped()
                     .overlay {
@@ -66,7 +67,7 @@ struct CustomizationView: View {
                     titleVisibility: .hidden
                 ) {
                     Button("Pre-installed images") {
-                        
+                        isShowingInternalGallery = true
                     }
                     Button("From the Internet") {
                         
@@ -78,6 +79,9 @@ struct CustomizationView: View {
                         
                     }
                 }
+                .sheet(isPresented: $isShowingInternalGallery) {
+                    InternalGalleryView(delegate: self)
+                }
             }
             .padding([.leading, .trailing], 20)
             .padding([.top, .bottom], 15)
@@ -85,12 +89,18 @@ struct CustomizationView: View {
     }
 }
 
+extension CustomizationView: InternalGalleryDelegate {
+    func onInternalImageChosen(_ image: UIImage) {
+        customization.image = image
+    }
+}
+
 private struct BlurredEventImage: View {
-    let imageName: String
+    let image: UIImage
     
     var body: some View {
         ZStack {
-            EventImage(imageName: imageName)
+            EventImage(image: image)
                 .ignoresSafeArea()
             
             VisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -100,10 +110,10 @@ private struct BlurredEventImage: View {
 }
 
 private struct EventImage: View {
-    let imageName: String
+    let image: UIImage
     
     var body: some View {
-        Image(uiImage: #imageLiteral(resourceName: imageName))
+        Image(uiImage: image)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(

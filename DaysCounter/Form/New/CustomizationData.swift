@@ -1,6 +1,7 @@
 import Foundation
+import UIKit
 
 struct CustomizationData {
-    var x = "nature1.jpg"
+    var image = UIImage(named: "nature4.jpg")!
     var opacity = 0.2
 }
