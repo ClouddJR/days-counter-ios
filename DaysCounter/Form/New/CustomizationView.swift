@@ -8,6 +8,7 @@ struct CustomizationView: View {
     
     @State private var isShowingImageSourceOptions = false
     @State private var isShowingInternalGallery = false
+    @State private var isShowingInternetGallery = false
     
     var body: some View {
         let screenWidth = UIScreen.main.bounds.size.width
@@ -70,7 +71,7 @@ struct CustomizationView: View {
                         isShowingInternalGallery = true
                     }
                     Button("From the Internet") {
-                        
+                        isShowingInternetGallery = true
                     }
                     Button("Photo library") {
                         
@@ -81,6 +82,9 @@ struct CustomizationView: View {
                 }
                 .sheet(isPresented: $isShowingInternalGallery) {
                     InternalGalleryView(delegate: self)
+                }
+                .sheet(isPresented: $isShowingInternetGallery) {
+                    InternetGalleryView(image: $customization.image)
                 }
             }
             .padding([.leading, .trailing], 20)
@@ -134,6 +138,36 @@ private struct VisualEffectView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
         // no-op
+    }
+}
+
+private struct InternetGalleryView: UIViewControllerRepresentable {
+    @Binding var image: UIImage
+    
+    class Coordinator: NSObject, InternetGalleryDelegate {
+        private let parent: InternetGalleryView
+        
+        init(_ parent: InternetGalleryView) {
+            self.parent = parent
+        }
+        
+        func onInternetImageChosen(_ image: UIImage) {
+            parent.image = image
+        }
+    }
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = InternetGalleryViewController()
+        viewController.delegate = context.coordinator
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // nop
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
 }
 
