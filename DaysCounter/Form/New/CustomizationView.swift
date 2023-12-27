@@ -9,6 +9,9 @@ struct CustomizationView: View {
     @State private var isShowingImageSourceOptions = false
     @State private var isShowingInternalGallery = false
     @State private var isShowingInternetGallery = false
+    @State private var isShowingPhotoLibraryPicker = false
+    @State private var isShowingCameraPicker = false
+    @State private var isShowingImageCropView = false
     
     var body: some View {
         let screenWidth = UIScreen.main.bounds.size.width
@@ -74,10 +77,10 @@ struct CustomizationView: View {
                         isShowingInternetGallery = true
                     }
                     Button("Photo library") {
-                        
+                        isShowingPhotoLibraryPicker = true
                     }
                     Button("Camera") {
-                        
+                        isShowingCameraPicker = true
                     }
                 }
                 .sheet(isPresented: $isShowingInternalGallery) {
@@ -85,6 +88,20 @@ struct CustomizationView: View {
                 }
                 .sheet(isPresented: $isShowingInternetGallery) {
                     InternetGalleryView(image: $customization.image)
+                }
+                .sheet(isPresented: $isShowingPhotoLibraryPicker) {
+                    ImagePickerView(
+                        sourceType: .photoLibrary,
+                        isShowingImageCropView: $isShowingImageCropView
+                    )
+                    .ignoresSafeArea()
+                }
+                .fullScreenCover(isPresented: $isShowingCameraPicker) {
+                    ImagePickerView(
+                        sourceType: .camera,
+                        isShowingImageCropView: $isShowingImageCropView
+                    )
+                    .ignoresSafeArea()
                 }
             }
             .padding([.leading, .trailing], 20)
@@ -156,13 +173,50 @@ private struct InternetGalleryView: UIViewControllerRepresentable {
         }
     }
     
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context: Context) -> UINavigationController {
         let viewController = InternetGalleryViewController()
         viewController.delegate = context.coordinator
+        return UINavigationController(rootViewController: viewController)
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+        // nop
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+}
+
+private struct ImagePickerView: UIViewControllerRepresentable {
+    let sourceType: UIImagePickerController.SourceType
+    
+    @Binding var isShowingImageCropView: Bool
+    
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        private let parent: ImagePickerView
+        
+        init(_ parent: ImagePickerView) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+        ) {
+            parent.isShowingImageCropView = true
+            picker.dismiss(animated: true)
+        }
+    }
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let viewController = UIImagePickerController()
+        viewController.delegate = context.coordinator
+        viewController.sourceType = sourceType
         return viewController
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
         // nop
     }
     
