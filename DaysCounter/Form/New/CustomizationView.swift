@@ -6,6 +6,8 @@ struct CustomizationView: View {
     
     @Binding var customization: CustomizationData
     
+    @State private var isShowingImageSourceOptions = false
+    
     var body: some View {
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
@@ -45,7 +47,7 @@ struct CustomizationView: View {
                 
                 VStack(spacing: 20) {
                     Button {
-                        // Open gallery chooser
+                        isShowingImageSourceOptions = true
                     } label: {
                         Text("Choose background")
                             .font(.title3)
@@ -56,6 +58,24 @@ struct CustomizationView: View {
                     } label: {
                         Text("Personalize")
                             .font(.title3)
+                    }
+                }
+                .confirmationDialog(
+                    "Choose background",
+                    isPresented: $isShowingImageSourceOptions,
+                    titleVisibility: .hidden
+                ) {
+                    Button("Pre-installed images") {
+                        
+                    }
+                    Button("From the Internet") {
+                        
+                    }
+                    Button("Photo library") {
+                        
+                    }
+                    Button("Camera") {
+                        
                     }
                 }
             }
