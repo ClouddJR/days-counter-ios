@@ -19,6 +19,10 @@ struct CustomizationView: View {
                     .aspectRatio(ratio, contentMode: .fit)
                     .clipped()
                     .overlay {
+                        Color(UIColor.black)
+                            .opacity(customization.opacity)
+                    }
+                    .overlay {
                         VStack {
                             Spacer()
                             HStack {
