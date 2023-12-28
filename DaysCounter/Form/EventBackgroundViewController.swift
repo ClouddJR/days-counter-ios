@@ -708,6 +708,10 @@ extension EventBackgroundViewController: ImageCropViewControllerDelegate {
         backgroundImageView.image = image
         eventImageView.image = image
     }
+    
+    func dismiss() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension EventBackgroundViewController: InternalGalleryDelegate {

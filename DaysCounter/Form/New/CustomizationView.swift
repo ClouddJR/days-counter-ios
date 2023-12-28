@@ -11,6 +11,8 @@ struct CustomizationView: View {
     @State private var isShowingInternetGallery = false
     @State private var isShowingPhotoLibraryPicker = false
     @State private var isShowingCameraPicker = false
+    
+    @State private var croppedImage: UIImage? = nil
     @State private var isShowingImageCropView = false
     
     var body: some View {
@@ -92,14 +94,23 @@ struct CustomizationView: View {
                 .sheet(isPresented: $isShowingPhotoLibraryPicker) {
                     ImagePickerView(
                         sourceType: .photoLibrary,
-                        isShowingImageCropView: $isShowingImageCropView
+                        isShowingImageCropView: $isShowingImageCropView,
+                        croppedImage: $croppedImage
                     )
                     .ignoresSafeArea()
                 }
                 .fullScreenCover(isPresented: $isShowingCameraPicker) {
                     ImagePickerView(
                         sourceType: .camera,
-                        isShowingImageCropView: $isShowingImageCropView
+                        isShowingImageCropView: $isShowingImageCropView,
+                        croppedImage: $croppedImage
+                    )
+                    .ignoresSafeArea()
+                }
+                .fullScreenCover(isPresented: $isShowingImageCropView) {
+                    ImageCropView(
+                        croppedImage: $croppedImage,
+                        image: $customization.image
                     )
                     .ignoresSafeArea()
                 }
@@ -192,6 +203,7 @@ private struct ImagePickerView: UIViewControllerRepresentable {
     let sourceType: UIImagePickerController.SourceType
     
     @Binding var isShowingImageCropView: Bool
+    @Binding var croppedImage: UIImage?
     
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         private let parent: ImagePickerView
@@ -205,6 +217,7 @@ private struct ImagePickerView: UIViewControllerRepresentable {
             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
         ) {
             parent.isShowingImageCropView = true
+            parent.croppedImage = info[.originalImage] as? UIImage
             picker.dismiss(animated: true)
         }
     }
@@ -217,6 +230,46 @@ private struct ImagePickerView: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+        // nop
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+}
+
+private struct ImageCropView: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) private var presentation
+    
+    @Binding var croppedImage: UIImage?
+    @Binding var image: UIImage
+    
+    class Coordinator: NSObject, ImageCropViewControllerDelegate {
+        private let parent: ImageCropView
+        
+        init(_ parent: ImageCropView) {
+            self.parent = parent
+        }
+        
+        func onImageCropped(_ image: UIImage) {
+            parent.croppedImage = nil
+            parent.image = image
+        }
+        
+        func dismiss() {
+            parent.croppedImage = nil
+            parent.presentation.wrappedValue.dismiss()
+        }
+    }
+    
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let viewController = ImageCropViewController()
+        viewController.image = croppedImage
+        viewController.delegate = context.coordinator
+        return UINavigationController(rootViewController: viewController)
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
         // nop
     }
     

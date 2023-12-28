@@ -2,6 +2,7 @@ import UIKit
 
 protocol ImageCropViewControllerDelegate {
     func onImageCropped(_ image: UIImage)
+    func dismiss()
 }
 
 final class ImageCropViewController: UIViewController {
@@ -46,7 +47,7 @@ final class ImageCropViewController: UIViewController {
         navigationItem.title = NSLocalizedString("Reposition the image", comment: "")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel, primaryAction: UIAction() { _ in
-            self.navigationController?.popViewController(animated: true)
+            self.delegate?.dismiss()
         })
         navigationItem.leftBarButtonItem?.tintColor = .white
         
@@ -92,7 +93,7 @@ final class ImageCropViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         delegate?.onImageCropped(image)
-        navigationController?.popViewController(animated: true)
+        delegate?.dismiss()
     }
 }
 
