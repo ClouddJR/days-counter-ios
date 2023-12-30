@@ -1,9 +1,6 @@
 import UIKit
 
-class AddEventViewController: UITableViewController {
-    
-    // MARK:  IBOutlets
-    
+final class AddEventViewController: UITableViewController {
     @IBOutlet weak var eventNameLabel: UITextField!
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
@@ -31,8 +28,6 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var reminderDateAndTimePicker: UIDatePicker!
     @IBOutlet weak var reminderMessageCell: UITableViewCell!
     @IBOutlet weak var reminderMessageTextView: UITextView!
-    
-    // MARK:  IBActions
     
     @IBAction func dismiss(_ sender: Any) {
         presentingViewController?.dismiss(animated: true)
@@ -106,9 +101,6 @@ class AddEventViewController: UITableViewController {
         }
     }
     
-    
-    // MARK:  variables
-    
     var isInEditMode = false
     
     var event = Event()
@@ -136,8 +128,6 @@ class AddEventViewController: UITableViewController {
     private var isEventDatePickerOpened = false
     private var isEventTimePickerOpened = false
     private var isReminderDateAndTimePickerOpened = false
-    
-    // MARK:  lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,8 +187,6 @@ class AddEventViewController: UITableViewController {
             event.reminderDate = nil
         }
     }
-    
-    // MARK:  helper methods
     
     private func setUpTextViews() {
         eventNotesTextView.delegate = self
@@ -368,19 +356,13 @@ class AddEventViewController: UITableViewController {
     }
 }
 
-// MARK:  RepetitionTableViewController Delegate
-
 extension AddEventViewController: RepetitionTableViewControllerDelegate {
-    
     func updateRepetition(with indexPath: IndexPath) {
         eventRepetition = EventRepetition(rawValue: indexPath.row)!
     }
 }
 
-// MARK:  TableView delegate
-
 extension AddEventViewController {
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == eventDatePickerIndexPath.section && indexPath.row == eventDatePickerIndexPath.row  {
             return self.isEventDatePickerOpened ? 216.0 : 0
@@ -447,10 +429,7 @@ extension AddEventViewController {
     }
 }
 
-// MARK:  TextView delegate
-
 extension AddEventViewController: UITextViewDelegate {
-    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText:String = textView.text
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
@@ -483,8 +462,6 @@ extension AddEventViewController: UITextViewDelegate {
         }
     }
 }
-
-// MARK:  ScrollView delegate
 
 extension AddEventViewController {
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
