@@ -626,9 +626,6 @@ extension EventCustomizeView : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view:
         UIView?) -> UIView {
         
-        pickerView.subviews[1].backgroundColor = UIColor.white
-        pickerView.subviews[2].backgroundColor = UIColor.white
-        
         let label = view as? UILabel ?? UILabel()
         let fontName = UIFont.familyNames[row]
         label.font = UIFont(name: fontName, size: 20)
