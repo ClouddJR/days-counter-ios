@@ -2,13 +2,9 @@ import UIKit
 
 final class AddEventViewController: UITableViewController {
     @IBOutlet weak var eventNameLabel: UITextField!
-    @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
     @IBOutlet weak var entireDayCell: UITableViewCell!
     @IBOutlet weak var entireDaySwitch: UISwitch!
-    @IBOutlet weak var eventTimeCell: UITableViewCell!
-    @IBOutlet weak var eventTimeLabel: UILabel!
-    @IBOutlet weak var eventTimePicker: UIDatePicker!
     
     @IBOutlet weak var eventRepetitionLabel: UILabel!
     @IBOutlet weak var eventNotesTextView: UITextView!
@@ -26,16 +22,7 @@ final class AddEventViewController: UITableViewController {
     }
     
     @IBAction func entireDaySwitchValueChanged(_ sender: UISwitch) {
-        eventTimeCell.isHidden = sender.isOn
-        if sender.isOn {
-            isEventTimePickerOpened = false
-            updateConstraints(for: eventTimePicker, basedOn: self.isEventTimePickerOpened)
-        } else {
-            eventTimeCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
-        entireDayCell.separatorInset = UIEdgeInsets(top: 0, left: sender.isOn ? 0 : 20, bottom: 0, right: 0)
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        eventDatePicker.datePickerMode = sender.isOn ? .date : .dateAndTime
     }
     
     @IBAction func reminderSwitchValueChanged(_ sender: UISwitch) {
@@ -52,18 +39,6 @@ final class AddEventViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    @IBAction func updateEventDateField(_ sender: UIDatePicker, forEvent event: UIEvent) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        updateDateLabel(for: eventDateLabel, with: eventDatePicker, at: IndexPath(row: 1, section: 0), using: dateFormatter)
-    }
-    
-    @IBAction func updateEventTimeField(_ sender: UIDatePicker, forEvent event: UIEvent) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
-        updateDateLabel(for: eventTimeLabel, with: eventTimePicker, at: IndexPath(row: 4, section: 0), using: dateFormatter)
-    }
-    
     @IBAction func updateReminderDateAndTimeField(_ sender: Any) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
@@ -72,24 +47,19 @@ final class AddEventViewController: UITableViewController {
     }
     
     @IBAction func goToEventBackgroundVC(_ sender: Any) {
-        if isValidForm() {
-            if let vc = lastSeguedToEventBackgroundVC {
-                prepareEvent()
-                vc.event.name = event.name
-                vc.event.date = event.date
-                vc.event.isEntireDay = event.isEntireDay
-                vc.event.repetition = event.repetition
-                vc.event.notes = event.notes
-                vc.event.reminderDate = event.reminderDate
-                vc.event.reminderMessage = event.reminderMessage
-                vc.event.createdAt = event.createdAt
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
-                performSegue(withIdentifier: "eventBackgroundVCSegue", sender: sender)
-            }
-        }
-        else {
-            displayAlertAboutRequiredFields()
+        if let vc = lastSeguedToEventBackgroundVC {
+            prepareEvent()
+            vc.event.name = event.name
+            vc.event.date = event.date
+            vc.event.isEntireDay = event.isEntireDay
+            vc.event.repetition = event.repetition
+            vc.event.notes = event.notes
+            vc.event.reminderDate = event.reminderDate
+            vc.event.reminderMessage = event.reminderMessage
+            vc.event.createdAt = event.createdAt
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            performSegue(withIdentifier: "eventBackgroundVCSegue", sender: sender)
         }
     }
     
@@ -108,11 +78,6 @@ final class AddEventViewController: UITableViewController {
             }
         }
     }
-    
-    private let eventDateCellIndexPath = IndexPath(row: 1, section: 0)
-    private let eventDatePickerIndexPath = IndexPath(row: 2, section: 0)
-    private let eventTimeCellIndexPath = IndexPath(row: 4, section: 0)
-    private let eventTimePickerIndexPath = IndexPath(row: 5, section: 0)
     
     private let reminderDateAndTimeCellIndexPath = IndexPath(row: 1, section: 2)
     private let reminderDateAndTimePickerIndexPath = IndexPath(row: 2, section: 2)
@@ -145,14 +110,6 @@ final class AddEventViewController: UITableViewController {
         }
     }
     
-    private func isValidForm() -> Bool {
-        return !isNameOrDateLabelEmpty()
-    }
-    
-    private func isNameOrDateLabelEmpty() -> Bool {
-        return eventNameLabel.text == "" || eventDateLabel.text == ""
-    }
-    
     private func displayAlertAboutRequiredFields() {
         let alert = UIAlertController(title: NSLocalizedString("Name And Date Fields Are Required", comment: ""), message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -161,15 +118,8 @@ final class AddEventViewController: UITableViewController {
     
     private func prepareEvent() {
         event.name = eventNameLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        event.date = eventDateLabel.text != "" ? eventDatePicker.date : nil
-        if !entireDaySwitch.isOn && eventTimeLabel.text != ""{
-            let timeComponents = eventTimePicker.date.timeComponents()
-            event.date = event.date!.with(hours: timeComponents.hour!, minutes: timeComponents.minute!)
-            event.isEntireDay = false
-        } else {
-            event.date = event.date!.with(hours: 23, minutes: 59)
-            event.isEntireDay = true
-        }
+        event.date = eventDatePicker.date // Check if changing time is needed here as before
+        event.isEntireDay = entireDaySwitch.isOn
         event.repetition = eventRepetition.rawValue
         event.notes = eventNotesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
@@ -199,24 +149,8 @@ final class AddEventViewController: UITableViewController {
     private func updateUIIfInEditMode() {
         if isInEditMode {
             eventNameLabel.text = event.name
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .full
-            eventDateLabel.text = dateFormatter.string(from: event.date!)
             eventDatePicker.date = event.date!
-            
-            if !event.isEntireDay {
-                let timeFormatter = DateFormatter()
-                timeFormatter.timeStyle = .short
-                eventTimeLabel.text = timeFormatter.string(from: event.date!)
-                entireDaySwitch.isOn = false
-                eventTimePicker.date = event.date!
-                eventTimeCell.isHidden = false
-                eventTimeCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-                entireDayCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-                tableView.beginUpdates()
-                tableView.endUpdates()
-            }
+            entireDaySwitch.isOn = event.isEntireDay
             
             if event.reminderDate != nil {
                 let reminderDateFormatter = DateFormatter()
@@ -356,14 +290,6 @@ extension AddEventViewController: RepetitionTableViewControllerDelegate {
 
 extension AddEventViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == eventDatePickerIndexPath.section && indexPath.row == eventDatePickerIndexPath.row  {
-            return self.isEventDatePickerOpened ? 216.0 : 0
-        }
-        
-        if indexPath.section == eventTimePickerIndexPath.section && indexPath.row == eventTimePickerIndexPath.row {
-            return self.isEventTimePickerOpened ? 216.0 : 0
-        }
-        
         if indexPath.section == reminderDateAndTimePickerIndexPath.section && indexPath.row == reminderDateAndTimePickerIndexPath.row {
             return self.isReminderDateAndTimePickerOpened ? 216.0 : 0
         }
@@ -372,29 +298,13 @@ extension AddEventViewController {
     }
     
     private func shouldRowBeHidden(at indexPath: IndexPath) -> Bool {
-        return indexPath.section == eventTimeCellIndexPath.section && indexPath.row == eventTimeCellIndexPath.row && entireDaySwitch.isOn ||
+        return
             indexPath.section == reminderDateAndTimeCellIndexPath.section && indexPath.row == reminderDateAndTimeCellIndexPath.row && !reminderSwitch.isOn ||
             indexPath.section == reminderDateAndTimePickerIndexPath.section && indexPath.row == reminderDateAndTimePickerIndexPath.row && !reminderSwitch.isOn
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
-        
-        if indexPath.section == eventDateCellIndexPath.section && indexPath.row == eventDateCellIndexPath.row {
-            self.isEventDatePickerOpened = !self.isEventDatePickerOpened
-            if self.isEventDatePickerOpened {
-                isEventTimePickerOpened = false
-                isReminderDateAndTimePickerOpened = false
-            }
-        }
-        
-        if indexPath.section == eventTimeCellIndexPath.section && indexPath.row == eventTimeCellIndexPath.row {
-            self.isEventTimePickerOpened = !self.isEventTimePickerOpened
-            if self.isEventTimePickerOpened {
-                isEventDatePickerOpened = false
-                isReminderDateAndTimePickerOpened = false
-            }
-        }
         
         var shouldScrollToBottom = false
         if indexPath.section == reminderDateAndTimeCellIndexPath.section && indexPath.row == reminderDateAndTimeCellIndexPath.row {
@@ -407,10 +317,6 @@ extension AddEventViewController {
             }
         }
         
-        eventTimeCell.separatorInset = UIEdgeInsets(top: 0, left: self.isEventTimePickerOpened ? 20 : 0, bottom: 0, right: 0)
-        
-        updateConstraints(for: eventDatePicker, basedOn: self.isEventDatePickerOpened)
-        updateConstraints(for: eventTimePicker, basedOn: self.isEventTimePickerOpened)
         updateConstraints(for: reminderDateAndTimePicker, basedOn: self.isReminderDateAndTimePickerOpened)
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.endUpdates()
