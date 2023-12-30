@@ -286,17 +286,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QN6-Gi-3dc">
-                                                    <rect key="frame" x="15" y="15" width="344" height="90"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="98"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="QN6-Gi-3dc" secondAttribute="trailing" constant="15" id="03u-D8-8ac"/>
-                                                <constraint firstItem="QN6-Gi-3dc" firstAttribute="top" secondItem="aAQ-dh-kgd" secondAttribute="top" constant="15" id="IEf-1S-xba"/>
-                                                <constraint firstAttribute="bottom" secondItem="QN6-Gi-3dc" secondAttribute="bottom" constant="15" id="Tga-12-wAd"/>
-                                                <constraint firstItem="QN6-Gi-3dc" firstAttribute="leading" secondItem="aAQ-dh-kgd" secondAttribute="leading" constant="15" id="Zwm-Ho-CuB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QN6-Gi-3dc" secondAttribute="trailing" id="03u-D8-8ac"/>
+                                                <constraint firstItem="QN6-Gi-3dc" firstAttribute="top" secondItem="aAQ-dh-kgd" secondAttribute="topMargin" id="IEf-1S-xba"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="QN6-Gi-3dc" secondAttribute="bottom" id="Tga-12-wAd"/>
+                                                <constraint firstItem="QN6-Gi-3dc" firstAttribute="leading" secondItem="aAQ-dh-kgd" secondAttribute="leadingMargin" id="Zwm-Ho-CuB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
