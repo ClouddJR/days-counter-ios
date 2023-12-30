@@ -161,27 +161,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RK-lW-c7y">
-                                                    <rect key="frame" x="20" y="11" width="45" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ab-Ne-FQR">
-                                                    <rect key="frame" x="254" y="0.0" width="100" height="50"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4ab-Ne-FQR">
+                                                    <rect key="frame" x="20" y="11" width="334" height="28"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4ab-Ne-FQR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8RK-lW-c7y" secondAttribute="trailing" constant="8" symbolic="YES" id="0uQ-D4-Uv3"/>
                                                 <constraint firstAttribute="trailing" secondItem="4ab-Ne-FQR" secondAttribute="trailing" constant="20" symbolic="YES" id="L6j-Pi-SlM"/>
-                                                <constraint firstItem="4ab-Ne-FQR" firstAttribute="top" secondItem="4C0-RW-b5a" secondAttribute="top" id="Sby-d7-T4m"/>
-                                                <constraint firstItem="8RK-lW-c7y" firstAttribute="top" secondItem="4C0-RW-b5a" secondAttribute="topMargin" id="ah8-Au-FN0"/>
-                                                <constraint firstItem="8RK-lW-c7y" firstAttribute="bottom" secondItem="4C0-RW-b5a" secondAttribute="bottomMargin" id="fGO-yZ-dnz"/>
-                                                <constraint firstAttribute="bottom" secondItem="4ab-Ne-FQR" secondAttribute="bottom" id="ht3-ib-l8Z"/>
-                                                <constraint firstItem="8RK-lW-c7y" firstAttribute="leading" secondItem="4C0-RW-b5a" secondAttribute="leadingMargin" id="yAU-Lc-WzI"/>
+                                                <constraint firstItem="4ab-Ne-FQR" firstAttribute="top" secondItem="4C0-RW-b5a" secondAttribute="topMargin" id="Sby-d7-T4m"/>
+                                                <constraint firstItem="4ab-Ne-FQR" firstAttribute="leading" secondItem="4C0-RW-b5a" secondAttribute="leading" constant="20" symbolic="YES" id="WB5-az-9h1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4ab-Ne-FQR" secondAttribute="bottom" id="ht3-ib-l8Z"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
