@@ -2,9 +2,8 @@ import UIKit
 
 final class AddEventViewController: UITableViewController {
     @IBOutlet weak var eventNameLabel: UITextField!
-    @IBOutlet weak var eventDatePicker: UIDatePicker!
-    @IBOutlet weak var entireDayCell: UITableViewCell!
     @IBOutlet weak var entireDaySwitch: UISwitch!
+    @IBOutlet weak var eventDatePicker: UIDatePicker!
     
     @IBOutlet weak var eventRepetitionLabel: UILabel!
     @IBOutlet weak var eventNotesTextView: UITextView!
@@ -133,14 +132,14 @@ final class AddEventViewController: UITableViewController {
     private func setUpTextViews() {
         eventNotesTextView.delegate = self
         eventNotesTextView.text = NSLocalizedString("Notes", comment: "")
-        eventNotesTextView.textColor = UIColor.lightGray
+        eventNotesTextView.textColor = UIColor.placeholderText
         eventNotesTextView.textContainer.lineFragmentPadding = 0
         eventNotesTextView.textContainerInset = .zero
         eventNotesTextView.backgroundColor = .clear
         
         reminderMessageTextView.delegate = self
         reminderMessageTextView.text = NSLocalizedString("Reminder message", comment: "")
-        reminderMessageTextView.textColor = UIColor.lightGray
+        reminderMessageTextView.textColor = UIColor.placeholderText
         reminderMessageTextView.textContainer.lineFragmentPadding = 0
         reminderMessageTextView.textContainerInset = .zero
         reminderMessageTextView.backgroundColor = .clear
@@ -334,9 +333,9 @@ extension AddEventViewController: UITextViewDelegate {
         
         if updatedText.isEmpty {
             textView.text = textView.tag == 0 ? NSLocalizedString("Notes", comment: "") : NSLocalizedString("Reminder message", comment: "")
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.placeholderText
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        } else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        } else if textView.textColor == UIColor.placeholderText && !text.isEmpty {
             textView.textColor = UIColor.label
             textView.text = text
         } else {
@@ -348,14 +347,14 @@ extension AddEventViewController: UITextViewDelegate {
     
     func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
-            if textView.textColor == UIColor.lightGray {
+            if textView.textColor == UIColor.placeholderText {
                 textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             }
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor.placeholderText {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
     }

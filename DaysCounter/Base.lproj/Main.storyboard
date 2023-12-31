@@ -399,17 +399,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HiL-y3-GF2">
-                                                    <rect key="frame" x="15" y="15" width="344" height="90"/>
+                                                    <rect key="frame" x="20" y="11" width="334" height="98"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HiL-y3-GF2" firstAttribute="top" secondItem="yoa-zN-KOd" secondAttribute="top" constant="15" id="58n-Ic-z3I"/>
-                                                <constraint firstAttribute="bottom" secondItem="HiL-y3-GF2" secondAttribute="bottom" constant="15" id="9gU-mg-8ag"/>
-                                                <constraint firstItem="HiL-y3-GF2" firstAttribute="leading" secondItem="yoa-zN-KOd" secondAttribute="leading" constant="15" id="CD5-AB-XRa"/>
-                                                <constraint firstAttribute="trailing" secondItem="HiL-y3-GF2" secondAttribute="trailing" constant="15" id="tvR-O6-o8S"/>
+                                                <constraint firstItem="HiL-y3-GF2" firstAttribute="top" secondItem="yoa-zN-KOd" secondAttribute="topMargin" id="58n-Ic-z3I"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HiL-y3-GF2" secondAttribute="bottom" id="9gU-mg-8ag"/>
+                                                <constraint firstItem="HiL-y3-GF2" firstAttribute="leading" secondItem="yoa-zN-KOd" secondAttribute="leadingMargin" id="CD5-AB-XRa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HiL-y3-GF2" secondAttribute="trailing" id="tvR-O6-o8S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -434,8 +434,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="entireDayCell" destination="jfq-Vp-pZi" id="FVA-rO-Mbs"/>
-                        <outlet property="entireDaySwitch" destination="UMP-Nd-Cqh" id="YAM-4D-Vum"/>
+                        <outlet property="entireDaySwitch" destination="UMP-Nd-Cqh" id="ILR-BS-y0F"/>
                         <outlet property="eventDatePicker" destination="lAf-kE-ilb" id="b4k-2h-2S6"/>
                         <outlet property="eventNameLabel" destination="4ab-Ne-FQR" id="Hbo-nq-US3"/>
                         <outlet property="eventNotesTextView" destination="QN6-Gi-3dc" id="lrp-JP-XJH"/>
