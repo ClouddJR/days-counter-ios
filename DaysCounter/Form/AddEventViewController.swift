@@ -1,34 +1,32 @@
 import UIKit
 
 final class AddEventViewController: UITableViewController {
-    @IBOutlet weak var eventNameLabel: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var entireDaySwitch: UISwitch!
-    @IBOutlet weak var eventDatePicker: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var eventRepetitionLabel: UILabel!
-    @IBOutlet weak var eventNotesTextView: UITextView!
+    @IBOutlet weak var repetitionLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
     
     @IBOutlet weak var reminderSwitchCell: UITableViewCell!
     @IBOutlet weak var reminderSwitch: UISwitch!
-    @IBOutlet weak var reminderDateAndTimeCell: UITableViewCell!
-    @IBOutlet weak var reminderDateAndTimePicker: UIDatePicker!
-    @IBOutlet weak var reminderMessageCell: UITableViewCell!
+    @IBOutlet weak var reminderDatePicker: UIDatePicker!
     @IBOutlet weak var reminderMessageTextView: UITextView!
     
-    var isInEditMode = false
-    
     var event = Event()
+    
+    var isInEditMode = false
     
     private var isReminderSectionHidden = true
     
     private var eventRepetition = EventRepetition(rawValue: 0)! {
         didSet {
-            switch eventRepetition {
-            case .once: eventRepetitionLabel.text = NSLocalizedString("Only once", comment: "")
-            case .daily: eventRepetitionLabel.text = NSLocalizedString("Daily", comment: "")
-            case .weekly: eventRepetitionLabel.text = NSLocalizedString("Weekly", comment: "")
-            case .monthly: eventRepetitionLabel.text = NSLocalizedString("Monthly", comment: "")
-            case .yearly: eventRepetitionLabel.text = NSLocalizedString("Yearly", comment: "")
+            repetitionLabel.text = switch eventRepetition {
+            case .once: NSLocalizedString("Only once", comment: "")
+            case .daily: NSLocalizedString("Daily", comment: "")
+            case .weekly: NSLocalizedString("Weekly", comment: "")
+            case .monthly: NSLocalizedString("Monthly", comment: "")
+            case .yearly: NSLocalizedString("Yearly", comment: "")
             }
         }
     }
@@ -40,7 +38,7 @@ final class AddEventViewController: UITableViewController {
     }
     
     @IBAction func entireDaySwitchValueChanged(_ sender: UISwitch) {
-        eventDatePicker.datePickerMode = sender.isOn ? .date : .dateAndTime
+        datePicker.datePickerMode = sender.isOn ? .date : .dateAndTime
     }
     
     @IBAction func reminderSwitchValueChanged(_ sender: UISwitch) {
@@ -98,13 +96,13 @@ final class AddEventViewController: UITableViewController {
     }
     
     private func prepareEvent() {
-        event.name = eventNameLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        event.date = eventDatePicker.date // Check if changing time is needed here as before
+        event.name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        event.date = datePicker.date // Check if changing time is needed here as before
         event.isEntireDay = entireDaySwitch.isOn
         event.repetition = eventRepetition.rawValue
-        event.notes = eventNotesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        event.notes = notesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : notesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
-            event.reminderDate = reminderDateAndTimePicker.date
+            event.reminderDate = reminderDatePicker.date
             event.reminderMessage = reminderMessageTextView.text == NSLocalizedString("Reminder message", comment: "") ? "" :reminderMessageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
             event.reminderDate = nil
@@ -112,12 +110,12 @@ final class AddEventViewController: UITableViewController {
     }
     
     private func setUpTextViews() {
-        eventNotesTextView.delegate = self
-        eventNotesTextView.text = NSLocalizedString("Notes", comment: "")
-        eventNotesTextView.textColor = UIColor.placeholderText
-        eventNotesTextView.textContainer.lineFragmentPadding = 0
-        eventNotesTextView.textContainerInset = .zero
-        eventNotesTextView.backgroundColor = .clear
+        notesTextView.delegate = self
+        notesTextView.text = NSLocalizedString("Notes", comment: "")
+        notesTextView.textColor = UIColor.placeholderText
+        notesTextView.textContainer.lineFragmentPadding = 0
+        notesTextView.textContainerInset = .zero
+        notesTextView.backgroundColor = .clear
         
         reminderMessageTextView.delegate = self
         reminderMessageTextView.text = NSLocalizedString("Reminder message", comment: "")
@@ -129,19 +127,17 @@ final class AddEventViewController: UITableViewController {
     
     private func updateUIIfInEditMode() {
         if isInEditMode {
-            eventNameLabel.text = event.name
-            eventDatePicker.date = event.date!
+            nameTextField.text = event.name
+            datePicker.date = event.date!
             entireDaySwitch.isOn = event.isEntireDay
             
             if event.reminderDate != nil {
-                reminderDateAndTimePicker.date = event.reminderDate!
+                reminderDatePicker.date = event.reminderDate!
                 if event.reminderMessage != "" {
                     reminderMessageTextView.text = event.reminderMessage
                     reminderMessageTextView.textColor = .label
                 }
                 reminderSwitch.isOn = true
-                reminderDateAndTimeCell.isHidden = false
-                reminderMessageCell.isHidden = false
                 reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
                 tableView.beginUpdates()
                 tableView.endUpdates()
@@ -149,26 +145,26 @@ final class AddEventViewController: UITableViewController {
             
             eventRepetition = EventRepetition(rawValue: event.repetition)!
             if event.notes != "" {
-                eventNotesTextView.text = event.notes
-                eventNotesTextView.textColor = .label
+                notesTextView.text = event.notes
+                notesTextView.textColor = .label
             }
         }
     }
     
     private func addTableViewGestureRecognizers() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGestureRecognizer.cancelsTouchesInView = false
-        tableView.addGestureRecognizer(tapGestureRecognizer)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(tap)
         
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        swipeUpGestureRecognizer.direction = .up
-        swipeUpGestureRecognizer.cancelsTouchesInView = false
-        tableView.addGestureRecognizer(swipeUpGestureRecognizer)
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeUp.direction = .up
+        swipeUp.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(swipeUp)
         
-        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        swipeDownGestureRecognizer.direction = .down
-        swipeDownGestureRecognizer.cancelsTouchesInView = false
-        tableView.addGestureRecognizer(swipeDownGestureRecognizer)
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeDown.direction = .down
+        swipeDown.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(swipeDown)
     }
     
     private func displayAlertInformingAboutNoPermission() {
@@ -194,8 +190,6 @@ final class AddEventViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self?.displayAlertAboutRequiredPermissionForReminders()
                     self?.reminderSwitch.isOn = false
-                    self?.reminderDateAndTimeCell.isHidden = true
-                    self?.reminderMessageCell.isHidden = true
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
                 }
@@ -210,9 +204,9 @@ final class AddEventViewController: UITableViewController {
     }
     
     @objc private func dismissKeyboard() {
-        eventNotesTextView.resignFirstResponder()
+        notesTextView.resignFirstResponder()
         reminderMessageTextView.resignFirstResponder()
-        eventNameLabel.resignFirstResponder()
+        nameTextField.resignFirstResponder()
     }
 }
 

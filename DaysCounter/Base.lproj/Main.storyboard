@@ -410,17 +410,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="datePicker" destination="lAf-kE-ilb" id="b4k-2h-2S6"/>
                         <outlet property="entireDaySwitch" destination="UMP-Nd-Cqh" id="ILR-BS-y0F"/>
-                        <outlet property="eventDatePicker" destination="lAf-kE-ilb" id="b4k-2h-2S6"/>
-                        <outlet property="eventNameLabel" destination="4ab-Ne-FQR" id="Hbo-nq-US3"/>
-                        <outlet property="eventNotesTextView" destination="QN6-Gi-3dc" id="lrp-JP-XJH"/>
-                        <outlet property="eventRepetitionLabel" destination="YTm-My-K4b" id="B5k-1S-XPh"/>
-                        <outlet property="reminderDateAndTimeCell" destination="fC0-li-XIG" id="a5R-nh-DVK"/>
-                        <outlet property="reminderDateAndTimePicker" destination="XhW-kd-LDc" id="qxB-u7-YeE"/>
-                        <outlet property="reminderMessageCell" destination="ItJ-4b-qwY" id="6ea-Iz-KrT"/>
+                        <outlet property="nameTextField" destination="4ab-Ne-FQR" id="Hbo-nq-US3"/>
+                        <outlet property="notesTextView" destination="QN6-Gi-3dc" id="lrp-JP-XJH"/>
+                        <outlet property="reminderDatePicker" destination="XhW-kd-LDc" id="qxB-u7-YeE"/>
                         <outlet property="reminderMessageTextView" destination="HiL-y3-GF2" id="reG-7H-W2e"/>
                         <outlet property="reminderSwitch" destination="fUN-9Y-EZX" id="Thq-5v-l4J"/>
                         <outlet property="reminderSwitchCell" destination="x4e-ll-DX4" id="af1-p5-1rU"/>
+                        <outlet property="repetitionLabel" destination="YTm-My-K4b" id="B5k-1S-XPh"/>
                         <segue destination="Dhp-39-ii9" kind="show" identifier="eventBackgroundVCSegue" id="4QA-96-OBJ"/>
                     </connections>
                 </tableViewController>
