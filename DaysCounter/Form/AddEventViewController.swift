@@ -1,5 +1,7 @@
 import UIKit
 
+// Body font
+
 final class AddEventViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var entireDaySwitch: UISwitch!
@@ -96,6 +98,9 @@ final class AddEventViewController: UITableViewController {
         event.name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         event.isEntireDay = entireDaySwitch.isOn
         event.date = datePicker.date
+        if entireDaySwitch.isOn {
+            event.date = event.date!.with(hours: 0, minutes: 0, seconds: 0)
+        }
         event.repetition = eventRepetition.rawValue
         event.notes = notesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : notesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
@@ -133,6 +138,9 @@ final class AddEventViewController: UITableViewController {
         
         nameTextField.text = event.name
         entireDaySwitch.isOn = event.isEntireDay
+        if !event.isEntireDay {
+            datePicker.datePickerMode = .dateAndTime
+        }
         datePicker.date = event.date!
         
         eventRepetition = EventRepetition(rawValue: event.repetition)!
