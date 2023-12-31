@@ -15,6 +15,26 @@ final class AddEventViewController: UITableViewController {
     @IBOutlet weak var reminderMessageCell: UITableViewCell!
     @IBOutlet weak var reminderMessageTextView: UITextView!
     
+    var isInEditMode = false
+    
+    var event = Event()
+    
+    private var isReminderSectionHidden = true
+    
+    private var eventRepetition = EventRepetition(rawValue: 0)! {
+        didSet {
+            switch eventRepetition {
+            case .once: eventRepetitionLabel.text = NSLocalizedString("Only once", comment: "")
+            case .daily: eventRepetitionLabel.text = NSLocalizedString("Daily", comment: "")
+            case .weekly: eventRepetitionLabel.text = NSLocalizedString("Weekly", comment: "")
+            case .monthly: eventRepetitionLabel.text = NSLocalizedString("Monthly", comment: "")
+            case .yearly: eventRepetitionLabel.text = NSLocalizedString("Yearly", comment: "")
+            }
+        }
+    }
+    
+    private var lastSeguedToEventBackgroundVC: EventBackgroundViewController?
+
     @IBAction func dismiss(_ sender: Any) {
         presentingViewController?.dismiss(animated: true)
     }
@@ -27,11 +47,9 @@ final class AddEventViewController: UITableViewController {
         if sender.isOn {
             askForNotificationsPermission()
         }
-        reminderDateAndTimeCell.isHidden = !sender.isOn
-        reminderMessageCell.isHidden = !sender.isOn
+        isReminderSectionHidden = !sender.isOn
         reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: sender.isOn ? 20 : 0, bottom: 0, right: 0)
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        tableView.reloadData()
     }
     
     @IBAction func goToEventBackgroundVC(_ sender: Any) {
@@ -51,25 +69,6 @@ final class AddEventViewController: UITableViewController {
         }
     }
     
-    var isInEditMode = false
-    
-    var event = Event()
-    
-    private var eventRepetition = EventRepetition(rawValue: 0)! {
-        didSet {
-            switch eventRepetition {
-            case .once: eventRepetitionLabel.text = NSLocalizedString("Only once", comment: "")
-            case .daily: eventRepetitionLabel.text = NSLocalizedString("Daily", comment: "")
-            case .weekly: eventRepetitionLabel.text = NSLocalizedString("Weekly", comment: "")
-            case .monthly: eventRepetitionLabel.text = NSLocalizedString("Monthly", comment: "")
-            case .yearly: eventRepetitionLabel.text = NSLocalizedString("Yearly", comment: "")
-            }
-        }
-    }
-    
-    private let reminderDateAndTimeCellIndexPath = IndexPath(row: 1, section: 2)
-    private let reminderDateAndTimePickerIndexPath = IndexPath(row: 2, section: 2)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTextViews()
@@ -77,8 +76,6 @@ final class AddEventViewController: UITableViewController {
         addTableViewGestureRecognizers()
         displayAlertInformingAboutNoPermission()
     }
-    
-    private var lastSeguedToEventBackgroundVC: EventBackgroundViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? RepetitionTableViewController {
@@ -225,6 +222,14 @@ extension AddEventViewController: RepetitionTableViewControllerDelegate {
     }
 }
 
+extension AddEventViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard section == 2 else { return super.tableView(tableView, numberOfRowsInSection: section) }
+        
+        return isReminderSectionHidden ? 1 : 3
+    }
+}
+
 extension AddEventViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText:String = textView.text
@@ -245,10 +250,10 @@ extension AddEventViewController: UITextViewDelegate {
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
-        if self.view.window != nil {
-            if textView.textColor == UIColor.placeholderText {
-                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            }
+        guard self.view.window != nil else { return }
+        
+        if textView.textColor == UIColor.placeholderText {
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
     }
     
