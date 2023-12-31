@@ -69,6 +69,7 @@ final class AddEventViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpTextViews()
         updateUIIfInEditMode()
         addTableViewGestureRecognizers()
@@ -89,16 +90,10 @@ final class AddEventViewController: UITableViewController {
         }
     }
     
-    private func displayAlertAboutRequiredFields() {
-        let alert = UIAlertController(title: NSLocalizedString("Name And Date Fields Are Required", comment: ""), message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-        self.present(alert, animated: true)
-    }
-    
     private func prepareEvent() {
         event.name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        event.date = datePicker.date // Check if changing time is needed here as before
         event.isEntireDay = entireDaySwitch.isOn
+        event.date = datePicker.date // Check if changing time is needed here as before
         event.repetition = eventRepetition.rawValue
         event.notes = notesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : notesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
@@ -112,43 +107,45 @@ final class AddEventViewController: UITableViewController {
     private func setUpTextViews() {
         notesTextView.delegate = self
         notesTextView.text = NSLocalizedString("Notes", comment: "")
-        notesTextView.textColor = UIColor.placeholderText
+        notesTextView.textColor = .placeholderText
         notesTextView.textContainer.lineFragmentPadding = 0
         notesTextView.textContainerInset = .zero
         notesTextView.backgroundColor = .clear
         
         reminderMessageTextView.delegate = self
         reminderMessageTextView.text = NSLocalizedString("Reminder message", comment: "")
-        reminderMessageTextView.textColor = UIColor.placeholderText
+        reminderMessageTextView.textColor = .placeholderText
         reminderMessageTextView.textContainer.lineFragmentPadding = 0
         reminderMessageTextView.textContainerInset = .zero
         reminderMessageTextView.backgroundColor = .clear
     }
     
     private func updateUIIfInEditMode() {
-        if isInEditMode {
-            nameTextField.text = event.name
-            datePicker.date = event.date!
-            entireDaySwitch.isOn = event.isEntireDay
+        guard isInEditMode else { return }
+        
+        nameTextField.text = event.name
+        entireDaySwitch.isOn = event.isEntireDay
+        datePicker.date = event.date!
+        
+        eventRepetition = EventRepetition(rawValue: event.repetition)!
+        if event.notes != "" {
+            notesTextView.text = event.notes
+            notesTextView.textColor = .label
+        }
+   
+        if event.reminderDate != nil {
+            reminderSwitch.isOn = true
+            isReminderSectionHidden = false
+            reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+            tableView.reloadData()
             
-            if event.reminderDate != nil {
-                reminderDatePicker.date = event.reminderDate!
-                if event.reminderMessage != "" {
-                    reminderMessageTextView.text = event.reminderMessage
-                    reminderMessageTextView.textColor = .label
-                }
-                reminderSwitch.isOn = true
-                reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-                tableView.beginUpdates()
-                tableView.endUpdates()
-            }
-            
-            eventRepetition = EventRepetition(rawValue: event.repetition)!
-            if event.notes != "" {
-                notesTextView.text = event.notes
-                notesTextView.textColor = .label
+            reminderDatePicker.date = event.reminderDate!
+            if event.reminderMessage != "" {
+                reminderMessageTextView.text = event.reminderMessage
+                reminderMessageTextView.textColor = .label
             }
         }
+        
     }
     
     private func addTableViewGestureRecognizers() {
@@ -168,14 +165,18 @@ final class AddEventViewController: UITableViewController {
     }
     
     private func displayAlertInformingAboutNoPermission() {
-        guard isInEditMode && event.reminderDate != nil else {return}
+        guard isInEditMode && event.reminderDate != nil else { return }
         
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { settings in
             guard settings.authorizationStatus != .authorized else {return}
+            
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: NSLocalizedString("Notification Permission", comment: ""), message: NSLocalizedString("The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                alert.addAction(UIAlertAction(title: "Go To Settings", style: .default, handler: { _ in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
                 self.present(alert, animated: true)
             }
         }
@@ -183,23 +184,25 @@ final class AddEventViewController: UITableViewController {
     
     private func askForNotificationsPermission() {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
-            if granted {
-                return
-            } else {
-                DispatchQueue.main.async {
-                    self?.displayAlertAboutRequiredPermissionForReminders()
-                    self?.reminderSwitch.isOn = false
-                    self?.tableView.beginUpdates()
-                    self?.tableView.endUpdates()
-                }
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            guard !granted else { return }
+            
+            DispatchQueue.main.async {
+                self.displayAlertAboutRequiredPermissionForReminders()
+                self.reminderSwitch.isOn = false
+                self.isReminderSectionHidden = true
+                self.reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                self.tableView.reloadData()
             }
         }
     }
     
     private func displayAlertAboutRequiredPermissionForReminders() {
         let alert = UIAlertController(title: NSLocalizedString("Grant Permission", comment: ""), message: NSLocalizedString("In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Go To Settings", style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         self.present(alert, animated: true)
     }
     
@@ -226,15 +229,15 @@ extension AddEventViewController {
 
 extension AddEventViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let currentText:String = textView.text
+        let currentText: String = textView.text
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
         
         if updatedText.isEmpty {
             textView.text = textView.tag == 0 ? NSLocalizedString("Notes", comment: "") : NSLocalizedString("Reminder message", comment: "")
-            textView.textColor = UIColor.placeholderText
+            textView.textColor = .placeholderText
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        } else if textView.textColor == UIColor.placeholderText && !text.isEmpty {
-            textView.textColor = UIColor.label
+        } else if textView.textColor == .placeholderText && !text.isEmpty {
+            textView.textColor = .label
             textView.text = text
         } else {
             return true
@@ -246,13 +249,13 @@ extension AddEventViewController: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         guard self.view.window != nil else { return }
         
-        if textView.textColor == UIColor.placeholderText {
+        if textView.textColor == .placeholderText {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.placeholderText {
+        if textView.textColor == .placeholderText {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
     }
