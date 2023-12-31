@@ -11,7 +11,6 @@ final class AddEventViewController: UITableViewController {
     @IBOutlet weak var reminderSwitchCell: UITableViewCell!
     @IBOutlet weak var reminderSwitch: UISwitch!
     @IBOutlet weak var reminderDateAndTimeCell: UITableViewCell!
-    @IBOutlet weak var reminderDateAndTimeLabel: UILabel!
     @IBOutlet weak var reminderDateAndTimePicker: UIDatePicker!
     @IBOutlet weak var reminderMessageCell: UITableViewCell!
     @IBOutlet weak var reminderMessageTextView: UITextView!
@@ -27,22 +26,12 @@ final class AddEventViewController: UITableViewController {
     @IBAction func reminderSwitchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
             askForNotificationsPermission()
-        } else {
-            isReminderDateAndTimePickerOpened = false
-            updateConstraints(for: reminderDateAndTimePicker, basedOn: isReminderDateAndTimePickerOpened)
         }
         reminderDateAndTimeCell.isHidden = !sender.isOn
         reminderMessageCell.isHidden = !sender.isOn
         reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: sender.isOn ? 20 : 0, bottom: 0, right: 0)
         tableView.beginUpdates()
         tableView.endUpdates()
-    }
-    
-    @IBAction func updateReminderDateAndTimeField(_ sender: Any) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        updateDateLabel(for: reminderDateAndTimeLabel, with: reminderDateAndTimePicker, at: IndexPath(row: 1, section: 2), using: dateFormatter)
     }
     
     @IBAction func goToEventBackgroundVC(_ sender: Any) {
@@ -81,10 +70,6 @@ final class AddEventViewController: UITableViewController {
     private let reminderDateAndTimeCellIndexPath = IndexPath(row: 1, section: 2)
     private let reminderDateAndTimePickerIndexPath = IndexPath(row: 2, section: 2)
     
-    private var isEventDatePickerOpened = false
-    private var isEventTimePickerOpened = false
-    private var isReminderDateAndTimePickerOpened = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTextViews()
@@ -122,7 +107,7 @@ final class AddEventViewController: UITableViewController {
         event.repetition = eventRepetition.rawValue
         event.notes = eventNotesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : eventNotesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
-            event.reminderDate = reminderDateAndTimeLabel.text != "" ? reminderDateAndTimePicker.date : nil
+            event.reminderDate = reminderDateAndTimePicker.date
             event.reminderMessage = reminderMessageTextView.text == NSLocalizedString("Reminder message", comment: "") ? "" :reminderMessageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
             event.reminderDate = nil
@@ -152,10 +137,6 @@ final class AddEventViewController: UITableViewController {
             entireDaySwitch.isOn = event.isEntireDay
             
             if event.reminderDate != nil {
-                let reminderDateFormatter = DateFormatter()
-                reminderDateFormatter.dateStyle = .long
-                reminderDateFormatter.timeStyle = .short
-                reminderDateAndTimeLabel.text = reminderDateFormatter.string(from: event.reminderDate!)
                 reminderDateAndTimePicker.date = event.reminderDate!
                 if event.reminderMessage != "" {
                     reminderMessageTextView.text = event.reminderMessage
@@ -207,49 +188,6 @@ final class AddEventViewController: UITableViewController {
         }
     }
     
-    private func updateDateLabel(for label: UILabel, with datePicker: UIDatePicker, at indexPath: IndexPath, using dateFormatter: DateFormatter) {
-        let stringDate = dateFormatter.string(from: datePicker.date)
-        label.text = stringDate
-        UIView.performWithoutAnimation {
-            tableView.reloadRows(at: [indexPath], with: .none)
-        }
-    }
-    
-    private func updateConstraints(for picker: UIDatePicker, basedOn isOpened: Bool) {
-        if !isOpened {
-            picker.removeAllConstraints()
-        } else {
-            picker.removeAllConstraints()
-            picker.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint(
-                item: picker,
-                attribute: .centerX,
-                relatedBy: .equal,
-                toItem: picker.superview,
-                attribute: .centerX,
-                multiplier: 1.0,
-                constant: 0.0).isActive = true
-            NSLayoutConstraint(
-                item: picker,
-                attribute: .top,
-                relatedBy: .equal,
-                toItem: picker.superview,
-                attribute: .top,
-                multiplier: 1.0,
-                constant: 16.0).isActive = true
-            let bottom = NSLayoutConstraint(
-                item: picker,
-                attribute: .bottom,
-                relatedBy: .equal,
-                toItem: picker.superview,
-                attribute: .bottom,
-                multiplier: 1.0,
-                constant: 16.0)
-            bottom.priority = .init(999)
-            bottom.isActive = true
-        }
-    }
-    
     private func askForNotificationsPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
@@ -284,45 +222,6 @@ final class AddEventViewController: UITableViewController {
 extension AddEventViewController: RepetitionTableViewControllerDelegate {
     func updateRepetition(with indexPath: IndexPath) {
         eventRepetition = EventRepetition(rawValue: indexPath.row)!
-    }
-}
-
-extension AddEventViewController {
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == reminderDateAndTimePickerIndexPath.section && indexPath.row == reminderDateAndTimePickerIndexPath.row {
-            return self.isReminderDateAndTimePickerOpened ? 216.0 : 0
-        }
-        
-        return shouldRowBeHidden(at: indexPath) ? 0.0 : super.tableView(tableView, heightForRowAt: indexPath)
-    }
-    
-    private func shouldRowBeHidden(at indexPath: IndexPath) -> Bool {
-        return
-            indexPath.section == reminderDateAndTimeCellIndexPath.section && indexPath.row == reminderDateAndTimeCellIndexPath.row && !reminderSwitch.isOn ||
-            indexPath.section == reminderDateAndTimePickerIndexPath.section && indexPath.row == reminderDateAndTimePickerIndexPath.row && !reminderSwitch.isOn
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        
-        var shouldScrollToBottom = false
-        if indexPath.section == reminderDateAndTimeCellIndexPath.section && indexPath.row == reminderDateAndTimeCellIndexPath.row {
-            self.isReminderDateAndTimePickerOpened = !self.isReminderDateAndTimePickerOpened
-            if self.isReminderDateAndTimePickerOpened {
-                isEventDatePickerOpened = false
-                isEventTimePickerOpened = false
-            } else {
-                shouldScrollToBottom = true
-            }
-        }
-        
-        updateConstraints(for: reminderDateAndTimePicker, basedOn: self.isReminderDateAndTimePickerOpened)
-        tableView.deselectRow(at: indexPath, animated: true)
-        tableView.endUpdates()
-        
-        if isReminderDateAndTimePickerOpened || shouldScrollToBottom {
-            tableView.scrollToBottom(animated: true)
-        }
     }
 }
 

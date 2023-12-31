@@ -210,7 +210,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LNt-Ud-6my">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="LNt-Ud-6my">
                                         <rect key="frame" x="20" y="155.33333206176758" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LNt-Ud-6my" id="S37-qN-398">
@@ -338,61 +338,37 @@
                                         <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="fC0-li-XIG">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="fC0-li-XIG">
                                         <rect key="frame" x="20" y="537.33333015441895" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fC0-li-XIG" id="acJ-Kg-Xkg">
-                                            <rect key="frame" x="0.0" y="0.0" width="343.66666666666669" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-Ex-ZOq">
-                                                    <rect key="frame" x="20.000000000000007" y="11" width="106.66666666666669" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-Ex-ZOq">
+                                                    <rect key="frame" x="19.999999999999996" y="11" width="37.666666666666657" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYe-Si-R3t">
-                                                    <rect key="frame" x="335.66666666666669" y="0.0" width="0.0" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="XhW-kd-LDc">
+                                                    <rect key="frame" x="65.666666666666657" y="11" width="288.33333333333337" height="28"/>
+                                                </datePicker>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="cdq-Ex-ZOq" firstAttribute="leading" secondItem="acJ-Kg-Xkg" secondAttribute="leadingMargin" id="3NS-Ol-MYm"/>
-                                                <constraint firstAttribute="bottom" secondItem="kYe-Si-R3t" secondAttribute="bottom" id="Bld-Za-7ii"/>
-                                                <constraint firstItem="kYe-Si-R3t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cdq-Ex-ZOq" secondAttribute="trailing" constant="8" symbolic="YES" id="Lb7-hN-06O"/>
-                                                <constraint firstItem="kYe-Si-R3t" firstAttribute="top" secondItem="acJ-Kg-Xkg" secondAttribute="top" id="akD-jL-OJf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="XhW-kd-LDc" secondAttribute="bottom" id="Fz5-af-DXb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="XhW-kd-LDc" secondAttribute="trailing" id="UlT-su-C0E"/>
+                                                <constraint firstItem="XhW-kd-LDc" firstAttribute="top" secondItem="acJ-Kg-Xkg" secondAttribute="topMargin" id="XLO-lg-MDH"/>
                                                 <constraint firstItem="cdq-Ex-ZOq" firstAttribute="top" secondItem="acJ-Kg-Xkg" secondAttribute="topMargin" id="gEs-s1-Soc"/>
-                                                <constraint firstAttribute="trailing" secondItem="kYe-Si-R3t" secondAttribute="trailing" constant="8" id="wP6-tz-igi"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="cdq-Ex-ZOq" secondAttribute="bottom" priority="999" id="wYG-1g-ngL"/>
+                                                <constraint firstItem="XhW-kd-LDc" firstAttribute="leading" secondItem="cdq-Ex-ZOq" secondAttribute="trailing" constant="8" symbolic="YES" id="t6D-M1-DzS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cdq-Ex-ZOq" secondAttribute="bottom" id="wYG-1g-ngL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="tableCellGroupedBackgroundColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="0.0" id="lIP-48-lam">
-                                        <rect key="frame" x="20" y="587.33333015441895" width="374" height="1.1920928955078125e-07"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lIP-48-lam" id="yBy-zI-NoX">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="1.1920928955078125e-07"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="mnI-bJ-su1">
-                                                    <rect key="frame" x="27" y="20" width="320" height="0.0"/>
-                                                    <connections>
-                                                        <action selector="updateReminderDateAndTimeField:" destination="XPm-Ee-V8F" eventType="valueChanged" id="X5B-rR-NkV"/>
-                                                    </connections>
-                                                </datePicker>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="mnI-bJ-su1" secondAttribute="bottom" priority="999" constant="20" symbolic="YES" id="gY2-EA-QiD"/>
-                                                <constraint firstItem="mnI-bJ-su1" firstAttribute="top" secondItem="yBy-zI-NoX" secondAttribute="top" constant="20" symbolic="YES" id="oqb-u5-x64"/>
-                                                <constraint firstItem="mnI-bJ-su1" firstAttribute="centerX" secondItem="yBy-zI-NoX" secondAttribute="centerX" id="tiX-q1-UMB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="ItJ-4b-qwY">
-                                        <rect key="frame" x="20" y="587.33333027362823" width="374" height="120"/>
+                                        <rect key="frame" x="20" y="587.33333015441895" width="374" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ItJ-4b-qwY" id="yoa-zN-KOd">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="120"/>
@@ -440,8 +416,7 @@
                         <outlet property="eventNotesTextView" destination="QN6-Gi-3dc" id="lrp-JP-XJH"/>
                         <outlet property="eventRepetitionLabel" destination="YTm-My-K4b" id="B5k-1S-XPh"/>
                         <outlet property="reminderDateAndTimeCell" destination="fC0-li-XIG" id="a5R-nh-DVK"/>
-                        <outlet property="reminderDateAndTimeLabel" destination="kYe-Si-R3t" id="mFP-ot-paT"/>
-                        <outlet property="reminderDateAndTimePicker" destination="mnI-bJ-su1" id="WV0-yP-Fut"/>
+                        <outlet property="reminderDateAndTimePicker" destination="XhW-kd-LDc" id="qxB-u7-YeE"/>
                         <outlet property="reminderMessageCell" destination="ItJ-4b-qwY" id="6ea-Iz-KrT"/>
                         <outlet property="reminderMessageTextView" destination="HiL-y3-GF2" id="reG-7H-W2e"/>
                         <outlet property="reminderSwitch" destination="fUN-9Y-EZX" id="Thq-5v-l4J"/>
