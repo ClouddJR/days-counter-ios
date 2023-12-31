@@ -95,7 +95,7 @@ final class AddEventViewController: UITableViewController {
     private func prepareEvent() {
         event.name = nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         event.isEntireDay = entireDaySwitch.isOn
-        event.date = datePicker.date // Check if changing time is needed here as before
+        event.date = datePicker.date
         event.repetition = eventRepetition.rawValue
         event.notes = notesTextView.text == NSLocalizedString("Notes", comment: "") ? "" : notesTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if reminderSwitch.isOn {
