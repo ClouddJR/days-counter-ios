@@ -13,6 +13,8 @@ final class AddEventViewController: UITableViewController {
     @IBOutlet weak var reminderDatePicker: UIDatePicker!
     @IBOutlet weak var reminderMessageTextView: UITextView!
     
+    @IBOutlet weak var nextButton: UIBarButtonItem!
+    
     var event = Event()
     
     var isInEditMode = false
@@ -118,6 +120,12 @@ final class AddEventViewController: UITableViewController {
         reminderMessageTextView.textContainer.lineFragmentPadding = 0
         reminderMessageTextView.textContainerInset = .zero
         reminderMessageTextView.backgroundColor = .clear
+        
+        nameTextField.addTarget(self, action: #selector(nameTextFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func nameTextFieldDidChange(_ textField: UITextField) {
+        nextButton.isEnabled = textField.text?.isEmpty == false
     }
     
     private func updateUIIfInEditMode() {
@@ -146,6 +154,7 @@ final class AddEventViewController: UITableViewController {
             }
         }
         
+        nextButton.isEnabled = true
     }
     
     private func addTableViewGestureRecognizers() {

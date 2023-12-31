@@ -403,7 +403,7 @@
                                 <action selector="dismiss:" destination="XPm-Ee-V8F" id="b6m-Hy-WZ4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="m8o-gX-WsH">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="m8o-gX-WsH">
                             <connections>
                                 <action selector="goToEventBackgroundVC:" destination="XPm-Ee-V8F" id="FeY-R4-Twp"/>
                             </connections>
@@ -413,6 +413,7 @@
                         <outlet property="datePicker" destination="lAf-kE-ilb" id="b4k-2h-2S6"/>
                         <outlet property="entireDaySwitch" destination="UMP-Nd-Cqh" id="ILR-BS-y0F"/>
                         <outlet property="nameTextField" destination="4ab-Ne-FQR" id="Hbo-nq-US3"/>
+                        <outlet property="nextButton" destination="m8o-gX-WsH" id="d2f-Ep-Itp"/>
                         <outlet property="notesTextView" destination="QN6-Gi-3dc" id="lrp-JP-XJH"/>
                         <outlet property="reminderDatePicker" destination="XhW-kd-LDc" id="qxB-u7-YeE"/>
                         <outlet property="reminderMessageTextView" destination="HiL-y3-GF2" id="reG-7H-W2e"/>
