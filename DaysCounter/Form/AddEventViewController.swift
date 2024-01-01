@@ -49,9 +49,7 @@ final class AddEventViewController: UITableViewController {
         if sender.isOn {
             askForNotificationsPermission()
         }
-        isReminderSectionHidden = !sender.isOn
-        reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: sender.isOn ? 20 : 0, bottom: 0, right: 0)
-        tableView.reloadData()
+        updateReminderSectionVisibility()
     }
     
     @IBAction func goToEventBackgroundVC(_ sender: Any) {
@@ -151,9 +149,7 @@ final class AddEventViewController: UITableViewController {
    
         if event.reminderDate != nil {
             reminderSwitch.isOn = true
-            isReminderSectionHidden = false
-            reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-            tableView.reloadData()
+            updateReminderSectionVisibility()
             
             reminderDatePicker.date = event.reminderDate!
             if event.reminderMessage != "" {
@@ -207,9 +203,7 @@ final class AddEventViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.displayAlertAboutRequiredPermissionForReminders()
                 self.reminderSwitch.isOn = false
-                self.isReminderSectionHidden = true
-                self.reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-                self.tableView.reloadData()
+                self.updateReminderSectionVisibility()
             }
         }
     }
@@ -221,6 +215,12 @@ final class AddEventViewController: UITableViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         self.present(alert, animated: true)
+    }
+    
+    private func updateReminderSectionVisibility() {
+        isReminderSectionHidden = !reminderSwitch.isOn
+        reminderSwitchCell.separatorInset = UIEdgeInsets(top: 0, left: reminderSwitch.isOn ? 20 : 0, bottom: 0, right: 0)
+        tableView.reloadData()
     }
     
     @objc private func dismissKeyboard() {
