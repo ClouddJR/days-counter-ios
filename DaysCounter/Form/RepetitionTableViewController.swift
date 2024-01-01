@@ -1,7 +1,6 @@
 import UIKit
 
-class RepetitionTableViewController: UITableViewController {
-    
+final class RepetitionTableViewController: UITableViewController {
     var delegate: RepetitionTableViewControllerDelegate?
     var previousSelection: Int?
     
@@ -22,7 +21,6 @@ class RepetitionTableViewController: UITableViewController {
         self.navigationController?.popViewController(animated: true)
         delegate?.updateRepetition(with: indexPath)
     }
-    
 }
 
 protocol RepetitionTableViewControllerDelegate {
