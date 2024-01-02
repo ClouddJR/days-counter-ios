@@ -1,10 +1,7 @@
 import UIKit
 import RealmSwift
 
-class EventBackgroundViewController: UIViewController {
-    
-    // MARK:  IBOutlets and custom views
-    
+final class EventBackgroundViewController: UIViewController {
     @IBOutlet var yearsSectionStackView: UIStackView!
     @IBOutlet var yearsNumberLabel: UILabel!
     @IBOutlet var yearsTitleLabel: UILabel!
@@ -110,12 +107,11 @@ class EventBackgroundViewController: UIViewController {
         return view
     }()
     
-    // MARK:  variables
-    private let databaseRepository = DatabaseRepository()
-    
     var isInEditMode = false
     
     var event = Event()
+    
+    private let databaseRepository = DatabaseRepository()
     
     private var previousNavBarTintColor: UIColor?
     private var previousTextAttributes: [NSAttributedString.Key : Any]?
@@ -131,8 +127,6 @@ class EventBackgroundViewController: UIViewController {
     private var compactConstraints: [NSLayoutConstraint] = []
     private var regularConstraints: [NSLayoutConstraint] = []
     private var sharedConstraints: [NSLayoutConstraint] = []
-    
-    // MARK:  lifecycle methods
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
@@ -179,8 +173,6 @@ class EventBackgroundViewController: UIViewController {
         restorePreviousNavigationBarStyle()
         dateTimer?.invalidate()
     }
-    
-    // MARK:  helper methods
     
     private func styleNavigationBar() {
         navigationController?.navigationBar.barStyle = .black
@@ -251,7 +243,6 @@ class EventBackgroundViewController: UIViewController {
     }
     
     private func updateLabelsFontSizes(withSectionNumberFont sectionNumberFont: UIFont, withSectionTitleFont sectionTitleFont: UIFont, withEventTitleFont eventTitleFont: UIFont, withEventDateFont eventDateFont: UIFont) {
-        
         yearsNumberLabel.font = sectionNumberFont
         yearsTitleLabel.font = sectionTitleFont
         monthsNumberLabel.font = sectionNumberFont
@@ -454,7 +445,7 @@ class EventBackgroundViewController: UIViewController {
     }
     
     private func calculateDate() {
-        //stop the previous timer
+        // Stop the previous timer
         dateTimer?.invalidate()
         
         if shouldTimeSectionBeVisible {
@@ -589,10 +580,7 @@ class EventBackgroundViewController: UIViewController {
     }
 }
 
-// MARK:  Touch events
-
 extension EventBackgroundViewController {
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         if let touchedView = touch?.view {
@@ -620,10 +608,7 @@ extension EventBackgroundViewController {
     }
 }
 
-// MARK:  EventCustomizeView delegate
-
 extension EventBackgroundViewController: EventCustomizeViewDelegate {
-    
     func onSliderValueChanged(_ value: Float) {
         eventImageViewDim.layer.opacity = value
         event.imageDim = value
@@ -729,9 +714,8 @@ extension EventBackgroundViewController: InternetGalleryDelegate {
 }
 
 extension EventBackgroundViewController {
-    
     struct Constants {
-        //regular
+        // Regular sizes
         static let sectionNumberRegularFontSize: CGFloat = 41
         static let sectionTitleRegularFontSize: CGFloat = 13
         static let eventTitleRegularFontSize: CGFloat = 21
@@ -739,7 +723,7 @@ extension EventBackgroundViewController {
         static let dateStackViewRegularYMargin: CGFloat = -47
         static let timeStackViewRegularYMargin: CGFloat = 32
         
-        //compact
+        // Compact sizes
         static let sectionNumberCompactFontSize: CGFloat = 15
         static let sectionTitleCompactFontSize: CGFloat = 4
         static let eventTitleCompactFontSize: CGFloat = 8
