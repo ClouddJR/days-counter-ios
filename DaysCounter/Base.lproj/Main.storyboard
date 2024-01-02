@@ -605,8 +605,8 @@
                             <constraint firstItem="Vaw-J9-NCH" firstAttribute="top" secondItem="qrq-a5-D7G" secondAttribute="top" constant="10" id="CRk-9Z-Qaa"/>
                             <constraint firstItem="gXS-QE-ELt" firstAttribute="leading" secondItem="Vaw-J9-NCH" secondAttribute="leading" constant="15" id="FLm-qU-hY5"/>
                             <constraint firstItem="gXS-QE-ELt" firstAttribute="bottom" secondItem="TQS-gd-f43" secondAttribute="top" constant="-5" id="Rzv-MY-Pae"/>
-                            <constraint firstItem="Yfy-WH-gVm" firstAttribute="leading" secondItem="qrq-a5-D7G" secondAttribute="leading" id="U1d-6I-L3r"/>
-                            <constraint firstItem="qrq-a5-D7G" firstAttribute="trailing" secondItem="Yfy-WH-gVm" secondAttribute="trailing" id="agr-us-1gW"/>
+                            <constraint firstItem="Yfy-WH-gVm" firstAttribute="leading" secondItem="z49-Fb-YDm" secondAttribute="leading" id="U1d-6I-L3r"/>
+                            <constraint firstAttribute="trailing" secondItem="Yfy-WH-gVm" secondAttribute="trailing" id="agr-us-1gW"/>
                             <constraint firstItem="qrq-a5-D7G" firstAttribute="bottom" secondItem="BmM-s9-112" secondAttribute="bottom" constant="10" id="bnL-aP-PbB"/>
                             <constraint firstItem="g6P-at-5Ry" firstAttribute="centerY" secondItem="z49-Fb-YDm" secondAttribute="centerY" id="fCd-lp-lsf"/>
                             <constraint firstItem="Yfy-WH-gVm" firstAttribute="bottom" secondItem="z49-Fb-YDm" secondAttribute="bottom" id="fgS-Yc-eJb"/>
