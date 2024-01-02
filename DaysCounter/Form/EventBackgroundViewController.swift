@@ -128,20 +128,6 @@ final class EventBackgroundViewController: UIViewController {
     private var regularConstraints: [NSLayoutConstraint] = []
     private var sharedConstraints: [NSLayoutConstraint] = []
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if traitCollection.verticalSizeClass == .compact {
-            NSLayoutConstraint.deactivate(regularConstraints)
-            NSLayoutConstraint.activate(compactConstraints)
-        } else {
-            NSLayoutConstraint.deactivate(compactConstraints)
-            NSLayoutConstraint.activate(regularConstraints)
-        }
-        
-        updateLabelsFontSizes()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         styleNavigationBar()
@@ -151,6 +137,7 @@ final class EventBackgroundViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerTraitsObservable()
         setInitialImage()
         setInitialFont()
         setEventImageAspectRatio()
@@ -197,6 +184,20 @@ final class EventBackgroundViewController: UIViewController {
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = !event.isEntireDay ? .short : .none
         eventDateLabel.text = dateFormatter.string(from: EventOperator.getDate(from: event))
+    }
+    
+    private func registerTraitsObservable() {
+        registerForTraitChanges([UITraitVerticalSizeClass.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            if self.traitCollection.verticalSizeClass == .compact {
+                NSLayoutConstraint.deactivate(self.regularConstraints)
+                NSLayoutConstraint.activate(self.compactConstraints)
+            } else {
+                NSLayoutConstraint.deactivate(self.compactConstraints)
+                NSLayoutConstraint.activate(self.regularConstraints)
+            }
+            
+            self.updateLabelsFontSizes()
+        })
     }
     
     private func setInitialImage() {
