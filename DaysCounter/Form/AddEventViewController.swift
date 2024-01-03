@@ -1,7 +1,5 @@
 import UIKit
 
-// Body font
-
 final class AddEventViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var entireDaySwitch: UISwitch!
