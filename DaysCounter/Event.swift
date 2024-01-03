@@ -84,10 +84,11 @@ class EventOperator {
         event.fontColor = data
     }
     
-    static func getFontColor(from event: Event) -> UIColor? {
+    static func getFontColor(from event: Event) -> UIColor {
         if let fontColor = event.fontColor {
-            let color =  try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: fontColor)
-            return color
+            if let color = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: fontColor) {
+                return color
+            }
         }
         return UIColor.white
     }

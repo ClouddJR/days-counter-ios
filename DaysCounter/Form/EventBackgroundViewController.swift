@@ -276,7 +276,7 @@ final class EventBackgroundViewController: UIViewController {
             shouldDaysSectionBeVisible = event.areDaysIncluded
             shouldTimeSectionBeVisible = event.isTimeIncluded
             
-            updateLabelsColor(with: EventOperator.getFontColor(from: event)!)
+            updateLabelsColor(with: EventOperator.getFontColor(from: event))
             
             let sectionNumberFont = UIFont(name: event.fontType, size: daysNumberLabel.font.pointSize)
             let sectionTitleFont = UIFont(name: event.fontType, size: daysTitleLabel.font.pointSize)
@@ -299,7 +299,7 @@ final class EventBackgroundViewController: UIViewController {
             customizeView.formatDaysSwitch.isOn = event.areDaysIncluded
             customizeView.formatTimeSwitch.isOn = event.isTimeIncluded
             
-            customizeView.fontColorCircleView.subviews[0].backgroundColor = EventOperator.getFontColor(from: event)
+            customizeView.updateFontColor(with: EventOperator.getFontColor(from: event))
             customizeView.pictureDimSlider.value = event.imageDim
         }
     }

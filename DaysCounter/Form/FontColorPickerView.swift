@@ -1,7 +1,6 @@
 import UIKit
 
-class FontColorPickerView: UIView {
-    
+final class FontColorPickerView: UIView {
     var delegate: FontColorPickerViewDelegate?
     
     private lazy var colorCollectionView: UICollectionView = {
@@ -17,8 +16,8 @@ class FontColorPickerView: UIView {
         return collectionView
     }()
     
-    var colorCellsData = [
-        ColorCellData(isSelected: false, color: .white),
+    private var colorCellsData = [
+        ColorCellData(isSelected: true, color: .white),
         ColorCellData(isSelected: false, color: .black),
         ColorCellData(isSelected: false, color: #colorLiteral(red: 1, green: 0.4243971756, blue: 0.464074077, alpha: 1)),
         ColorCellData(isSelected: false, color: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)),
@@ -46,6 +45,15 @@ class FontColorPickerView: UIView {
         setupView()
     }
     
+    func updateFontColor(with color: UIColor) {
+        let index = colorCellsData.firstIndex { data in data.color == color }!
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        unselectCells()
+        colorCellsData[index].isSelected = true
+        colorCollectionView.reloadItems(at: [indexPath])
+    }
+    
     private func setupView() {
         addSubview(colorCollectionView)
         colorCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,9 +63,9 @@ class FontColorPickerView: UIView {
         colorCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
     
-    private func setCellsUnselected() {
+    private func unselectCells() {
         colorCellsData.indices.forEach {
-            //reload previously selected cell
+            // Reload previously selected cell
             if colorCellsData[$0].isSelected {
                 colorCellsData[$0].isSelected = false
                 colorCollectionView.reloadItems(at: [IndexPath(row: $0, section: 0)])
@@ -67,10 +75,7 @@ class FontColorPickerView: UIView {
     }
 }
 
-//UICollectionView data source
-
 extension FontColorPickerView : UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorCellsData.count
     }
@@ -82,11 +87,9 @@ extension FontColorPickerView : UICollectionViewDataSource {
     }
 }
 
-//UICollectionView delegate
-
 extension FontColorPickerView : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        setCellsUnselected()
+        unselectCells()
         if let cell = collectionView.cellForItem(at: indexPath) as? ColorCell {
             cell.setupView(true, colorCellsData[indexPath.row].color)
             colorCellsData[indexPath.row].isSelected = true
@@ -95,10 +98,7 @@ extension FontColorPickerView : UICollectionViewDelegate {
     }
 }
 
-//Custom view cell
-
-class ColorCell: UICollectionViewCell {
-    
+private class ColorCell: UICollectionViewCell {
     private lazy var circleView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         view.layer.cornerRadius = view.bounds.size.width / 2
@@ -136,7 +136,7 @@ class ColorCell: UICollectionViewCell {
     }
 }
 
-struct ColorCellData {
+private struct ColorCellData {
     var isSelected = false
     var color = UIColor.white
 }

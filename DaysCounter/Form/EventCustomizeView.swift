@@ -1,10 +1,7 @@
 import UIKit
 
 @IBDesignable
-class EventCustomizeView: UIView {
-    
-    //Public
-    
+final class EventCustomizeView: UIView {
     var delegate: EventCustomizeViewDelegate?
     
     func show(){
@@ -45,8 +42,6 @@ class EventCustomizeView: UIView {
         return view
     }()
     
-    //Main vertical StackView
-    
     lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -66,8 +61,6 @@ class EventCustomizeView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    //Counter format- years
     
     lazy var formatYearsSectionView: UIStackView = {
         let stackView = buildSectionStackView()
@@ -95,8 +88,6 @@ class EventCustomizeView: UIView {
         return yearsSwitch
     }()
     
-    //Counter format- months
-    
     lazy var formatMonthsSectionView: UIStackView = {
         let stackView = buildSectionStackView()
         stackView.addArrangedSubview(formatMonthsTitleLabel)
@@ -123,8 +114,6 @@ class EventCustomizeView: UIView {
         return monthsSwitch
     }()
     
-    //Counter format- weeks
-    
     lazy var formatWeeksSectionView: UIStackView = {
         let stackView = buildSectionStackView()
         stackView.addArrangedSubview(formatWeeksTitleLabel)
@@ -150,8 +139,6 @@ class EventCustomizeView: UIView {
         weeksSwitch.translatesAutoresizingMaskIntoConstraints = false
         return weeksSwitch
     }()
-    
-    //Counter format- days
     
     lazy var formatDaysSectionView: UIStackView = {
         let stackView = buildSectionStackView()
@@ -180,8 +167,6 @@ class EventCustomizeView: UIView {
         return daysSwitch
     }()
     
-    //Counter format- time
-    
     lazy var formatTimeSectionView: UIStackView = {
         let stackView = buildSectionStackView()
         stackView.addArrangedSubview(formatTimeTitleLabel)
@@ -207,8 +192,6 @@ class EventCustomizeView: UIView {
         timeSwitch.translatesAutoresizingMaskIntoConstraints = false
         return timeSwitch
     }()
-    
-    //Font color
     
     lazy var fontColorSectionView: UIStackView = {
         let stackView = buildSectionStackView()
@@ -238,16 +221,12 @@ class EventCustomizeView: UIView {
         return contentView
     }()
     
-    //Font color picker
-    
     lazy var fontColorPickerView: FontColorPickerView = {
         let picker = FontColorPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.delegate = self
         return picker
     }()
-    
-    //Font type
     
     lazy var fontTypeSectionView: UIStackView = {
         let stackView = buildSectionStackView()
@@ -275,8 +254,6 @@ class EventCustomizeView: UIView {
         label.isUserInteractionEnabled = true
         return label
     }()
-    
-    //Picture dim
     
     lazy var pictureDimSectionView: UIStackView = {
         let stackView = buildSectionStackView()
@@ -306,8 +283,6 @@ class EventCustomizeView: UIView {
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
-    
-    //Premium prompt
     
     lazy var premiumDimView: UIView = {
         let view = UIView()
@@ -347,8 +322,6 @@ class EventCustomizeView: UIView {
         return button
     }()
     
-    //Cancel button
-    
     lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
@@ -358,8 +331,6 @@ class EventCustomizeView: UIView {
         return button
     }()
     
-    //Font picker
-    
     private lazy var fontPicker: UIPickerView  = {
         let picker = UIPickerView()
         picker.delegate = self
@@ -367,8 +338,6 @@ class EventCustomizeView: UIView {
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
     }()
-    
-    //Back icon
     
     private let backIcon = #imageLiteral(resourceName: "ic_back")
     
@@ -397,6 +366,11 @@ class EventCustomizeView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+    }
+    
+    func updateFontColor(with color: UIColor) {
+        fontColorCircleView.subviews[0].backgroundColor = color
+        fontColorPickerView.updateFontColor(with: color)
     }
     
     private func setupView() {
@@ -517,7 +491,7 @@ class EventCustomizeView: UIView {
     
     @objc private func showFontPickerWithAnimation() {
         fontPicker.selectRow(UIFont.familyNames.firstIndex(of: fontTypeLabel.text!)!, inComponent: 0, animated: false)
-        //move font picker and back icon to the right for the animation
+        // Move font picker and back icon to the right for the animation
         fontPicker.center.x = bounds.midX + fontPicker.bounds.width
         backButton.frame.origin = CGPoint(x: 15 + fontPicker.bounds.width, y: 15)
         fontPicker.isHidden = false
@@ -534,7 +508,7 @@ class EventCustomizeView: UIView {
     }
     
     @objc private func hideFontPickerWithAnimation() {
-        //move main stack view to the left for the animation
+        // Move main stack view to the left for the animation
         mainStackView.center.x = bounds.midX - mainStackView.bounds.width
         mainStackView.isHidden = false
         UIView.animate(
@@ -619,10 +593,7 @@ class EventCustomizeView: UIView {
     }
 }
 
-// MARK:  font picker delegate
-
 extension EventCustomizeView : UIPickerViewDelegate {
-    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view:
         UIView?) -> UIView {
         
@@ -642,10 +613,7 @@ extension EventCustomizeView : UIPickerViewDelegate {
     }
 }
 
-// MARK:  font picker data source
-
 extension EventCustomizeView : UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -655,15 +623,12 @@ extension EventCustomizeView : UIPickerViewDataSource {
     }
 }
 
-// MARK:  FontColorPickerView delegate
-
 extension EventCustomizeView : FontColorPickerViewDelegate {
     func onColorChanged(_ color: UIColor) {
         fontColorCircleView.subviews[0].backgroundColor = color
         delegate?.onFontColorChanged(color)
     }
 }
-
 
 protocol EventCustomizeViewDelegate {
     func onViewRemovedFromSuperview()
