@@ -249,12 +249,15 @@ final class EventDetailsViewController: UIViewController {
         return label
     }()
 
-    private lazy var moreInfoButtonView: MoreInfoButtonView = {
-        let view = MoreInfoButtonView()
-        view.delegate = self
-        view.isUserInteractionEnabled = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private lazy var moreInfoButton: UIButton = {
+        let button = UIButton()
+        let configuration = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
+        let image = UIImage(systemName: "ellipsis", withConfiguration: configuration)
+        button.setImage(image , for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showMoreInfoView), for: .touchUpInside)
+        return button
     }()
     
     private lazy var moreInfoView: EventDetailsBottomView = {
@@ -329,19 +332,6 @@ final class EventDetailsViewController: UIViewController {
         center.removePendingNotificationRequests(withIdentifiers: [event.id!])
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if traitCollection.verticalSizeClass == .compact {
-            NSLayoutConstraint.deactivate(regularConstraints)
-            NSLayoutConstraint.activate(compactConstraints)
-        } else {
-            NSLayoutConstraint.deactivate(compactConstraints)
-            NSLayoutConstraint.activate(regularConstraints)
-        }
-        view.layoutIfNeeded()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         styleNavigationBar()
@@ -358,12 +348,26 @@ final class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerTraitsObservable()
         clipViewToBounds()
         getEventFromDB()
         addSubviews()
         addConstraints()
         updateUIBasedOnEventData()
         listenForDataChanges()
+    }
+    
+    private func registerTraitsObservable() {
+        registerForTraitChanges([UITraitVerticalSizeClass.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            if self.traitCollection.verticalSizeClass == .compact {
+                NSLayoutConstraint.deactivate(self.regularConstraints)
+                NSLayoutConstraint.activate(self.compactConstraints)
+            } else {
+                NSLayoutConstraint.deactivate(self.compactConstraints)
+                NSLayoutConstraint.activate(self.regularConstraints)
+            }
+            self.view.layoutIfNeeded()
+        })
     }
     
     private func clipViewToBounds() {
@@ -378,16 +382,16 @@ final class EventDetailsViewController: UIViewController {
         view.addSubview(imageView)
         view.addSubview(titleLabel)
         view.addSubview(dateLabel)
-        view.addSubview(moreInfoButtonView)
+        view.addSubview(moreInfoButton)
     }
     
     private func addConstraints() {
         regularConstraints.append(contentsOf: [
-            dateLabel.bottomAnchor.constraint(equalTo: moreInfoButtonView.topAnchor, constant: -30)
+            dateLabel.bottomAnchor.constraint(equalTo: moreInfoButton.topAnchor, constant: -30)
         ])
         
         compactConstraints.append(contentsOf: [
-            dateLabel.bottomAnchor.constraint(equalTo: moreInfoButtonView.topAnchor, constant: -3)
+            dateLabel.bottomAnchor.constraint(equalTo: moreInfoButton.topAnchor, constant: -3)
         ])
         
         sharedConstraints.append(contentsOf: [
@@ -403,10 +407,8 @@ final class EventDetailsViewController: UIViewController {
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -20),
             
-            moreInfoButtonView.widthAnchor.constraint(equalToConstant: 29),
-            moreInfoButtonView.heightAnchor.constraint(equalToConstant: 7),
-            moreInfoButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            moreInfoButtonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -moreInfoButtonView.circleRadius - 20)
+            moreInfoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            moreInfoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
         ])
         
         NSLayoutConstraint.activate(traitCollection.verticalSizeClass == .compact
@@ -535,7 +537,7 @@ final class EventDetailsViewController: UIViewController {
     private func listenForDataChanges() {
         notificationToken = event.observe { change in
             switch change {
-            case .change( _):
+            case .change(_, _):
                 self.removeStackViews()
                 self.updateUIBasedOnEventData()
                 self.bringMoreViewToFrontIfPresent()
@@ -644,7 +646,7 @@ final class EventDetailsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
     
-    private func showMoreInfoView() {
+    @objc private func showMoreInfoView() {
         view.addSubview(moreInfoView)
         moreInfoView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 50).isActive = true
         moreInfoView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -50).isActive = true
@@ -673,12 +675,6 @@ extension EventDetailsViewController {
     
     func getTimeStackViewYMargin(_ timeStackView: UIStackView) -> CGFloat {
         return (timeStackView.bounds.height / 2)
-    }
-}
-
-extension EventDetailsViewController: MoreInfoButtonViewDelegate {
-    func onButtonClick() {
-        showMoreInfoView()
     }
 }
 

@@ -90,7 +90,6 @@
 		A6DADA2923BE116E00511492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
 		A6DADA2A23BE116E00511492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
 		A6DB777023328CC800CEA495 /* EventBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DB776F23328CC800CEA495 /* EventBackgroundViewController.swift */; };
-		A6E71EDD237B152200FDFAF2 /* MoreInfoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */; };
 		A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */; };
 		A6F0167723B9F7A60017D80F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0167623B9F7A60017D80F /* MainViewController.swift */; };
 		A6FA6B7D2403BC7D00FCAA46 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */; };
@@ -220,7 +219,6 @@
 		A6DADA2623BDDDAF00511492 /* WidgetFutureEvents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetFutureEvents.entitlements; sourceTree = "<group>"; };
 		A6DADA2723BDDDB600511492 /* WidgetUpcomingEvent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetUpcomingEvent.entitlements; sourceTree = "<group>"; };
 		A6DB776F23328CC800CEA495 /* EventBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBackgroundViewController.swift; sourceTree = "<group>"; };
-		A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoButtonView.swift; sourceTree = "<group>"; };
 		A6EA1CD1233767D800F876B2 /* EventCustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCustomizeView.swift; sourceTree = "<group>"; };
 		A6F0167623B9F7A60017D80F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +337,15 @@
 			path = Internet;
 			sourceTree = "<group>";
 		};
+		62CB543C2B47339300EAE230 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				A663228C235F67090073C3C3 /* EventDetailsViewController.swift */,
+				A6D75DBE23866A9C00ECBD16 /* EventDetailsBottomView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		62EBBD9D2AFF859D00EA785D /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +391,7 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				62CB543C2B47339300EAE230 /* Details */,
 				622CE0F62B079DE3000A5484 /* Form */,
 				62EBBD9D2AFF859D00EA785D /* Login */,
 				626565D12A8FA4ED00DB0502 /* Gallery */,
@@ -403,15 +411,12 @@
 				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
 				A68B307B2405273200D43AA7 /* CurvedView.swift */,
 				A6557D6D235885FD00D224EC /* LargeEventCell.swift */,
-				A6D75DBE23866A9C00ECBD16 /* EventDetailsBottomView.swift */,
-				A663228C235F67090073C3C3 /* EventDetailsViewController.swift */,
 				A672CDE323CF9D73003C21CD /* Localizable.stringsdict */,
 				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A6A84E6523296A69006C6660 /* FutureEventsViewController.swift */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
-				A6E71EDC237B152200FDFAF2 /* MoreInfoButtonView.swift */,
 				A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */,
 				A6D8D2F22406899800251CD4 /* CompactEventCell.swift */,
 				A606F09724068A22006E07C8 /* EventCell.swift */,
@@ -806,7 +811,6 @@
 				62EBBDA12AFF8CCC00EA785D /* LoginView.swift in Sources */,
 				A6B924282348D135005F30F5 /* ImagesRequest.swift in Sources */,
 				A68B307C2405273200D43AA7 /* CurvedView.swift in Sources */,
-				A6E71EDD237B152200FDFAF2 /* MoreInfoButtonView.swift in Sources */,
 				626565D32A8FA5AB00DB0502 /* InternalGalleryHostingController.swift in Sources */,
 				A663228D235F67090073C3C3 /* EventDetailsViewController.swift in Sources */,
 				A68B307A2405181800D43AA7 /* LoadingButton.swift in Sources */,
