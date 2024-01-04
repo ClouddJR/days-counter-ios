@@ -1,9 +1,6 @@
 import UIKit
 
-class EventDetailsBottomView: UIView {
-    
-    var delegate: EventDetailsBottomViewDelegate?
-    
+final class EventDetailsBottomView: UIView {
     func show() {
         UIView.animate(
             withDuration: 0.4,
@@ -233,9 +230,4 @@ class EventDetailsBottomView: UIView {
             reminderMessageStackView.isHidden = true
         }
     }
-
-}
-
-protocol EventDetailsBottomViewDelegate {
-    func onViewRemoveFromSuperView()
 }

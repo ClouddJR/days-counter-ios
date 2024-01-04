@@ -1,8 +1,7 @@
 import UIKit
 import RealmSwift
 
-class EventDetailsViewController: UIViewController {
-    
+final class EventDetailsViewController: UIViewController {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -260,7 +259,6 @@ class EventDetailsViewController: UIViewController {
     
     private lazy var moreInfoView: EventDetailsBottomView = {
         let view = EventDetailsBottomView()
-        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -565,7 +563,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     private func calculateDate() {
-        //stop the previous timer
+        // Stop the previous timer
         dateTimer?.invalidate()
         
         if event.isTimeIncluded {
@@ -660,7 +658,6 @@ class EventDetailsViewController: UIViewController {
 }
 
 extension EventDetailsViewController {
-    
     struct Constants {
         static let sectionNumberFontSize: CGFloat = 44
         static let sectionTitleFontSize: CGFloat = 15
@@ -685,16 +682,7 @@ extension EventDetailsViewController: MoreInfoButtonViewDelegate {
     }
 }
 
-extension EventDetailsViewController: EventDetailsBottomViewDelegate {
-    func onViewRemoveFromSuperView() {
-        // remove dim view
-    }
-}
-
-// MARK:  Touch events
-
 extension EventDetailsViewController {
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         if let touchedView = touch?.view {
@@ -721,4 +709,3 @@ extension EventDetailsViewController {
         }
     }
 }
-
