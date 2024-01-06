@@ -1,8 +1,7 @@
 import UIKit
 import RealmSwift
 
-class PastEventsViewController: UIViewController {
-    
+final class PastEventsViewController: UIViewController {
     let databaseRepository = DatabaseRepository()
     var pastEvents: Results<Event>!
     
@@ -103,22 +102,73 @@ class PastEventsViewController: UIViewController {
     }
 }
 
-// MARK:  UITableViewDelegate
-
 extension PastEventsViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "eventDetailsViewController") as! EventDetailsViewController
         vc.eventId = pastEvents[indexPath.row].id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        configureContextMenu(index: indexPath.row)
+    }
+    
+    private func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
+        let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+            let edit = UIAction(
+                title: "Edit",
+                image: UIImage(systemName: "square.and.pencil")
+            ) { _ in
+                self.goToEditScreen(event: self.pastEvents[index])
+            }
+            
+            let delete = UIAction(
+                title: "Delete",
+                image: UIImage(systemName: "trash"),
+                attributes: .destructive
+            ) { _ in
+                self.displayAlertAndDeleteIfConfirmed(event: self.pastEvents[index])
+            }
+            
+            return UIMenu(options: .displayInline, children: [edit, delete])
+            
+        }
+        return context
+    }
+    
+    private func goToEditScreen(event: Event) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "addEventNavigationController") as! UINavigationController
+        vc.modalPresentationStyle = .fullScreen
+        if let addVc = vc.children.first as? AddEventViewController {
+            addVc.event = Event(value: event)
+            addVc.isInEditMode = true
+            self.navigationController?.present(vc, animated: true)
+        }
+    }
+    
+    private func displayAlertAndDeleteIfConfirmed(event: Event) {
+        let alert = UIAlertController(title: NSLocalizedString("Are you sure you want to delete this event?", comment: ""), message: NSLocalizedString("This operation cannot be undone.", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (action) in
+            self.cancelNotification(event: event)
+            self.databaseRepository.deleteEvent(event: event)
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    private func cancelNotification(event: Event) {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [event.id!])
+    }
 }
 
-// MARK:  UITableViewDataSource
-
 extension PastEventsViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

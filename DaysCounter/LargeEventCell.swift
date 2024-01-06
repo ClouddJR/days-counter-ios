@@ -1,7 +1,6 @@
 import UIKit
 
-class LargeEventCell: EventCell {
-    
+final class LargeEventCell: EventCell {
     private lazy var eventImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -156,6 +155,7 @@ class LargeEventCell: EventCell {
     
     private func setupView() {
         backgroundColor = .clear
+        layer.cornerRadius = 10
         addSubviews()
         setConstraints()
     }
@@ -258,7 +258,6 @@ class LargeEventCell: EventCell {
 }
 
 extension LargeEventCell {
-    
     struct Constants {
         static let titleLabelSize: CGFloat = 20.5
         static let dateLabelSize: CGFloat = 14.5

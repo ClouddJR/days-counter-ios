@@ -1,7 +1,6 @@
 import UIKit
 
-class CompactEventCell: EventCell {
-    
+final class CompactEventCell: EventCell {
     private lazy var cellBackground: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemGroupedBackground
@@ -279,7 +278,6 @@ class CompactEventCell: EventCell {
 }
 
 extension CompactEventCell {
-    
     struct Constants {
         static let titleLabelSize: CGFloat = 16
         static let dateLabelSize: CGFloat = 13
