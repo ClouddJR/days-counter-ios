@@ -100,6 +100,36 @@ final class PastEventsViewController: UIViewController {
             self!.addTableViewAsSubview()
         })
     }
+    
+    private func showEmptyView() {
+        var config = UIContentUnavailableConfiguration.empty()
+        config.image = .init(systemName: "calendar.badge.plus")
+        config.text = "No Past Events"
+        config.secondaryText = "Events you add will appear here."
+        
+        var buttonConfig = UIButton.Configuration.tinted()
+        buttonConfig.title = "Add event"
+        config.button = buttonConfig
+        config.buttonProperties.primaryAction = UIAction { _ in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "addEventNavigationController") as! UINavigationController
+            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.present(vc, animated: true)
+        }
+        
+        let emptyView = UIContentUnavailableView(configuration: config)
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: tableView.bounds.height))
+        container.addSubview(emptyView)
+        
+        NSLayoutConstraint.activate([
+            emptyView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            emptyView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+        ])
+        
+        tableView.backgroundView = container
+    }
 }
 
 extension PastEventsViewController: UITableViewDelegate {
@@ -174,6 +204,12 @@ extension PastEventsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if pastEvents.count == 0 {
+            showEmptyView()
+        } else {
+            tableView.backgroundView = nil
+        }
+        
         return pastEvents.count
     }
     
