@@ -315,6 +315,7 @@
 				A6A84E6323296A5E006C6660 /* PastEventsViewController.swift */,
 				A6D8D2F22406899800251CD4 /* CompactEventCell.swift */,
 				A606F09724068A22006E07C8 /* EventCell.swift */,
+				A6557D6D235885FD00D224EC /* LargeEventCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -422,7 +423,6 @@
 				A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */,
 				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
 				A68B307B2405273200D43AA7 /* CurvedView.swift */,
-				A6557D6D235885FD00D224EC /* LargeEventCell.swift */,
 				A672CDE323CF9D73003C21CD /* Localizable.stringsdict */,
 				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
