@@ -1,7 +1,6 @@
 import UIKit
 
-class MainViewController: UINavigationController {
-    
+final class MainViewController: UINavigationController {
     private var databaseRepository: DatabaseRepository!
     
     override func viewDidLoad() {

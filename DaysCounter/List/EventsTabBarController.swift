@@ -5,7 +5,6 @@ import FirebaseOAuthUI
 import FirebaseGoogleAuthUI
 
 final class EventsTabBarController: UITabBarController, LoginViewDelegate {
-    
     private let userRepository = UserRepository()
     private let databaseRepository = DatabaseRepository()
     private var userDefaultsObserver: NSKeyValueObservation?
