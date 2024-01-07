@@ -334,6 +334,17 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		625F31B32B4B1E5000EE825D /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */,
+				A68B30792405181800D43AA7 /* LoadingButton.swift */,
+				A6FA6B7E240403FA00FCAA46 /* CheckMarkView.swift */,
+				A68B307B2405273200D43AA7 /* CurvedView.swift */,
+			);
+			path = Premium;
+			sourceTree = "<group>";
+		};
 		626565D12A8FA4ED00DB0502 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +429,7 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				625F31B32B4B1E5000EE825D /* Premium */,
 				625F31AC2B49F26700EE825D /* Data */,
 				625F31AB2B49CD5600EE825D /* List */,
 				62CB543C2B47339300EAE230 /* Details */,
@@ -428,10 +440,6 @@
 				A69E54052402D26000716618 /* Purchases */,
 				A69DE1D223BBCC0A00C7801F /* DaysCounter.entitlements */,
 				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
-				A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */,
-				A68B30792405181800D43AA7 /* LoadingButton.swift */,
-				A6FA6B7E240403FA00FCAA46 /* CheckMarkView.swift */,
-				A68B307B2405273200D43AA7 /* CurvedView.swift */,
 				A672CDE323CF9D73003C21CD /* Localizable.stringsdict */,
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
