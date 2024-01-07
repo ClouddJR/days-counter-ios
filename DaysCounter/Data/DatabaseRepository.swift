@@ -1,8 +1,7 @@
 import Foundation
 import RealmSwift
 
-class DatabaseRepository {
-    
+final class DatabaseRepository {
     let localDatabase: LocalDatabase
     let remoteDatabase: RemoteDatabase
     let userRepository: UserRepository
@@ -32,19 +31,19 @@ class DatabaseRepository {
         
         if userRepository.isUserLoggedIn() {
             
-            //previously from pre-installed, now from the storage
+            // Previously from pre-installed, now from the storage
             if EventOperator.doesEventContainsPreInstalledImage(oldEvent) && !EventOperator.doesEventContainsPreInstalledImage(event) {
                 setUpCloudImagePath(for: event)
                 remoteDatabase.addImage(for: event)
             }
             
-            //previously from the storage, now from pre-installed
+            // Previously from the storage, now from pre-installed
             if !EventOperator.doesEventContainsPreInstalledImage(oldEvent) && EventOperator.doesEventContainsPreInstalledImage(event) {
                 deleteLocalImage(at: oldEvent.localImagePath)
                 remoteDatabase.deleteImage(for: oldEvent)
             }
             
-            //previously from the storage, now different one from the storage
+            // Previously from the storage, now different one from the storage
             if !EventOperator.doesEventContainsPreInstalledImage(oldEvent) && !EventOperator.doesEventContainsPreInstalledImage(event) && oldEvent.localImagePath != event.localImagePath {
                 deleteLocalImage(at: oldEvent.localImagePath)
                 remoteDatabase.deleteImage(for: oldEvent)
@@ -74,7 +73,7 @@ class DatabaseRepository {
         let eventId = event.id!
         deleteLocalImage(at: event.localImagePath)
         if userRepository.isUserLoggedIn() {
-            //remove associated image stored in the cloud
+            // Remove associated image stored in the cloud
             if !event.cloudImagePath.isEmpty {
                 remoteDatabase.deleteImage(for: event)
             }
@@ -135,14 +134,14 @@ class DatabaseRepository {
         let realm = try! Realm()
         let events = localDatabase.getAllEvents()
         
-        //write local images to the cloud
+        // Write local images to the cloud
         events.forEach { event in
             try! realm.write {
                 remoteDatabase.addImage(for: event)
             }
         }
         
-        //add local events and fetch those from the cloud
+        // Add local events and fetch those from the cloud
         remoteDatabase.addEvents(Array(events)) {
             self.fetchEventsFromTheCloud()
         }
@@ -155,14 +154,14 @@ class DatabaseRepository {
                     autoreleasepool {
                         let localEvents = self.localDatabase.getAllEvents()
                         
-                        //update or add events from the cloud
+                        // Update or add events from the cloud
                         cloudEvents.forEach { cloudEvent in
                             self.localDatabase.updateLocalEvent(basedOn: cloudEvent)
                         }
                         
                         localEvents.forEach { localEvent in
                             var deleted = false
-                            //locally delete those events that were removed from the cloud
+                            // Locally delete those events that were removed from the cloud
                             if cloudEvents.first(where: { (cloudEvent) -> Bool in
                                 cloudEvent.id == localEvent.id
                             }) == nil {
@@ -170,7 +169,7 @@ class DatabaseRepository {
                                 deleted = true
                             }
                             
-                            //save cloud images locally
+                            // Save cloud images locally
                             if !deleted && self.shouldDownloadImage(for: localEvent) {
                                 let localEventCopy = Event(value: self.localDatabase.getEvent(with: localEvent.id!))
                                 self.remoteDatabase.getImage(for: localEvent) { filePath in

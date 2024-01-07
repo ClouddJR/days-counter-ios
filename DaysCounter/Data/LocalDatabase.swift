@@ -1,8 +1,7 @@
 import Foundation
 import RealmSwift
 
-class LocalDatabase {
-    
+final class LocalDatabase {
     func setId(for event: Event) {
         event.id = event.id ?? EventOperator.getNextId()
     }

@@ -1,6 +1,6 @@
 import Foundation
 
-class DateCalculator {
+final class DateCalculator {
     static func calculateDate(eventDate: Date, todayDate: Date = Date(),
                               areYearsIncluded: Bool,
                               areMonthsIncluded: Bool,
@@ -25,7 +25,7 @@ class DateCalculator {
             eventDateCopy = tempDate
         }
         
-        //calculate years
+        // Calculate years
         if areYearsIncluded {
             yearsNumber = 0
             while eventDateCopy < todayDateCopy {
@@ -38,7 +38,7 @@ class DateCalculator {
             }
         }
         
-        //calculate months
+        // Calculate months
         if areMonthsIncluded {
             monthsNumber = 0
             while eventDateCopy < todayDateCopy {
@@ -51,7 +51,7 @@ class DateCalculator {
             }
         }
         
-        //calculate weeks
+        // Calculate weeks
         if areWeekIncluded {
             weeksNumber = 0
             while eventDateCopy < todayDateCopy {
@@ -64,7 +64,7 @@ class DateCalculator {
             }
         }
         
-        //calculate days
+        // Calculate days
         if areDaysIncluded {
             daysNumber = 0
             while eventDateCopy < todayDateCopy {
@@ -77,7 +77,7 @@ class DateCalculator {
             }
         }
         
-        //calculate hours, minutes and seconds
+        // Calculate hours, minutes and seconds
         if isTimeIncluded {
             hoursNumber = 0
             minutesNumber = 0
@@ -92,7 +92,7 @@ class DateCalculator {
                 daysNumber = components.days
             }
             
-            //hours
+            // Hours
             while eventDateCopy < todayDateCopy {
                 eventDateCopy = eventDateCopy.add(hours: 1)!
                 hoursNumber! += 1
@@ -102,7 +102,7 @@ class DateCalculator {
                 hoursNumber! -= 1
             }
             
-            //minutes
+            // Minutes
             while eventDateCopy < todayDateCopy {
                 eventDateCopy = eventDateCopy.add(minutes: 1)!
                 minutesNumber! += 1
@@ -112,7 +112,7 @@ class DateCalculator {
                 minutesNumber! -= 1
             }
             
-            //seconds
+            // Seconds
             while eventDateCopy < todayDateCopy {
                 eventDateCopy = eventDateCopy.add(seconds: 1)!
                 secondsNumber! += 1

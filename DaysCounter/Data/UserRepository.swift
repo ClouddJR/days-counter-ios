@@ -1,8 +1,7 @@
 import Foundation
 import FirebaseAuth
 
-class UserRepository {
-    
+final class UserRepository {
     func getUserId() -> String {
         if let user = Auth.auth().currentUser {
             return user.uid
@@ -28,5 +27,4 @@ class UserRepository {
             print("\(error)")
         }
     }
-    
 }

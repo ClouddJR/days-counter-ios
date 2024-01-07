@@ -2,8 +2,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-class RemoteDatabase {
-    
+final class RemoteDatabase {
     let userRepository: UserRepository
     
     init(_ userRepository: UserRepository = UserRepository()) {
@@ -67,7 +66,7 @@ class RemoteDatabase {
     }
     
     func addEvents(_ events: [Event], finishedListener: @escaping( () -> ())) {
-        //A batched write can contain up to 500 operations
+        // A batched write can contain up to 500 operations
         let db =  Firestore.firestore()
         
         if events.isEmpty {

@@ -66,8 +66,7 @@ class Event: Object, Codable {
     }
 }
 
-class EventOperator {
-    
+final class EventOperator {
     private static let IMAGE_FILE_LENGTH = 30
     private static let IMAGE_FILE_PREFIX = "pre-installed:"
     

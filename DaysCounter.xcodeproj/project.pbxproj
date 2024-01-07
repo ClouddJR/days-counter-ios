@@ -10,6 +10,12 @@
 		1C09C5185D8CD859802CEF80 /* Pods_WidgetPastEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F868769D3441E614A9DBF80 /* Pods_WidgetPastEvents.framework */; };
 		281C68819E43AE18FCD559D6 /* Pods_WidgetUpcomingEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF553D311315023CA4931BBF /* Pods_WidgetUpcomingEvent.framework */; };
 		62437E872988421A0087124A /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62437E862988421A0087124A /* SettingsHostingController.swift */; };
+		625F31AD2B4B199800EE825D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
+		625F31AE2B4B199900EE825D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
+		625F31AF2B4B199900EE825D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
+		625F31B02B4B19AE00EE825D /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
+		625F31B12B4B19AF00EE825D /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
+		625F31B22B4B19AF00EE825D /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
 		626565CB2A8F9B8E00DB0502 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
 		626565CC2A8F9B8F00DB0502 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
 		626565CE2A8F9B9200DB0502 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
@@ -46,12 +52,6 @@
 		A693802923CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
 		A693802A23CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
 		A693802B23CE45420063484B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
-		A69DE1C623BBAB5500C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
-		A69DE1C723BBAB5500C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
-		A69DE1C823BBAB5600C7801F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
-		A69DE1C923BBAB6800C7801F /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
-		A69DE1CA23BBAB6800C7801F /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
-		A69DE1CB23BBAB6900C7801F /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
 		A69DE1CC23BBAB7700C7801F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB52330C58700264B8B /* Extensions.swift */; };
 		A69DE1CD23BBAB7700C7801F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB52330C58700264B8B /* Extensions.swift */; };
 		A69DE1CE23BBAB7800C7801F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB52330C58700264B8B /* Extensions.swift */; };
@@ -320,6 +320,20 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		625F31AC2B49F26700EE825D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */,
+				A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */,
+				A60FCB0823FD519800EA2D35 /* UserRepository.swift */,
+				A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */,
+				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
+				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
+				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		626565D12A8FA4ED00DB0502 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +418,7 @@
 		A6A84E3123294F0E006C6660 /* DaysCounter */ = {
 			isa = PBXGroup;
 			children = (
+				625F31AC2B49F26700EE825D /* Data */,
 				625F31AB2B49CD5600EE825D /* List */,
 				62CB543C2B47339300EAE230 /* Details */,
 				622CE0F62B079DE3000A5484 /* Form */,
@@ -415,16 +430,9 @@
 				A6F0167623B9F7A60017D80F /* MainViewController.swift */,
 				A6FA6B7C2403BC7D00FCAA46 /* PremiumViewController.swift */,
 				A68B30792405181800D43AA7 /* LoadingButton.swift */,
-				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
 				A6FA6B7E240403FA00FCAA46 /* CheckMarkView.swift */,
-				A60FCB0623FD2EF900EA2D35 /* RemoteDatabase.swift */,
-				A60FCB0423FD2EEC00EA2D35 /* LocalDatabase.swift */,
-				A60FCB0823FD519800EA2D35 /* UserRepository.swift */,
-				A60FCB0223FD2E2800EA2D35 /* DatabaseRepository.swift */,
-				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
 				A68B307B2405273200D43AA7 /* CurvedView.swift */,
 				A672CDE323CF9D73003C21CD /* Localizable.stringsdict */,
-				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
 				A6AABAB52330C58700264B8B /* Extensions.swift */,
 				A6A84E3E23294F0E006C6660 /* Info.plist */,
 				A6A84E3623294F0E006C6660 /* Main.storyboard */,
@@ -835,9 +843,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69DE1C923BBAB6800C7801F /* DateCalculator.swift in Sources */,
-				A69DE1C623BBAB5500C7801F /* Event.swift in Sources */,
+				625F31AD2B4B199800EE825D /* Event.swift in Sources */,
 				626565CB2A8F9B8E00DB0502 /* Defaults.swift in Sources */,
+				625F31B02B4B19AE00EE825D /* DateCalculator.swift in Sources */,
 				A6D420CD23BBA85A0036D097 /* TodayViewController.swift in Sources */,
 				A69DE1CC23BBAB7700C7801F /* Extensions.swift in Sources */,
 			);
@@ -847,9 +855,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69DE1CA23BBAB6800C7801F /* DateCalculator.swift in Sources */,
-				A69DE1C723BBAB5500C7801F /* Event.swift in Sources */,
+				625F31AE2B4B199900EE825D /* Event.swift in Sources */,
 				626565CC2A8F9B8F00DB0502 /* Defaults.swift in Sources */,
+				625F31B12B4B19AF00EE825D /* DateCalculator.swift in Sources */,
 				A6D420E123BBA8750036D097 /* TodayViewController.swift in Sources */,
 				A69DE1CD23BBAB7700C7801F /* Extensions.swift in Sources */,
 			);
@@ -859,9 +867,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69DE1CB23BBAB6900C7801F /* DateCalculator.swift in Sources */,
-				A69DE1C823BBAB5600C7801F /* Event.swift in Sources */,
+				625F31AF2B4B199900EE825D /* Event.swift in Sources */,
 				626565CE2A8F9B9200DB0502 /* Defaults.swift in Sources */,
+				625F31B22B4B19AF00EE825D /* DateCalculator.swift in Sources */,
 				A6D420F423BBA8840036D097 /* TodayViewController.swift in Sources */,
 				A69DE1CE23BBAB7800C7801F /* Extensions.swift in Sources */,
 			);
