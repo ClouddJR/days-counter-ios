@@ -8,7 +8,7 @@ import FirebaseGoogleAuthUI
 protocol LoginViewDelegate: FUIAuthDelegate {}
 
 struct LoginView: View {
-    @AppStorage(Defaults.Key.premium.rawValue) private var isPremium = true
+    @AppStorage(Defaults.Key.premium.rawValue) private var isPremium = false
     
     @State private var isShowingPremium = false
     @State private var isShowingAuthUi = false
