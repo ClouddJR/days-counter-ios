@@ -1,7 +1,6 @@
 import UIKit
 
-class CheckMarkView: UIView {
-    
+final class CheckMarkView: UIView {
     public var color: UIColor = UIColor.green
     
     override init(frame: CGRect) {
@@ -44,5 +43,4 @@ class CheckMarkView: UIView {
         checkMarkPath.lineWidth = 1.3
         checkMarkPath.stroke()
     }
-
 }

@@ -1,8 +1,7 @@
 import UIKit
 import StoreKit
 
-class PremiumViewController: UIViewController {
-    
+final class PremiumViewController: UIViewController {
     let primaryColor = UIColor(red: 56/255, green: 239/255, blue: 125/255, alpha: 1.0)
     let secondaryColor = UIColor(red: 17/255, green: 153/255, blue: 142/255, alpha: 1.0)
     

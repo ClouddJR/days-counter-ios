@@ -1,7 +1,6 @@
 import UIKit
 
-class CurvedView: UIView {
-    
+final class CurvedView: UIView {
     var primaryColor: UIColor?
     var secondaryColor: UIColor?
     
@@ -37,5 +36,4 @@ class CurvedView: UIView {
 
         context.drawLinearGradient(gradient, start: CGPoint(x: rect.minX + rect.width/2, y: rect.minY), end: CGPoint(x: rect.minX + rect.width/2, y: rect.maxY), options: [])
     }
-
 }

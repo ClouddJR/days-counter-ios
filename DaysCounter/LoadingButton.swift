@@ -1,7 +1,6 @@
 import UIKit
 
-class LoadingButton: UIButton {
-    
+final class LoadingButton: UIButton {
     var originalText: String?
     var originalInsets: UIEdgeInsets?
     
@@ -31,5 +30,4 @@ class LoadingButton: UIButton {
             activityIndicator.stopAnimating()
         }
     }
-
 }

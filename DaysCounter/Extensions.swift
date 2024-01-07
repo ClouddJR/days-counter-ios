@@ -1,9 +1,6 @@
 import UIKit
 
-// MARK:  Date extensions
-
 extension Date {
-    
     func add(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
         let components = DateComponents(year: years, month: months, day: days, hour: hours, minute: minutes, second: seconds)
         return Calendar.current.date(byAdding: components, to: self)
@@ -32,11 +29,7 @@ extension Date {
     func timeComponents() -> DateComponents {
         return Calendar.current.dateComponents([.hour, .minute], from: self)
     }
-    
 }
-
-
-// MARK:  View extensions
 
 extension UIView {
     func addBlurEffect(withStyle style: UIBlurEffect.Style) -> UIVisualEffectView {
@@ -49,65 +42,15 @@ extension UIView {
         self.addSubview(blurEffectView)
         return blurEffectView
     }
-    
-    func addTopBottomGradient(colorOne: UIColor, colorTwo: UIColor) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = bounds
-        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
-        layer.masksToBounds = true
-        layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    func addBottomRoundedEdge() {
-        let offset: CGFloat = (self.frame.width * 1.5)
-        let bounds: CGRect = self.bounds
-
-        let rectBounds: CGRect = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.size.width , height: bounds.size.height / 2)
-        let rectPath: UIBezierPath = UIBezierPath(rect: rectBounds)
-        let ovalBounds: CGRect = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y, width: bounds.size.width + offset , height: bounds.size.height)
-        let ovalPath: UIBezierPath = UIBezierPath(ovalIn: ovalBounds)
-        rectPath.append(ovalPath)
-
-        let maskLayer: CAShapeLayer = CAShapeLayer()
-        maskLayer.frame = bounds
-        maskLayer.path = rectPath.cgPath
-
-        self.layer.mask = maskLayer
-    }
-    
 }
-
-// MARK:  TableView extensions
-
-extension UITableView {
-    
-    func scrollToBottom(animated: Bool) {
-        var y: CGFloat = 0.0
-        if self.contentSize.height > UIScreen.main.bounds.height {
-            y = self.contentSize.height - UIScreen.main.bounds.height
-        }
-        self.setContentOffset(CGPoint(x: 0, y: y), animated: animated)
-    }
-    
-    func reloadData(with animation: UITableView.RowAnimation) {
-        reloadSections(IndexSet(integersIn: 0..<numberOfSections), with: animation)
-    }
-    
-}
-
-// MARK:  URL extensions
 
 extension URL {
-    
     func getData() -> Data? {
         return try? Data(contentsOf: self)
     }
 }
 
-// MARK:  String extensions
-
 extension String {
-    
     static func random(length: Int) -> String {
       let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
       return String((0..<length).map{ _ in chars.randomElement()! })
@@ -121,8 +64,6 @@ extension String {
         }
     }
 }
-
-// MARK:  UserDefaults extensions
 
 extension UserDefaults {
     @objc dynamic var user_defaults_sorting_order: Int {
@@ -142,8 +83,6 @@ extension UserDefaults {
     }
 }
 
-// MARK:  Array extensions
-
 extension Array {
     func chunked(into size: Int) -> [[Element]] {
         return stride(from: 0, to: count, by: size).map {
@@ -152,12 +91,9 @@ extension Array {
     }
 }
 
-// MARK:  UIScrollView extensions
-
 extension UIScrollView {
     func scrollsToBottom(animated: Bool) {
         let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
         setContentOffset(bottomOffset, animated: animated)
     }
 }
-
