@@ -8,7 +8,7 @@ import FirebaseGoogleAuthUI
 protocol LoginViewDelegate: FUIAuthDelegate {}
 
 struct LoginView: View {
-    @AppStorage(Defaults.Key.premium.rawValue) private var isPremium = false
+    @AppStorage(Defaults.Key.premium.rawValue, store: UserDefaults.forAppGroup()) private var isPremium = false
     
     @State private var isShowingPremium = false
     @State private var isShowingAuthUi = false
@@ -108,17 +108,6 @@ private struct InfoRow: View {
             Text(text)
                 .font(.footnote)
         }
-    }
-}
-
-private struct PremiumView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UINavigationController {
-        UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "premiumNavigationController") as! UINavigationController
-    }
-    
-    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // nop
     }
 }
 

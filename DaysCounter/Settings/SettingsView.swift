@@ -67,17 +67,6 @@ struct SettingsView: View {
     }
 }
 
-private struct PremiumView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UINavigationController {
-        UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "premiumNavigationController") as! UINavigationController
-    }
-    
-    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // nop
-    }
-}
-
 private struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentation
     

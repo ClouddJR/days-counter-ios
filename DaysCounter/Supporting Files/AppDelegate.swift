@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initializeStoreObject() {
-        print(Products.store.canMakePayments())
+        Store.shared.initialize()
     }
 }
 

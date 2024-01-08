@@ -8,28 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Premium View Controller-->
-        <scene sceneID="KUY-uH-IWg">
-            <objects>
-                <viewController storyboardIdentifier="premiumViewController" id="Cuy-iW-7dY" customClass="PremiumViewController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qj3-6J-10J">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="YVy-hX-kre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="tbr-0C-XDt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gQp-ME-F5Q">
-                            <connections>
-                                <action selector="dismiss:" destination="Cuy-iW-7dY" id="8q0-CA-2Iw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m8a-qe-PW8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3147.826086956522" y="-703.125"/>
-        </scene>
         <!--Days Counter-->
         <scene sceneID="bZw-Zh-gyn">
             <objects>
@@ -300,7 +278,7 @@
                             <tableViewSection headerTitle="Reminder" id="9Gu-bh-MDR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="x4e-ll-DX4">
-                                        <rect key="frame" x="20" y="467.333330154419" width="374" height="49.999999999999943"/>
+                                        <rect key="frame" x="20" y="467.33333015441895" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x4e-ll-DX4" id="fy0-MH-6Dv">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -851,34 +829,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYh-MH-3kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2237.68115942029" y="1605.8035714285713"/>
-        </scene>
-        <!--Form Hosting Controller-->
-        <scene sceneID="nZt-lk-UI4">
-            <objects>
-                <hostingController id="vN3-9P-eeF" customClass="FormHostingController" customModule="Days_Counter" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="fDt-RA-eRg"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d3I-sW-Vkl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1009" y="-703"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="a8U-gp-PCg">
-            <objects>
-                <navigationController storyboardIdentifier="premiumNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="aCn-dt-Vsd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rcN-CY-7x6">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Cuy-iW-7dY" kind="relationship" relationship="rootViewController" id="dt8-Hb-PrY"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tIX-ds-z7s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2237.68115942029" y="-703.125"/>
         </scene>
         <!--Settings Hosting Controller-->
         <scene sceneID="pfb-fE-nAZ">

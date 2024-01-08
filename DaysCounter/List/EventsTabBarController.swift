@@ -50,7 +50,7 @@ final class EventsTabBarController: UITabBarController, LoginViewDelegate {
             sheet.prefersGrabberVisible = true
         }
         
-        present(navigationController, animated: true, completion: nil)
+        present(navigationController, animated: true)
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {

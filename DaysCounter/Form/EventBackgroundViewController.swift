@@ -574,9 +574,7 @@ final class EventBackgroundViewController: UIViewController {
     }
     
     private func showPremiumScreen() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "premiumNavigationController") as! UINavigationController
-        vc.modalPresentationStyle = .fullScreen
+        let vc = PremiumViewController(rootView: PremiumView())
         self.present(vc, animated: true)
     }
 }
