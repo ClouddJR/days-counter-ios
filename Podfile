@@ -28,3 +28,7 @@ end
 target 'WidgetUpcomingEvent' do
   shared_pods
 end
+
+target 'WidgetsExtension' do
+  shared_pods
+end
