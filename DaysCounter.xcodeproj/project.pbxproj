@@ -16,6 +16,10 @@
 		625319DA2B544E8000E16D82 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625319D92B544E8000E16D82 /* Widgets.swift */; };
 		625319DC2B544E8100E16D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625319DB2B544E8100E16D82 /* Assets.xcassets */; };
 		625319E02B544E8100E16D82 /* WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 625319D12B544E8000E16D82 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		625319E52B545A0600E16D82 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
+		625319E62B545A3400E16D82 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AABAB52330C58700264B8B /* Extensions.swift */; };
+		625319E72B545A6000E16D82 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADF50923AEA16500CACAD6 /* Defaults.swift */; };
+		625319E82B545B1800E16D82 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */; };
 		625F31AD2B4B199800EE825D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
 		625F31AE2B4B199900EE825D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
 		625F31AF2B4B199900EE825D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
@@ -897,7 +901,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				625319D82B544E8000E16D82 /* WidgetsBundle.swift in Sources */,
+				625319E52B545A0600E16D82 /* Event.swift in Sources */,
+				625319E72B545A6000E16D82 /* Defaults.swift in Sources */,
+				625319E82B545B1800E16D82 /* DateCalculator.swift in Sources */,
 				625319DA2B544E8000E16D82 /* Widgets.swift in Sources */,
+				625319E62B545A3400E16D82 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
