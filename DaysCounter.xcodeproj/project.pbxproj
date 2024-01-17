@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		1C09C5185D8CD859802CEF80 /* Pods_WidgetPastEvents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F868769D3441E614A9DBF80 /* Pods_WidgetPastEvents.framework */; };
 		281C68819E43AE18FCD559D6 /* Pods_WidgetUpcomingEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF553D311315023CA4931BBF /* Pods_WidgetUpcomingEvent.framework */; };
+		620115A32B5853EF008401FF /* SingleEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620115A22B5853EF008401FF /* SingleEventProvider.swift */; };
+		620115A52B58544E008401FF /* SingleEventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620115A42B58544E008401FF /* SingleEventWidget.swift */; };
+		620115A72B585475008401FF /* SingleEventEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620115A62B585475008401FF /* SingleEventEntry.swift */; };
 		62437E872988421A0087124A /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62437E862988421A0087124A /* SettingsHostingController.swift */; };
 		625319D32B544E8000E16D82 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 625319D22B544E8000E16D82 /* WidgetKit.framework */; };
 		625319D52B544E8000E16D82 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 625319D42B544E8000E16D82 /* SwiftUI.framework */; };
 		625319D82B544E8000E16D82 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625319D72B544E8000E16D82 /* WidgetsBundle.swift */; };
-		625319DA2B544E8000E16D82 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625319D92B544E8000E16D82 /* Widgets.swift */; };
 		625319DC2B544E8100E16D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 625319DB2B544E8100E16D82 /* Assets.xcassets */; };
 		625319E02B544E8100E16D82 /* WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 625319D12B544E8000E16D82 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		625319E52B545A0600E16D82 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD8EE3234D0E3600E76FBE /* Event.swift */; };
@@ -35,6 +37,7 @@
 		626565D02A8FA1E300DB0502 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565CF2A8FA1E300DB0502 /* SettingsView.swift */; };
 		626565D32A8FA5AB00DB0502 /* InternalGalleryHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565D22A8FA5AB00DB0502 /* InternalGalleryHostingController.swift */; };
 		626565D52A8FA5DF00DB0502 /* InternalGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626565D42A8FA5DF00DB0502 /* InternalGalleryView.swift */; };
+		6289EE982B55AEA200D42D71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
 		62EBBD9F2AFF8C3F00EA785D /* LoginHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBBD9E2AFF8C3F00EA785D /* LoginHostingController.swift */; };
 		62EBBDA12AFF8CCC00EA785D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBBDA02AFF8CCC00EA785D /* LoginView.swift */; };
 		62EE50F72982F59A00C6DE56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */; };
@@ -157,12 +160,14 @@
 		29D1B5E9E818CFDE4897DFB5 /* Pods_WidgetFutureEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetFutureEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2214F1B7E218B8C2A8D325 /* Pods-WidgetPastEvents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetPastEvents.debug.xcconfig"; path = "Target Support Files/Pods-WidgetPastEvents/Pods-WidgetPastEvents.debug.xcconfig"; sourceTree = "<group>"; };
 		4F868769D3441E614A9DBF80 /* Pods_WidgetPastEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetPastEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		620115A22B5853EF008401FF /* SingleEventProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventProvider.swift; sourceTree = "<group>"; };
+		620115A42B58544E008401FF /* SingleEventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventWidget.swift; sourceTree = "<group>"; };
+		620115A62B585475008401FF /* SingleEventEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventEntry.swift; sourceTree = "<group>"; };
 		62437E862988421A0087124A /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		625319D12B544E8000E16D82 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		625319D22B544E8000E16D82 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		625319D42B544E8000E16D82 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		625319D72B544E8000E16D82 /* WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBundle.swift; sourceTree = "<group>"; };
-		625319D92B544E8000E16D82 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		625319DB2B544E8100E16D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		625319DD2B544E8100E16D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625319E42B544FDD00E16D82 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
@@ -323,6 +328,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		620115A12B5853C4008401FF /* SingleEvent */ = {
+			isa = PBXGroup;
+			children = (
+				620115A62B585475008401FF /* SingleEventEntry.swift */,
+				620115A22B5853EF008401FF /* SingleEventProvider.swift */,
+				620115A42B58544E008401FF /* SingleEventWidget.swift */,
+			);
+			path = SingleEvent;
+			sourceTree = "<group>";
+		};
 		622CE0F62B079DE3000A5484 /* Form */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,8 +363,8 @@
 		625319D62B544E8000E16D82 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				620115A12B5853C4008401FF /* SingleEvent */,
 				625319D72B544E8000E16D82 /* WidgetsBundle.swift */,
-				625319D92B544E8000E16D82 /* Widgets.swift */,
 				625319DB2B544E8100E16D82 /* Assets.xcassets */,
 				625319DD2B544E8100E16D82 /* Info.plist */,
 			);
@@ -710,6 +725,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6289EE982B55AEA200D42D71 /* Assets.xcassets in Resources */,
 				625319DC2B544E8100E16D82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,10 +917,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				625319D82B544E8000E16D82 /* WidgetsBundle.swift in Sources */,
+				620115A52B58544E008401FF /* SingleEventWidget.swift in Sources */,
 				625319E52B545A0600E16D82 /* Event.swift in Sources */,
 				625319E72B545A6000E16D82 /* Defaults.swift in Sources */,
 				625319E82B545B1800E16D82 /* DateCalculator.swift in Sources */,
-				625319DA2B544E8000E16D82 /* Widgets.swift in Sources */,
+				620115A32B5853EF008401FF /* SingleEventProvider.swift in Sources */,
+				620115A72B585475008401FF /* SingleEventEntry.swift in Sources */,
 				625319E62B545A3400E16D82 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
