@@ -31,7 +31,7 @@ struct SingleEventView : View {
             VStack {
                 HStack {
                     Spacer(minLength: 0)
-                    CounterStacks()
+                    CounterStacks(entry: entry)
                 }
                 Spacer()
                 HStack {
@@ -39,26 +39,38 @@ struct SingleEventView : View {
                         alignment: .leading,
                         spacing: 5
                     ) {
-                        Text("Holidays")
-                            .font(family == .systemMedium ? .title3 : .body)
-                            .foregroundStyle(.white)
+                        Text(entry.data.name)
+                            .font(
+                                .custom(
+                                    entry.data.fontType,
+                                    size: family == .systemMedium ? 20 : 17,
+                                    relativeTo: family == .systemMedium ? .title3 : .body
+                                )
+                            )
                             .fontWeight(.bold)
-                        Text("June 17, 2025")
-                            .font(family == .systemMedium ? .footnote : .caption)
-                            .foregroundStyle(.white)
+                        Text(entry.data.eventDate.formatted(date: .abbreviated, time: .omitted))
+                            .font(
+                                .custom(
+                                    entry.data.fontType,
+                                    size: family == .systemMedium ? 13 : 12,
+                                    relativeTo: family == .systemMedium ? .footnote : .caption
+                                )
+                            )
                             .lineLimit(1)
                     }
+                    .foregroundStyle(Color(uiColor: entry.data.fontColor))
+                    
                     Spacer(minLength: 0)
                 }
             }
             .padding(margins)
             .background {
-                Image(uiImage: UIImage(named: "nature8.jpg")!)
+                Image(uiImage: entry.data.image)
                     .resizable()
                     .scaledToFill()
                     .overlay {
                         Color(UIColor.black)
-                            .opacity(0.2)
+                            .opacity(entry.data.imageDim)
                     }
             }
         }
@@ -66,28 +78,55 @@ struct SingleEventView : View {
 }
 
 private struct CounterStacks: View {
+    let entry: SingleEventProvider.Entry
+    
     var body: some View {
         HStack {
-            CounterStack(number: "15", label: "days")
+            if let years = entry.data.dateComponents.years {
+                CounterStack(number: years, label: "years", entry: entry)
+            }
+            if let months = entry.data.dateComponents.months {
+                CounterStack(number: months, label: "months", entry: entry)
+            }
+            if let weeks = entry.data.dateComponents.weeks {
+                CounterStack(number: weeks, label: "weeks", entry: entry)
+            }
+            if let days = entry.data.dateComponents.days {
+                CounterStack(number: days, label: "days", entry: entry)
+            }
         }
-        .foregroundStyle(.white)
     }
 }
 
 private struct CounterStack: View {
-    let number: String
+    let number: Int
     let label: String
+    
+    let entry: SingleEventProvider.Entry
     
     @Environment(\.widgetFamily) var family
     
     var body: some View {
         VStack {
-            Text(number)
-                .font(family == .systemMedium ? .title : .title2)
+            Text(String(number))
+                .font(
+                    .custom(
+                        entry.data.fontType,
+                        size: family == .systemMedium ? 28 : 22,
+                        relativeTo: family == .systemMedium ? .title : .title2
+                    )
+                )
                 .fontWeight(.heavy)
             Text(label)
-                .font(family == .systemMedium ? .subheadline : .footnote)
+                .font(
+                    .custom(
+                        entry.data.fontType,
+                        size: family == .systemMedium ? 15 : 13,
+                        relativeTo: family == .systemMedium ? .subheadline : .footnote
+                    )
+                )
         }
+        .foregroundStyle(Color(uiColor: entry.data.fontColor))
         .lineLimit(1)
     }
 }
@@ -95,11 +134,11 @@ private struct CounterStack: View {
 #Preview(as: .systemSmall) {
     SingleEventWidget()
 } timeline: {
-    SingleEventEntry(date: .now, emoji: "😀")
+    SingleEventEntry(date: .now, data: .sample)
 }
 
 #Preview(as: .systemMedium) {
     SingleEventWidget()
 } timeline: {
-    SingleEventEntry(date: .now, emoji: "😀")
+    SingleEventEntry(date: .now, data: .sample)
 }

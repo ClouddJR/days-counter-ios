@@ -17,29 +17,40 @@ struct SingleEventProvider: TimelineProvider {
     
     func placeholder(in context: Context) -> SingleEventEntry {
         // Here, also a placeholder.
-        SingleEventEntry(date: Date(), emoji: "😀")
+        SingleEventEntry(date: .now, data: .sample)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SingleEventEntry) -> ()) {
         // If there are events in the db, show any of them.
         // If not, show a generic "Christmas" event.
-        let entry = SingleEventEntry(date: Date(), emoji: "😀")
-        completion(entry)
+        completion(SingleEventEntry(date: .now, data: .sample))
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<SingleEventEntry>) -> ()) {
-        // Next update should be at midnight.
-        var entries: [SingleEventEntry] = []
+        let timeline = Timeline(
+            entries: [
+                SingleEventEntry(
+                    date: .now,
+                    data: .sample
+                )
+            ],
+            policy: .after(nextMidnight())
+        )
+        completion(timeline)
+    }
+    
+    private func nextMidnight() -> Date {
+        let calendar = Calendar.current
         
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SingleEventEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
+        if let nextDay = calendar.date(byAdding: .day, value: 1, to: .now) {
+            let components = calendar.dateComponents([.year, .month, .day], from: nextDay)
+            
+            if let nextMidnight = calendar.date(from: components) {
+                return nextMidnight
+            }
         }
         
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+        // In case of any issues, return the current date.
+        return .now
     }
 }
