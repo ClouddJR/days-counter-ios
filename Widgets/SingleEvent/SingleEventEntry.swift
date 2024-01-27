@@ -26,3 +26,24 @@ struct SingleEventData {
         fontType: "Helvetica"
     )
 }
+
+extension Event {
+    func map() -> SingleEventData {
+        SingleEventData(
+            name: name!,
+            eventDate: date!,
+            dateComponents: DateCalculator.calculateDate(
+                eventDate: EventOperator.getDate(from: self),
+                areYearsIncluded: areYearsIncluded,
+                areMonthsIncluded: areMonthsIncluded,
+                areWeekIncluded: areWeeksIncluded,
+                areDaysIncluded: areDaysIncluded,
+                isTimeIncluded: isTimeIncluded
+            ),
+            image: EventOperator.getImage(from: self),
+            imageDim: Double(imageDim),
+            fontColor: EventOperator.getFontColor(from: self),
+            fontType: fontType
+        )
+    }
+}
