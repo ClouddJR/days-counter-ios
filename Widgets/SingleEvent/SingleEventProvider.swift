@@ -4,7 +4,7 @@ import RealmSwift
 
 struct SingleEventProvider: TimelineProvider {
     private let realm: Realm
-    private let newestEvent: Event?
+    private let events: Results<Event>
     
     init() {
         let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
@@ -14,7 +14,7 @@ struct SingleEventProvider: TimelineProvider {
         config.fileURL = realmPath
         
         realm = try! Realm(configuration: config)
-        newestEvent = realm.objects(Event.self).last
+        events = realm.objects(Event.self)
     }
     
     func placeholder(in context: Context) -> SingleEventEntry {
@@ -22,7 +22,7 @@ struct SingleEventProvider: TimelineProvider {
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SingleEventEntry) -> ()) {
-        completion(SingleEventEntry(date: .now, data: newestEvent?.map() ?? .sample))
+        completion(SingleEventEntry(date: .now, data: events.first?.map() ?? .sample))
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<SingleEventEntry>) -> ()) {
@@ -30,7 +30,7 @@ struct SingleEventProvider: TimelineProvider {
             entries: [
                 SingleEventEntry(
                     date: .now,
-                    data: newestEvent?.map() ?? .sample
+                    data: events.first?.map() ?? .sample
                 )
             ],
             policy: .after(nextMidnight())
