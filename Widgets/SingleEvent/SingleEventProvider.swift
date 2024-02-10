@@ -3,35 +3,23 @@ import WidgetKit
 import RealmSwift
 
 struct SingleEventProvider: AppIntentTimelineProvider {
-    private let realm: Realm
-    private let events: Results<Event>
-    
-    init() {
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
-        let realmPath = directory.appendingPathComponent("db.realm")
-        
-        var config = Realm.Configuration()
-        config.fileURL = realmPath
-        
-        realm = try! Realm(configuration: config)
-        events = realm.objects(Event.self)
-    }
-    
     func placeholder(in context: Context) -> SingleEventEntry {
         SingleEventEntry(date: .now, data: .sample)
     }
     
     func snapshot(for configuration: SelectEventIntent, in context: Context) async -> SingleEventEntry {
-        SingleEventEntry(date: .now, data: events.first?.map() ?? .sample)
+        SingleEventEntry(date: .now, data: getEvents().first?.map() ?? .sample)
     }
     
     func timeline(for configuration: SelectEventIntent, in context: Context) async -> Timeline<SingleEventEntry> {
-        // TODO: Use an event from the configuration.
         Timeline(
             entries: [
                 SingleEventEntry(
                     date: .now,
-                    data: events.first?.map() ?? .sample
+                    data: getRealm().object(
+                        ofType: Event.self,
+                        forPrimaryKey: configuration.event?.id
+                    )?.map() ?? .sample // TODO: Add an enum to represent empty state
                 )
             ],
             policy: .after(nextMidnight())
@@ -51,5 +39,19 @@ struct SingleEventProvider: AppIntentTimelineProvider {
         
         // In case of any issues, return the current date.
         return .now
+    }
+    
+    private func getRealm() -> Realm {
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
+        let realmPath = directory.appendingPathComponent("db.realm")
+        
+        var config = Realm.Configuration()
+        config.fileURL = realmPath
+        
+        return try! Realm(configuration: config)
+    }
+    
+    private func getEvents() -> Results<Event> {
+        getRealm().objects(Event.self)
     }
 }

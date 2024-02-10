@@ -6,5 +6,5 @@ struct SelectEventIntent: WidgetConfigurationIntent {
     static var description = IntentDescription("Selects the event to display a counter for.")
     
     @Parameter(title: "Event")
-    var event: EventEntity
+    var event: EventEntity?
 }
