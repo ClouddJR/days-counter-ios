@@ -28,72 +28,78 @@ struct SingleEventView : View {
     @Environment(\.widgetFamily) var family
     
     var body: some View {
-        ZStack {
-            VStack {
-                HStack {
-                    Spacer(minLength: 0)
-                    CounterStacks(entry: entry)
-                }
-                Spacer()
-                HStack {
-                    VStack(
-                        alignment: .leading,
-                        spacing: 5
-                    ) {
-                        Text(entry.data.name)
-                            .font(
-                                .custom(
-                                    entry.data.fontType,
-                                    size: family == .systemMedium ? 20 : 17,
-                                    relativeTo: family == .systemMedium ? .title3 : .body
-                                )
-                            )
-                            .fontWeight(.bold)
-                        Text(entry.data.eventDate.formatted(date: .abbreviated, time: .omitted))
-                            .font(
-                                .custom(
-                                    entry.data.fontType,
-                                    size: family == .systemMedium ? 13 : 12,
-                                    relativeTo: family == .systemMedium ? .footnote : .caption
-                                )
-                            )
-                            .lineLimit(1)
+        if let data = entry.data {
+            ZStack {
+                VStack {
+                    HStack {
+                        Spacer(minLength: 0)
+                        CounterStacks(data: data)
                     }
-                    .foregroundStyle(Color(uiColor: entry.data.fontColor))
-                    
-                    Spacer(minLength: 0)
+                    Spacer()
+                    HStack {
+                        VStack(
+                            alignment: .leading,
+                            spacing: 5
+                        ) {
+                            Text(data.name)
+                                .font(
+                                    .custom(
+                                        data.fontType,
+                                        size: family == .systemMedium ? 20 : 17,
+                                        relativeTo: family == .systemMedium ? .title3 : .body
+                                    )
+                                )
+                                .fontWeight(.bold)
+                            Text(data.eventDate.formatted(date: .abbreviated, time: .omitted))
+                                .font(
+                                    .custom(
+                                        data.fontType,
+                                        size: family == .systemMedium ? 13 : 12,
+                                        relativeTo: family == .systemMedium ? .footnote : .caption
+                                    )
+                                )
+                                .lineLimit(1)
+                        }
+                        .foregroundStyle(Color(uiColor: data.fontColor))
+                        
+                        Spacer(minLength: 0)
+                    }
+                }
+                .padding(margins)
+                .background {
+                    Image(uiImage: data.image)
+                        .resizable()
+                        .scaledToFill()
+                        .overlay {
+                            Color(UIColor.black)
+                                .opacity(data.imageDim)
+                        }
                 }
             }
-            .padding(margins)
-            .background {
-                Image(uiImage: entry.data.image)
-                    .resizable()
-                    .scaledToFill()
-                    .overlay {
-                        Color(UIColor.black)
-                            .opacity(entry.data.imageDim)
-                    }
-            }
+        } else {
+            Text("Edit the widget to select an event.")
+                .multilineTextAlignment(.center)
+                .padding(margins)
         }
     }
 }
 
 private struct CounterStacks: View {
-    let entry: SingleEventProvider.Entry
+    let data: SingleEventData
     
     var body: some View {
         HStack {
-            if let years = entry.data.dateComponents.years {
-                CounterStack(number: years, label: "years", entry: entry)
+            if let years = data.dateComponents.years {
+                CounterStack(number: years, label: "years", data: data)
             }
-            if let months = entry.data.dateComponents.months {
-                CounterStack(number: months, label: "months", entry: entry)
+            if let months = data.dateComponents.months {
+                CounterStack(number: months, label: "months", data: data)
             }
-            if let weeks = entry.data.dateComponents.weeks {
-                CounterStack(number: weeks, label: "weeks", entry: entry)
+            if let weeks = data.dateComponents.weeks {
+                CounterStack(number: weeks, label: "weeks", data: data)
             }
-            if let days = entry.data.dateComponents.days {
-                CounterStack(number: days, label: "days", entry: entry)
+            if let days = data.dateComponents.days {
+                CounterStack(number: days, label: "days", data: data)
             }
         }
     }
@@ -103,7 +109,7 @@ private struct CounterStack: View {
     let number: Int
     let label: String
     
-    let entry: SingleEventProvider.Entry
+    let data: SingleEventData
     
     @Environment(\.widgetFamily) var family
     
@@ -112,7 +118,7 @@ private struct CounterStack: View {
             Text(String(number))
                 .font(
                     .custom(
-                        entry.data.fontType,
+                        data.fontType,
                         size: family == .systemMedium ? 28 : 22,
                         relativeTo: family == .systemMedium ? .title : .title2
                     )
@@ -121,13 +127,13 @@ private struct CounterStack: View {
             Text(label)
                 .font(
                     .custom(
-                        entry.data.fontType,
+                        data.fontType,
                         size: family == .systemMedium ? 15 : 13,
                         relativeTo: family == .systemMedium ? .subheadline : .footnote
                     )
                 )
         }
-        .foregroundStyle(Color(uiColor: entry.data.fontColor))
+        .foregroundStyle(Color(uiColor: data.fontColor))
         .lineLimit(1)
     }
 }

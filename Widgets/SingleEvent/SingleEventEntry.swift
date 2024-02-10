@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SingleEventEntry: TimelineEntry {
     let date: Date
-    let data: SingleEventData
+    let data: SingleEventData?
 }
 
 struct SingleEventData {

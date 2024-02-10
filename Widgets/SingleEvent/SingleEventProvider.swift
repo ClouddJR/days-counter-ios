@@ -19,11 +19,25 @@ struct SingleEventProvider: AppIntentTimelineProvider {
                     data: getRealm().object(
                         ofType: Event.self,
                         forPrimaryKey: configuration.event?.id
-                    )?.map() ?? .sample // TODO: Add an enum to represent empty state
+                    )?.map()
                 )
             ],
             policy: .after(nextMidnight())
         )
+    }
+    
+    private func getRealm() -> Realm {
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
+        let realmPath = directory.appendingPathComponent("db.realm")
+        
+        var config = Realm.Configuration()
+        config.fileURL = realmPath
+        
+        return try! Realm(configuration: config)
+    }
+    
+    private func getEvents() -> Results<Event> {
+        getRealm().objects(Event.self)
     }
     
     private func nextMidnight() -> Date {
@@ -39,19 +53,5 @@ struct SingleEventProvider: AppIntentTimelineProvider {
         
         // In case of any issues, return the current date.
         return .now
-    }
-    
-    private func getRealm() -> Realm {
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
-        let realmPath = directory.appendingPathComponent("db.realm")
-        
-        var config = Realm.Configuration()
-        config.fileURL = realmPath
-        
-        return try! Realm(configuration: config)
-    }
-    
-    private func getEvents() -> Results<Event> {
-        getRealm().objects(Event.self)
     }
 }
