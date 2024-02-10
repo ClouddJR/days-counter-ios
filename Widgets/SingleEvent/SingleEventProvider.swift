@@ -2,7 +2,7 @@ import Foundation
 import WidgetKit
 import RealmSwift
 
-struct SingleEventProvider: TimelineProvider {
+struct SingleEventProvider: AppIntentTimelineProvider {
     private let realm: Realm
     private let events: Results<Event>
     
@@ -21,12 +21,13 @@ struct SingleEventProvider: TimelineProvider {
         SingleEventEntry(date: .now, data: .sample)
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (SingleEventEntry) -> ()) {
-        completion(SingleEventEntry(date: .now, data: events.first?.map() ?? .sample))
+    func snapshot(for configuration: SelectEventIntent, in context: Context) async -> SingleEventEntry {
+        SingleEventEntry(date: .now, data: events.first?.map() ?? .sample)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<SingleEventEntry>) -> ()) {
-        let timeline = Timeline(
+    func timeline(for configuration: SelectEventIntent, in context: Context) async -> Timeline<SingleEventEntry> {
+        // TODO: Use an event from the configuration.
+        Timeline(
             entries: [
                 SingleEventEntry(
                     date: .now,
@@ -35,7 +36,6 @@ struct SingleEventProvider: TimelineProvider {
             ],
             policy: .after(nextMidnight())
         )
-        completion(timeline)
     }
     
     private func nextMidnight() -> Date {

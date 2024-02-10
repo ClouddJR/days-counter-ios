@@ -6,8 +6,9 @@ struct SingleEventWidget: Widget {
     let kind: String = "com.clouddroid.DaysCounter.SingleEvent"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(
+        AppIntentConfiguration(
             kind: kind,
+            intent: SelectEventIntent.self,
             provider: SingleEventProvider()
         ) { entry in
             SingleEventView(entry: entry)
