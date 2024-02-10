@@ -87,19 +87,33 @@ struct SingleEventView : View {
 private struct CounterStacks: View {
     let data: SingleEventData
     
+    @Environment(\.widgetFamily) var family
+    
     var body: some View {
         HStack {
-            if let years = data.dateComponents.years {
-                CounterStack(number: years, label: "years", data: data)
-            }
-            if let months = data.dateComponents.months {
-                CounterStack(number: months, label: "months", data: data)
-            }
-            if let weeks = data.dateComponents.weeks {
-                CounterStack(number: weeks, label: "weeks", data: data)
-            }
-            if let days = data.dateComponents.days {
-                CounterStack(number: days, label: "days", data: data)
+            if data.eventDate.representsTheSameDayAs(otherDate: Date()) {
+                Text("Today")
+                    .font(
+                        .custom(
+                            data.fontType,
+                            size: family == .systemMedium ? 28 : 22,
+                            relativeTo: family == .systemMedium ? .title : .title2
+                        )
+                    )
+                    .fontWeight(.heavy)
+            } else {
+                if let years = data.dateComponents.years {
+                    CounterStack(number: years, label: "years", data: data)
+                }
+                if let months = data.dateComponents.months {
+                    CounterStack(number: months, label: "months", data: data)
+                }
+                if let weeks = data.dateComponents.weeks {
+                    CounterStack(number: weeks, label: "weeks", data: data)
+                }
+                if let days = data.dateComponents.days {
+                    CounterStack(number: days, label: "days", data: data)
+                }
             }
         }
     }
