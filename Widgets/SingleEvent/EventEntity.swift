@@ -4,6 +4,7 @@ import AppIntents
 struct EventEntity: AppEntity {
     let id: String
     let name: String
+    let date: Date
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "Event"
     static var defaultQuery = EventQuery()
@@ -11,7 +12,7 @@ struct EventEntity: AppEntity {
     var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(
             title: "\(name)",
-            subtitle: "Past event" // TODO: Change this to a real value.
+            subtitle: date < Date() ? "Past event" : "Future event"
         )
     }
 }
