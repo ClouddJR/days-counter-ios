@@ -2,7 +2,6 @@ import Foundation
 import AppIntents
 import RealmSwift
 
-// TODO: Handle the empty database case.
 struct EventQuery: EntityStringQuery {
     func entities(for identifiers: [EventEntity.ID]) async throws -> [EventEntity] {
         getRealm().objects(Event.self)
