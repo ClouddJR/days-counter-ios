@@ -20,7 +20,7 @@ struct SingleEventData {
     static let sample = SingleEventData(
         id: "",
         name: "Holidays",
-        eventDate: .now,
+        eventDate: Calendar.current.date(byAdding: .day, value: 25, to: .now)!,
         dateComponents: CalculatedComponents(days: 25),
         image: UIImage(named: "nature8.jpg")!,
         imageDim: 0.2,
