@@ -100,6 +100,7 @@ private struct CounterStacks: View {
                             relativeTo: family == .systemMedium ? .title : .title2
                         )
                     )
+                    .foregroundStyle(Color(uiColor: data.fontColor))
                     .fontWeight(.heavy)
             } else {
                 if let years = data.dateComponents.years {
