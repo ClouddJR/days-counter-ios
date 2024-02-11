@@ -8,6 +8,7 @@ struct SingleEventEntry: TimelineEntry {
 }
 
 struct SingleEventData {
+    let id: String
     let name: String
     let eventDate: Date
     let dateComponents: CalculatedComponents
@@ -17,6 +18,7 @@ struct SingleEventData {
     let fontType: String
     
     static let sample = SingleEventData(
+        id: "",
         name: "Holidays",
         eventDate: .now,
         dateComponents: CalculatedComponents(days: 25),
@@ -30,6 +32,7 @@ struct SingleEventData {
 extension Event {
     func map() -> SingleEventData {
         SingleEventData(
+            id: id!,
             name: name!,
             eventDate: date!,
             dateComponents: DateCalculator.calculateDate(

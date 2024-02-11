@@ -75,6 +75,7 @@ struct SingleEventView : View {
                                 .opacity(data.imageDim)
                         }
                 }
+                .widgetURL(URL(string: "dayscounter://event/\(data.id)"))
             }
         } else {
             Text("Edit the widget to select an event.")

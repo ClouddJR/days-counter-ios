@@ -37,6 +37,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return false }
+        let eventId = String(components.path.dropFirst())
+        guard !eventId.isEmpty else { return false }
+        
+        openEventScreen(with: eventId)
+        
+        return true
+    }
 
     private func changeDefaultRealmPath() {
         let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
@@ -54,6 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initializeStoreObject() {
         Store.shared.initialize()
+    }
+    
+    private func openEventScreen(with eventId: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "eventDetailsViewController") as! EventDetailsViewController
+        vc.eventId = eventId
+        
+        if let navigationController = self.window!.rootViewController as? UINavigationController {
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
 }
 
