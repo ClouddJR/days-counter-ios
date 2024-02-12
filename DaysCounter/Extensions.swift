@@ -79,7 +79,7 @@ extension UserDefaults {
     }
     
     static func forAppGroup() -> UserDefaults {
-        return UserDefaults(suiteName: "group.com.clouddroid.dayscounter")!
+        return UserDefaults(suiteName: AppGroup.identifier)!
     }
 }
 

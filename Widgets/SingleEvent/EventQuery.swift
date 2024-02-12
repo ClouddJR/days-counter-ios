@@ -39,11 +39,8 @@ struct EventQuery: EntityStringQuery {
     }
     
     private func getRealm() -> Realm {
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
-        let realmPath = directory.appendingPathComponent("db.realm")
-        
         var config = Realm.Configuration()
-        config.fileURL = realmPath
+        config.fileURL = AppGroup.containerUrl.appendingPathComponent("db.realm")
         
         return try! Realm(configuration: config)
     }

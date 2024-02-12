@@ -55,11 +55,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     }
     
     private func initRealm() {
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.clouddroid.dayscounter")!
-        let realmPath = directory.appendingPathComponent("db.realm")
-        
         var config = Realm.Configuration()
-        config.fileURL = realmPath
+        config.fileURL = AppGroup.containerUrl.appendingPathComponent("db.realm")
         
         realm = try! Realm(configuration: config)
         pastEvents = realm.objects(Event.self).filter(NSPredicate(format: "date < %@", NSDate()))

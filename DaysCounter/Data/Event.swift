@@ -28,22 +28,22 @@ class Event: Object, Codable {
     
     func isTheSame(as other: Event) -> Bool {
         return self.id == other.id &&
-            self.name == other.name &&
-            self.date == other.date &&
-            self.isEntireDay == other.isEntireDay &&
-            self.notes == other.notes &&
-            self.repetition == other.repetition &&
-            self.localImagePath == other.localImagePath &&
-            self.cloudImagePath == other.cloudImagePath &&
-            self.areYearsIncluded == other.areYearsIncluded &&
-            self.areMonthsIncluded == other.areMonthsIncluded &&
-            self.areWeeksIncluded == other.areWeeksIncluded &&
-            self.areDaysIncluded == other.areDaysIncluded &&
-            self.isTimeIncluded == other.isTimeIncluded &&
-            self.fontColor == other.fontColor &&
-            self.fontType == other.fontType &&
-            self.imageDim == other.imageDim &&
-            self.createdAt == other.createdAt
+        self.name == other.name &&
+        self.date == other.date &&
+        self.isEntireDay == other.isEntireDay &&
+        self.notes == other.notes &&
+        self.repetition == other.repetition &&
+        self.localImagePath == other.localImagePath &&
+        self.cloudImagePath == other.cloudImagePath &&
+        self.areYearsIncluded == other.areYearsIncluded &&
+        self.areMonthsIncluded == other.areMonthsIncluded &&
+        self.areWeeksIncluded == other.areWeeksIncluded &&
+        self.areDaysIncluded == other.areDaysIncluded &&
+        self.isTimeIncluded == other.isTimeIncluded &&
+        self.fontColor == other.fontColor &&
+        self.fontType == other.fontType &&
+        self.imageDim == other.imageDim &&
+        self.createdAt == other.createdAt
     }
     
     func copyValues(from other: Event) {
@@ -136,20 +136,17 @@ final class EventOperator {
     }
     
     static func getFilePathWithAppendedFileName() -> URL? {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        if var firstPath = paths.first {
-            firstPath = firstPath.appendingPathComponent("images")
-            if !FileManager.default.fileExists(atPath: firstPath.path) {
-                do {
-                    try FileManager.default.createDirectory(atPath: firstPath.path, withIntermediateDirectories: true)
-                } catch {
-                    print("Error \(error)")
-                }
+        let path = AppGroup.containerUrl.appendingPathComponent("images")
+        
+        if !FileManager.default.fileExists(atPath: path.path) {
+            do {
+                try FileManager.default.createDirectory(atPath: path.path, withIntermediateDirectories: true)
+            } catch {
+                print("Error creating a directory for storing images: \(error)")
             }
-            return firstPath.appendingPathComponent("\(String.random(length: IMAGE_FILE_LENGTH)).png")
-        } else {
-            return nil
         }
+        
+        return path.appendingPathComponent("\(String.random(length: IMAGE_FILE_LENGTH)).png")
     }
     
     private static func isImageFromPreInstalledGallery(_ imageInfo: String) -> Bool {
