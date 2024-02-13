@@ -28,7 +28,7 @@ struct SingleEventProvider: AppIntentTimelineProvider {
     
     private func getRealm() -> Realm {
         var config = Realm.Configuration()
-        config.fileURL = AppGroup.containerUrl.appendingPathComponent("db.realm")
+        config.fileURL = AppGroup.containerUrl.appending(path: "db.realm")
         
         return try! Realm(configuration: config)
     }

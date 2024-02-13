@@ -169,7 +169,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private func initRealm() {
         var config = Realm.Configuration()
-        config.fileURL = AppGroup.containerUrl.appendingPathComponent("db.realm")
+        config.fileURL = AppGroup.containerUrl.appending(path: "db.realm")
         
         realm = try! Realm(configuration: config)
         futureEvents = realm.objects(Event.self).filter(NSPredicate(format: "date >= %@", NSDate())).sorted(byKeyPath: "date")
