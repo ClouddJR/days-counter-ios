@@ -12,6 +12,7 @@
 		620115A32B5853EF008401FF /* SingleEventProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620115A22B5853EF008401FF /* SingleEventProvider.swift */; };
 		620115A52B58544E008401FF /* SingleEventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620115A42B58544E008401FF /* SingleEventWidget.swift */; };
 		620115A72B585475008401FF /* SingleEventEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620115A62B585475008401FF /* SingleEventEntry.swift */; };
+		6237D8602B7BD76F00D0FDEE /* ImagesMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6237D85F2B7BD76F00D0FDEE /* ImagesMigrator.swift */; };
 		623CEAE72B698490001DE838 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623CEAE62B698490001DE838 /* EventEntity.swift */; };
 		623CEAE92B69875D001DE838 /* EventQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623CEAE82B69875D001DE838 /* EventQuery.swift */; };
 		62437E872988421A0087124A /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62437E862988421A0087124A /* SettingsHostingController.swift */; };
@@ -171,6 +172,7 @@
 		620115A22B5853EF008401FF /* SingleEventProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventProvider.swift; sourceTree = "<group>"; };
 		620115A42B58544E008401FF /* SingleEventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventWidget.swift; sourceTree = "<group>"; };
 		620115A62B585475008401FF /* SingleEventEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventEntry.swift; sourceTree = "<group>"; };
+		6237D85F2B7BD76F00D0FDEE /* ImagesMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesMigrator.swift; sourceTree = "<group>"; };
 		623CEAE62B698490001DE838 /* EventEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
 		623CEAE82B69875D001DE838 /* EventQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventQuery.swift; sourceTree = "<group>"; };
 		62437E862988421A0087124A /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				A6BD8EE3234D0E3600E76FBE /* Event.swift */,
 				A6ACB3F3233F6F3400E8FABA /* DateCalculator.swift */,
 				A6AABAB9233116C800264B8B /* EventRepetition.swift */,
+				6237D85F2B7BD76F00D0FDEE /* ImagesMigrator.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -969,6 +972,7 @@
 				A637FEFB23421CB2008868C8 /* ImageCropViewController.swift in Sources */,
 				62437E872988421A0087124A /* SettingsHostingController.swift in Sources */,
 				A6AABABA233116C800264B8B /* EventRepetition.swift in Sources */,
+				6237D8602B7BD76F00D0FDEE /* ImagesMigrator.swift in Sources */,
 				A6BD8EE4234D0E3600E76FBE /* Event.swift in Sources */,
 				62824C302B7A8B5A00C90009 /* AppGroup.swift in Sources */,
 				A6EA1CD2233767D800F876B2 /* EventCustomizeView.swift in Sources */,
