@@ -23,13 +23,13 @@ final class RemoteDatabase {
     
     func addImage(for event: Event) {
         if !EventOperator.doesEventContainsPreInstalledImage(event) &&
-            FileManager.default.fileExists(atPath: event.localImagePath) {
+            FileManager.default.fileExists(atPath: event.localImageFilePath) {
             if event.cloudImagePath.isEmpty {
                 setUpCloudImagePath(for: event)
             }
             
             let storageRef = Storage.storage().reference(withPath: event.cloudImagePath)
-            storageRef.putFile(from: URL(fileURLWithPath: event.localImagePath), metadata: nil) { metadata, error in
+            storageRef.putFile(from: URL(fileURLWithPath: event.localImageFilePath), metadata: nil) { metadata, error in
                 guard let metadata = metadata else {
                     return
                 }

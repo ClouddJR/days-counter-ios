@@ -99,7 +99,7 @@ final class EventOperator {
             let imageName = event.localImagePath[imageNameBeginIndex...]
             image = UIImage(named: String(imageName))
         } else {
-            image = UIImage(contentsOfFile: event.localImagePath)
+            image = UIImage(contentsOfFile: event.localImageFilePath)
         }
         
         return image ?? UIImage(named: "nature4.jpg")!
@@ -125,18 +125,18 @@ final class EventOperator {
             let localImageName = imageInfo.slice(from: "named(main: ", to: ")")!
             event.localImagePath = "\(IMAGE_FILE_PREFIX)\(localImageName)"
         } else {
-            if isInEditMode && image.pngData() == UIImage(contentsOfFile: event.localImagePath)?.pngData() {
+            if isInEditMode && image.pngData() == UIImage(contentsOfFile: event.localImageFilePath)?.pngData() {
                 return
             }
             if let filePath = getFilePathWithAppendedFileName() {
                 saveImageLocally(image: image, on: filePath)
-                event.localImagePath = filePath.path
+                event.localImagePath = filePath.pathForEventImage()
             }
         }
     }
     
     static func getFilePathWithAppendedFileName() -> URL? {
-        let path = AppGroup.containerUrl.appendingPathComponent("images")
+        let path = AppGroup.imagesDirectoryUrl
         
         if !FileManager.default.fileExists(atPath: path.path) {
             do {
@@ -146,7 +146,7 @@ final class EventOperator {
             }
         }
         
-        return path.appendingPathComponent("\(String.random(length: IMAGE_FILE_LENGTH)).png")
+        return path.appending(path: "\(String.random(length: IMAGE_FILE_LENGTH)).png")
     }
     
     private static func isImageFromPreInstalledGallery(_ imageInfo: String) -> Bool {

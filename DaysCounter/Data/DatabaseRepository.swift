@@ -39,13 +39,13 @@ final class DatabaseRepository {
             
             // Previously from the storage, now from pre-installed
             if !EventOperator.doesEventContainsPreInstalledImage(oldEvent) && EventOperator.doesEventContainsPreInstalledImage(event) {
-                deleteLocalImage(at: oldEvent.localImagePath)
+                deleteLocalImage(at: oldEvent.localImageFilePath)
                 remoteDatabase.deleteImage(for: oldEvent)
             }
             
             // Previously from the storage, now different one from the storage
             if !EventOperator.doesEventContainsPreInstalledImage(oldEvent) && !EventOperator.doesEventContainsPreInstalledImage(event) && oldEvent.localImagePath != event.localImagePath {
-                deleteLocalImage(at: oldEvent.localImagePath)
+                deleteLocalImage(at: oldEvent.localImageFilePath)
                 remoteDatabase.deleteImage(for: oldEvent)
                 setUpCloudImagePath(for: event)
                 remoteDatabase.addImage(for: event)
@@ -71,7 +71,7 @@ final class DatabaseRepository {
     
     func deleteEvent(event: Event) {
         let eventId = event.id!
-        deleteLocalImage(at: event.localImagePath)
+        deleteLocalImage(at: event.localImageFilePath)
         if userRepository.isUserLoggedIn() {
             // Remove associated image stored in the cloud
             if !event.cloudImagePath.isEmpty {
@@ -173,8 +173,8 @@ final class DatabaseRepository {
                             if !deleted && self.shouldDownloadImage(for: localEvent) {
                                 let localEventCopy = Event(value: self.localDatabase.getEvent(with: localEvent.id!))
                                 self.remoteDatabase.getImage(for: localEvent) { filePath in
-                                    self.localDatabase.updateLocalImagePath(forEvent: localEventCopy, withPath: filePath.path)
-                                    localEventCopy.localImagePath = filePath.path
+                                    self.localDatabase.updateLocalImagePath(forEvent: localEventCopy, withPath: filePath.pathForEventImage())
+                                    localEventCopy.localImagePath = filePath.pathForEventImage()
                                     self.remoteDatabase.addOrUpdateEvent(localEventCopy)
                                 }
                             }
@@ -186,7 +186,8 @@ final class DatabaseRepository {
     }
     
     private func shouldDownloadImage(for event: Event) -> Bool {
-        return !EventOperator.doesEventContainsPreInstalledImage(event) && !FileManager.default.fileExists(atPath: event.localImagePath) &&
-            !event.cloudImagePath.isEmpty
+        !EventOperator.doesEventContainsPreInstalledImage(event) &&
+        !FileManager.default.fileExists(atPath: event.localImageFilePath) &&
+        !event.cloudImagePath.isEmpty
     }
 }

@@ -26,17 +26,16 @@ final class ImageMigrator {
         self.remoteDatabase = remoteDatabase
         
         self.legacyImagesPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            .appending(path: Constants.imagesDir)
+            .appending(path: AppGroup.imagesDirectory)
         
-        self.imagesPath = AppGroup.containerUrl
-            .appending(path: Constants.imagesDir)
+        self.imagesPath = AppGroup.imagesDirectoryUrl
     }
     
     func migrate() {
         createDirectoryForImagesIfNecessary()
         
         localDatabase.getAllEvents()
-            .filter("NOT localImagePath BEGINSWITH %@", Constants.imagesDir)
+            .filter("NOT localImagePath BEGINSWITH %@", AppGroup.imagesDirectory)
             .forEach { event in
                 migrateImage(for: event)
             }
@@ -68,14 +67,10 @@ final class ImageMigrator {
                 atPath: currentImagePath,
                 toPath: newImagePath
             )
-            localDatabase.updateLocalImagePath(forEvent: event, withPath: "\(Constants.imagesDir)/\(fileName)")
+            localDatabase.updateLocalImagePath(forEvent: event, withPath: "\(AppGroup.imagesDirectory)/\(fileName)")
             remoteDatabase.addOrUpdateEvent(event)
         } catch {
             print("Error while migrating an image to the shared container: \(error).")
         }
-    }
-    
-    private struct Constants {
-        static let imagesDir = "images"
     }
 }

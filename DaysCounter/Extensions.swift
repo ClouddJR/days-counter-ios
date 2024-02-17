@@ -48,6 +48,10 @@ extension URL {
     func getData() -> Data? {
         return try? Data(contentsOf: self)
     }
+    
+    func pathForEventImage() -> String {
+        "\(AppGroup.imagesDirectory)/\(lastPathComponent)"
+    }
 }
 
 extension String {
@@ -95,5 +99,11 @@ extension UIScrollView {
     func scrollsToBottom(animated: Bool) {
         let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
         setContentOffset(bottomOffset, animated: animated)
+    }
+}
+
+extension Event {
+    var localImageFilePath: String {
+        AppGroup.containerUrl.appending(path: localImagePath).path()
     }
 }
