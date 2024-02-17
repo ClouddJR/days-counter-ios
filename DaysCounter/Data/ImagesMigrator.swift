@@ -14,16 +14,19 @@ import Foundation
 final class ImageMigrator {
     private let localDatabase: LocalDatabase
     private let remoteDatabase: RemoteDatabase
+    private let userRepository: UserRepository
     
     private let legacyImagesPath: URL
     private let imagesPath: URL
     
     init(
         localDatabase: LocalDatabase = LocalDatabase(),
-        remoteDatabase: RemoteDatabase = RemoteDatabase()
+        remoteDatabase: RemoteDatabase = RemoteDatabase(),
+        userRepository: UserRepository = UserRepository()
     ) {
         self.localDatabase = localDatabase
         self.remoteDatabase = remoteDatabase
+        self.userRepository = userRepository
         
         self.legacyImagesPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             .appending(path: AppGroup.imagesDirectory)
@@ -36,6 +39,7 @@ final class ImageMigrator {
         
         localDatabase.getAllEvents()
             .filter("NOT localImagePath BEGINSWITH %@", AppGroup.imagesDirectory)
+            .filter("NOT localImagePath BEGINSWITH %@", "pre-installed")
             .forEach { event in
                 migrateImage(for: event)
             }
@@ -68,7 +72,9 @@ final class ImageMigrator {
                 toPath: newImagePath
             )
             localDatabase.updateLocalImagePath(forEvent: event, withPath: "\(AppGroup.imagesDirectory)/\(fileName)")
-            remoteDatabase.addOrUpdateEvent(event)
+            if userRepository.isUserLoggedIn() {
+                remoteDatabase.addOrUpdateEvent(event)
+            }
         } catch {
             print("Error while migrating an image to the shared container: \(error).")
         }
