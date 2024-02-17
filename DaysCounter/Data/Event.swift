@@ -67,8 +67,8 @@ class Event: Object, Codable {
 }
 
 final class EventOperator {
+    static let IMAGE_FILE_PREFIX = "pre-installed:"
     private static let IMAGE_FILE_LENGTH = 30
-    private static let IMAGE_FILE_PREFIX = "pre-installed:"
     
     static func getNextId() -> String {
         return NSUUID().uuidString

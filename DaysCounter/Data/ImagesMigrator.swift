@@ -39,7 +39,7 @@ final class ImageMigrator {
         
         localDatabase.getAllEvents()
             .filter("NOT localImagePath BEGINSWITH %@", AppGroup.imagesDirectory)
-            .filter("NOT localImagePath BEGINSWITH %@", "pre-installed")
+            .filter("NOT localImagePath BEGINSWITH %@", EventOperator.IMAGE_FILE_PREFIX)
             .forEach { event in
                 migrateImage(for: event)
             }
