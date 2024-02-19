@@ -13,20 +13,26 @@ final class LocalDatabase {
         }
     }
     
-    func updateLocalEvent(basedOn cloudEvent: Event) {
+    func updateLocalEvent(basedOn cloudEvent: Event) -> Bool {
         let realm = try! Realm()
         let localEvent = realm.objects(Event.self).filter(NSPredicate(format: "id = %@", cloudEvent.id!)).first
-        if let localEvent = localEvent {
+        var upserted = true
+        
+        if let localEvent {
             if !localEvent.isTheSame(as: cloudEvent) {
                 try! realm.write {
                     localEvent.copyValues(from: cloudEvent)
                 }
+            } else {
+                upserted = false
             }
         } else {
             try! realm.write {
                 realm.add(cloudEvent, update: .modified)
             }
         }
+        
+        return upserted
     }
     
     func updateLocalImagePath(forEvent event: Event, withPath path: String) {

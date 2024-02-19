@@ -111,19 +111,19 @@ final class DatabaseRepository {
                     case .daily: do {
                         event.date = event.date?.add(days: 1)
                         if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
-                        }
+                    }
                     case .weekly: do {
                         event.date = event.date?.add(days: 7)
                         if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
-                        }
+                    }
                     case .monthly: do {
                         event.date = event.date?.add(months: 1)
                         if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
-                        }
+                    }
                     case .yearly: do {
                         event.date = event.date?.add(years: 1)
                         if userRepository.isUserLoggedIn() {remoteDatabase.addOrUpdateEvent(event)}
-                        }
+                    }
                     }
                 }
             }
@@ -154,9 +154,15 @@ final class DatabaseRepository {
                     autoreleasepool {
                         let localEvents = self.localDatabase.getAllEvents()
                         
+                        var anyEventWasUpserted = false
+                        var anyEventWasDeleted = false
+                        
                         // Update or add events from the cloud
                         cloudEvents.forEach { cloudEvent in
-                            self.localDatabase.updateLocalEvent(basedOn: cloudEvent)
+                            let upserted = self.localDatabase.updateLocalEvent(basedOn: cloudEvent)
+                            if upserted {
+                                anyEventWasUpserted = true
+                            }
                         }
                         
                         localEvents.forEach { localEvent in
@@ -169,6 +175,10 @@ final class DatabaseRepository {
                                 deleted = true
                             }
                             
+                            if deleted {
+                                anyEventWasDeleted = true
+                            }
+                            
                             // Save cloud images locally
                             if !deleted && self.shouldDownloadImage(for: localEvent) {
                                 let localEventCopy = Event(value: self.localDatabase.getEvent(with: localEvent.id!))
@@ -176,8 +186,13 @@ final class DatabaseRepository {
                                     self.localDatabase.updateLocalImagePath(forEvent: localEventCopy, withPath: filePath.pathForEventImage())
                                     localEventCopy.localImagePath = filePath.pathForEventImage()
                                     self.remoteDatabase.addOrUpdateEvent(localEventCopy)
+                                    Event.refreshWidgets()
                                 }
                             }
+                        }
+                        
+                        if anyEventWasUpserted || anyEventWasDeleted {
+                            Event.refreshWidgets()
                         }
                     }
                 }

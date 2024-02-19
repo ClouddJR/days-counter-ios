@@ -42,6 +42,7 @@ final class EventBackgroundViewController: UIViewController {
         
         if isInEditMode {
             databaseRepository.editEvent(event)
+            Event.refreshWidgets()
         } else {
             databaseRepository.addEvent(event)
         }

@@ -322,6 +322,7 @@ final class EventDetailsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (action) in
             self.cancelNotification()
             self.databaseRepository.deleteEvent(event: self.event)
+            Event.refreshWidgets()
             self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true)

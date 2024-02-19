@@ -1,4 +1,5 @@
 import UIKit
+import WidgetKit
 
 extension Date {
     func add(years: Int = 0, months: Int = 0, days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
@@ -12,14 +13,14 @@ extension Date {
     
     func representsTheSameDayAs(otherDate date: Date) -> Bool {
         return Calendar.current.component(.day, from: self) == Calendar.current.component(.day, from: date) &&
-            Calendar.current.component(.month, from: self) == Calendar.current.component(.month, from: date) &&
-            Calendar.current.component(.year, from: self) == Calendar.current.component(.year, from: date)
+        Calendar.current.component(.month, from: self) == Calendar.current.component(.month, from: date) &&
+        Calendar.current.component(.year, from: self) == Calendar.current.component(.year, from: date)
     }
     
     func representsTheSameTimeAs(otherDate date: Date) -> Bool {
         return Calendar.current.component(.hour, from: self) == Calendar.current.component(.hour, from: date) &&
-            Calendar.current.component(.minute, from: self) == Calendar.current.component(.minute, from: date) &&
-            Calendar.current.component(.second, from: self) == Calendar.current.component(.second, from: date)
+        Calendar.current.component(.minute, from: self) == Calendar.current.component(.minute, from: date) &&
+        Calendar.current.component(.second, from: self) == Calendar.current.component(.second, from: date)
     }
     
     func with(hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
@@ -56,8 +57,8 @@ extension URL {
 
 extension String {
     static func random(length: Int) -> String {
-      let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in chars.randomElement()! })
+        let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in chars.randomElement()! })
     }
     
     func slice(from: String, to: String) -> String? {
@@ -105,5 +106,9 @@ extension UIScrollView {
 extension Event {
     var localImageFilePath: String {
         AppGroup.containerUrl.appending(path: localImagePath).path()
+    }
+    
+    static func refreshWidgets() {
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

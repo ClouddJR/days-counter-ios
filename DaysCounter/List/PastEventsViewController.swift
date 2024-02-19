@@ -188,6 +188,7 @@ extension PastEventsViewController: UITableViewDelegate {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: { (action) in
             self.cancelNotification(event: event)
             self.databaseRepository.deleteEvent(event: event)
+            Event.refreshWidgets()
         }))
         self.present(alert, animated: true)
     }
