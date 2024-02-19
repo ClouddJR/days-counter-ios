@@ -81,6 +81,7 @@ struct SingleEventView : View {
             Text("Edit the widget to select an event.")
                 .multilineTextAlignment(.center)
                 .padding(margins)
+                .widgetURL(nil)
         }
     }
 }
