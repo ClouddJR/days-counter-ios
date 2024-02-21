@@ -274,9 +274,6 @@ final class EventDetailsViewController: UIViewController {
     
     private var dateTimer: Timer?
     
-    private var previousNavBarTintColor: UIColor?
-    private var previousTextAttributes: [NSAttributedString.Key : Any]?
-    
     private var compactConstraints: [NSLayoutConstraint] = []
     private var regularConstraints: [NSLayoutConstraint] = []
     private var sharedConstraints: [NSLayoutConstraint] = []
@@ -340,10 +337,6 @@ final class EventDetailsViewController: UIViewController {
     }
     
     private func styleNavigationBar() {
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
-        previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
     }
     
@@ -638,13 +631,7 @@ final class EventDetailsViewController: UIViewController {
     }
     
     private func restorePreviousNavigationBarStyle() {
-        navigationController?.navigationBar.tintColor = previousNavBarTintColor
-        navigationController?.navigationBar.barStyle = .default
-        
-        let textAttributes = [NSAttributedString.Key.foregroundColor :
-            traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        navigationController?.navigationBar.tintColor = nil
     }
     
     @objc private func showMoreInfoView() {
