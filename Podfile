@@ -17,18 +17,6 @@ target 'DaysCounter' do
   pod 'FirebaseUI/Email'
 end
 
-target 'WidgetPastEvents' do
-  shared_pods
-end
-
-target 'WidgetFutureEvents' do
-  shared_pods
-end
-
-target 'WidgetUpcomingEvent' do
-  shared_pods
-end
-
 target 'WidgetsExtension' do
   shared_pods
 end
