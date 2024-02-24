@@ -111,3 +111,6 @@
 "Get access to all premium features released in the future." = "Uzyskaj dostęp do wszystkich funkcji, które będą dodane w przyszłości.";
 "This feature is for premium users only." = "Ta funkcja jest dostępna tylko dla użytkowników premium.";
 "More info" = "Więcej informacji";
+
+// ImageCropViewController
+"Reposition the image" = "Wypozycjonuj zdjęcie";
