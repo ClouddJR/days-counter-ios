@@ -114,9 +114,6 @@ final class EventBackgroundViewController: UIViewController {
     
     private let databaseRepository = DatabaseRepository()
     
-    private var previousNavBarTintColor: UIColor?
-    private var previousTextAttributes: [NSAttributedString.Key : Any]?
-    
     private var shouldYearsSectionBeVisible = false
     private var shouldMonthsSectionBeVisible = false
     private var shouldWeeksSectionBeVisible = false
@@ -151,11 +148,6 @@ final class EventBackgroundViewController: UIViewController {
         addButtonClickActions()
     }
     
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        restorePreviousNavigationBarTitleColor()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         restorePreviousNavigationBarStyle()
@@ -163,19 +155,8 @@ final class EventBackgroundViewController: UIViewController {
     }
     
     private func styleNavigationBar() {
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        
-        previousNavBarTintColor = navigationController?.navigationBar.tintColor
         navigationController?.navigationBar.tintColor = .white
-        
-        if previousTextAttributes != nil {
-            previousTextAttributes = navigationController?.navigationBar.titleTextAttributes
-        }
-        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     private func updateUIWithPassedEventData() {
@@ -515,16 +496,9 @@ final class EventBackgroundViewController: UIViewController {
         dimView.removeFromSuperview()
     }
     
-    private func restorePreviousNavigationBarTitleColor() {
-        navigationController?.navigationBar.titleTextAttributes = previousTextAttributes
-    }
-    
     private func restorePreviousNavigationBarStyle() {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.tintColor = nil
-        navigationController?.navigationBar.barStyle = .default
-        navigationController?.navigationBar.barTintColor = nil
+        navigationController?.navigationBar.titleTextAttributes = nil
     }
     
     private func prepareEvent() {

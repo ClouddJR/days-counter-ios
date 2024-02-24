@@ -32,29 +32,29 @@ final class ImageCropViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        applyStyling()
         addSubviews()
         addConstraints()
         displayImage()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyStyling()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        restoreNavigationBarStyle()
+    }
+    
     private func applyStyling() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationItem.standardAppearance = appearance
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         navigationItem.title = NSLocalizedString("Reposition the image", comment: "")
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel, primaryAction: UIAction() { _ in
-            self.delegate?.dismiss()
-        })
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, primaryAction: UIAction() { _ in
             self.saveImageAndDismiss()
         })
-        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     private func addSubviews() {
@@ -94,6 +94,11 @@ final class ImageCropViewController: UIViewController {
         
         delegate?.onImageCropped(image)
         delegate?.dismiss()
+    }
+    
+    private func restoreNavigationBarStyle() {
+        navigationController?.navigationBar.tintColor = nil
+        navigationController?.navigationBar.titleTextAttributes = nil
     }
 }
 
