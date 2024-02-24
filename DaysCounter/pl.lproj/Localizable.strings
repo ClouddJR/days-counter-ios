@@ -86,9 +86,16 @@
 "You Are Already Logged In" = "Jesteś Już Zalogowany";
 "Your events are being synchronized" = "Twoje wydarzenia są synchronizowane";
 "Account: " = "Konto: ";
-"Information" = "Informacja";
 "Sign out" = "Wyloguj się";
 "Login Failed" = "Logowanie Nieudane";
+
+// EventsViewController
+"No Future Events" = "Brak Przyszłych Wydarzeń";
+"No Past Events" = "Brak Przeszłych Wydarzeń";
+"Events you add will appear here." = "Dodane wydarzenia pojawią się tutaj.";
+"Add event" = "Dodaj wydarzenie";
+"Edit" = "Edytuj";
+"Delete" = "Usuń";
 
 // LoginViewController
 "Login" = "Logowanie";

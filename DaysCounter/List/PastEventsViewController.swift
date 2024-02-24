@@ -104,11 +104,11 @@ final class PastEventsViewController: UIViewController {
     private func showEmptyView() {
         var config = UIContentUnavailableConfiguration.empty()
         config.image = .init(systemName: "calendar.badge.plus")
-        config.text = "No Past Events"
-        config.secondaryText = "Events you add will appear here."
+        config.text = NSLocalizedString("No Past Events", comment: "")
+        config.secondaryText = NSLocalizedString("Events you add will appear here.", comment: "")
         
         var buttonConfig = UIButton.Configuration.tinted()
-        buttonConfig.title = "Add event"
+        buttonConfig.title = NSLocalizedString("Add event", comment: "")
         config.button = buttonConfig
         config.buttonProperties.primaryAction = UIAction { _ in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -151,14 +151,14 @@ extension PastEventsViewController: UITableViewDelegate {
     private func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
             let edit = UIAction(
-                title: "Edit",
+                title: NSLocalizedString("Edit", comment: ""),
                 image: UIImage(systemName: "square.and.pencil")
             ) { _ in
                 self.goToEditScreen(event: self.pastEvents[index])
             }
             
             let delete = UIAction(
-                title: "Delete",
+                title: NSLocalizedString("Delete", comment: ""),
                 image: UIImage(systemName: "trash"),
                 attributes: .destructive
             ) { _ in
