@@ -97,11 +97,12 @@
 "Edit" = "Edytuj";
 "Delete" = "Usuń";
 
-// LoginViewController
-"Login" = "Logowanie";
-"Welcome" = "Witaj";
-"Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Zalogowanie pozwala na synchronizację Twoich wydarzeń z chmurą, dzięki czemu będą one dostępne na wszystkich Twoich urządzeniach.";
-"If you choose to log in, nothing besides your events data will be stored on our servers. You can ask for a complete data deletion by contacting us via our email.\nYou can find our email and privacy policy on the settings page." = "Po zalogowaniu, nic poza Twoimi wydarzeniami nie będzie przechowywane na naszych serwerach. Możesz w dowolnym momencie poprosić o usunięcie wszystkich swoich danych kontaktując się z nami.\nMożesz znaleźć naszego maila oraz politykę prywatności w ustawieniach.";
+// Login
+"Welcome!" = "Witaj!";
+"Login to sync your events with the cloud to make them accessible on all of your devices." = "Zaloguj się, aby zsynchonizować swoje wydarzenia z chmurą i mieć do nich dostęp na wszystkich swoich urządzeniach.";
+"Sign In" = "Zaloguj się";
+"We only store your events data on our servers. You can ask for a complete data deletion by contacting us via our email." = "Przechowujemy na swoich serwerach tylko i wyłącznie dane o wydarzeniach, które dodasz. W każdej chwili możesz poprosić nas o usunięcie tych danych kontaktując się z nami.";
+"You can find our email and privacy policy on the settings page." = "Nasz adres e-mail oraz politykę prywatności znajdziesz na ekranie z ustawieniami.";
 
 // Premium
 "Enable full sync between multiple devices (including images)." = "Synchronizuj swoje wydarzenia pomiędzy urządzeniami (włącznie z ich tłami).";

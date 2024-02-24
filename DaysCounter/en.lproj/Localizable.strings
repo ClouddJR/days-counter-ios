@@ -96,9 +96,12 @@
 "Edit" = "Edit";
 "Delete" = "Delete";
 
-// LoginViewController
-"Welcome" = "Welcome";
-"Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices.";
+// Login
+"Welcome!" = "Welcome!";
+"Login to sync your events with the cloud to make them accessible on all of your devices." = "Login to sync your events with the cloud to make them accessible on all of your devices.";
+"Sign In" = "Sign In";
+"We only store your events data on our servers. You can ask for a complete data deletion by contacting us via our email." = "We only store your events data on our servers. You can ask for a complete data deletion by contacting us via our email.";
+"You can find our email and privacy policy on the settings page." = "You can find our email and privacy policy on the settings page.";
 
 // Premium
 "Enable full sync between multiple devices (including images)." = "Enable full sync between multiple devices (including images).";

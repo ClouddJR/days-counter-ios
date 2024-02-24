@@ -82,7 +82,7 @@ private struct CtaButton: View {
     
     var body: some View {
         Button(action: action) {
-            Label(title, systemImage: systemImage)
+            Label(LocalizedStringKey(title), systemImage: systemImage)
                 .frame(height: 28)
                 .frame(maxWidth: .infinity)
                 .font(.headline)
@@ -105,7 +105,7 @@ private struct InfoRow: View {
             Image(systemName: systemImage)
                 .foregroundColor(tint)
                 .font(.title3)
-            Text(text)
+            Text(LocalizedStringKey(text))
                 .font(.footnote)
         }
     }
