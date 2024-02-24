@@ -39,7 +39,7 @@ private struct FeatureRow: View {
         HStack(alignment: .top) {
             Image(systemName: "checkmark.circle.fill")
                 .foregroundStyle(.orange)
-            Text(text)
+            Text(LocalizedStringKey(text))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
         }

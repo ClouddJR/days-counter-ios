@@ -304,7 +304,7 @@ final class EventCustomizeView: UIView {
     
     lazy var premiumLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("This feature is only available for premium users", comment: "")
+        label.text = NSLocalizedString("This feature is for premium users only.", comment: "")
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center

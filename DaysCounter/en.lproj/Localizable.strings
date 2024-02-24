@@ -81,11 +81,6 @@
 "Settings" = "Settings";
 "Error" = "Error";
 
-// Widgets
-"There are no past events" = "There are no past events";
-"There are no future events" = "There are no future events";
-"There are no upcoming events" = "There are no upcoming events";
-
 // EventsTabBarController
 "You Are Already Logged In" = "You Are Already Logged In";
 "Your events are being synchronized" = "Your events are being synchronized";
@@ -97,3 +92,12 @@
 // LoginViewController
 "Welcome" = "Welcome";
 "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices." = "Login gives you the possibility of synchronizing your events with the cloud so that they are accessible on all of your devices.";
+
+// Premium
+"Enable full sync between multiple devices (including images)." = "Enable full sync between multiple devices (including images).";
+"Fully customize each event." = "Fully customize each event.";
+"Download beautiful images for your events right from the app." = "Download beautiful images for your events right from the app.";
+"Get access to all premium features released in the future." = "Get access to all premium features released in the future.";
+"This feature is for premium users only." = "This feature is for premium users only.";
+"More info" = "More info";
+

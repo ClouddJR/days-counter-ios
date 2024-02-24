@@ -8,7 +8,7 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
-    "_locale" : "en_US",
+    "_locale" : "pl",
     "_storefront" : "USA",
     "_storeKitErrors" : [
       {
@@ -85,8 +85,13 @@
           "localizations" : [
             {
               "description" : "",
-              "displayName" : "Monthly",
+              "displayName" : "Monthly plan",
               "locale" : "en_US"
+            },
+            {
+              "description" : "",
+              "displayName" : "Miesięczny plan",
+              "locale" : "pl"
             }
           ],
           "productID" : "com.clouddroid.DaysCounter.monthly",
@@ -114,8 +119,13 @@
           "localizations" : [
             {
               "description" : "",
-              "displayName" : "Yearly",
+              "displayName" : "Yearly plan",
               "locale" : "en_US"
+            },
+            {
+              "description" : "",
+              "displayName" : "Roczny plan",
+              "locale" : "pl"
             }
           ],
           "productID" : "com.clouddroid.DaysCounter.yearly",

@@ -396,7 +396,7 @@ final class EventBackgroundViewController: UIViewController {
                 viewController.delegate = self
                 self.present(UINavigationController(rootViewController: viewController), animated: true)
             } else {
-                let alert = UIAlertController(title: NSLocalizedString("This feature is only available for premium users.", comment: ""), message: "", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("This feature is for premium users only.", comment: ""), message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("More info", comment: ""), style: .default,
                                               handler: { (_) in
                                                 self.showPremiumScreen()
