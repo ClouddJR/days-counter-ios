@@ -4,13 +4,13 @@
 "Weekly" = "Tygodniowo";
 "Monthly" = "Miesięcznie";
 "Yearly" = "Rocznie";
-"Name And Date Fields Are Required" = "Pola Z Nazwą I Datą Są Wymagane";
 "Notes" = "Notatki";
 "Reminder message" = "Treść powiadomienia";
 "Notification Permission" = "Uprawnienia Dla Powiadomień";
 "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it." = "Aplikacja nie uzyskała uprawnień do używania powiadomień, stąd będzie ono zignorowane. Udaj się do ustawień systemowych, aby te uprawnienia przyznać.";
 "Grant Permission" = "Przyznaj uprawnienia";
 "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it." = "W celu wyświetlania powiadomień, aplicja potrzebuje przyznanych uprawień. Udaj się do ustawień systemowych aby to zmienić.";
+"Go To Settings" = "Przejdź do Ustawień";
 
 // Defaults
 "By time added" = "Po dacie dodania";

@@ -4,13 +4,13 @@
 "Weekly" = "Weekly";
 "Monthly" = "Monthly";
 "Yearly" = "Yearly";
-"Name And Date Fields Are Required" = "Name And Date Fields Are Required";
 "Notes" = "Notes";
 "Reminder message" = "Reminder message";
 "Notification Permission" = "Notification Permission";
 "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it." = "The app does not have a permission to use notifications so the reminder will be ignored. Please go to System settings to enable it.";
 "Grant Permission" = "Grant Permission";
 "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it." = "In order to send reminders, the app needs to have a permission for that. Please go to System settings and enable it.";
+"Go To Settings" = "Go To Settings";
 
 // Defaults
 "By time added" = "By time added";
