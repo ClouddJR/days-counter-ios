@@ -63,7 +63,6 @@
 "Start Your Search" = "Rozpocznij wyszukiwanie";
 "Results will appear here." = "Wyniki pojawią się tutaj.";
 "No Images" = "Brak obrazków";
-"Check the spelling or try a new search." = "Spróbuj wyszukać czegoś innego.";
 
 // SettingsSection
 "General" = "Ogólne";
@@ -71,16 +70,11 @@
 "Sort" = "Sortuj";
 "Default section" = "Domyślna sekcja";
 "Event view type" = "Typ widoku wydarzenia";
-"Premium" = "Premium";
-"Rate this app" = "Oceń aplikację";
-"Import events" = "Importuj wydarzenia";
-"Export events" = "Eksportuj wydarzenia";
 "Privacy policy" = "Polityka prywatności";
 "Contact me" = "Kontakt";
 
 // SettingsViewController
 "Settings" = "Ustawienia";
-"Error" = "Błąd";
 
 // EventsTabBarController
 "You Are Already Logged In" = "Jesteś Już Zalogowany";

@@ -63,23 +63,18 @@
 "Start Your Search" = "Start Your Search";
 "Results will appear here." = "Results will appear here.";
 "No Images" = "No Images";
-"Check the spelling or try a new search." = "Check the spelling or try a new search.";
 
 // SettingsSection
 "General" = "General";
 "About" = "About";
 "Sort" = "Sort";
 "Default section" = "Default section";
-"Premium" = "Premium";
-"Rate this app" = "Rate this app";
-"Import events" = "Import events";
-"Export events" = "Export events";
+"Event view type" = "Event view type";
 "Privacy policy" = "Privacy policy";
 "Contact me" = "Contact me";
 
 // SettingsViewController
 "Settings" = "Settings";
-"Error" = "Error";
 
 // EventsTabBarController
 "You Are Already Logged In" = "You Are Already Logged In";

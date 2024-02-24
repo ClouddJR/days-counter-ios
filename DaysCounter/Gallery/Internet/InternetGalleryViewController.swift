@@ -79,8 +79,8 @@ final class InternetGalleryViewController: UIViewController {
     private lazy var searchPromptView: UIContentUnavailableView = {
         var config = UIContentUnavailableConfiguration.empty()
         config.image = .init(systemName: "photo.on.rectangle.angled")
-        config.text = "Start Your Search"
-        config.secondaryText = "Results will appear here."
+        config.text = NSLocalizedString("Start Your Search", comment: "")
+        config.secondaryText = NSLocalizedString("Results will appear here.", comment: "")
         
         let view = UIContentUnavailableView(configuration: config)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +90,7 @@ final class InternetGalleryViewController: UIViewController {
     
     private lazy var noImagesView: UIContentUnavailableView = {
         var config = UIContentUnavailableConfiguration.search()
-        config.text = "No Images"
+        config.text = NSLocalizedString("No Images", comment: "")
         
         let view = UIContentUnavailableView(configuration: config)
         view.isHidden = true
