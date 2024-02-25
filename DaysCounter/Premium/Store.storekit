@@ -8,7 +8,7 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
-    "_locale" : "pl",
+    "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
       {
@@ -84,12 +84,12 @@
           },
           "localizations" : [
             {
-              "description" : "",
+              "description" : "Access all of the available premium features.",
               "displayName" : "Monthly plan",
               "locale" : "en_US"
             },
             {
-              "description" : "",
+              "description" : "Uzyskaj dostęp do wszystkich funkcji premium.",
               "displayName" : "Miesięczny plan",
               "locale" : "pl"
             }
@@ -118,12 +118,12 @@
           },
           "localizations" : [
             {
-              "description" : "",
+              "description" : "Access all of the available premium features.",
               "displayName" : "Yearly plan",
               "locale" : "en_US"
             },
             {
-              "description" : "",
+              "description" : "Uzyskaj dostęp do wszystkich funkcji premium.",
               "displayName" : "Roczny plan",
               "locale" : "pl"
             }
