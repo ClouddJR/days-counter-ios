@@ -580,6 +580,8 @@ final class EventDetailsViewController: UIViewController {
     }
     
     @objc private func calculateDateAndUpdateLabels() {
+        guard !event.isInvalidated else { return }
+        
         let components = DateCalculator.calculateDate(eventDate: EventOperator.getDate(from: event), todayDate: Date(),
                                                       areYearsIncluded: event.areYearsIncluded,
                                                       areMonthsIncluded: event.areMonthsIncluded,
