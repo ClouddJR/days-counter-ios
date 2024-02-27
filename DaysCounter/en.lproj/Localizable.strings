@@ -108,3 +108,15 @@
 
 // ImageCropViewController
 "Reposition the image" = "Reposition the image";
+
+// Widgets
+"Holidays" = "Holidays";
+"Single event" = "Single event";
+"Shows a counter for a single event." = "Shows a counter for a single event.";
+"Edit the widget to select an event." = "Edit the widget to select an event.";
+"Today" = "Today";
+"Select Event" = "Select Event";
+"Selects the event to display a counter for." = "Selects the event to display a counter for.";
+"Event" = "Event";
+"Past event" = "Past event";
+"Future event" = "Future event";

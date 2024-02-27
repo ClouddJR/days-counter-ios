@@ -33,6 +33,8 @@
 		62824C302B7A8B5A00C90009 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62824C2F2B7A8B5A00C90009 /* AppGroup.swift */; };
 		62824C342B7A8BCB00C90009 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62824C2F2B7A8B5A00C90009 /* AppGroup.swift */; };
 		6289EE982B55AEA200D42D71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A84E3923294F0E006C6660 /* Assets.xcassets */; };
+		6292F0FB2B8E4B42003E0396 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A693802D23CE45420063484B /* Localizable.strings */; };
+		6292F0FC2B8E4B4B003E0396 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A672CDE323CF9D73003C21CD /* Localizable.stringsdict */; };
 		62EBBD9F2AFF8C3F00EA785D /* LoginHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBBD9E2AFF8C3F00EA785D /* LoginHostingController.swift */; };
 		62EBBDA12AFF8CCC00EA785D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EBBDA02AFF8CCC00EA785D /* LoginView.swift */; };
 		62EE50F72982F59A00C6DE56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62EE50F62982F59A00C6DE56 /* GoogleService-Info.plist */; };
@@ -517,6 +519,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6289EE982B55AEA200D42D71 /* Assets.xcassets in Resources */,
+				6292F0FC2B8E4B4B003E0396 /* Localizable.stringsdict in Resources */,
+				6292F0FB2B8E4B42003E0396 /* Localizable.strings in Resources */,
 				625319DC2B544E8100E16D82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

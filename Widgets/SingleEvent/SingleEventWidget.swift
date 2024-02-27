@@ -106,16 +106,32 @@ private struct CounterStacks: View {
                     .fontWeight(.heavy)
             } else {
                 if let years = data.dateComponents.years {
-                    CounterStack(number: years, label: "years", data: data)
+                    CounterStack(
+                        number: years,
+                        label: String.localizedStringWithFormat(NSLocalizedString("Years title", comment: ""), years),
+                        data: data
+                    )
                 }
                 if let months = data.dateComponents.months {
-                    CounterStack(number: months, label: "months", data: data)
+                    CounterStack(
+                        number: months,
+                        label: String.localizedStringWithFormat(NSLocalizedString("Months title", comment: ""), months),
+                        data: data
+                    )
                 }
                 if let weeks = data.dateComponents.weeks {
-                    CounterStack(number: weeks, label: "weeks", data: data)
+                    CounterStack(
+                        number: weeks,
+                        label: String.localizedStringWithFormat(NSLocalizedString("Weeks title", comment: ""), weeks),
+                        data: data
+                    )
                 }
                 if let days = data.dateComponents.days {
-                    CounterStack(number: days, label: "days", data: data)
+                    CounterStack(
+                        number: days,
+                        label: String.localizedStringWithFormat(NSLocalizedString("Days title", comment: ""), days),
+                        data: data
+                    )
                 }
             }
         }
