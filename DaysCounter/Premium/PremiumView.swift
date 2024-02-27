@@ -4,11 +4,13 @@ import SwiftUI
 
 struct PremiumView: View {
     var body: some View {
-        SubscriptionStoreView(groupID: "EB2739D3") {
+        SubscriptionStoreView(groupID: "21450937") {
             Header()
         }
         .subscriptionStoreControlStyle(.prominentPicker)
         .subscriptionStoreButtonLabel(.multiline)
+        .subscriptionStorePolicyDestination(url: URL(string: "https://sites.google.com/view/privacy-policy-dayscounterios")!, for: .privacyPolicy)
+        .subscriptionStorePolicyDestination(url: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!, for: .termsOfService)
     }
 }
 
